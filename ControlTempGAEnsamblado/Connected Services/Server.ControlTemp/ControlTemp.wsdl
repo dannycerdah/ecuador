@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://espc.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://espc.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://espc.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="ObtenerCuartosFrios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TempRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NombreCuartoFrio" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Puerto" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="Humedad" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="Centigrado" type="s:double" />
+              <s:element minOccurs="1" maxOccurs="1" name="fahrenheit" type="s:double" />
+              <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaInicio" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaFinal" type="s:dateTime" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InterfaceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="myManagementAction" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoVuelo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="ObtenerCuartosFriosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerCuartosFriosResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TempResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerConfTemp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerConfTempResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerConfTempResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerTempAct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerTempActResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerTempActResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegConfTemp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegConfTempResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegConfTempResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegCuartoFrio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegCuartoFrioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegCuartoFrioResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegTemperatura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegTemperaturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegTemperaturaResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegTemperaturaHist">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegTemperaturaHistResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegTemperaturaHistResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizaVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizaVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizaVersionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerReportTemp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerReportTempResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerReportTempResult" type="tns:TempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerCuartoFrioIdProIdGui">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempBitacoraCuartoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TempBitacoraCuartoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TempBitacoraCuarto" type="tns:TempBitacoraCuarto" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TempBitacoraCuarto">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CuartoAnteriror" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CuartoActual" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RegCargaCuartoFrio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="total" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoConsulta" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerCuartoFrioIdProIdGuiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerCuartoFrioIdProIdGuiResult" type="tns:TempBitacoraCuartoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TempBitacoraCuartoResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AgregaBitacoraCargaCuarto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempBitacoraCuartoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgregaBitacoraCargaCuartoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AgregaBitacoraCargaCuartoResult" type="tns:TempBitacoraCuartoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerVuelosElemen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TempBitacoraCuartoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerVuelosElemenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerVuelosElemenResult" type="tns:TempBitacoraCuartoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerParametrosNoti">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:NotificacionTempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NotificacionTempRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="NotificacionTemp" type="tns:NotificacionTemp" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NotificacionTemp">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id_notificacion_temp" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProducto" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="temp_min" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="temp_max" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerParametrosNotiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerParametrosNotiResult" type="tns:NotificacionTempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NotificacionTempResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MantNotificacionTemp">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:NotificacionTempRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MantNotificacionTempResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantNotificacionTempResult" type="tns:NotificacionTempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerRegCuartProduc">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerRegCuartProducResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerRegCuartProducResult" type="tns:NotificacionTempResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerCuartosFriosSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerCuartosFrios" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCuartosFriosSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerCuartosFriosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerConfTempSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerConfTemp" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerConfTempSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerConfTempResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTempActSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerTempAct" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTempActSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerTempActResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegConfTempSoapIn">
+    <wsdl:part name="parameters" element="tns:RegConfTemp" />
+  </wsdl:message>
+  <wsdl:message name="RegConfTempSoapOut">
+    <wsdl:part name="parameters" element="tns:RegConfTempResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegCuartoFrioSoapIn">
+    <wsdl:part name="parameters" element="tns:RegCuartoFrio" />
+  </wsdl:message>
+  <wsdl:message name="RegCuartoFrioSoapOut">
+    <wsdl:part name="parameters" element="tns:RegCuartoFrioResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegTemperaturaSoapIn">
+    <wsdl:part name="parameters" element="tns:RegTemperatura" />
+  </wsdl:message>
+  <wsdl:message name="RegTemperaturaSoapOut">
+    <wsdl:part name="parameters" element="tns:RegTemperaturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegTemperaturaHistSoapIn">
+    <wsdl:part name="parameters" element="tns:RegTemperaturaHist" />
+  </wsdl:message>
+  <wsdl:message name="RegTemperaturaHistSoapOut">
+    <wsdl:part name="parameters" element="tns:RegTemperaturaHistResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizaVersion" />
+  </wsdl:message>
+  <wsdl:message name="ActualizaVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizaVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerReportTempSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerReportTemp" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerReportTempSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerReportTempResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCuartoFrioIdProIdGuiSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerCuartoFrioIdProIdGui" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerCuartoFrioIdProIdGuiSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerCuartoFrioIdProIdGuiResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgregaBitacoraCargaCuartoSoapIn">
+    <wsdl:part name="parameters" element="tns:AgregaBitacoraCargaCuarto" />
+  </wsdl:message>
+  <wsdl:message name="AgregaBitacoraCargaCuartoSoapOut">
+    <wsdl:part name="parameters" element="tns:AgregaBitacoraCargaCuartoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerVuelosElemenSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerVuelosElemen" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerVuelosElemenSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerVuelosElemenResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerParametrosNotiSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerParametrosNoti" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerParametrosNotiSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerParametrosNotiResponse" />
+  </wsdl:message>
+  <wsdl:message name="MantNotificacionTempSoapIn">
+    <wsdl:part name="parameters" element="tns:MantNotificacionTemp" />
+  </wsdl:message>
+  <wsdl:message name="MantNotificacionTempSoapOut">
+    <wsdl:part name="parameters" element="tns:MantNotificacionTempResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerRegCuartProducSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerRegCuartProduc" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerRegCuartProducSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerRegCuartProducResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ControlTempSoap">
+    <wsdl:operation name="ObtenerCuartosFrios">
+      <wsdl:input message="tns:ObtenerCuartosFriosSoapIn" />
+      <wsdl:output message="tns:ObtenerCuartosFriosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConfTemp">
+      <wsdl:input message="tns:ObtenerConfTempSoapIn" />
+      <wsdl:output message="tns:ObtenerConfTempSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTempAct">
+      <wsdl:input message="tns:ObtenerTempActSoapIn" />
+      <wsdl:output message="tns:ObtenerTempActSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegConfTemp">
+      <wsdl:input message="tns:RegConfTempSoapIn" />
+      <wsdl:output message="tns:RegConfTempSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegCuartoFrio">
+      <wsdl:input message="tns:RegCuartoFrioSoapIn" />
+      <wsdl:output message="tns:RegCuartoFrioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegTemperatura">
+      <wsdl:input message="tns:RegTemperaturaSoapIn" />
+      <wsdl:output message="tns:RegTemperaturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegTemperaturaHist">
+      <wsdl:input message="tns:RegTemperaturaHistSoapIn" />
+      <wsdl:output message="tns:RegTemperaturaHistSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaVersion">
+      <wsdl:input message="tns:ActualizaVersionSoapIn" />
+      <wsdl:output message="tns:ActualizaVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerReportTemp">
+      <wsdl:input message="tns:ObtenerReportTempSoapIn" />
+      <wsdl:output message="tns:ObtenerReportTempSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCuartoFrioIdProIdGui">
+      <wsdl:input message="tns:ObtenerCuartoFrioIdProIdGuiSoapIn" />
+      <wsdl:output message="tns:ObtenerCuartoFrioIdProIdGuiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgregaBitacoraCargaCuarto">
+      <wsdl:input message="tns:AgregaBitacoraCargaCuartoSoapIn" />
+      <wsdl:output message="tns:AgregaBitacoraCargaCuartoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerVuelosElemen">
+      <wsdl:input message="tns:ObtenerVuelosElemenSoapIn" />
+      <wsdl:output message="tns:ObtenerVuelosElemenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametrosNoti">
+      <wsdl:input message="tns:ObtenerParametrosNotiSoapIn" />
+      <wsdl:output message="tns:ObtenerParametrosNotiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MantNotificacionTemp">
+      <wsdl:input message="tns:MantNotificacionTempSoapIn" />
+      <wsdl:output message="tns:MantNotificacionTempSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegCuartProduc">
+      <wsdl:input message="tns:ObtenerRegCuartProducSoapIn" />
+      <wsdl:output message="tns:ObtenerRegCuartProducSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ControlTempSoap" type="tns:ControlTempSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerCuartosFrios">
+      <soap:operation soapAction="http://espc.org/ObtenerCuartosFrios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConfTemp">
+      <soap:operation soapAction="http://espc.org/ObtenerConfTemp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTempAct">
+      <soap:operation soapAction="http://espc.org/ObtenerTempAct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegConfTemp">
+      <soap:operation soapAction="http://espc.org/RegConfTemp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegCuartoFrio">
+      <soap:operation soapAction="http://espc.org/RegCuartoFrio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegTemperatura">
+      <soap:operation soapAction="http://espc.org/RegTemperatura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegTemperaturaHist">
+      <soap:operation soapAction="http://espc.org/RegTemperaturaHist" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaVersion">
+      <soap:operation soapAction="http://espc.org/ActualizaVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerReportTemp">
+      <soap:operation soapAction="http://espc.org/ObtenerReportTemp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCuartoFrioIdProIdGui">
+      <soap:operation soapAction="http://espc.org/ObtenerCuartoFrioIdProIdGui" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregaBitacoraCargaCuarto">
+      <soap:operation soapAction="http://espc.org/AgregaBitacoraCargaCuarto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerVuelosElemen">
+      <soap:operation soapAction="http://espc.org/ObtenerVuelosElemen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametrosNoti">
+      <soap:operation soapAction="http://espc.org/ObtenerParametrosNoti" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantNotificacionTemp">
+      <soap:operation soapAction="http://espc.org/MantNotificacionTemp" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegCuartProduc">
+      <soap:operation soapAction="http://espc.org/ObtenerRegCuartProduc" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ControlTempSoap12" type="tns:ControlTempSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerCuartosFrios">
+      <soap12:operation soapAction="http://espc.org/ObtenerCuartosFrios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerConfTemp">
+      <soap12:operation soapAction="http://espc.org/ObtenerConfTemp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTempAct">
+      <soap12:operation soapAction="http://espc.org/ObtenerTempAct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegConfTemp">
+      <soap12:operation soapAction="http://espc.org/RegConfTemp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegCuartoFrio">
+      <soap12:operation soapAction="http://espc.org/RegCuartoFrio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegTemperatura">
+      <soap12:operation soapAction="http://espc.org/RegTemperatura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegTemperaturaHist">
+      <soap12:operation soapAction="http://espc.org/RegTemperaturaHist" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizaVersion">
+      <soap12:operation soapAction="http://espc.org/ActualizaVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerReportTemp">
+      <soap12:operation soapAction="http://espc.org/ObtenerReportTemp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerCuartoFrioIdProIdGui">
+      <soap12:operation soapAction="http://espc.org/ObtenerCuartoFrioIdProIdGui" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgregaBitacoraCargaCuarto">
+      <soap12:operation soapAction="http://espc.org/AgregaBitacoraCargaCuarto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerVuelosElemen">
+      <soap12:operation soapAction="http://espc.org/ObtenerVuelosElemen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerParametrosNoti">
+      <soap12:operation soapAction="http://espc.org/ObtenerParametrosNoti" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantNotificacionTemp">
+      <soap12:operation soapAction="http://espc.org/MantNotificacionTemp" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerRegCuartProduc">
+      <soap12:operation soapAction="http://espc.org/ObtenerRegCuartProduc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ControlTemp">
+    <wsdl:port name="ControlTempSoap" binding="tns:ControlTempSoap">
+      <soap:address location="http://localhost:20028/ControlTemp.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ControlTempSoap12" binding="tns:ControlTempSoap12">
+      <soap12:address location="http://localhost:20028/ControlTemp.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

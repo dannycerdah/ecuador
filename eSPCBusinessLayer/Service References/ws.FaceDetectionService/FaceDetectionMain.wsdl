@@ -1,0 +1,1383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://EPFaceDetection.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://EPFaceDetection.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://EPFaceDetection.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="PingService">
+        <s:complexType />
+      </s:element>
+      <s:element name="PingServiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PingServiceResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetection">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPDetectionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPDetectionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myFaceDetectServiceResponse" type="tns:FaceDetectServiceResponse" />
+              <s:element minOccurs="1" maxOccurs="1" name="campaignId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="personDetectedId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="itemId" type="s1:guid" />
+              <s:element minOccurs="1" maxOccurs="1" name="timeLine" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="myParameter" type="tns:EPParameter" />
+              <s:element minOccurs="0" maxOccurs="1" name="NameTerminal" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAdress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ResId" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrmId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ResName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MyManagementActions" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="EnterpriseCode" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="FaceDetectServiceResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="faceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="faceRectangle" type="tns:FaceRectangle" />
+          <s:element minOccurs="0" maxOccurs="1" name="faceLandmarks" type="tns:FaceLandmarks" />
+          <s:element minOccurs="0" maxOccurs="1" name="faceAttributes" type="tns:FaceAttributes" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FaceRectangle">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="width" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="height" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="left" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="top" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FaceLandmarks">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="pupilLeft" type="tns:PupilLeft" />
+          <s:element minOccurs="0" maxOccurs="1" name="pupilRight" type="tns:PupilRight" />
+          <s:element minOccurs="0" maxOccurs="1" name="noseTip" type="tns:NoseTip" />
+          <s:element minOccurs="0" maxOccurs="1" name="mouthLeft" type="tns:MouthLeft" />
+          <s:element minOccurs="0" maxOccurs="1" name="mouthRight" type="tns:MouthRight" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyebrowLeftOuter" type="tns:EyebrowLeftOuter" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyebrowLeftInner" type="tns:EyebrowLeftInner" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeLeftOuter" type="tns:EyeLeftOuter" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeLeftTop" type="tns:EyeLeftTop" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeLeftBottom" type="tns:EyeLeftBottom" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeLeftInner" type="tns:EyeLeftInner" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyebrowRightInner" type="tns:EyebrowRightInner" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyebrowRightOuter" type="tns:EyebrowRightOuter" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeRightInner" type="tns:EyeRightInner" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeRightTop" type="tns:EyeRightTop" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeRightBottom" type="tns:EyeRightBottom" />
+          <s:element minOccurs="0" maxOccurs="1" name="eyeRightOuter" type="tns:EyeRightOuter" />
+          <s:element minOccurs="0" maxOccurs="1" name="noseRootLeft" type="tns:NoseRootLeft" />
+          <s:element minOccurs="0" maxOccurs="1" name="noseRootRight" type="tns:NoseRootRight" />
+          <s:element minOccurs="0" maxOccurs="1" name="noseLeftAlarTop" type="tns:NoseLeftAlarTop" />
+          <s:element minOccurs="0" maxOccurs="1" name="noseRightAlarTop" type="tns:NoseRightAlarTop" />
+          <s:element minOccurs="0" maxOccurs="1" name="noseLeftAlarOutTip" type="tns:NoseLeftAlarOutTip" />
+          <s:element minOccurs="0" maxOccurs="1" name="noseRightAlarOutTip" type="tns:NoseRightAlarOutTip" />
+          <s:element minOccurs="0" maxOccurs="1" name="upperLipTop" type="tns:UpperLipTop" />
+          <s:element minOccurs="0" maxOccurs="1" name="upperLipBottom" type="tns:UpperLipBottom" />
+          <s:element minOccurs="0" maxOccurs="1" name="underLipTop" type="tns:UnderLipTop" />
+          <s:element minOccurs="0" maxOccurs="1" name="underLipBottom" type="tns:UnderLipBottom" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PupilLeft">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PupilRight">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoseTip">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MouthLeft">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MouthRight">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyebrowLeftOuter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyebrowLeftInner">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeLeftOuter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeLeftTop">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeLeftBottom">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeLeftInner">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyebrowRightInner">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyebrowRightOuter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeRightInner">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeRightTop">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeRightBottom">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EyeRightOuter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoseRootLeft">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoseRootRight">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoseLeftAlarTop">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoseRightAlarTop">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoseLeftAlarOutTip">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NoseRightAlarOutTip">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpperLipTop">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UpperLipBottom">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UnderLipTop">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UnderLipBottom">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="x" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="y" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FaceAttributes">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="age" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="gender" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="smile" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="facialHair" type="tns:FacialHair" />
+          <s:element minOccurs="0" maxOccurs="1" name="glasses" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="headPose" type="tns:HeadPose" />
+          <s:element minOccurs="0" maxOccurs="1" name="emotion" type="tns:Emotion" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FacialHair">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="mustache" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="beard" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="sideburns" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="HeadPose">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="roll" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="yaw" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="pitch" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Emotion">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="anger" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="contempt" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="disgust" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="fear" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="happiness" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="neutral" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="sadness" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="surprise" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EPParameter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SubscriptionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationApi" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdGrupo" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="TipGroup" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveDetectionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDetectionResult" type="tns:EPDetectionResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPDetectionResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myFaceDetectServiceResponse" type="tns:FaceDetectServiceResponse" />
+              <s:element minOccurs="0" maxOccurs="1" name="myPerson" type="tns:EPPerson" />
+              <s:element minOccurs="1" maxOccurs="1" name="Matched" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="MatchConfidence" type="s:decimal" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EPPerson">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="personId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="docId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="personName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="personNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersistedFacesId" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonImage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonByteImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="personGroupId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImagenesFace" type="tns:ArrayOfPersonImagenesFace" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGuid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="guid" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPersonImagenesFace">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PersonImagenesFace" nillable="true" type="tns:PersonImagenesFace" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PersonImagenesFace">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="PersonImage" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonByteImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersistedFacesId" type="tns:ArrayOfGuid" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonidImage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="indicadorRegistro" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterNewPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPPersonRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="myPerson" type="tns:EPPerson" />
+          <s:element minOccurs="1" maxOccurs="1" name="myNewPersistedFaceId" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="myParameter" type="tns:EPParameter" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterNewPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterNewPersonResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPPersonResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myPerson" type="tns:EPPerson" />
+              <s:element minOccurs="0" maxOccurs="1" name="msPerson" type="tns:PersonMs" />
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonMs">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userData" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetPersonByDocId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonByDocIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonByDocIdResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveNewPersistedFaceId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveNewPersistedFaceIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveNewPersistedFaceIdResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterNewGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPGroupRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myGroup" type="tns:EPGroup" />
+              <s:element minOccurs="1" maxOccurs="1" name="myNewPersistedFaceId" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="myParameter" type="tns:EPParameter" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="EPGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="personGroupId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GroupNotes" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RegisterNewGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegisterNewGroupResult" type="tns:EPGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPGroupResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myGrupo" type="tns:EPGroup" />
+              <s:element minOccurs="0" maxOccurs="1" name="msGroup" type="tns:PersonGroup" />
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userData" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGroupFaceDetect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupFaceDetectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupFaceDetectResult" type="tns:EPGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarGroupMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarGroupMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarGroupMSResult" type="tns:EPGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllContactFaceDetect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllContactFaceDetectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllContactFaceDetectResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGroupMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGroupMSResult" type="tns:EPGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarPersonaMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarPersonaMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarPersonaMSResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarCara">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarCaraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RegistrarCaraResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EntrenarGrupo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EntrenarGrupoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EntrenarGrupoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParameterFaceDetect">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPParameterRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPParameterRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:EPParameter" />
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetParameterFaceDetectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParameterFaceDetectResult" type="tns:EPParameterResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPParameterResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MakeDetectRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPDetectionFaceRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPDetectionFaceRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="myParameter" type="tns:EPParameter" />
+          <s:element minOccurs="0" maxOccurs="1" name="myPerson" type="tns:EPPerson" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseContentDetect" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PersonByteImage" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="personGroupId" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MakeDetectRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MakeDetectRequestResult" type="tns:EPDetectionFaceResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EPDetectionFaceResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="responseContentDetect" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DetectionRequestsToServerList" type="tns:ArrayOfEPDetectionRequest" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfEPDetectionRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="EPDetectionRequest" nillable="true" type="tns:EPDetectionRequest" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendResponseToServerList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPDetectionFaceRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendResponseToServerListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendResponseToServerListResult" type="tns:EPDetectionFaceResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DetectaRostro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DetectaRostroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DetectaRostroResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonByPersonId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonByPersonIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonByPersonIdResult" type="tns:EPPerson" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTerminalFace">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTerminalFaceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTerminalFaceResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any minOccurs="0" maxOccurs="unbounded" namespace="http://www.w3.org/2001/XMLSchema" processContents="lax" />
+                  <s:any minOccurs="1" namespace="urn:schemas-microsoft-com:xml-diffgram-v1" processContents="lax" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllContactFaceDetectionByGroup">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllContactFaceDetectionByGroupResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllContactFaceDetectionByGroupResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacePersonByDocId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:EPPersonRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFacePersonByDocIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFacePersonByDocIdResult" type="tns:EPPersonResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PingServiceSoapIn">
+    <wsdl:part name="parameters" element="tns:PingService" />
+  </wsdl:message>
+  <wsdl:message name="PingServiceSoapOut">
+    <wsdl:part name="parameters" element="tns:PingServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetectionSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDetection" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetectionSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDetectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterNewPerson" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterNewPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonByDocIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonByDocId" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonByDocIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonByDocIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveNewPersistedFaceIdSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveNewPersistedFaceId" />
+  </wsdl:message>
+  <wsdl:message name="SaveNewPersistedFaceIdSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveNewPersistedFaceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterNewGroup" />
+  </wsdl:message>
+  <wsdl:message name="RegisterNewGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterNewGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupFaceDetectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupFaceDetect" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupFaceDetectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupFaceDetectResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarGroupMSSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarGroupMS" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarGroupMSSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarGroupMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllContactFaceDetectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllContactFaceDetect" />
+  </wsdl:message>
+  <wsdl:message name="GetAllContactFaceDetectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllContactFaceDetectResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMSSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGroupMS" />
+  </wsdl:message>
+  <wsdl:message name="GetGroupMSSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGroupMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarPersonaMSSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarPersonaMS" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarPersonaMSSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarPersonaMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarCaraSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarCara" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarCaraSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarCaraResponse" />
+  </wsdl:message>
+  <wsdl:message name="EntrenarGrupoSoapIn">
+    <wsdl:part name="parameters" element="tns:EntrenarGrupo" />
+  </wsdl:message>
+  <wsdl:message name="EntrenarGrupoSoapOut">
+    <wsdl:part name="parameters" element="tns:EntrenarGrupoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParameterFaceDetectSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParameterFaceDetect" />
+  </wsdl:message>
+  <wsdl:message name="GetParameterFaceDetectSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParameterFaceDetectResponse" />
+  </wsdl:message>
+  <wsdl:message name="MakeDetectRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:MakeDetectRequest" />
+  </wsdl:message>
+  <wsdl:message name="MakeDetectRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:MakeDetectRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendResponseToServerListSoapIn">
+    <wsdl:part name="parameters" element="tns:SendResponseToServerList" />
+  </wsdl:message>
+  <wsdl:message name="SendResponseToServerListSoapOut">
+    <wsdl:part name="parameters" element="tns:SendResponseToServerListResponse" />
+  </wsdl:message>
+  <wsdl:message name="DetectaRostroSoapIn">
+    <wsdl:part name="parameters" element="tns:DetectaRostro" />
+  </wsdl:message>
+  <wsdl:message name="DetectaRostroSoapOut">
+    <wsdl:part name="parameters" element="tns:DetectaRostroResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonByPersonIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonByPersonId" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonByPersonIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonByPersonIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTerminalFaceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTerminalFace" />
+  </wsdl:message>
+  <wsdl:message name="GetTerminalFaceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTerminalFaceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllContactFaceDetectionByGroupSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllContactFaceDetectionByGroup" />
+  </wsdl:message>
+  <wsdl:message name="GetAllContactFaceDetectionByGroupSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllContactFaceDetectionByGroupResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFacePersonByDocIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFacePersonByDocId" />
+  </wsdl:message>
+  <wsdl:message name="GetFacePersonByDocIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFacePersonByDocIdResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FaceDetectionMainSoap">
+    <wsdl:operation name="PingService">
+      <wsdl:input message="tns:PingServiceSoapIn" />
+      <wsdl:output message="tns:PingServiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetection">
+      <wsdl:input message="tns:SaveDetectionSoapIn" />
+      <wsdl:output message="tns:SaveDetectionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewPerson">
+      <wsdl:input message="tns:RegisterNewPersonSoapIn" />
+      <wsdl:output message="tns:RegisterNewPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByDocId">
+      <wsdl:input message="tns:GetPersonByDocIdSoapIn" />
+      <wsdl:output message="tns:GetPersonByDocIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveNewPersistedFaceId">
+      <wsdl:input message="tns:SaveNewPersistedFaceIdSoapIn" />
+      <wsdl:output message="tns:SaveNewPersistedFaceIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewGroup">
+      <wsdl:input message="tns:RegisterNewGroupSoapIn" />
+      <wsdl:output message="tns:RegisterNewGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupFaceDetect">
+      <wsdl:input message="tns:GetGroupFaceDetectSoapIn" />
+      <wsdl:output message="tns:GetGroupFaceDetectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarGroupMS">
+      <wsdl:input message="tns:RegistrarGroupMSSoapIn" />
+      <wsdl:output message="tns:RegistrarGroupMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactFaceDetect">
+      <wsdl:input message="tns:GetAllContactFaceDetectSoapIn" />
+      <wsdl:output message="tns:GetAllContactFaceDetectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMS">
+      <wsdl:input message="tns:GetGroupMSSoapIn" />
+      <wsdl:output message="tns:GetGroupMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPersonaMS">
+      <wsdl:input message="tns:RegistrarPersonaMSSoapIn" />
+      <wsdl:output message="tns:RegistrarPersonaMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCara">
+      <wsdl:input message="tns:RegistrarCaraSoapIn" />
+      <wsdl:output message="tns:RegistrarCaraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EntrenarGrupo">
+      <wsdl:input message="tns:EntrenarGrupoSoapIn" />
+      <wsdl:output message="tns:EntrenarGrupoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParameterFaceDetect">
+      <wsdl:input message="tns:GetParameterFaceDetectSoapIn" />
+      <wsdl:output message="tns:GetParameterFaceDetectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeDetectRequest">
+      <wsdl:input message="tns:MakeDetectRequestSoapIn" />
+      <wsdl:output message="tns:MakeDetectRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendResponseToServerList">
+      <wsdl:input message="tns:SendResponseToServerListSoapIn" />
+      <wsdl:output message="tns:SendResponseToServerListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DetectaRostro">
+      <wsdl:input message="tns:DetectaRostroSoapIn" />
+      <wsdl:output message="tns:DetectaRostroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByPersonId">
+      <wsdl:input message="tns:GetPersonByPersonIdSoapIn" />
+      <wsdl:output message="tns:GetPersonByPersonIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTerminalFace">
+      <wsdl:input message="tns:GetTerminalFaceSoapIn" />
+      <wsdl:output message="tns:GetTerminalFaceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactFaceDetectionByGroup">
+      <wsdl:input message="tns:GetAllContactFaceDetectionByGroupSoapIn" />
+      <wsdl:output message="tns:GetAllContactFaceDetectionByGroupSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFacePersonByDocId">
+      <wsdl:input message="tns:GetFacePersonByDocIdSoapIn" />
+      <wsdl:output message="tns:GetFacePersonByDocIdSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FaceDetectionMainSoap" type="tns:FaceDetectionMainSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PingService">
+      <soap:operation soapAction="http://EPFaceDetection.org/PingService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetection">
+      <soap:operation soapAction="http://EPFaceDetection.org/SaveDetection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewPerson">
+      <soap:operation soapAction="http://EPFaceDetection.org/RegisterNewPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByDocId">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetPersonByDocId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveNewPersistedFaceId">
+      <soap:operation soapAction="http://EPFaceDetection.org/SaveNewPersistedFaceId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewGroup">
+      <soap:operation soapAction="http://EPFaceDetection.org/RegisterNewGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupFaceDetect">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetGroupFaceDetect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarGroupMS">
+      <soap:operation soapAction="http://EPFaceDetection.org/RegistrarGroupMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactFaceDetect">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetAllContactFaceDetect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMS">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetGroupMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPersonaMS">
+      <soap:operation soapAction="http://EPFaceDetection.org/RegistrarPersonaMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCara">
+      <soap:operation soapAction="http://EPFaceDetection.org/RegistrarCara" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EntrenarGrupo">
+      <soap:operation soapAction="http://EPFaceDetection.org/EntrenarGrupo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameterFaceDetect">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetParameterFaceDetect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeDetectRequest">
+      <soap:operation soapAction="http://EPFaceDetection.org/MakeDetectRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendResponseToServerList">
+      <soap:operation soapAction="http://EPFaceDetection.org/SendResponseToServerList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetectaRostro">
+      <soap:operation soapAction="http://EPFaceDetection.org/DetectaRostro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByPersonId">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetPersonByPersonId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTerminalFace">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetTerminalFace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactFaceDetectionByGroup">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetAllContactFaceDetectionByGroup" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacePersonByDocId">
+      <soap:operation soapAction="http://EPFaceDetection.org/GetFacePersonByDocId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FaceDetectionMainSoap12" type="tns:FaceDetectionMainSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="PingService">
+      <soap12:operation soapAction="http://EPFaceDetection.org/PingService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetection">
+      <soap12:operation soapAction="http://EPFaceDetection.org/SaveDetection" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewPerson">
+      <soap12:operation soapAction="http://EPFaceDetection.org/RegisterNewPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByDocId">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetPersonByDocId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveNewPersistedFaceId">
+      <soap12:operation soapAction="http://EPFaceDetection.org/SaveNewPersistedFaceId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterNewGroup">
+      <soap12:operation soapAction="http://EPFaceDetection.org/RegisterNewGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupFaceDetect">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetGroupFaceDetect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarGroupMS">
+      <soap12:operation soapAction="http://EPFaceDetection.org/RegistrarGroupMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactFaceDetect">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetAllContactFaceDetect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGroupMS">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetGroupMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarPersonaMS">
+      <soap12:operation soapAction="http://EPFaceDetection.org/RegistrarPersonaMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarCara">
+      <soap12:operation soapAction="http://EPFaceDetection.org/RegistrarCara" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EntrenarGrupo">
+      <soap12:operation soapAction="http://EPFaceDetection.org/EntrenarGrupo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParameterFaceDetect">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetParameterFaceDetect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeDetectRequest">
+      <soap12:operation soapAction="http://EPFaceDetection.org/MakeDetectRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendResponseToServerList">
+      <soap12:operation soapAction="http://EPFaceDetection.org/SendResponseToServerList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetectaRostro">
+      <soap12:operation soapAction="http://EPFaceDetection.org/DetectaRostro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonByPersonId">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetPersonByPersonId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTerminalFace">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetTerminalFace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContactFaceDetectionByGroup">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetAllContactFaceDetectionByGroup" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFacePersonByDocId">
+      <soap12:operation soapAction="http://EPFaceDetection.org/GetFacePersonByDocId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FaceDetectionMain">
+    <wsdl:port name="FaceDetectionMainSoap" binding="tns:FaceDetectionMainSoap">
+      <soap:address location="http://localhost:50278/FaceDetectionMain.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FaceDetectionMainSoap12" binding="tns:FaceDetectionMainSoap12">
+      <soap12:address location="http://localhost:50278/FaceDetectionMain.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

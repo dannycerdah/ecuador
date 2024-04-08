@@ -1,0 +1,39 @@
+﻿Public Class Encabezado
+    Public Property Vuelo As String
+    Public Property Destino As String
+    Public Property Agencia As String
+    Public Property AgenciaTransporte As String
+    Public Property AgenciaSeguridad As String
+    Public Property Aerolinea As String
+    Public Property Producto As String
+    Public Property DAE As String
+    Public Property Guia As String
+    Public Property Fecha As DateTime
+    Public Property HoraInicio As DateTime
+    Public Property HoraFin As DateTime
+    Public Property Bultos As Integer
+    Public Property Piezas As Integer
+    Public Property Alto As Integer
+    Public Property Ancho As Integer
+    Public Property Largo As Integer
+    Public Property Peso As Decimal
+    Public Property Volumen As Decimal
+    Public Property tempMax As Double
+    Public Property tempMin As Double
+    Public Property tempPro As Double
+    Public Property Rx As Integer
+    Public Property Man As Integer
+    Public Property K9 As Integer
+    Public Property Eds As Integer
+    Public Property idChofer As String
+    Public Property Chofer As String
+    Public Property idEnvia As String
+    Public Property Envia As String
+    Public Property idRecibe As String
+    Public Property Recibe As String
+    Public Property idSeguridad As String
+    Public Property seguridad As String
+    Public Property Observacion As String
+    Public Property estado As String
+    Public Detalle As New List(Of Detalle)
+End Class

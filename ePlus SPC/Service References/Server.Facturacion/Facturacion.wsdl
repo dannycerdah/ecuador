@@ -1,0 +1,1177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="MantClientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ClienteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClienteRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Cliente" type="tns:Cliente" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InterfaceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="myManagementAction" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoVuelo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Cliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantClientesResult" type="tns:ClienteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ClienteResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantServiciosGA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ServiciosGARequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiciosGARequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ServiciosGA" type="tns:ServiciosGA" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServiciosGA">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idServiciosGA" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionServicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tipo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantServiciosGAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantServiciosGAResult" type="tns:ServiciosGAResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServiciosGAResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MantPlantiClienteServ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PlantillaClienServRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PlantillaClienServRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="PlantillaClienteServicio" type="tns:PlantillaClienServ" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PlantillaClienServ">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idPlantillaClienteServicio" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idServiciosGA" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idPeriodicidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorPeriodicidad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ValorTarifa" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="CantAlmaContainerPer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdComparacionServicio" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantPlantiClienteServResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantPlantiClienteServResult" type="tns:PlantillaClienServResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PlantillaClienServResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MantPeriodicidad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PeriodicidadRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PeriodicidadRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Periodicidad" type="tns:Periodicidad" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="Periodicidad">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idPeriodicidad" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionPeriodicidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantPeriodicidadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantPeriodicidadResult" type="tns:PeriodicidadResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PeriodicidadResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MantServConsuCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ServConsuClienteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServConsuClienteRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="ServConsuCliente" type="tns:ServConsuCliente" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ServConsuCliente">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idServConsuCliente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idServiciosGA" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantServConsuClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantServConsuClienteResult" type="tns:ServConsuClienteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ServConsuClienteResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="MantVuelosCancelados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VuelosCanceladosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VuelosCanceladosRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="VuelosCancelados" type="tns:VuelosCancelados" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VuelosCancelados">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idVuelosCancelados" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCliente" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Observacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantVuelosCanceladosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantVuelosCanceladosResult" type="tns:VuelosCanceladosResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VuelosCanceladosResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetClientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ClienteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetClientesResult" type="tns:ClienteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiciosGA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ServiciosGARequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetServiciosGAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetServiciosGAResult" type="tns:ServiciosGAResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriodicidad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PeriodicidadRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriodicidadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPeriodicidadResult" type="tns:PeriodicidadResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlantiClienteServ">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PlantillaClienServRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPlantiClienteServResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPlantiClienteServResult" type="tns:PlantillaClienServResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTipoProceAlmacenaCarga">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TipoProcesoAlmacenajeCargaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TipoProcesoAlmacenajeCargaRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TipoProcesoAlmacenajeCarga" type="tns:TipoProcesoAlmacenajeCarga" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TipoProcesoAlmacenajeCarga">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTipoProcAlmaCarg" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionTipoProcAlmaCarg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ValorProcAlmaCarg" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTipoProceAlmacenaCargaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTipoProceAlmacenaCargaResult" type="tns:TipoProcesoAlmacenajeCargaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TipoProcesoAlmacenajeCargaResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="PreFactObtenerPesoVolumenVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PlantillaClienServRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerPesoVolumenVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreFactObtenerPesoVolumenVueloResult" type="tns:PlantillaClienServResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerCantVuelosAgencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PlantillaClienServRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerCantVuelosAgenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreFactObtenerCantVuelosAgenciaResult" type="tns:PlantillaClienServResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerPesoVolumenGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PlantillaClienServRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerPesoVolumenGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreFactObtenerPesoVolumenGuiaResult" type="tns:PlantillaClienServResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerTiempoAlmaceContainer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PlantillaClienServRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerTiempoAlmaceContainerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreFactObtenerTiempoAlmaceContainerResult" type="tns:PlantillaClienServResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSerConsuCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ServConsuClienteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSerConsuClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSerConsuClienteResult" type="tns:ServConsuClienteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVuelosCancelados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VuelosCanceladosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVuelosCanceladosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVuelosCanceladosResult" type="tns:VuelosCanceladosResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVuelosGuias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VuelosCanceladosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVuelosGuiasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVuelosGuiasResult" type="tns:VuelosCanceladosResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerServConsuCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ServConsuClienteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerServConsuClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreFactObtenerServConsuClienteResult" type="tns:ServConsuClienteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerPesoVolumenPorBriefGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ServConsuClienteRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PreFactObtenerPesoVolumenPorBriefGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PreFactObtenerPesoVolumenPorBriefGuiaResult" type="tns:ServConsuClienteResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="MantClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:MantClientes" />
+  </wsdl:message>
+  <wsdl:message name="MantClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:MantClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="MantServiciosGASoapIn">
+    <wsdl:part name="parameters" element="tns:MantServiciosGA" />
+  </wsdl:message>
+  <wsdl:message name="MantServiciosGASoapOut">
+    <wsdl:part name="parameters" element="tns:MantServiciosGAResponse" />
+  </wsdl:message>
+  <wsdl:message name="MantPlantiClienteServSoapIn">
+    <wsdl:part name="parameters" element="tns:MantPlantiClienteServ" />
+  </wsdl:message>
+  <wsdl:message name="MantPlantiClienteServSoapOut">
+    <wsdl:part name="parameters" element="tns:MantPlantiClienteServResponse" />
+  </wsdl:message>
+  <wsdl:message name="MantPeriodicidadSoapIn">
+    <wsdl:part name="parameters" element="tns:MantPeriodicidad" />
+  </wsdl:message>
+  <wsdl:message name="MantPeriodicidadSoapOut">
+    <wsdl:part name="parameters" element="tns:MantPeriodicidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="MantServConsuClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:MantServConsuCliente" />
+  </wsdl:message>
+  <wsdl:message name="MantServConsuClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:MantServConsuClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="MantVuelosCanceladosSoapIn">
+    <wsdl:part name="parameters" element="tns:MantVuelosCancelados" />
+  </wsdl:message>
+  <wsdl:message name="MantVuelosCanceladosSoapOut">
+    <wsdl:part name="parameters" element="tns:MantVuelosCanceladosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetClientes" />
+  </wsdl:message>
+  <wsdl:message name="GetClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetServiciosGASoapIn">
+    <wsdl:part name="parameters" element="tns:GetServiciosGA" />
+  </wsdl:message>
+  <wsdl:message name="GetServiciosGASoapOut">
+    <wsdl:part name="parameters" element="tns:GetServiciosGAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodicidadSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPeriodicidad" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodicidadSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPeriodicidadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPlantiClienteServSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPlantiClienteServ" />
+  </wsdl:message>
+  <wsdl:message name="GetPlantiClienteServSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPlantiClienteServResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoProceAlmacenaCargaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTipoProceAlmacenaCarga" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoProceAlmacenaCargaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTipoProceAlmacenaCargaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerPesoVolumenVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerPesoVolumenVuelo" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerPesoVolumenVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerPesoVolumenVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerCantVuelosAgenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerCantVuelosAgencia" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerCantVuelosAgenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerCantVuelosAgenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerPesoVolumenGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerPesoVolumenGuia" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerPesoVolumenGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerPesoVolumenGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerTiempoAlmaceContainerSoapIn">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerTiempoAlmaceContainer" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerTiempoAlmaceContainerSoapOut">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerTiempoAlmaceContainerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSerConsuClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSerConsuCliente" />
+  </wsdl:message>
+  <wsdl:message name="GetSerConsuClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSerConsuClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosCanceladosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVuelosCancelados" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosCanceladosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVuelosCanceladosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosGuiasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVuelosGuias" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosGuiasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVuelosGuiasResponse" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerServConsuClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerServConsuCliente" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerServConsuClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerServConsuClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerPesoVolumenPorBriefGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerPesoVolumenPorBriefGuia" />
+  </wsdl:message>
+  <wsdl:message name="PreFactObtenerPesoVolumenPorBriefGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:PreFactObtenerPesoVolumenPorBriefGuiaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="FacturacionSoap">
+    <wsdl:operation name="MantClientes">
+      <wsdl:input message="tns:MantClientesSoapIn" />
+      <wsdl:output message="tns:MantClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MantServiciosGA">
+      <wsdl:input message="tns:MantServiciosGASoapIn" />
+      <wsdl:output message="tns:MantServiciosGASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MantPlantiClienteServ">
+      <wsdl:input message="tns:MantPlantiClienteServSoapIn" />
+      <wsdl:output message="tns:MantPlantiClienteServSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MantPeriodicidad">
+      <wsdl:input message="tns:MantPeriodicidadSoapIn" />
+      <wsdl:output message="tns:MantPeriodicidadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MantServConsuCliente">
+      <wsdl:input message="tns:MantServConsuClienteSoapIn" />
+      <wsdl:output message="tns:MantServConsuClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MantVuelosCancelados">
+      <wsdl:input message="tns:MantVuelosCanceladosSoapIn" />
+      <wsdl:output message="tns:MantVuelosCanceladosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetClientes">
+      <wsdl:input message="tns:GetClientesSoapIn" />
+      <wsdl:output message="tns:GetClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetServiciosGA">
+      <wsdl:input message="tns:GetServiciosGASoapIn" />
+      <wsdl:output message="tns:GetServiciosGASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodicidad">
+      <wsdl:input message="tns:GetPeriodicidadSoapIn" />
+      <wsdl:output message="tns:GetPeriodicidadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlantiClienteServ">
+      <wsdl:input message="tns:GetPlantiClienteServSoapIn" />
+      <wsdl:output message="tns:GetPlantiClienteServSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoProceAlmacenaCarga">
+      <wsdl:input message="tns:GetTipoProceAlmacenaCargaSoapIn" />
+      <wsdl:output message="tns:GetTipoProceAlmacenaCargaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenVuelo">
+      <wsdl:input message="tns:PreFactObtenerPesoVolumenVueloSoapIn" />
+      <wsdl:output message="tns:PreFactObtenerPesoVolumenVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerCantVuelosAgencia">
+      <wsdl:input message="tns:PreFactObtenerCantVuelosAgenciaSoapIn" />
+      <wsdl:output message="tns:PreFactObtenerCantVuelosAgenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenGuia">
+      <wsdl:input message="tns:PreFactObtenerPesoVolumenGuiaSoapIn" />
+      <wsdl:output message="tns:PreFactObtenerPesoVolumenGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerTiempoAlmaceContainer">
+      <wsdl:input message="tns:PreFactObtenerTiempoAlmaceContainerSoapIn" />
+      <wsdl:output message="tns:PreFactObtenerTiempoAlmaceContainerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSerConsuCliente">
+      <wsdl:input message="tns:GetSerConsuClienteSoapIn" />
+      <wsdl:output message="tns:GetSerConsuClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosCancelados">
+      <wsdl:input message="tns:GetVuelosCanceladosSoapIn" />
+      <wsdl:output message="tns:GetVuelosCanceladosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosGuias">
+      <wsdl:input message="tns:GetVuelosGuiasSoapIn" />
+      <wsdl:output message="tns:GetVuelosGuiasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerServConsuCliente">
+      <wsdl:input message="tns:PreFactObtenerServConsuClienteSoapIn" />
+      <wsdl:output message="tns:PreFactObtenerServConsuClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenPorBriefGuia">
+      <wsdl:input message="tns:PreFactObtenerPesoVolumenPorBriefGuiaSoapIn" />
+      <wsdl:output message="tns:PreFactObtenerPesoVolumenPorBriefGuiaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="FacturacionSoap" type="tns:FacturacionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MantClientes">
+      <soap:operation soapAction="http://tempuri.org/MantClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantServiciosGA">
+      <soap:operation soapAction="http://tempuri.org/MantServiciosGA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantPlantiClienteServ">
+      <soap:operation soapAction="http://tempuri.org/MantPlantiClienteServ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantPeriodicidad">
+      <soap:operation soapAction="http://tempuri.org/MantPeriodicidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantServConsuCliente">
+      <soap:operation soapAction="http://tempuri.org/MantServConsuCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantVuelosCancelados">
+      <soap:operation soapAction="http://tempuri.org/MantVuelosCancelados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientes">
+      <soap:operation soapAction="http://tempuri.org/GetClientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiciosGA">
+      <soap:operation soapAction="http://tempuri.org/GetServiciosGA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodicidad">
+      <soap:operation soapAction="http://tempuri.org/GetPeriodicidad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlantiClienteServ">
+      <soap:operation soapAction="http://tempuri.org/GetPlantiClienteServ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoProceAlmacenaCarga">
+      <soap:operation soapAction="http://tempuri.org/GetTipoProceAlmacenaCarga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenVuelo">
+      <soap:operation soapAction="http://tempuri.org/PreFactObtenerPesoVolumenVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerCantVuelosAgencia">
+      <soap:operation soapAction="http://tempuri.org/PreFactObtenerCantVuelosAgencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenGuia">
+      <soap:operation soapAction="http://tempuri.org/PreFactObtenerPesoVolumenGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerTiempoAlmaceContainer">
+      <soap:operation soapAction="http://tempuri.org/PreFactObtenerTiempoAlmaceContainer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerConsuCliente">
+      <soap:operation soapAction="http://tempuri.org/GetSerConsuCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosCancelados">
+      <soap:operation soapAction="http://tempuri.org/GetVuelosCancelados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosGuias">
+      <soap:operation soapAction="http://tempuri.org/GetVuelosGuias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerServConsuCliente">
+      <soap:operation soapAction="http://tempuri.org/PreFactObtenerServConsuCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenPorBriefGuia">
+      <soap:operation soapAction="http://tempuri.org/PreFactObtenerPesoVolumenPorBriefGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="FacturacionSoap12" type="tns:FacturacionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MantClientes">
+      <soap12:operation soapAction="http://tempuri.org/MantClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantServiciosGA">
+      <soap12:operation soapAction="http://tempuri.org/MantServiciosGA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantPlantiClienteServ">
+      <soap12:operation soapAction="http://tempuri.org/MantPlantiClienteServ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantPeriodicidad">
+      <soap12:operation soapAction="http://tempuri.org/MantPeriodicidad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantServConsuCliente">
+      <soap12:operation soapAction="http://tempuri.org/MantServConsuCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantVuelosCancelados">
+      <soap12:operation soapAction="http://tempuri.org/MantVuelosCancelados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetClientes">
+      <soap12:operation soapAction="http://tempuri.org/GetClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetServiciosGA">
+      <soap12:operation soapAction="http://tempuri.org/GetServiciosGA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodicidad">
+      <soap12:operation soapAction="http://tempuri.org/GetPeriodicidad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPlantiClienteServ">
+      <soap12:operation soapAction="http://tempuri.org/GetPlantiClienteServ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoProceAlmacenaCarga">
+      <soap12:operation soapAction="http://tempuri.org/GetTipoProceAlmacenaCarga" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenVuelo">
+      <soap12:operation soapAction="http://tempuri.org/PreFactObtenerPesoVolumenVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerCantVuelosAgencia">
+      <soap12:operation soapAction="http://tempuri.org/PreFactObtenerCantVuelosAgencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenGuia">
+      <soap12:operation soapAction="http://tempuri.org/PreFactObtenerPesoVolumenGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerTiempoAlmaceContainer">
+      <soap12:operation soapAction="http://tempuri.org/PreFactObtenerTiempoAlmaceContainer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSerConsuCliente">
+      <soap12:operation soapAction="http://tempuri.org/GetSerConsuCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosCancelados">
+      <soap12:operation soapAction="http://tempuri.org/GetVuelosCancelados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosGuias">
+      <soap12:operation soapAction="http://tempuri.org/GetVuelosGuias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerServConsuCliente">
+      <soap12:operation soapAction="http://tempuri.org/PreFactObtenerServConsuCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PreFactObtenerPesoVolumenPorBriefGuia">
+      <soap12:operation soapAction="http://tempuri.org/PreFactObtenerPesoVolumenPorBriefGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Facturacion">
+    <wsdl:port name="FacturacionSoap" binding="tns:FacturacionSoap">
+      <soap:address location="http://localhost:20028/Facturacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="FacturacionSoap12" binding="tns:FacturacionSoap12">
+      <soap12:address location="http://localhost:20028/Facturacion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

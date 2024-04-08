@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://espc.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://espc.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://espc.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="CheckUserCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:UserRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myUser" type="tns:User" />
+              <s:element minOccurs="0" maxOccurs="1" name="myConfiguraciones" type="tns:ConfigurationItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InterfaceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="myManagementAction" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoVuelo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idUsuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="UserExists" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="isUserAdmin" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isAdmin" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isUserAvailability" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="userAdmin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="errorString" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="myPermisos" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConfigurationItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="userEcuapass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="passwordEcuapass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="keyEcuapass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tiempoMarcaciones" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="margenBriefing" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckUserCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckUserCodeResult" type="tns:UserResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="UserResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+              <s:element minOccurs="0" maxOccurs="1" name="myUser" type="tns:User" />
+              <s:element minOccurs="0" maxOccurs="1" name="myConfiguraciones" type="tns:ConfigurationItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetUserByCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:UserRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserByCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserByCodeResult" type="tns:UserResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogIn">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:UserRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogInResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LogInResult" type="tns:UserResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogOut">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:UserRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogOutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LogOutResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:UserRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveUserResult" type="tns:UserResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveBitacoraPermiso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:UserRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveBitacoraPermisoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveBitacoraPermisoResult" type="tns:UserResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAutorizacionesOnline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AutorizacionesOnlineRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AutorizacionesOnlineRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="AutorizacionesOnline" type="tns:ArrayOfAutorizacionOnline" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAutorizacionOnline">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AutorizacionOnline" nillable="true" type="tns:AutorizacionOnline" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AutorizacionOnline">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idAutorizacion" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioSolicitante" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaHoraSolicitud" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioAprobacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaHoraAprobacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="EstadoAutorizacion" type="tns:EstadoAprobacion" />
+          <s:element minOccurs="0" maxOccurs="1" name="CatalogoContactoItem" type="tns:ContactoCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="EtiquetaWebGeneric" type="tns:ArrayOfString" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EstadoAprobacion">
+        <s:restriction base="s:string">
+          <s:enumeration value="Pendiente" />
+          <s:enumeration value="Aprobado" />
+          <s:enumeration value="Descartado" />
+          <s:enumeration value="Expirado" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cargo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idPais" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCiudad" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="tagsa" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaCaducaTagsa" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagenPerfil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagenesPerfil" type="tns:ArrayOfContactoImagenCatalogoItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="BioRecords" type="tns:ArrayOfRegBiometricoCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZonasAutorizadas" type="tns:ArrayOfZonasAutorizadasCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZonasAutorizadasByContacto" type="tns:ArrayOfZonasAutorizadasByContactoCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgenciaContacto" type="tns:ArrayOfContactoAgenciaCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="huella" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdContactoUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfContactoImagenCatalogoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContactoImagenCatalogoItem" nillable="true" type="tns:ContactoImagenCatalogoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContactoImagenCatalogoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idImagen" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="estado" type="tns:estadoImagen" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="estadoImagen">
+        <s:restriction base="s:string">
+          <s:enumeration value="Nuevo" />
+          <s:enumeration value="Activo" />
+          <s:enumeration value="Inactivo" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfRegBiometricoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RegBiometricoCatalogItem" nillable="true" type="tns:RegBiometricoCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RegBiometricoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idcod_Contacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idregistro_biometrico" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="detalle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="calificacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfZonasAutorizadasCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ZonasAutorizadasCatalogItem" nillable="true" type="tns:ZonasAutorizadasCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZonasAutorizadasCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idZona" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfZonasAutorizadasByContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ZonasAutorizadasByContactoCatalogItem" nillable="true" type="tns:ZonasAutorizadasByContactoCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZonasAutorizadasByContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idZonaAutorizada_Contacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idZona" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiaPermitido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorarioDesde" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorarioHasta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfContactoAgenciaCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContactoAgenciaCatalogItem" nillable="true" type="tns:ContactoAgenciaCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContactoAgenciaCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionAgencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoApellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comentario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cargo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdContactoUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveAutorizacionesOnlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveAutorizacionesOnlineResult" type="tns:AutorizacionesOnlineResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AutorizacionesOnlineResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myAutorizacionesOnline" type="tns:ArrayOfAutorizacionOnline" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetAutorizacionesOnline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AutorizacionesOnlineRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAutorizacionesOnlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAutorizacionesOnlineResult" type="tns:AutorizacionesOnlineResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AprobarAutorizacionOnline">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idAutorizacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="UsuarioAutoriza" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AprobarAutorizacionOnlineResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AprobarAutorizacionOnlineResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="CheckUserCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckUserCode" />
+  </wsdl:message>
+  <wsdl:message name="CheckUserCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckUserCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserByCode" />
+  </wsdl:message>
+  <wsdl:message name="GetUserByCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogInSoapIn">
+    <wsdl:part name="parameters" element="tns:LogIn" />
+  </wsdl:message>
+  <wsdl:message name="LogInSoapOut">
+    <wsdl:part name="parameters" element="tns:LogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapIn">
+    <wsdl:part name="parameters" element="tns:LogOut" />
+  </wsdl:message>
+  <wsdl:message name="LogOutSoapOut">
+    <wsdl:part name="parameters" element="tns:LogOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveUser" />
+  </wsdl:message>
+  <wsdl:message name="SaveUserSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveBitacoraPermisoSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveBitacoraPermiso" />
+  </wsdl:message>
+  <wsdl:message name="SaveBitacoraPermisoSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveBitacoraPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAutorizacionesOnlineSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAutorizacionesOnline" />
+  </wsdl:message>
+  <wsdl:message name="SaveAutorizacionesOnlineSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAutorizacionesOnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAutorizacionesOnlineSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAutorizacionesOnline" />
+  </wsdl:message>
+  <wsdl:message name="GetAutorizacionesOnlineSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAutorizacionesOnlineResponse" />
+  </wsdl:message>
+  <wsdl:message name="AprobarAutorizacionOnlineSoapIn">
+    <wsdl:part name="parameters" element="tns:AprobarAutorizacionOnline" />
+  </wsdl:message>
+  <wsdl:message name="AprobarAutorizacionOnlineSoapOut">
+    <wsdl:part name="parameters" element="tns:AprobarAutorizacionOnlineResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserServiceSoap">
+    <wsdl:operation name="CheckUserCode">
+      <wsdl:input message="tns:CheckUserCodeSoapIn" />
+      <wsdl:output message="tns:CheckUserCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCode">
+      <wsdl:input message="tns:GetUserByCodeSoapIn" />
+      <wsdl:output message="tns:GetUserByCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <wsdl:input message="tns:LogInSoapIn" />
+      <wsdl:output message="tns:LogInSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <wsdl:input message="tns:LogOutSoapIn" />
+      <wsdl:output message="tns:LogOutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <wsdl:input message="tns:SaveUserSoapIn" />
+      <wsdl:output message="tns:SaveUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBitacoraPermiso">
+      <wsdl:input message="tns:SaveBitacoraPermisoSoapIn" />
+      <wsdl:output message="tns:SaveBitacoraPermisoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAutorizacionesOnline">
+      <wsdl:input message="tns:SaveAutorizacionesOnlineSoapIn" />
+      <wsdl:output message="tns:SaveAutorizacionesOnlineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAutorizacionesOnline">
+      <wsdl:input message="tns:GetAutorizacionesOnlineSoapIn" />
+      <wsdl:output message="tns:GetAutorizacionesOnlineSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AprobarAutorizacionOnline">
+      <wsdl:input message="tns:AprobarAutorizacionOnlineSoapIn" />
+      <wsdl:output message="tns:AprobarAutorizacionOnlineSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServiceSoap" type="tns:UserServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUserCode">
+      <soap:operation soapAction="http://espc.org/CheckUserCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCode">
+      <soap:operation soapAction="http://espc.org/GetUserByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <soap:operation soapAction="http://espc.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap:operation soapAction="http://espc.org/LogOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap:operation soapAction="http://espc.org/SaveUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBitacoraPermiso">
+      <soap:operation soapAction="http://espc.org/SaveBitacoraPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAutorizacionesOnline">
+      <soap:operation soapAction="http://espc.org/SaveAutorizacionesOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutorizacionesOnline">
+      <soap:operation soapAction="http://espc.org/GetAutorizacionesOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AprobarAutorizacionOnline">
+      <soap:operation soapAction="http://espc.org/AprobarAutorizacionOnline" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserServiceSoap12" type="tns:UserServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CheckUserCode">
+      <soap12:operation soapAction="http://espc.org/CheckUserCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserByCode">
+      <soap12:operation soapAction="http://espc.org/GetUserByCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <soap12:operation soapAction="http://espc.org/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap12:operation soapAction="http://espc.org/LogOut" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveUser">
+      <soap12:operation soapAction="http://espc.org/SaveUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBitacoraPermiso">
+      <soap12:operation soapAction="http://espc.org/SaveBitacoraPermiso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAutorizacionesOnline">
+      <soap12:operation soapAction="http://espc.org/SaveAutorizacionesOnline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAutorizacionesOnline">
+      <soap12:operation soapAction="http://espc.org/GetAutorizacionesOnline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AprobarAutorizacionOnline">
+      <soap12:operation soapAction="http://espc.org/AprobarAutorizacionOnline" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserService">
+    <wsdl:port name="UserServiceSoap" binding="tns:UserServiceSoap">
+      <soap:address location="http://localhost:20028/UserService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserServiceSoap12" binding="tns:UserServiceSoap12">
+      <soap12:address location="http://localhost:20028/UserService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

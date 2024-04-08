@@ -1,0 +1,3321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://espc.org/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://espc.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://espc.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetActividadPorIdTipoAgencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ActividadRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ActividadRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myActividadItem" type="tns:ActividadItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="prmArr" type="tns:ArrayOfString" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InterfaceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="myManagementAction" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ActividadItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idTipoAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionTipo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetActividadPorIdTipoAgenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActividadPorIdTipoAgenciaResult" type="tns:ActividadResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ActividadResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myActividadItem" type="tns:ActividadItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveProcesoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProcesoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myProcesoItem" type="tns:ProcesoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="prmArr" type="tns:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="myElementoProcesoItem" type="tns:ElementoProcesoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myDocSenae" type="tns:DocSenae" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ProcesoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAvion" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="totalBultos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="totalPiezas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="totalPeso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ElementoProcesoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdProceso" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoReferencialElemento" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoEntradaElemento" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaUltimoPesoCaptura" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoCaptura" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaCarga" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoCarga" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaDescarga" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoDescarga" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoDiferencia" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuarioComparacionPeso" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DocSenae">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="numeroDae" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProducto" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="piezas" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="docId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="secuencial" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveProcesoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveProcesoItemResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ProcesoResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myProcesoItem" type="tns:ProcesoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myElementoProcesoItem" type="tns:ElementoProcesoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myDocSenae" type="tns:DocSenae" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SaveDocSenae">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDocSenaeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDocSenaeResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveNovedadesItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:NovedadesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NovedadesRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myNovedadesItem" type="tns:NovedadesItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="NovedadesItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="llegada" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="subeDesde" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="subeHasta" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="observacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveNovedadesItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveNovedadesItemResult" type="tns:NovedadesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NovedadesResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myNovedadesItem" type="tns:NovedadesItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SaveElementoProcesoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveElementoProcesoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveElementoProcesoItemResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoElementoProcesoPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoElementoProcesoPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarEstadoElementoProcesoPorIndiceResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarpesoCargaElementoProcesoPorIdProcesoElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarpesoCargaElementoProcesoPorIdProcesoElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="modificarpesoCargaElementoProcesoPorIdProcesoElementoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarpesoCapturaElementoProcesoPorIdProcesoElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarpesoCapturaElementoProcesoPorIdProcesoElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="modificarpesoCapturaElementoProcesoPorIdProcesoElementoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarpesoDescargaElementoProcesoPorIdProcesoElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarpesoDescargaElementoProcesoPorIdProcesoElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="modificarpesoDescargaElementoProcesoPorIdProcesoElementoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveAcarreoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AcarreoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myAcarreoItem" type="tns:AcarreoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleAcarreoItem" type="tns:DetalleAcarreoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleAcarreoElementoItem" type="tns:DetalleAcarreoElementoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myStackPalletsItem" type="tns:StackPalletsItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="AcarreoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdAcarreo" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetalleAcarreoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdDetalle" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAcarreo" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idDolly" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idChofer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idCustodio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgenciaSeguridad" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaEntrada" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaSalida" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetalleAcarreoElementoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdDetalle" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idDetalleAcarreo" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StackPalletsItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="isBase" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveAcarreoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveAcarreoItemResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AcarreoResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myAcarreoItem" type="tns:AcarreoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleAcarreoItem" type="tns:DetalleAcarreoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleAcarreoElementoItem" type="tns:DetalleAcarreoElementoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myStackPalletsItem" type="tns:StackPalletsItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SaveStackPalletsItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveStackPalletsItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveStackPalletsItemResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleAcarreoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleAcarreoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDetalleAcarreoItemResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleAcarreoElementoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleAcarreoElementoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDetalleAcarreoElementoItemResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleProcesoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetalleProcesoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleProcesoItem" type="tns:DetalleProcesoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="prmArr" type="tns:ArrayOfString" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DetalleProcesoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdDetalleProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Guia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="agenciaTransporte" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="bultos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="peso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="piezas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="volumen" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="hora" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProducto" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idPosicion" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="temperatura" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rx" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="man" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="k9" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="eds" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="largo" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ancho" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="alto" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="tempA" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tempB" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tempC" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCamion" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="muelle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="estadoSenae" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveDetalleProcesoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDetalleProcesoItemResult" type="tns:DetalleProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetalleProcesoResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleProcesoItem" type="tns:DetalleProcesoItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="ModificarDetalleProcesoMovientoPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarDetalleProcesoMovientoPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarDetalleProcesoMovientoPorIndiceResult" type="tns:DetalleProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoSenaeDetalleProcesoCarga">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoSenaeDetalleProcesoCargaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarEstadoSenaeDetalleProcesoCargaResult" type="tns:DetalleProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoDetalleProcesoPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoDetalleProcesoPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarEstadoDetalleProcesoPorIndiceResult" type="tns:DetalleProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoDetalleProcesoPorfechaYGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoDetalleProcesoPorfechaYGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarEstadoDetalleProcesoPorfechaYGuiaResult" type="tns:DetalleProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarDetalleProcesoMovientoPorIndiceOtroVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarDetalleProcesoMovientoPorIndiceOtroVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarDetalleProcesoMovientoPorIndiceOtroVueloResult" type="tns:DetalleProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SavePersonalProcesoItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PersonalProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PersonalProcesoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myPersonalProcesoItem" type="tns:PersonalProcesoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="prmArr" type="tns:ArrayOfString" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="PersonalProcesoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idMatrizSeg" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="horaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="horaFin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionAgencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cargo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idPersona" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombrePersona" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="grupoProceso" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="muelle" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SavePersonalProcesoItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SavePersonalProcesoItemResult" type="tns:PersonalProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PersonalProcesoResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myPersonalProcesoItem" type="tns:PersonalProcesoItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="DeletePersonalProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:PersonalProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeletePersonalProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeletePersonalProcesoResult" type="tns:PersonalProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDetalleProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleProcesoPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleProcesoPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDetalleProcesoPorIndiceResult" type="tns:DetalleProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcesoPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcesoPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProcesoPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNovedadesPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:NovedadesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNovedadesPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNovedadesPorIdProcesoResult" type="tns:NovedadesResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElementoProcesoPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIdProcesoYEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIdProcesoYEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElementoProcesoPorIdProcesoYEstadoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIdProcesoIdElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIdProcesoIdElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElementoProcesoPorIdProcesoIdElementoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElementoProcesoPorIndiceResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcesoPorIdBriefing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetProcesoPorIdBriefingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetProcesoPorIdBriefingResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoDecomisoPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoDecomisoPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoDecomisoPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalPorGuiaPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalPorGuiaPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalPorGuiaPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalPorElementoPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalPorElementoPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalPorElementoPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTotalPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTotalPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextSecuencialSenae">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNextSecuencialSenaeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNextSecuencialSenaeResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoCaptura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoCapturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdProcesoCapturaResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProceso2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProceso2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdProceso2Result" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoCargaI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoCargaIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdProcesoCargaIResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoCargaR">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoCargaRResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdProcesoCargaRResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCargaDevueltaPorIdProcesoGroupElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCargaDevueltaPorIdProcesoGroupElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCargaDevueltaPorIdProcesoGroupElementoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCargaDevueltaPorIdProcesoGroupGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCargaDevueltaPorIdProcesoGroupGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCargaDevueltaPorIdProcesoGroupGuiaResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdGuiaResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdElementoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoReporte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoPorIdProcesoReporteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoPorIdProcesoReporteResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoCargaPorIdProcesoReporte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoCargaPorIdProcesoReporteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoCargaPorIdProcesoReporteResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoCargaPorIdProcesoAlmacenaje">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleProcesoCargaPorIdProcesoAlmacenajeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleProcesoCargaPorIdProcesoAlmacenajeResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorIdProcesoReporte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorIdProcesoReporteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoPorIdProcesoReporteResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetallePersonalPorIdProcesoReporte">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetallePersonalPorIdProcesoReporteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetallePersonalPorIdProcesoReporteResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorIdAcarreo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorIdAcarreoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoPorIdAcarreoResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStackPalletsPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStackPalletsPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStackPalletsPorIdProcesoResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoPorIdResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoElementoPorIdAcarreo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoElementoPorIdAcarreoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoElementoPorIdAcarreoResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoStack">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoStackResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoStackResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoElementoPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoElementoPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoElementoPorIdResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoPorEstadoResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonalPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ProcesoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPersonalPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPersonalPorIdProcesoResult" type="tns:ProcesoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAcarreoPorIdAcarreo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAcarreoPorIdAcarreoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAcarreoPorIdAcarreoResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStackPalletsPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetStackPalletsPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetStackPalletsPorIndiceResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAcarreoPorIdBriefing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAcarreoPorIdBriefingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAcarreoPorIdBriefingResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorIdDetalle">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:AcarreoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleAcarreoPorIdDetalleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleAcarreoPorIdDetalleResult" type="tns:AcarreoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByAgenciaCarga">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReportGroupRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myReportGroupByAgencia" type="tns:ReportGroupByAgencia" />
+              <s:element minOccurs="0" maxOccurs="1" name="myReportGroupByElemento" type="tns:ReportGroupByElemento" />
+              <s:element minOccurs="0" maxOccurs="1" name="myReportGroupByDestino" type="tns:ReportGroupByDestino" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ReportGroupByAgencia">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="horaIni" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="horaFin" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="agenciaCargaGuia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bultos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Peso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Piezas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tempPromedio" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReportGroupByElemento">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="horaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="horaFin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="guia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bultos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Peso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Piezas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tempPromedio" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ReportGroupByDestino">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idProceso" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="horaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="horaFin" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCiudad" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ciudadDestino" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bultos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Peso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Piezas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="tempPromedio" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReportePorIdProcesoGroupByAgenciaCargaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportePorIdProcesoGroupByAgenciaCargaResult" type="tns:ReportGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReportGroupResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetReporteDetalleProcesoPorIdProceso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReporteDetalleProcesoPorIdProcesoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReporteDetalleProcesoPorIdProcesoResult" type="tns:ReportGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportePorIdProcesoGroupByElementoResult" type="tns:ReportGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByElemento2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByElemento2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportePorIdProcesoGroupByElemento2Result" type="tns:ReportGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByElemento3">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByElemento3Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportePorIdProcesoGroupByElemento3Result" type="tns:ReportGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByDestino">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByDestinoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportePorIdProcesoGroupByDestinoResult" type="tns:ReportGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportGroupRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReportePorIdProcesoGroupByGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportePorIdProcesoGroupByGuiaResult" type="tns:ReportGroupResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetActividadPorIdTipoAgenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActividadPorIdTipoAgencia" />
+  </wsdl:message>
+  <wsdl:message name="GetActividadPorIdTipoAgenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActividadPorIdTipoAgenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveProcesoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveProcesoItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveProcesoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveProcesoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDocSenaeSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDocSenae" />
+  </wsdl:message>
+  <wsdl:message name="SaveDocSenaeSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDocSenaeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveNovedadesItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveNovedadesItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveNovedadesItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveNovedadesItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveElementoProcesoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveElementoProcesoItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveElementoProcesoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveElementoProcesoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoElementoProcesoPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoElementoProcesoPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoElementoProcesoPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoElementoProcesoPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarpesoCargaElementoProcesoPorIdProcesoElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarpesoCargaElementoProcesoPorIdProcesoElemento" />
+  </wsdl:message>
+  <wsdl:message name="modificarpesoCargaElementoProcesoPorIdProcesoElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarpesoCargaElementoProcesoPorIdProcesoElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarpesoCapturaElementoProcesoPorIdProcesoElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarpesoCapturaElementoProcesoPorIdProcesoElemento" />
+  </wsdl:message>
+  <wsdl:message name="modificarpesoCapturaElementoProcesoPorIdProcesoElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarpesoCapturaElementoProcesoPorIdProcesoElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarpesoDescargaElementoProcesoPorIdProcesoElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarpesoDescargaElementoProcesoPorIdProcesoElemento" />
+  </wsdl:message>
+  <wsdl:message name="modificarpesoDescargaElementoProcesoPorIdProcesoElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarpesoDescargaElementoProcesoPorIdProcesoElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveAcarreoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveAcarreoItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveAcarreoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveAcarreoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveStackPalletsItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveStackPalletsItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveStackPalletsItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveStackPalletsItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleAcarreoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDetalleAcarreoItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleAcarreoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDetalleAcarreoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleAcarreoElementoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDetalleAcarreoElementoItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleAcarreoElementoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDetalleAcarreoElementoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleProcesoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDetalleProcesoItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleProcesoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDetalleProcesoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarDetalleProcesoMovientoPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarDetalleProcesoMovientoPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="ModificarDetalleProcesoMovientoPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarDetalleProcesoMovientoPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoSenaeDetalleProcesoCargaSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoSenaeDetalleProcesoCarga" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoSenaeDetalleProcesoCargaSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoSenaeDetalleProcesoCargaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoDetalleProcesoPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDetalleProcesoPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoDetalleProcesoPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDetalleProcesoPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoDetalleProcesoPorfechaYGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDetalleProcesoPorfechaYGuia" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoDetalleProcesoPorfechaYGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDetalleProcesoPorfechaYGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarDetalleProcesoMovientoPorIndiceOtroVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarDetalleProcesoMovientoPorIndiceOtroVuelo" />
+  </wsdl:message>
+  <wsdl:message name="ModificarDetalleProcesoMovientoPorIndiceOtroVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarDetalleProcesoMovientoPorIndiceOtroVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="SavePersonalProcesoItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SavePersonalProcesoItem" />
+  </wsdl:message>
+  <wsdl:message name="SavePersonalProcesoItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SavePersonalProcesoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeletePersonalProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeletePersonalProceso" />
+  </wsdl:message>
+  <wsdl:message name="DeletePersonalProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeletePersonalProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleProceso" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleProcesoPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleProcesoPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleProcesoPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleProcesoPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProcesoPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProcesoPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetProcesoPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProcesoPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNovedadesPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNovedadesPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetNovedadesPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNovedadesPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIdProcesoYEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIdProcesoYEstado" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIdProcesoYEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIdProcesoYEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIdProcesoIdElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIdProcesoIdElemento" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIdProcesoIdElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIdProcesoIdElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetProcesoPorIdBriefingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetProcesoPorIdBriefing" />
+  </wsdl:message>
+  <wsdl:message name="GetProcesoPorIdBriefingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetProcesoPorIdBriefingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoDecomisoPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoDecomisoPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoDecomisoPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoDecomisoPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalPorGuiaPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalPorGuiaPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalPorGuiaPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalPorGuiaPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalPorElementoPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalPorElementoPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalPorElementoPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalPorElementoPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTotalPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetTotalPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTotalPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNextSecuencialSenaeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNextSecuencialSenae" />
+  </wsdl:message>
+  <wsdl:message name="GetNextSecuencialSenaeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNextSecuencialSenaeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoCapturaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoCaptura" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoCapturaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoCapturaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProceso2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProceso2" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProceso2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProceso2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoCargaISoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoCargaI" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoCargaISoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoCargaIResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoCargaRSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoCargaR" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoCargaRSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoCargaRResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCargaDevueltaPorIdProcesoGroupElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCargaDevueltaPorIdProcesoGroupElemento" />
+  </wsdl:message>
+  <wsdl:message name="GetCargaDevueltaPorIdProcesoGroupElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCargaDevueltaPorIdProcesoGroupElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCargaDevueltaPorIdProcesoGroupGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCargaDevueltaPorIdProcesoGroupGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetCargaDevueltaPorIdProcesoGroupGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCargaDevueltaPorIdProcesoGroupGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdElemento" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoReporteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoReporte" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoPorIdProcesoReporteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoPorIdProcesoReporteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoCargaPorIdProcesoReporteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoCargaPorIdProcesoReporte" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoCargaPorIdProcesoReporteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoCargaPorIdProcesoReporteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoCargaPorIdProcesoAlmacenajeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoCargaPorIdProcesoAlmacenaje" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleProcesoCargaPorIdProcesoAlmacenajeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleProcesoCargaPorIdProcesoAlmacenajeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdProcesoReporteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorIdProcesoReporte" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdProcesoReporteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorIdProcesoReporteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetallePersonalPorIdProcesoReporteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetallePersonalPorIdProcesoReporte" />
+  </wsdl:message>
+  <wsdl:message name="GetDetallePersonalPorIdProcesoReporteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetallePersonalPorIdProcesoReporteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdAcarreoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorIdAcarreo" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdAcarreoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorIdAcarreoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStackPalletsPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStackPalletsPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetStackPalletsPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStackPalletsPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorId" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoElementoPorIdAcarreoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoElementoPorIdAcarreo" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoElementoPorIdAcarreoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoElementoPorIdAcarreoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoStackSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoStack" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoStackSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoStackResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoElementoPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoElementoPorId" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoElementoPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoElementoPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorEstado" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonalPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPersonalPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetPersonalPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPersonalPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAcarreoPorIdAcarreoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAcarreoPorIdAcarreo" />
+  </wsdl:message>
+  <wsdl:message name="GetAcarreoPorIdAcarreoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAcarreoPorIdAcarreoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetStackPalletsPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetStackPalletsPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="GetStackPalletsPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetStackPalletsPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAcarreoPorIdBriefingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAcarreoPorIdBriefing" />
+  </wsdl:message>
+  <wsdl:message name="GetAcarreoPorIdBriefingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAcarreoPorIdBriefingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdDetalleSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorIdDetalle" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleAcarreoPorIdDetalleSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleAcarreoPorIdDetalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByAgenciaCargaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByAgenciaCarga" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByAgenciaCargaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByAgenciaCargaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReporteDetalleProcesoPorIdProcesoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReporteDetalleProcesoPorIdProceso" />
+  </wsdl:message>
+  <wsdl:message name="GetReporteDetalleProcesoPorIdProcesoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReporteDetalleProcesoPorIdProcesoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByElemento" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByElemento2SoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByElemento2" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByElemento2SoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByElemento2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByElemento3SoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByElemento3" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByElemento3SoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByElemento3Response" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByDestinoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByDestino" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByDestinoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByDestinoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetReportePorIdProcesoGroupByGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportePorIdProcesoGroupByGuiaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ProcesoServiceSoap">
+    <wsdl:operation name="GetActividadPorIdTipoAgencia">
+      <wsdl:input message="tns:GetActividadPorIdTipoAgenciaSoapIn" />
+      <wsdl:output message="tns:GetActividadPorIdTipoAgenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveProcesoItem">
+      <wsdl:input message="tns:SaveProcesoItemSoapIn" />
+      <wsdl:output message="tns:SaveProcesoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocSenae">
+      <wsdl:input message="tns:SaveDocSenaeSoapIn" />
+      <wsdl:output message="tns:SaveDocSenaeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveNovedadesItem">
+      <wsdl:input message="tns:SaveNovedadesItemSoapIn" />
+      <wsdl:output message="tns:SaveNovedadesItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveElementoProcesoItem">
+      <wsdl:input message="tns:SaveElementoProcesoItemSoapIn" />
+      <wsdl:output message="tns:SaveElementoProcesoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoElementoProcesoPorIndice">
+      <wsdl:input message="tns:ModificarEstadoElementoProcesoPorIndiceSoapIn" />
+      <wsdl:output message="tns:ModificarEstadoElementoProcesoPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoCargaElementoProcesoPorIdProcesoElemento">
+      <wsdl:input message="tns:modificarpesoCargaElementoProcesoPorIdProcesoElementoSoapIn" />
+      <wsdl:output message="tns:modificarpesoCargaElementoProcesoPorIdProcesoElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoCapturaElementoProcesoPorIdProcesoElemento">
+      <wsdl:input message="tns:modificarpesoCapturaElementoProcesoPorIdProcesoElementoSoapIn" />
+      <wsdl:output message="tns:modificarpesoCapturaElementoProcesoPorIdProcesoElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoDescargaElementoProcesoPorIdProcesoElemento">
+      <wsdl:input message="tns:modificarpesoDescargaElementoProcesoPorIdProcesoElementoSoapIn" />
+      <wsdl:output message="tns:modificarpesoDescargaElementoProcesoPorIdProcesoElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveAcarreoItem">
+      <wsdl:input message="tns:SaveAcarreoItemSoapIn" />
+      <wsdl:output message="tns:SaveAcarreoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveStackPalletsItem">
+      <wsdl:input message="tns:SaveStackPalletsItemSoapIn" />
+      <wsdl:output message="tns:SaveStackPalletsItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleAcarreoItem">
+      <wsdl:input message="tns:SaveDetalleAcarreoItemSoapIn" />
+      <wsdl:output message="tns:SaveDetalleAcarreoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleAcarreoElementoItem">
+      <wsdl:input message="tns:SaveDetalleAcarreoElementoItemSoapIn" />
+      <wsdl:output message="tns:SaveDetalleAcarreoElementoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleProcesoItem">
+      <wsdl:input message="tns:SaveDetalleProcesoItemSoapIn" />
+      <wsdl:output message="tns:SaveDetalleProcesoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarDetalleProcesoMovientoPorIndice">
+      <wsdl:input message="tns:ModificarDetalleProcesoMovientoPorIndiceSoapIn" />
+      <wsdl:output message="tns:ModificarDetalleProcesoMovientoPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoSenaeDetalleProcesoCarga">
+      <wsdl:input message="tns:ModificarEstadoSenaeDetalleProcesoCargaSoapIn" />
+      <wsdl:output message="tns:ModificarEstadoSenaeDetalleProcesoCargaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDetalleProcesoPorIndice">
+      <wsdl:input message="tns:ModificarEstadoDetalleProcesoPorIndiceSoapIn" />
+      <wsdl:output message="tns:ModificarEstadoDetalleProcesoPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDetalleProcesoPorfechaYGuia">
+      <wsdl:input message="tns:ModificarEstadoDetalleProcesoPorfechaYGuiaSoapIn" />
+      <wsdl:output message="tns:ModificarEstadoDetalleProcesoPorfechaYGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarDetalleProcesoMovientoPorIndiceOtroVuelo">
+      <wsdl:input message="tns:ModificarDetalleProcesoMovientoPorIndiceOtroVueloSoapIn" />
+      <wsdl:output message="tns:ModificarDetalleProcesoMovientoPorIndiceOtroVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePersonalProcesoItem">
+      <wsdl:input message="tns:SavePersonalProcesoItemSoapIn" />
+      <wsdl:output message="tns:SavePersonalProcesoItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeletePersonalProceso">
+      <wsdl:input message="tns:DeletePersonalProcesoSoapIn" />
+      <wsdl:output message="tns:DeletePersonalProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleProceso">
+      <wsdl:input message="tns:DeleteDetalleProcesoSoapIn" />
+      <wsdl:output message="tns:DeleteDetalleProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleProcesoPorIndice">
+      <wsdl:input message="tns:DeleteDetalleProcesoPorIndiceSoapIn" />
+      <wsdl:output message="tns:DeleteDetalleProcesoPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoPorIdProceso">
+      <wsdl:input message="tns:GetProcesoPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetProcesoPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNovedadesPorIdProceso">
+      <wsdl:input message="tns:GetNovedadesPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetNovedadesPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProceso">
+      <wsdl:input message="tns:GetElementoProcesoPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetElementoProcesoPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProcesoYEstado">
+      <wsdl:input message="tns:GetElementoProcesoPorIdProcesoYEstadoSoapIn" />
+      <wsdl:output message="tns:GetElementoProcesoPorIdProcesoYEstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProcesoIdElemento">
+      <wsdl:input message="tns:GetElementoProcesoPorIdProcesoIdElementoSoapIn" />
+      <wsdl:output message="tns:GetElementoProcesoPorIdProcesoIdElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIndice">
+      <wsdl:input message="tns:GetElementoProcesoPorIndiceSoapIn" />
+      <wsdl:output message="tns:GetElementoProcesoPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoPorIdBriefing">
+      <wsdl:input message="tns:GetProcesoPorIdBriefingSoapIn" />
+      <wsdl:output message="tns:GetProcesoPorIdBriefingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProceso">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoDecomisoPorIdProceso">
+      <wsdl:input message="tns:GetDetalleProcesoDecomisoPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoDecomisoPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorGuiaPorIdProceso">
+      <wsdl:input message="tns:GetTotalPorGuiaPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetTotalPorGuiaPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorElementoPorIdProceso">
+      <wsdl:input message="tns:GetTotalPorElementoPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetTotalPorElementoPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorIdProceso">
+      <wsdl:input message="tns:GetTotalPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetTotalPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNextSecuencialSenae">
+      <wsdl:input message="tns:GetNextSecuencialSenaeSoapIn" />
+      <wsdl:output message="tns:GetNextSecuencialSenaeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCaptura">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdProcesoCapturaSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdProcesoCapturaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProceso2">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdProceso2SoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdProceso2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCargaI">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdProcesoCargaISoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdProcesoCargaISoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCargaR">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdProcesoCargaRSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdProcesoCargaRSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargaDevueltaPorIdProcesoGroupElemento">
+      <wsdl:input message="tns:GetCargaDevueltaPorIdProcesoGroupElementoSoapIn" />
+      <wsdl:output message="tns:GetCargaDevueltaPorIdProcesoGroupElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCargaDevueltaPorIdProcesoGroupGuia">
+      <wsdl:input message="tns:GetCargaDevueltaPorIdProcesoGroupGuiaSoapIn" />
+      <wsdl:output message="tns:GetCargaDevueltaPorIdProcesoGroupGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdGuia">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdGuiaSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdElemento">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdElementoSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoReporte">
+      <wsdl:input message="tns:GetDetalleProcesoPorIdProcesoReporteSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoPorIdProcesoReporteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoCargaPorIdProcesoReporte">
+      <wsdl:input message="tns:GetDetalleProcesoCargaPorIdProcesoReporteSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoCargaPorIdProcesoReporteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoCargaPorIdProcesoAlmacenaje">
+      <wsdl:input message="tns:GetDetalleProcesoCargaPorIdProcesoAlmacenajeSoapIn" />
+      <wsdl:output message="tns:GetDetalleProcesoCargaPorIdProcesoAlmacenajeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdProcesoReporte">
+      <wsdl:input message="tns:GetDetalleAcarreoPorIdProcesoReporteSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoPorIdProcesoReporteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetallePersonalPorIdProcesoReporte">
+      <wsdl:input message="tns:GetDetallePersonalPorIdProcesoReporteSoapIn" />
+      <wsdl:output message="tns:GetDetallePersonalPorIdProcesoReporteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdAcarreo">
+      <wsdl:input message="tns:GetDetalleAcarreoPorIdAcarreoSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoPorIdAcarreoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStackPalletsPorIdProceso">
+      <wsdl:input message="tns:GetStackPalletsPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetStackPalletsPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorId">
+      <wsdl:input message="tns:GetDetalleAcarreoPorIdSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoElementoPorIdAcarreo">
+      <wsdl:input message="tns:GetDetalleAcarreoElementoPorIdAcarreoSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoElementoPorIdAcarreoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoStack">
+      <wsdl:input message="tns:GetDetalleAcarreoStackSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoStackSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoElementoPorId">
+      <wsdl:input message="tns:GetDetalleAcarreoElementoPorIdSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoElementoPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorEstado">
+      <wsdl:input message="tns:GetDetalleAcarreoPorEstadoSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoPorEstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalPorIdProceso">
+      <wsdl:input message="tns:GetPersonalPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetPersonalPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAcarreoPorIdAcarreo">
+      <wsdl:input message="tns:GetAcarreoPorIdAcarreoSoapIn" />
+      <wsdl:output message="tns:GetAcarreoPorIdAcarreoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStackPalletsPorIndice">
+      <wsdl:input message="tns:GetStackPalletsPorIndiceSoapIn" />
+      <wsdl:output message="tns:GetStackPalletsPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAcarreoPorIdBriefing">
+      <wsdl:input message="tns:GetAcarreoPorIdBriefingSoapIn" />
+      <wsdl:output message="tns:GetAcarreoPorIdBriefingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdDetalle">
+      <wsdl:input message="tns:GetDetalleAcarreoPorIdDetalleSoapIn" />
+      <wsdl:output message="tns:GetDetalleAcarreoPorIdDetalleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByAgenciaCarga">
+      <wsdl:input message="tns:GetReportePorIdProcesoGroupByAgenciaCargaSoapIn" />
+      <wsdl:output message="tns:GetReportePorIdProcesoGroupByAgenciaCargaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteDetalleProcesoPorIdProceso">
+      <wsdl:input message="tns:GetReporteDetalleProcesoPorIdProcesoSoapIn" />
+      <wsdl:output message="tns:GetReporteDetalleProcesoPorIdProcesoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento">
+      <wsdl:input message="tns:GetReportePorIdProcesoGroupByElementoSoapIn" />
+      <wsdl:output message="tns:GetReportePorIdProcesoGroupByElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento2">
+      <wsdl:input message="tns:GetReportePorIdProcesoGroupByElemento2SoapIn" />
+      <wsdl:output message="tns:GetReportePorIdProcesoGroupByElemento2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento3">
+      <wsdl:input message="tns:GetReportePorIdProcesoGroupByElemento3SoapIn" />
+      <wsdl:output message="tns:GetReportePorIdProcesoGroupByElemento3SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByDestino">
+      <wsdl:input message="tns:GetReportePorIdProcesoGroupByDestinoSoapIn" />
+      <wsdl:output message="tns:GetReportePorIdProcesoGroupByDestinoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByGuia">
+      <wsdl:input message="tns:GetReportePorIdProcesoGroupByGuiaSoapIn" />
+      <wsdl:output message="tns:GetReportePorIdProcesoGroupByGuiaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ProcesoServiceSoap" type="tns:ProcesoServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActividadPorIdTipoAgencia">
+      <soap:operation soapAction="http://espc.org/GetActividadPorIdTipoAgencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProcesoItem">
+      <soap:operation soapAction="http://espc.org/SaveProcesoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocSenae">
+      <soap:operation soapAction="http://espc.org/SaveDocSenae" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveNovedadesItem">
+      <soap:operation soapAction="http://espc.org/SaveNovedadesItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveElementoProcesoItem">
+      <soap:operation soapAction="http://espc.org/SaveElementoProcesoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoElementoProcesoPorIndice">
+      <soap:operation soapAction="http://espc.org/ModificarEstadoElementoProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoCargaElementoProcesoPorIdProcesoElemento">
+      <soap:operation soapAction="http://espc.org/modificarpesoCargaElementoProcesoPorIdProcesoElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoCapturaElementoProcesoPorIdProcesoElemento">
+      <soap:operation soapAction="http://espc.org/modificarpesoCapturaElementoProcesoPorIdProcesoElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoDescargaElementoProcesoPorIdProcesoElemento">
+      <soap:operation soapAction="http://espc.org/modificarpesoDescargaElementoProcesoPorIdProcesoElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAcarreoItem">
+      <soap:operation soapAction="http://espc.org/SaveAcarreoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveStackPalletsItem">
+      <soap:operation soapAction="http://espc.org/SaveStackPalletsItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleAcarreoItem">
+      <soap:operation soapAction="http://espc.org/SaveDetalleAcarreoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleAcarreoElementoItem">
+      <soap:operation soapAction="http://espc.org/SaveDetalleAcarreoElementoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleProcesoItem">
+      <soap:operation soapAction="http://espc.org/SaveDetalleProcesoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarDetalleProcesoMovientoPorIndice">
+      <soap:operation soapAction="http://espc.org/ModificarDetalleProcesoMovientoPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoSenaeDetalleProcesoCarga">
+      <soap:operation soapAction="http://espc.org/ModificarEstadoSenaeDetalleProcesoCarga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDetalleProcesoPorIndice">
+      <soap:operation soapAction="http://espc.org/ModificarEstadoDetalleProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDetalleProcesoPorfechaYGuia">
+      <soap:operation soapAction="http://espc.org/ModificarEstadoDetalleProcesoPorfechaYGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarDetalleProcesoMovientoPorIndiceOtroVuelo">
+      <soap:operation soapAction="http://espc.org/ModificarDetalleProcesoMovientoPorIndiceOtroVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePersonalProcesoItem">
+      <soap:operation soapAction="http://espc.org/SavePersonalProcesoItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePersonalProceso">
+      <soap:operation soapAction="http://espc.org/DeletePersonalProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleProceso">
+      <soap:operation soapAction="http://espc.org/DeleteDetalleProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleProcesoPorIndice">
+      <soap:operation soapAction="http://espc.org/DeleteDetalleProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNovedadesPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetNovedadesPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetElementoProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProcesoYEstado">
+      <soap:operation soapAction="http://espc.org/GetElementoProcesoPorIdProcesoYEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProcesoIdElemento">
+      <soap:operation soapAction="http://espc.org/GetElementoProcesoPorIdProcesoIdElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIndice">
+      <soap:operation soapAction="http://espc.org/GetElementoProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoPorIdBriefing">
+      <soap:operation soapAction="http://espc.org/GetProcesoPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoDecomisoPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoDecomisoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorGuiaPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetTotalPorGuiaPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorElementoPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetTotalPorElementoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetTotalPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextSecuencialSenae">
+      <soap:operation soapAction="http://espc.org/GetNextSecuencialSenae" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCaptura">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoCaptura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProceso2">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProceso2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCargaI">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoCargaI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCargaR">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoCargaR" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargaDevueltaPorIdProcesoGroupElemento">
+      <soap:operation soapAction="http://espc.org/GetCargaDevueltaPorIdProcesoGroupElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargaDevueltaPorIdProcesoGroupGuia">
+      <soap:operation soapAction="http://espc.org/GetCargaDevueltaPorIdProcesoGroupGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdGuia">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdElemento">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoReporte">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoCargaPorIdProcesoReporte">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoCargaPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoCargaPorIdProcesoAlmacenaje">
+      <soap:operation soapAction="http://espc.org/GetDetalleProcesoCargaPorIdProcesoAlmacenaje" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdProcesoReporte">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetallePersonalPorIdProcesoReporte">
+      <soap:operation soapAction="http://espc.org/GetDetallePersonalPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdAcarreo">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoPorIdAcarreo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStackPalletsPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetStackPalletsPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorId">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoElementoPorIdAcarreo">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoElementoPorIdAcarreo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoStack">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoStack" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoElementoPorId">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoElementoPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorEstado">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoPorEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetPersonalPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcarreoPorIdAcarreo">
+      <soap:operation soapAction="http://espc.org/GetAcarreoPorIdAcarreo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStackPalletsPorIndice">
+      <soap:operation soapAction="http://espc.org/GetStackPalletsPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcarreoPorIdBriefing">
+      <soap:operation soapAction="http://espc.org/GetAcarreoPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdDetalle">
+      <soap:operation soapAction="http://espc.org/GetDetalleAcarreoPorIdDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByAgenciaCarga">
+      <soap:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByAgenciaCarga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteDetalleProcesoPorIdProceso">
+      <soap:operation soapAction="http://espc.org/GetReporteDetalleProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento">
+      <soap:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento2">
+      <soap:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByElemento2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento3">
+      <soap:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByElemento3" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByDestino">
+      <soap:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByDestino" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByGuia">
+      <soap:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ProcesoServiceSoap12" type="tns:ProcesoServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetActividadPorIdTipoAgencia">
+      <soap12:operation soapAction="http://espc.org/GetActividadPorIdTipoAgencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveProcesoItem">
+      <soap12:operation soapAction="http://espc.org/SaveProcesoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDocSenae">
+      <soap12:operation soapAction="http://espc.org/SaveDocSenae" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveNovedadesItem">
+      <soap12:operation soapAction="http://espc.org/SaveNovedadesItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveElementoProcesoItem">
+      <soap12:operation soapAction="http://espc.org/SaveElementoProcesoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoElementoProcesoPorIndice">
+      <soap12:operation soapAction="http://espc.org/ModificarEstadoElementoProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoCargaElementoProcesoPorIdProcesoElemento">
+      <soap12:operation soapAction="http://espc.org/modificarpesoCargaElementoProcesoPorIdProcesoElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoCapturaElementoProcesoPorIdProcesoElemento">
+      <soap12:operation soapAction="http://espc.org/modificarpesoCapturaElementoProcesoPorIdProcesoElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarpesoDescargaElementoProcesoPorIdProcesoElemento">
+      <soap12:operation soapAction="http://espc.org/modificarpesoDescargaElementoProcesoPorIdProcesoElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveAcarreoItem">
+      <soap12:operation soapAction="http://espc.org/SaveAcarreoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveStackPalletsItem">
+      <soap12:operation soapAction="http://espc.org/SaveStackPalletsItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleAcarreoItem">
+      <soap12:operation soapAction="http://espc.org/SaveDetalleAcarreoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleAcarreoElementoItem">
+      <soap12:operation soapAction="http://espc.org/SaveDetalleAcarreoElementoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleProcesoItem">
+      <soap12:operation soapAction="http://espc.org/SaveDetalleProcesoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarDetalleProcesoMovientoPorIndice">
+      <soap12:operation soapAction="http://espc.org/ModificarDetalleProcesoMovientoPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoSenaeDetalleProcesoCarga">
+      <soap12:operation soapAction="http://espc.org/ModificarEstadoSenaeDetalleProcesoCarga" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDetalleProcesoPorIndice">
+      <soap12:operation soapAction="http://espc.org/ModificarEstadoDetalleProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDetalleProcesoPorfechaYGuia">
+      <soap12:operation soapAction="http://espc.org/ModificarEstadoDetalleProcesoPorfechaYGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarDetalleProcesoMovientoPorIndiceOtroVuelo">
+      <soap12:operation soapAction="http://espc.org/ModificarDetalleProcesoMovientoPorIndiceOtroVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePersonalProcesoItem">
+      <soap12:operation soapAction="http://espc.org/SavePersonalProcesoItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeletePersonalProceso">
+      <soap12:operation soapAction="http://espc.org/DeletePersonalProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleProceso">
+      <soap12:operation soapAction="http://espc.org/DeleteDetalleProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleProcesoPorIndice">
+      <soap12:operation soapAction="http://espc.org/DeleteDetalleProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNovedadesPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetNovedadesPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetElementoProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProcesoYEstado">
+      <soap12:operation soapAction="http://espc.org/GetElementoProcesoPorIdProcesoYEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIdProcesoIdElemento">
+      <soap12:operation soapAction="http://espc.org/GetElementoProcesoPorIdProcesoIdElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIndice">
+      <soap12:operation soapAction="http://espc.org/GetElementoProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProcesoPorIdBriefing">
+      <soap12:operation soapAction="http://espc.org/GetProcesoPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoDecomisoPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoDecomisoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorGuiaPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetTotalPorGuiaPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorElementoPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetTotalPorElementoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTotalPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetTotalPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNextSecuencialSenae">
+      <soap12:operation soapAction="http://espc.org/GetNextSecuencialSenae" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCaptura">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoCaptura" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProceso2">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProceso2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCargaI">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoCargaI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoCargaR">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoCargaR" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargaDevueltaPorIdProcesoGroupElemento">
+      <soap12:operation soapAction="http://espc.org/GetCargaDevueltaPorIdProcesoGroupElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCargaDevueltaPorIdProcesoGroupGuia">
+      <soap12:operation soapAction="http://espc.org/GetCargaDevueltaPorIdProcesoGroupGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdGuia">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdElemento">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoPorIdProcesoReporte">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoCargaPorIdProcesoReporte">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoCargaPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleProcesoCargaPorIdProcesoAlmacenaje">
+      <soap12:operation soapAction="http://espc.org/GetDetalleProcesoCargaPorIdProcesoAlmacenaje" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdProcesoReporte">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetallePersonalPorIdProcesoReporte">
+      <soap12:operation soapAction="http://espc.org/GetDetallePersonalPorIdProcesoReporte" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdAcarreo">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoPorIdAcarreo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStackPalletsPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetStackPalletsPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorId">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoElementoPorIdAcarreo">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoElementoPorIdAcarreo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoStack">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoStack" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoElementoPorId">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoElementoPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorEstado">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoPorEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonalPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetPersonalPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcarreoPorIdAcarreo">
+      <soap12:operation soapAction="http://espc.org/GetAcarreoPorIdAcarreo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStackPalletsPorIndice">
+      <soap12:operation soapAction="http://espc.org/GetStackPalletsPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAcarreoPorIdBriefing">
+      <soap12:operation soapAction="http://espc.org/GetAcarreoPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleAcarreoPorIdDetalle">
+      <soap12:operation soapAction="http://espc.org/GetDetalleAcarreoPorIdDetalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByAgenciaCarga">
+      <soap12:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByAgenciaCarga" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteDetalleProcesoPorIdProceso">
+      <soap12:operation soapAction="http://espc.org/GetReporteDetalleProcesoPorIdProceso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento">
+      <soap12:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento2">
+      <soap12:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByElemento2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByElemento3">
+      <soap12:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByElemento3" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByDestino">
+      <soap12:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByDestino" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReportePorIdProcesoGroupByGuia">
+      <soap12:operation soapAction="http://espc.org/GetReportePorIdProcesoGroupByGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ProcesoService">
+    <wsdl:port name="ProcesoServiceSoap" binding="tns:ProcesoServiceSoap">
+      <soap:address location="http://localhost:39869/eSPCWebServicesLayer/ProcesoService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ProcesoServiceSoap12" binding="tns:ProcesoServiceSoap12">
+      <soap12:address location="http://localhost:39869/eSPCWebServicesLayer/ProcesoService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

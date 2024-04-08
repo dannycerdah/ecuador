@@ -1,0 +1,2232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://espc.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://espc.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://espc.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetDetalleVueloPorFecha">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetalleVueloRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="prmArr" type="tns:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleVuelo" type="tns:DetalleVuelo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InterfaceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="myManagementAction" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoVuelo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetalleVuelo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idVuelo" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionAgencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoVuelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaVuelo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="llegadaVuelo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="salidaVuelo" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="enviaVuelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="recibeVuelo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estadoVuelo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="briefingVuelo" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAvion" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ciudadOrigen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="aeropuertoOrigen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ciudadLlegada" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="aeropuertoLlegada" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idMatriz" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionAvion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="matriculaAvion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="briefingAgencias" type="tns:ArrayOfBriefingAgencias" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBriefingAgencias">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="BriefingAgencias" nillable="true" type="tns:BriefingAgencias" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BriefingAgencias">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetalleVueloPorFechaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleVueloPorFechaResult" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetalleVueloResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleVuelo" type="tns:DetalleVuelo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetDetalleVueloPorFechaHoy">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleVueloPorFechaHoyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleVueloPorFechaHoyResult" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVuelosPorIdAgencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VueloRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="prmArr" type="tns:ArrayOfString" />
+              <s:element minOccurs="0" maxOccurs="1" name="myVueloItem" type="tns:VueloItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myElementoBriefingItem" type="tns:ElementoBriefingItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="VueloItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idVuelo" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CiudadOrigen" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="AeropuertoOrigen" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CiudadLlegada" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="AeropuertoLlegada" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ElementoBriefingItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetVuelosPorIdAgenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVuelosPorIdAgenciaResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="VueloResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myVueloItem" type="tns:VueloItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myElementoBriefingItem" type="tns:ElementoBriefingItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetRutaVueloPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRutaVueloPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRutaVueloPorIdResult" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleVueloPorCodigo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleVueloPorCodigoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleVueloPorCodigoResult" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleVueloPorIdVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleVueloPorIdVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleVueloPorIdVueloResult" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleVueloPorIdBriefing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDetalleVueloPorIdBriefingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDetalleVueloPorIdBriefingResult" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoProcesoPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElementoProcesoPorIndiceResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoBriefingPorIdBriefing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoBriefingPorIdBriefingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElementoBriefingPorIdBriefingResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoBriefingPorIdElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetElementoBriefingPorIdElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetElementoBriefingPorIdElementoResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVueloPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVueloPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVueloPorIdResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveVueloItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveVueloItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveVueloItemResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveElementoBriefingItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveElementoBriefingItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveElementoBriefingItemResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDetalleVueloResult" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveDetalleRutaVueloItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleRutaVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetalleRutaVueloRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleRutaVuelo" type="tns:DetalleRutaVueloItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="DetalleRutaVueloItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdVuelo" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="CiudadEscala" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="AeropuertoEscala" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveDetalleRutaVueloItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveDetalleRutaVueloItemResult" type="tns:DetalleRutaVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DetalleRutaVueloResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myDetalleRutaVuelo" type="tns:DetalleRutaVueloItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetRutaVueloPorIdVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRutaVueloPorIdVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetRutaVueloPorIdVueloResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaPorIdBriefing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GuiaRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myGuiaItem" type="tns:GuiaItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myGuiaProductoItem" type="tns:GuiaProductosItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myGuiaCamionesItem" type="tns:GuiaCamionesItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myGuiaDaesItem" type="tns:GuiaDaesItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myTipoEnvase" type="tns:TipoEnvaseItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myMaterialEnvase" type="tns:MaterialEnvaseItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myValidezDae" type="tns:ValidezDae" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GuiaItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCiudad" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="ciudadDestino" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionProducto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionAgencia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Peso" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Bultos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaLlegada" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DAE" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaAct" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuarioAct" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estadoReporte" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rutas" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GuiaProductosItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProducto" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GuiaCamionesItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCamion" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombreContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="apellidoContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="procedencia" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="temperatura" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="presinto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="bultos" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idTipoEnvase" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idMaterialEnvase" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GuiaDaesItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idGuia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="dae" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuarioCreacion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumRem" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechavigenciaRem" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TipoEnvaseItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MaterialEnvaseItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Id" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ValidezDae">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="numeroDae" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="exporterDocumentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="exporterName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="declarationOffice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="declarationId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="examinerName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="responseId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProducto" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NumRem" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechavigenciaRem" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetGuiaPorIdBriefingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuiaPorIdBriefingResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GuiaResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="dsGuiaProductos">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="dsGuiaCamiones">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="dsGuiaDaes">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myGuiaItem" type="tns:GuiaItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myTipoEnvase" type="tns:TipoEnvaseItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myMaterialEnvase" type="tns:MaterialEnvaseItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="dsTipoEnvase">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="dsMaterialEnvase">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="dsGuiasAerolineas">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myValidezDae" type="tns:ValidezDae" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetGuiaPorIdGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaPorIdGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuiaPorIdGuiaResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTipoEnvase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTipoEnvaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTipoEnvaseResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaterialEnvasePorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaterialEnvasePorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMaterialEnvasePorIdResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTipoEnvasePorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTipoEnvasePorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTipoEnvasePorIdResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValidezDaePorDae">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValidezDaePorDaeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetValidezDaePorDaeResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaterialEnvase">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMaterialEnvaseResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMaterialEnvaseResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveGuiaItemResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoReporteGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarEstadoReporteGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarEstadoReporteGuiaResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaProductosItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaProductosItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveGuiaProductosItemResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaCamionesItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaCamionesItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveGuiaCamionesItemResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaDaesItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveGuiaDaesItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveGuiaDaesItemResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaProductosPorIdGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaProductosPorIdGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuiaProductosPorIdGuiaResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaCamionesPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaCamionesPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuiaCamionesPorIdResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaCamionesPorIdGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaCamionesPorIdGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuiaCamionesPorIdGuiaResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaDaesPorIdGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetGuiaDaesPorIdGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetGuiaDaesPorIdGuiaResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGuiaCamion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGuiaCamionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGuiaCamionResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarEstadoElementoBriefingPorIndice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:VueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="modificarEstadoElementoBriefingPorIndiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="modificarEstadoElementoBriefingPorIndiceResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleGuiaProducto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleGuiaProductoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDetalleGuiaProductoResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleGuiaCamiones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteDetalleGuiaCamionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteDetalleGuiaCamionesResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGuiaDae">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGuiaDaeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGuiaDaeResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGuiaItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteGuiaItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteGuiaItemResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstadoReporteGuiaPorIdGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEstadoReporteGuiaPorIdGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEstadoReporteGuiaPorIdGuiaResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVuelosGuiasToday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVuelosGuiasTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVuelosGuiasTodayResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgenciasByBriefing">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgenciasByBriefingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgenciasByBriefingResult" type="tns:VueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveHistoricoDaesRem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveHistoricoDaesRemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveHistoricoDaesRemResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteHistoricoDaesRem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteHistoricoDaesRemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DeleteHistoricoDaesRemResult" type="tns:GuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerdetalleVueloPorFechaHoy2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:DetalleVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="obtenerdetalleVueloPorFechaHoy2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="obtenerdetalleVueloPorFechaHoy2Result" type="tns:DetalleVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDetalleVueloPorFechaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorFecha" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorFechaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorFechaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorFechaHoySoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorFechaHoy" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorFechaHoySoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorFechaHoyResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosPorIdAgenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVuelosPorIdAgencia" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosPorIdAgenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVuelosPorIdAgenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRutaVueloPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRutaVueloPorId" />
+  </wsdl:message>
+  <wsdl:message name="GetRutaVueloPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRutaVueloPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorCodigoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorCodigo" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorCodigoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorCodigoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorIdVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorIdVuelo" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorIdVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorIdVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorIdBriefingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorIdBriefing" />
+  </wsdl:message>
+  <wsdl:message name="GetDetalleVueloPorIdBriefingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDetalleVueloPorIdBriefingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoProcesoPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElementoProcesoPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoBriefingPorIdBriefingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElementoBriefingPorIdBriefing" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoBriefingPorIdBriefingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElementoBriefingPorIdBriefingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoBriefingPorIdElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetElementoBriefingPorIdElemento" />
+  </wsdl:message>
+  <wsdl:message name="GetElementoBriefingPorIdElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetElementoBriefingPorIdElementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVueloPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVueloPorId" />
+  </wsdl:message>
+  <wsdl:message name="GetVueloPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVueloPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveVueloItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveVueloItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveVueloItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveVueloItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveElementoBriefingItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveElementoBriefingItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveElementoBriefingItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveElementoBriefingItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDetalleVuelo" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDetalleVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleRutaVueloItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveDetalleRutaVueloItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveDetalleRutaVueloItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveDetalleRutaVueloItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRutaVueloPorIdVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRutaVueloPorIdVuelo" />
+  </wsdl:message>
+  <wsdl:message name="GetRutaVueloPorIdVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRutaVueloPorIdVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaPorIdBriefingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuiaPorIdBriefing" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaPorIdBriefingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuiaPorIdBriefingResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaPorIdGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuiaPorIdGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaPorIdGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuiaPorIdGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoEnvaseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTipoEnvase" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoEnvaseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTipoEnvaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialEnvasePorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMaterialEnvasePorId" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialEnvasePorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMaterialEnvasePorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoEnvasePorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTipoEnvasePorId" />
+  </wsdl:message>
+  <wsdl:message name="GetTipoEnvasePorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTipoEnvasePorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetValidezDaePorDaeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetValidezDaePorDae" />
+  </wsdl:message>
+  <wsdl:message name="GetValidezDaePorDaeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetValidezDaePorDaeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialEnvaseSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMaterialEnvase" />
+  </wsdl:message>
+  <wsdl:message name="GetMaterialEnvaseSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMaterialEnvaseResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveGuiaItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveGuiaItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoReporteGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoReporteGuia" />
+  </wsdl:message>
+  <wsdl:message name="ModificarEstadoReporteGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoReporteGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaProductosItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveGuiaProductosItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaProductosItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveGuiaProductosItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaCamionesItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveGuiaCamionesItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaCamionesItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveGuiaCamionesItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaDaesItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveGuiaDaesItem" />
+  </wsdl:message>
+  <wsdl:message name="SaveGuiaDaesItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveGuiaDaesItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaProductosPorIdGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuiaProductosPorIdGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaProductosPorIdGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuiaProductosPorIdGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaCamionesPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuiaCamionesPorId" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaCamionesPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuiaCamionesPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaCamionesPorIdGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuiaCamionesPorIdGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaCamionesPorIdGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuiaCamionesPorIdGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaDaesPorIdGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetGuiaDaesPorIdGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetGuiaDaesPorIdGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetGuiaDaesPorIdGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGuiaCamionSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGuiaCamion" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGuiaCamionSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGuiaCamionResponse" />
+  </wsdl:message>
+  <wsdl:message name="modificarEstadoElementoBriefingPorIndiceSoapIn">
+    <wsdl:part name="parameters" element="tns:modificarEstadoElementoBriefingPorIndice" />
+  </wsdl:message>
+  <wsdl:message name="modificarEstadoElementoBriefingPorIndiceSoapOut">
+    <wsdl:part name="parameters" element="tns:modificarEstadoElementoBriefingPorIndiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleGuiaProductoSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleGuiaProducto" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleGuiaProductoSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleGuiaProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleGuiaCamionesSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleGuiaCamiones" />
+  </wsdl:message>
+  <wsdl:message name="DeleteDetalleGuiaCamionesSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteDetalleGuiaCamionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGuiaDaeSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGuiaDae" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGuiaDaeSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGuiaDaeResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGuiaItemSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteGuiaItem" />
+  </wsdl:message>
+  <wsdl:message name="DeleteGuiaItemSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteGuiaItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEstadoReporteGuiaPorIdGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEstadoReporteGuiaPorIdGuia" />
+  </wsdl:message>
+  <wsdl:message name="GetEstadoReporteGuiaPorIdGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEstadoReporteGuiaPorIdGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosGuiasTodaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetVuelosGuiasToday" />
+  </wsdl:message>
+  <wsdl:message name="GetVuelosGuiasTodaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetVuelosGuiasTodayResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgenciasByBriefingSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgenciasByBriefing" />
+  </wsdl:message>
+  <wsdl:message name="GetAgenciasByBriefingSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgenciasByBriefingResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveHistoricoDaesRemSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveHistoricoDaesRem" />
+  </wsdl:message>
+  <wsdl:message name="SaveHistoricoDaesRemSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveHistoricoDaesRemResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHistoricoDaesRemSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteHistoricoDaesRem" />
+  </wsdl:message>
+  <wsdl:message name="DeleteHistoricoDaesRemSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteHistoricoDaesRemResponse" />
+  </wsdl:message>
+  <wsdl:message name="obtenerdetalleVueloPorFechaHoy2SoapIn">
+    <wsdl:part name="parameters" element="tns:obtenerdetalleVueloPorFechaHoy2" />
+  </wsdl:message>
+  <wsdl:message name="obtenerdetalleVueloPorFechaHoy2SoapOut">
+    <wsdl:part name="parameters" element="tns:obtenerdetalleVueloPorFechaHoy2Response" />
+  </wsdl:message>
+  <wsdl:portType name="VuelosServiceSoap">
+    <wsdl:operation name="GetDetalleVueloPorFecha">
+      <wsdl:input message="tns:GetDetalleVueloPorFechaSoapIn" />
+      <wsdl:output message="tns:GetDetalleVueloPorFechaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorFechaHoy">
+      <wsdl:input message="tns:GetDetalleVueloPorFechaHoySoapIn" />
+      <wsdl:output message="tns:GetDetalleVueloPorFechaHoySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosPorIdAgencia">
+      <wsdl:input message="tns:GetVuelosPorIdAgenciaSoapIn" />
+      <wsdl:output message="tns:GetVuelosPorIdAgenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRutaVueloPorId">
+      <wsdl:input message="tns:GetRutaVueloPorIdSoapIn" />
+      <wsdl:output message="tns:GetRutaVueloPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorCodigo">
+      <wsdl:input message="tns:GetDetalleVueloPorCodigoSoapIn" />
+      <wsdl:output message="tns:GetDetalleVueloPorCodigoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorIdVuelo">
+      <wsdl:input message="tns:GetDetalleVueloPorIdVueloSoapIn" />
+      <wsdl:output message="tns:GetDetalleVueloPorIdVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorIdBriefing">
+      <wsdl:input message="tns:GetDetalleVueloPorIdBriefingSoapIn" />
+      <wsdl:output message="tns:GetDetalleVueloPorIdBriefingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIndice">
+      <wsdl:input message="tns:GetElementoProcesoPorIndiceSoapIn" />
+      <wsdl:output message="tns:GetElementoProcesoPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoBriefingPorIdBriefing">
+      <wsdl:input message="tns:GetElementoBriefingPorIdBriefingSoapIn" />
+      <wsdl:output message="tns:GetElementoBriefingPorIdBriefingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoBriefingPorIdElemento">
+      <wsdl:input message="tns:GetElementoBriefingPorIdElementoSoapIn" />
+      <wsdl:output message="tns:GetElementoBriefingPorIdElementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVueloPorId">
+      <wsdl:input message="tns:GetVueloPorIdSoapIn" />
+      <wsdl:output message="tns:GetVueloPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveVueloItem">
+      <wsdl:input message="tns:SaveVueloItemSoapIn" />
+      <wsdl:output message="tns:SaveVueloItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveElementoBriefingItem">
+      <wsdl:input message="tns:SaveElementoBriefingItemSoapIn" />
+      <wsdl:output message="tns:SaveElementoBriefingItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleVuelo">
+      <wsdl:input message="tns:SaveDetalleVueloSoapIn" />
+      <wsdl:output message="tns:SaveDetalleVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleRutaVueloItem">
+      <wsdl:input message="tns:SaveDetalleRutaVueloItemSoapIn" />
+      <wsdl:output message="tns:SaveDetalleRutaVueloItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRutaVueloPorIdVuelo">
+      <wsdl:input message="tns:GetRutaVueloPorIdVueloSoapIn" />
+      <wsdl:output message="tns:GetRutaVueloPorIdVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaPorIdBriefing">
+      <wsdl:input message="tns:GetGuiaPorIdBriefingSoapIn" />
+      <wsdl:output message="tns:GetGuiaPorIdBriefingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaPorIdGuia">
+      <wsdl:input message="tns:GetGuiaPorIdGuiaSoapIn" />
+      <wsdl:output message="tns:GetGuiaPorIdGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoEnvase">
+      <wsdl:input message="tns:GetTipoEnvaseSoapIn" />
+      <wsdl:output message="tns:GetTipoEnvaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialEnvasePorId">
+      <wsdl:input message="tns:GetMaterialEnvasePorIdSoapIn" />
+      <wsdl:output message="tns:GetMaterialEnvasePorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoEnvasePorId">
+      <wsdl:input message="tns:GetTipoEnvasePorIdSoapIn" />
+      <wsdl:output message="tns:GetTipoEnvasePorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValidezDaePorDae">
+      <wsdl:input message="tns:GetValidezDaePorDaeSoapIn" />
+      <wsdl:output message="tns:GetValidezDaePorDaeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialEnvase">
+      <wsdl:input message="tns:GetMaterialEnvaseSoapIn" />
+      <wsdl:output message="tns:GetMaterialEnvaseSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaItem">
+      <wsdl:input message="tns:SaveGuiaItemSoapIn" />
+      <wsdl:output message="tns:SaveGuiaItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoReporteGuia">
+      <wsdl:input message="tns:ModificarEstadoReporteGuiaSoapIn" />
+      <wsdl:output message="tns:ModificarEstadoReporteGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaProductosItem">
+      <wsdl:input message="tns:SaveGuiaProductosItemSoapIn" />
+      <wsdl:output message="tns:SaveGuiaProductosItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaCamionesItem">
+      <wsdl:input message="tns:SaveGuiaCamionesItemSoapIn" />
+      <wsdl:output message="tns:SaveGuiaCamionesItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaDaesItem">
+      <wsdl:input message="tns:SaveGuiaDaesItemSoapIn" />
+      <wsdl:output message="tns:SaveGuiaDaesItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaProductosPorIdGuia">
+      <wsdl:input message="tns:GetGuiaProductosPorIdGuiaSoapIn" />
+      <wsdl:output message="tns:GetGuiaProductosPorIdGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaCamionesPorId">
+      <wsdl:input message="tns:GetGuiaCamionesPorIdSoapIn" />
+      <wsdl:output message="tns:GetGuiaCamionesPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaCamionesPorIdGuia">
+      <wsdl:input message="tns:GetGuiaCamionesPorIdGuiaSoapIn" />
+      <wsdl:output message="tns:GetGuiaCamionesPorIdGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaDaesPorIdGuia">
+      <wsdl:input message="tns:GetGuiaDaesPorIdGuiaSoapIn" />
+      <wsdl:output message="tns:GetGuiaDaesPorIdGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaCamion">
+      <wsdl:input message="tns:DeleteGuiaCamionSoapIn" />
+      <wsdl:output message="tns:DeleteGuiaCamionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="modificarEstadoElementoBriefingPorIndice">
+      <wsdl:input message="tns:modificarEstadoElementoBriefingPorIndiceSoapIn" />
+      <wsdl:output message="tns:modificarEstadoElementoBriefingPorIndiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleGuiaProducto">
+      <wsdl:input message="tns:DeleteDetalleGuiaProductoSoapIn" />
+      <wsdl:output message="tns:DeleteDetalleGuiaProductoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleGuiaCamiones">
+      <wsdl:input message="tns:DeleteDetalleGuiaCamionesSoapIn" />
+      <wsdl:output message="tns:DeleteDetalleGuiaCamionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaDae">
+      <wsdl:input message="tns:DeleteGuiaDaeSoapIn" />
+      <wsdl:output message="tns:DeleteGuiaDaeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaItem">
+      <wsdl:input message="tns:DeleteGuiaItemSoapIn" />
+      <wsdl:output message="tns:DeleteGuiaItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEstadoReporteGuiaPorIdGuia">
+      <wsdl:input message="tns:GetEstadoReporteGuiaPorIdGuiaSoapIn" />
+      <wsdl:output message="tns:GetEstadoReporteGuiaPorIdGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosGuiasToday">
+      <wsdl:input message="tns:GetVuelosGuiasTodaySoapIn" />
+      <wsdl:output message="tns:GetVuelosGuiasTodaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgenciasByBriefing">
+      <wsdl:input message="tns:GetAgenciasByBriefingSoapIn" />
+      <wsdl:output message="tns:GetAgenciasByBriefingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveHistoricoDaesRem">
+      <wsdl:input message="tns:SaveHistoricoDaesRemSoapIn" />
+      <wsdl:output message="tns:SaveHistoricoDaesRemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHistoricoDaesRem">
+      <wsdl:input message="tns:DeleteHistoricoDaesRemSoapIn" />
+      <wsdl:output message="tns:DeleteHistoricoDaesRemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="obtenerdetalleVueloPorFechaHoy2">
+      <wsdl:input message="tns:obtenerdetalleVueloPorFechaHoy2SoapIn" />
+      <wsdl:output message="tns:obtenerdetalleVueloPorFechaHoy2SoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VuelosServiceSoap" type="tns:VuelosServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDetalleVueloPorFecha">
+      <soap:operation soapAction="http://espc.org/GetDetalleVueloPorFecha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorFechaHoy">
+      <soap:operation soapAction="http://espc.org/GetDetalleVueloPorFechaHoy" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosPorIdAgencia">
+      <soap:operation soapAction="http://espc.org/GetVuelosPorIdAgencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRutaVueloPorId">
+      <soap:operation soapAction="http://espc.org/GetRutaVueloPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorCodigo">
+      <soap:operation soapAction="http://espc.org/GetDetalleVueloPorCodigo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorIdVuelo">
+      <soap:operation soapAction="http://espc.org/GetDetalleVueloPorIdVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorIdBriefing">
+      <soap:operation soapAction="http://espc.org/GetDetalleVueloPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIndice">
+      <soap:operation soapAction="http://espc.org/GetElementoProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoBriefingPorIdBriefing">
+      <soap:operation soapAction="http://espc.org/GetElementoBriefingPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoBriefingPorIdElemento">
+      <soap:operation soapAction="http://espc.org/GetElementoBriefingPorIdElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVueloPorId">
+      <soap:operation soapAction="http://espc.org/GetVueloPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveVueloItem">
+      <soap:operation soapAction="http://espc.org/SaveVueloItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveElementoBriefingItem">
+      <soap:operation soapAction="http://espc.org/SaveElementoBriefingItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleVuelo">
+      <soap:operation soapAction="http://espc.org/SaveDetalleVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleRutaVueloItem">
+      <soap:operation soapAction="http://espc.org/SaveDetalleRutaVueloItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRutaVueloPorIdVuelo">
+      <soap:operation soapAction="http://espc.org/GetRutaVueloPorIdVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaPorIdBriefing">
+      <soap:operation soapAction="http://espc.org/GetGuiaPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaPorIdGuia">
+      <soap:operation soapAction="http://espc.org/GetGuiaPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoEnvase">
+      <soap:operation soapAction="http://espc.org/GetTipoEnvase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialEnvasePorId">
+      <soap:operation soapAction="http://espc.org/GetMaterialEnvasePorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoEnvasePorId">
+      <soap:operation soapAction="http://espc.org/GetTipoEnvasePorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidezDaePorDae">
+      <soap:operation soapAction="http://espc.org/GetValidezDaePorDae" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialEnvase">
+      <soap:operation soapAction="http://espc.org/GetMaterialEnvase" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaItem">
+      <soap:operation soapAction="http://espc.org/SaveGuiaItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoReporteGuia">
+      <soap:operation soapAction="http://espc.org/ModificarEstadoReporteGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaProductosItem">
+      <soap:operation soapAction="http://espc.org/SaveGuiaProductosItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaCamionesItem">
+      <soap:operation soapAction="http://espc.org/SaveGuiaCamionesItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaDaesItem">
+      <soap:operation soapAction="http://espc.org/SaveGuiaDaesItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaProductosPorIdGuia">
+      <soap:operation soapAction="http://espc.org/GetGuiaProductosPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaCamionesPorId">
+      <soap:operation soapAction="http://espc.org/GetGuiaCamionesPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaCamionesPorIdGuia">
+      <soap:operation soapAction="http://espc.org/GetGuiaCamionesPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaDaesPorIdGuia">
+      <soap:operation soapAction="http://espc.org/GetGuiaDaesPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaCamion">
+      <soap:operation soapAction="http://espc.org/DeleteGuiaCamion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarEstadoElementoBriefingPorIndice">
+      <soap:operation soapAction="http://espc.org/modificarEstadoElementoBriefingPorIndice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleGuiaProducto">
+      <soap:operation soapAction="http://espc.org/DeleteDetalleGuiaProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleGuiaCamiones">
+      <soap:operation soapAction="http://espc.org/DeleteDetalleGuiaCamiones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaDae">
+      <soap:operation soapAction="http://espc.org/DeleteGuiaDae" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaItem">
+      <soap:operation soapAction="http://espc.org/DeleteGuiaItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstadoReporteGuiaPorIdGuia">
+      <soap:operation soapAction="http://espc.org/GetEstadoReporteGuiaPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosGuiasToday">
+      <soap:operation soapAction="http://espc.org/GetVuelosGuiasToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgenciasByBriefing">
+      <soap:operation soapAction="http://espc.org/GetAgenciasByBriefing" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveHistoricoDaesRem">
+      <soap:operation soapAction="http://espc.org/SaveHistoricoDaesRem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHistoricoDaesRem">
+      <soap:operation soapAction="http://espc.org/DeleteHistoricoDaesRem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerdetalleVueloPorFechaHoy2">
+      <soap:operation soapAction="http://espc.org/obtenerdetalleVueloPorFechaHoy2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="VuelosServiceSoap12" type="tns:VuelosServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDetalleVueloPorFecha">
+      <soap12:operation soapAction="http://espc.org/GetDetalleVueloPorFecha" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorFechaHoy">
+      <soap12:operation soapAction="http://espc.org/GetDetalleVueloPorFechaHoy" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosPorIdAgencia">
+      <soap12:operation soapAction="http://espc.org/GetVuelosPorIdAgencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRutaVueloPorId">
+      <soap12:operation soapAction="http://espc.org/GetRutaVueloPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorCodigo">
+      <soap12:operation soapAction="http://espc.org/GetDetalleVueloPorCodigo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorIdVuelo">
+      <soap12:operation soapAction="http://espc.org/GetDetalleVueloPorIdVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDetalleVueloPorIdBriefing">
+      <soap12:operation soapAction="http://espc.org/GetDetalleVueloPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoProcesoPorIndice">
+      <soap12:operation soapAction="http://espc.org/GetElementoProcesoPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoBriefingPorIdBriefing">
+      <soap12:operation soapAction="http://espc.org/GetElementoBriefingPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetElementoBriefingPorIdElemento">
+      <soap12:operation soapAction="http://espc.org/GetElementoBriefingPorIdElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVueloPorId">
+      <soap12:operation soapAction="http://espc.org/GetVueloPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveVueloItem">
+      <soap12:operation soapAction="http://espc.org/SaveVueloItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveElementoBriefingItem">
+      <soap12:operation soapAction="http://espc.org/SaveElementoBriefingItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleVuelo">
+      <soap12:operation soapAction="http://espc.org/SaveDetalleVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveDetalleRutaVueloItem">
+      <soap12:operation soapAction="http://espc.org/SaveDetalleRutaVueloItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRutaVueloPorIdVuelo">
+      <soap12:operation soapAction="http://espc.org/GetRutaVueloPorIdVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaPorIdBriefing">
+      <soap12:operation soapAction="http://espc.org/GetGuiaPorIdBriefing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaPorIdGuia">
+      <soap12:operation soapAction="http://espc.org/GetGuiaPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoEnvase">
+      <soap12:operation soapAction="http://espc.org/GetTipoEnvase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialEnvasePorId">
+      <soap12:operation soapAction="http://espc.org/GetMaterialEnvasePorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTipoEnvasePorId">
+      <soap12:operation soapAction="http://espc.org/GetTipoEnvasePorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValidezDaePorDae">
+      <soap12:operation soapAction="http://espc.org/GetValidezDaePorDae" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMaterialEnvase">
+      <soap12:operation soapAction="http://espc.org/GetMaterialEnvase" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaItem">
+      <soap12:operation soapAction="http://espc.org/SaveGuiaItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoReporteGuia">
+      <soap12:operation soapAction="http://espc.org/ModificarEstadoReporteGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaProductosItem">
+      <soap12:operation soapAction="http://espc.org/SaveGuiaProductosItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaCamionesItem">
+      <soap12:operation soapAction="http://espc.org/SaveGuiaCamionesItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveGuiaDaesItem">
+      <soap12:operation soapAction="http://espc.org/SaveGuiaDaesItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaProductosPorIdGuia">
+      <soap12:operation soapAction="http://espc.org/GetGuiaProductosPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaCamionesPorId">
+      <soap12:operation soapAction="http://espc.org/GetGuiaCamionesPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaCamionesPorIdGuia">
+      <soap12:operation soapAction="http://espc.org/GetGuiaCamionesPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuiaDaesPorIdGuia">
+      <soap12:operation soapAction="http://espc.org/GetGuiaDaesPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaCamion">
+      <soap12:operation soapAction="http://espc.org/DeleteGuiaCamion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="modificarEstadoElementoBriefingPorIndice">
+      <soap12:operation soapAction="http://espc.org/modificarEstadoElementoBriefingPorIndice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleGuiaProducto">
+      <soap12:operation soapAction="http://espc.org/DeleteDetalleGuiaProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteDetalleGuiaCamiones">
+      <soap12:operation soapAction="http://espc.org/DeleteDetalleGuiaCamiones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaDae">
+      <soap12:operation soapAction="http://espc.org/DeleteGuiaDae" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteGuiaItem">
+      <soap12:operation soapAction="http://espc.org/DeleteGuiaItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEstadoReporteGuiaPorIdGuia">
+      <soap12:operation soapAction="http://espc.org/GetEstadoReporteGuiaPorIdGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVuelosGuiasToday">
+      <soap12:operation soapAction="http://espc.org/GetVuelosGuiasToday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgenciasByBriefing">
+      <soap12:operation soapAction="http://espc.org/GetAgenciasByBriefing" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveHistoricoDaesRem">
+      <soap12:operation soapAction="http://espc.org/SaveHistoricoDaesRem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteHistoricoDaesRem">
+      <soap12:operation soapAction="http://espc.org/DeleteHistoricoDaesRem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="obtenerdetalleVueloPorFechaHoy2">
+      <soap12:operation soapAction="http://espc.org/obtenerdetalleVueloPorFechaHoy2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VuelosService">
+    <wsdl:port name="VuelosServiceSoap" binding="tns:VuelosServiceSoap">
+      <soap:address location="http://localhost:20028/VuelosService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="VuelosServiceSoap12" binding="tns:VuelosServiceSoap12">
+      <soap12:address location="http://localhost:20028/VuelosService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

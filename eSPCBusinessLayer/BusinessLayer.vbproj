@@ -1,0 +1,505 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4AF1EBE-3A9D-402A-9412-137963FE9B1A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>eSPCBusinessLayer</RootNamespace>
+    <AssemblyName>eSPCBusinessLayer</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>Windows</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>eSPCBusinessLayer.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>eSPCBusinessLayer.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <Prefer32Bit>false</Prefer32Bit>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.5\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FaceDetectLibrary">
+      <HintPath>..\ePlus SPC\bin\Debug\FaceDetectLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.14.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Protobuf.3.14.0\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.1.2.6\lib\net46\K4os.Compression.LZ4.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Compression.LZ4.Streams, Version=1.2.6.0, Culture=neutral, PublicKeyToken=2186fa9121ef231d, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Compression.LZ4.Streams.1.2.6\lib\net46\K4os.Compression.LZ4.Streams.dll</HintPath>
+    </Reference>
+    <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
+      <HintPath>..\packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.28.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.28\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Renci.SshNet, Version=2016.1.0.0, Culture=neutral, PublicKeyToken=1cee9f8bde3db106, processorArchitecture=MSIL">
+      <HintPath>..\packages\SSH.NET.2016.1.0\lib\net40\Renci.SshNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Activities" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.28\lib\net48\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Zstandard.Net, Version=1.1.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.21\lib\net452\Zstandard.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.8.0.28\lib\net48\ZstdNet.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.Practices.EnterpriseLibrary.Common" />
+    <Import Include="Microsoft.Practices.EnterpriseLibrary.Data" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessActions\Catalogos\AirplaneManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\AirportManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\CamionManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\AgenciaManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\CiudadManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\ContactoManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\DollyManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\ElementoHUldCatalogItem.vb" />
+    <Compile Include="BusinessActions\Catalogos\ElementoManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\HistoricoSesionContactos\HistoricoSesionContactosCatalogItem.vb" />
+    <Compile Include="BusinessActions\Catalogos\HistoricoSesionContactos\HistoricoSesionContactosRequest.vb" />
+    <Compile Include="BusinessActions\Catalogos\HistoricoSesionContactos\HistoricoSesionContactosResponse.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarcacionContacto\MarcacionContactoCatalogItem.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarcacionContacto\MarcacionContactoRequest.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarcacionContacto\MarcacionContactoResponse.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarkingManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarkingsGeneral\HorarioAgenciaSeguridad.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarkingsGeneral\HorarioAgenciaSeguridadRequest.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarkingsGeneral\HorarioAgenciaSeguridadResponse.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarkingsGeneral\MarkingGeneralItem.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarkingsGeneral\MarkingGeneralRequest.vb" />
+    <Compile Include="BusinessActions\Catalogos\MarkingsGeneral\MarkingGeneralResponse.vb" />
+    <Compile Include="BusinessActions\Catalogos\PaisManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\RegBiometricoManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\EmpresaManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\SesionContactos\SesionContactosCatalogItem.vb" />
+    <Compile Include="BusinessActions\Catalogos\SesionContactos\SesionContactosRequest.vb" />
+    <Compile Include="BusinessActions\Catalogos\SesionContactos\SesionContactosResponse.vb" />
+    <Compile Include="BusinessActions\Catalogos\TarifaManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\TarifasManager.vb" />
+    <Compile Include="BusinessActions\Facturacion\FacturacionManager.vb" />
+    <Compile Include="BusinessActions\Proceso\AcarreoManager.vb" />
+    <Compile Include="BusinessActions\Courrier\ProcesoCourrierManager.vb" />
+    <Compile Include="BusinessActions\Proceso\ProcesoManager.vb" />
+    <Compile Include="BusinessActions\Proceso\PersonalProcesoManager.vb" />
+    <Compile Include="BusinessActions\Proceso\ActividadManager.vb" />
+    <Compile Include="BusinessActions\Proceso\GuiaManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\MatrizSeguridadManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\ProductoManager.vb" />
+    <Compile Include="BusinessActions\Catalogos\VueloManager.vb" />
+    <Compile Include="BusinessActions\ErrorManager.vb" />
+    <Compile Include="BusinessActions\MyDbFactory.vb" />
+    <Compile Include="BusinessActions\Catalogos\ReportsManager.vb" />
+    <Compile Include="BusinessActions\Reportes\ControlEjecucionHiloRequest.vb" />
+    <Compile Include="BusinessActions\Reportes\ControlEjecucionHiloResponse.vb" />
+    <Compile Include="BusinessActions\Reportes\ReporteDetalladoManager.vb" />
+    <Compile Include="BusinessActions\Reportes\ReporteResumidoManager.vb" />
+    <Compile Include="BusinessActions\Reportes\ReportVuelosEnviadosRequest.vb" />
+    <Compile Include="BusinessActions\Reportes\ReportVuelosEnviadosResponse.vb" />
+    <Compile Include="BusinessActions\Reportes\uldHistoricoManager.vb" />
+    <Compile Include="BusinessActions\SecurityManager.vb" />
+    <Compile Include="BusinessActions\SyncManager.vb" />
+    <Compile Include="BusinessActions\Temperatura\NotificacionTemp.vb" />
+    <Compile Include="BusinessActions\Temperatura\NotificacionTempRequest.vb" />
+    <Compile Include="BusinessActions\Temperatura\NotificacionTempResponse.vb" />
+    <Compile Include="BusinessActions\Temperatura\TempBitacoraCuarto.vb" />
+    <Compile Include="BusinessActions\Temperatura\TempBitacoraCuartoRequest.vb" />
+    <Compile Include="BusinessActions\Temperatura\TempBitacoraCuartoResponse.vb" />
+    <Compile Include="BusinessActions\Temperatura\TemperaturaManager.vb" />
+    <Compile Include="BusinessActions\Temperatura\TempRequest.vb" />
+    <Compile Include="BusinessActions\Temperatura\TempResponse.vb" />
+    <Compile Include="BusinessActions\UserManager.vb" />
+    <Compile Include="BusinessMessages\Administrator\DaysTurnosContactoItem.vb" />
+    <Compile Include="BusinessMessages\Administrator\TurnoItem.vb" />
+    <Compile Include="BusinessActions\AutorizacionesOnlineManager.vb" />
+    <Compile Include="BusinessMessages\AutorizacionesOnline\AutorizacionesOnlineResponse.vb" />
+    <Compile Include="BusinessMessages\AutorizacionesOnline\AutorizacionOnline.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\TipoAgenciaCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\ArchivoAgenciaRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\ArchivoAgenciaResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\ArchivoAgenciaCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\TipoAgenciaRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\TipoAgenciaResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Camion\CamionContactoItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ArchivoContactoCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\CargoItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoAgenciaCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoAgenciaRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoAgenciaResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoImagenItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoImagenRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoImagenResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoZonasSessionItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoZonasSessionRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoZonasSessionResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\DestinatarioCatalog.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\DestinatarioRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\DestinatarioResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\PerfilesUsuarioItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\PerfilItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\PermisoContactoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\PermisoEspecialItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\PermisosContactoItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\PermisosPerfilItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\UsuarioEmpresaItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\UsuarioItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Dolly\DollyCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Dolly\DollyRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Dolly\DollyResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\ElementoPreBriefingItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\ElementoHistoricoItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\TiposElementoItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\TiposElementoRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\TiposElementoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\ElementoCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\ElementoRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\ElementoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\MaterialesItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\MaterialesRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Elementos\MaterialesResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Empresa\EmpresaItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Empresa\EmpresaRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Empresa\EmpresaResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\MatrizSeguridad\DetalleMatrizSeguridadItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\PaisCiudad\CiudadCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\PaisCiudad\CiudadRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\PaisCiudad\CiudadResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\PaisCiudad\PaisCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\PaisCiudad\PaisRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\PaisCiudad\PaisResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Producto\TipoProductoCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Producto\TipoProductoRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Producto\TipoProductoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\RegBiometrico\AuditoriaReconocimientoFacialItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\RegBiometrico\AuditoriaReconocimientoFacialRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\RegBiometrico\AuditoriaReconocimientoFacialResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\RegBiometrico\RegBiometricoCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\RegBiometrico\RegBiometricoRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\RegBiometrico\RegBiometricoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Tarifas\TarifasCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Tarifas\TarifasRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Tarifas\TarifasResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\BriefingAgencias.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\DetalleRutaVueloItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\DetalleRutaVueloRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\DetalleRutaVueloResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Producto\ProductoCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Producto\ProductoRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Producto\ProductoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\MatrizSeguridad\MatrizSeguridadItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\MatrizSeguridad\MatrizSeguridadRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\MatrizSeguridad\MatrizSeguridadResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\PosicionItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\PosicionRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\PosicionResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\VueloItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\VueloRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\VueloResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Contactos\ContactoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\ZonasAutorizadas\ZonasAutorizadasByContactoCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\ZonasAutorizadas\ZonasAutorizadasByContactoRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\ZonasAutorizadas\ZonasAutorizadasByContactoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\ZonasAutorizadas\ZonasAutorizadasCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\ZonasAutorizadas\ZonasAutorizadasRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\ZonasAutorizadas\ZonasAutorizadasResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\Cliente.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ClienteRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ClienteResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\Periodicidad.vb" />
+    <Compile Include="BusinessMessages\Facturacion\PeriodicidadRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\PeriodicidadResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\PlantillaClienServ.vb" />
+    <Compile Include="BusinessMessages\Facturacion\PlantillaClienServRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\PlantillaClienServResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ServConsuCliente.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ServConsuClienteRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ServConsuClienteResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ServiciosGA.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ServiciosGARequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\ServiciosGAResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\TipoProcesoAlmacenajeCarga.vb" />
+    <Compile Include="BusinessMessages\Facturacion\TipoProcesoAlmacenajeCargaRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\TipoProcesoAlmacenajeCargaResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\VuelosCancelados.vb" />
+    <Compile Include="BusinessMessages\Facturacion\VuelosCanceladosRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\VuelosCanceladosResponse.vb" />
+    <Compile Include="BusinessMessages\GenericRequest.vb" />
+    <Compile Include="BusinessMessages\GenericResponse.vb" />
+    <Compile Include="BusinessMessages\ManageRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Airplane\AirplaneCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Airplane\AirplaneRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Airplane\AirplaneResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Airport\AirportCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Airport\AirportRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Airport\AirportResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Camion\CamionRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Camion\CamionResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Camion\CamionCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\AgenciaRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\AgenciaResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Agencia\AgenciaCatalogItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\AcarreoItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\AcarreoRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\AcarreoResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\ElementoBriefingItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleSelloCamionesItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleSelloCamionesRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleSelloCamionesResponse.vb" />
+    <Compile Include="BusinessMessages\Courrier\GavetaGuiaItem.vb" />
+    <Compile Include="BusinessMessages\Courrier\GavetaGuiaRequest.vb" />
+    <Compile Include="BusinessMessages\Courrier\GavetaGuiaResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\MovimientoItem.vb" />
+    <Compile Include="BusinessMessages\Reportes\ControlEjecucionHilo.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportesRequest.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportesResponse.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportVuelosEnviados.vb" />
+    <Compile Include="BusinessMessages\Reports\MarkingResponse.vb" />
+    <Compile Include="BusinessMessages\AutorizacionesOnline\AutorizacionesOnlineRequest.vb" />
+    <Compile Include="BusinessMessages\User\ConfigurationItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\GuiaDaesItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\DocSenae.vb" />
+    <Compile Include="BusinessMessages\Proceso\MaterialEnvaseItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\ProduccionItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\ProduccionRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\ProduccionResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\StackPalletsItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\TipoEnvaseItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\NovedadesResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\NovedadesRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\NovedadesItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\ElementoProcesoItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleAcarreoElementoItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleAcarreoItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\GuiaCamionesItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\GuiaProductosItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleProcesoItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleProcesoRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\DetalleProcesoResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\ProcesoItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\ProcesoRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\ProcesoResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\PersonalProcesoItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\Ciudad.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\DetalleVueloRequest.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\DetalleVueloResponse.vb" />
+    <Compile Include="BusinessMessages\Catalogos\Vuelo\DetalleVuelo.vb" />
+    <Compile Include="BusinessMessages\Proceso\PersonalProcesoRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\PersonalProcesoResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\ActividadItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\ActividadRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\ActividadResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\GuiaItem.vb" />
+    <Compile Include="BusinessMessages\Proceso\GuiaRequest.vb" />
+    <Compile Include="BusinessMessages\Proceso\GuiaResponse.vb" />
+    <Compile Include="BusinessMessages\Proceso\ValidezDae.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportGroupByDestino.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportGroupByElemento.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportGroupByAgencia.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportGroupRequest.vb" />
+    <Compile Include="BusinessMessages\Reportes\ReportGroupResponse.vb" />
+    <Compile Include="BusinessMessages\Reportes\uldHistoricoDetalle.vb" />
+    <Compile Include="BusinessMessages\Reportes\uldHistoricoItem.vb" />
+    <Compile Include="BusinessMessages\Reportes\uldHistoricoRequest.vb" />
+    <Compile Include="BusinessMessages\Reportes\uldHistoricoResponse.vb" />
+    <Compile Include="BusinessMessages\Reports\ReportRequest.vb" />
+    <Compile Include="BusinessMessages\Reports\ReportResponse.vb" />
+    <Compile Include="BusinessMessages\Sync\SyncRequest.vb" />
+    <Compile Include="BusinessMessages\Sync\SyncResponse.vb" />
+    <Compile Include="BusinessMessages\User\User.vb" />
+    <Compile Include="BusinessMessages\User\UserNotFoundException.vb" />
+    <Compile Include="BusinessMessages\User\UserRequest.vb" />
+    <Compile Include="BusinessMessages\User\UserResponse.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Service References\ws.FaceDetectionService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\System.Data.DataTable.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Service References\ws.FaceDetectionService\eSPCBusinessLayer.ws.FaceDetectionService.DetectaRostroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws.FaceDetectionService\eSPCBusinessLayer.ws.FaceDetectionService.EPDetectionFaceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws.FaceDetectionService\eSPCBusinessLayer.ws.FaceDetectionService.EPDetectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws.FaceDetectionService\eSPCBusinessLayer.ws.FaceDetectionService.EPGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws.FaceDetectionService\eSPCBusinessLayer.ws.FaceDetectionService.EPParameterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws.FaceDetectionService\eSPCBusinessLayer.ws.FaceDetectionService.EPPerson.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ws.FaceDetectionService\eSPCBusinessLayer.ws.FaceDetectionService.EPPersonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ws.FaceDetectionService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ws.FaceDetectionService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ws.FaceDetectionService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ws.FaceDetectionService\FaceDetectionMain.wsdl" />
+    <None Include="Service References\ws.FaceDetectionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ws.FaceDetectionService\FaceDetectionMain.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

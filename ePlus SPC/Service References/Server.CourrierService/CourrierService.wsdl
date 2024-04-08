@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="SaveGavetaGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GavetaGuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GavetaGuiaRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myGavetaGuiaItem" type="tns:GavetaGuiaItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InterfaceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="myManagementAction" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoVuelo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="GavetaGuiaItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idgavetaguia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idGuia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idDetalleProceso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idBriefing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idElemento" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoReferencialElemento" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaCarga" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="pesoCarga" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveGavetaGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveGavetaGuiaResult" type="tns:GavetaGuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GavetaGuiaResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myGavetaGuiaItem" type="tns:GavetaGuiaItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EliminarGavetaGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GavetaGuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarGavetaGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EliminarGavetaGuiaResult" type="tns:GavetaGuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarGavetaGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GavetaGuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarGavetaGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ModificarGavetaGuiaResult" type="tns:GavetaGuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerGavetaGuiaporBriefingIdGuia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GavetaGuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerGavetaGuiaporBriefingIdGuiaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerGavetaGuiaporBriefingIdGuiaResult" type="tns:GavetaGuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getGavetaGuiaporIdGuiaIdElemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:GavetaGuiaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getGavetaGuiaporIdGuiaIdElementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getGavetaGuiaporIdGuiaIdElementoResult" type="tns:GavetaGuiaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SaveGavetaGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveGavetaGuia" />
+  </wsdl:message>
+  <wsdl:message name="SaveGavetaGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveGavetaGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarGavetaGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarGavetaGuia" />
+  </wsdl:message>
+  <wsdl:message name="EliminarGavetaGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarGavetaGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarGavetaGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarGavetaGuia" />
+  </wsdl:message>
+  <wsdl:message name="ModificarGavetaGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarGavetaGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerGavetaGuiaporBriefingIdGuiaSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerGavetaGuiaporBriefingIdGuia" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerGavetaGuiaporBriefingIdGuiaSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerGavetaGuiaporBriefingIdGuiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getGavetaGuiaporIdGuiaIdElementoSoapIn">
+    <wsdl:part name="parameters" element="tns:getGavetaGuiaporIdGuiaIdElemento" />
+  </wsdl:message>
+  <wsdl:message name="getGavetaGuiaporIdGuiaIdElementoSoapOut">
+    <wsdl:part name="parameters" element="tns:getGavetaGuiaporIdGuiaIdElementoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CourrierServiceSoap">
+    <wsdl:operation name="SaveGavetaGuia">
+      <wsdl:input message="tns:SaveGavetaGuiaSoapIn" />
+      <wsdl:output message="tns:SaveGavetaGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGavetaGuia">
+      <wsdl:input message="tns:EliminarGavetaGuiaSoapIn" />
+      <wsdl:output message="tns:EliminarGavetaGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarGavetaGuia">
+      <wsdl:input message="tns:ModificarGavetaGuiaSoapIn" />
+      <wsdl:output message="tns:ModificarGavetaGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerGavetaGuiaporBriefingIdGuia">
+      <wsdl:input message="tns:ObtenerGavetaGuiaporBriefingIdGuiaSoapIn" />
+      <wsdl:output message="tns:ObtenerGavetaGuiaporBriefingIdGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getGavetaGuiaporIdGuiaIdElemento">
+      <wsdl:input message="tns:getGavetaGuiaporIdGuiaIdElementoSoapIn" />
+      <wsdl:output message="tns:getGavetaGuiaporIdGuiaIdElementoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CourrierServiceSoap" type="tns:CourrierServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveGavetaGuia">
+      <soap:operation soapAction="http://tempuri.org/SaveGavetaGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGavetaGuia">
+      <soap:operation soapAction="http://tempuri.org/EliminarGavetaGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarGavetaGuia">
+      <soap:operation soapAction="http://tempuri.org/ModificarGavetaGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerGavetaGuiaporBriefingIdGuia">
+      <soap:operation soapAction="http://tempuri.org/ObtenerGavetaGuiaporBriefingIdGuia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGavetaGuiaporIdGuiaIdElemento">
+      <soap:operation soapAction="http://tempuri.org/getGavetaGuiaporIdGuiaIdElemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CourrierServiceSoap12" type="tns:CourrierServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SaveGavetaGuia">
+      <soap12:operation soapAction="http://tempuri.org/SaveGavetaGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGavetaGuia">
+      <soap12:operation soapAction="http://tempuri.org/EliminarGavetaGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarGavetaGuia">
+      <soap12:operation soapAction="http://tempuri.org/ModificarGavetaGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerGavetaGuiaporBriefingIdGuia">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerGavetaGuiaporBriefingIdGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getGavetaGuiaporIdGuiaIdElemento">
+      <soap12:operation soapAction="http://tempuri.org/getGavetaGuiaporIdGuiaIdElemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CourrierService">
+    <wsdl:port name="CourrierServiceSoap" binding="tns:CourrierServiceSoap">
+      <soap:address location="http://localhost:20028/CourrierService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CourrierServiceSoap12" binding="tns:CourrierServiceSoap12">
+      <soap12:address location="http://localhost:20028/CourrierService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,2772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1083DD47-1A21-4F7E-9A5E-00DE14342F7A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>SPC.My.MyApplication</StartupObject>
+    <RootNamespace>SPC</RootNamespace>
+    <AssemblyName>SPC</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkProfile />
+    <PublishUrl>\\192.168.10.2\eSPC\AppSpc\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://192.168.10.2:8010/AppSpc/</InstallUrl>
+    <ProductName>SPC</ProductName>
+    <PublisherName>General</PublisherName>
+    <SuiteName>General</SuiteName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>739</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>SPC.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <WarningLevel>0</WarningLevel>
+    <Prefer32Bit>true</Prefer32Bit>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>SPC.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>5507B062F3DDA3686614F071FDCD1790C12B38D9</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ePlus SPC_ClaveTemporal.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ga2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DocumentationFile>SPC.xml</DocumentationFile>
+    <WarningLevel>0</WarningLevel>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MixedRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DocumentationFile>SPC.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+    <WarningLevel>0</WarningLevel>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FaceDetectLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MarcacionGuille\FaceDetectLibrary\bin\Debug\FaceDetectLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="FaceRekoClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\GA\GAFaceReko\FaceRekoClient\bin\Debug\FaceRekoClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Infragistics2.Documents.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\Program Files (x86)\Infragistics\NetAdvantage 2010.3\Windows Forms\Bin\Infragistics2.Documents.v10.3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Shared.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.Misc.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.SupportDialogs.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinCalcManager.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinCalcManager.v10.3.FormulaBuilder, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinChart.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinEditors.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinExplorerBar.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGauge.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.DocumentExport.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinGrid.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinListBar.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics2.Win.UltraWinListView.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinMaskedEdit.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSchedule.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinSpellChecker.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinStatusBar.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTabControl.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinToolbars.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.UltraWinTree.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics2.Win.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics3.Excel.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Infragistics3.Win.UltraWinGrid.ExcelExport.v10.3, Version=10.3.20103.1000, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.11.0.3452.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.11.0.3452.0\lib\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.Runtime.Common.11.0.3452.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.11.0.0\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Services3.3.0.0.0\lib\net20\Microsoft.Web.Services3.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="SecuGen.FDxSDKPro.Windows, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4c4e1bcde5201535, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\SecuGen.FDxSDKPro.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration.Install">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Deployment">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Management">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WebCAM, Version=1.0.1814.37443, Culture=neutral">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\WebCAM.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Infragistics.UltraGauge" />
+    <Import Include="Infragistics.UltraGauge.Resources" />
+    <Import Include="Microsoft.Practices.EnterpriseLibrary.Common" />
+    <Import Include="Microsoft.Practices.EnterpriseLibrary.Data" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="System.Threading.Tasks" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator\Facturacion\FrmClientes.Designer.vb">
+      <DependentUpon>FrmClientes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmClientes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmConsultaVuelosGuias.Designer.vb">
+      <DependentUpon>FrmConsultaVuelosGuias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmConsultaVuelosGuias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetalleCliente.Designer.vb">
+      <DependentUpon>FrmDetalleCliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetalleCliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetallePeriodicidad.Designer.vb">
+      <DependentUpon>FrmDetallePeriodicidad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetallePeriodicidad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetallePlantillaClientServ.Designer.vb">
+      <DependentUpon>FrmDetallePlantillaClientServ.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetallePlantillaClientServ.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetalleServicio.Designer.vb">
+      <DependentUpon>FrmDetalleServicio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmDetalleServicio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmPeriodicidad.Designer.vb">
+      <DependentUpon>FrmPeriodicidad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmPeriodicidad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmPrefacturacion.Designer.vb">
+      <DependentUpon>FrmPrefacturacion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmPrefacturacion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmRegistroConsuServ.Designer.vb">
+      <DependentUpon>FrmRegistroConsuServ.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmRegistroConsuServ.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmServicios.Designer.vb">
+      <DependentUpon>FrmServicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmServicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmPlantillaClientServ.Designer.vb">
+      <DependentUpon>FrmPlantillaClientServ.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Facturacion\FrmPlantillaClientServ.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmAsignarTurnosPersonal.Designer.vb">
+      <DependentUpon>frmAsignarTurnosPersonal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmAsignarTurnosPersonal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmConsultarTurnosPersonal.Designer.vb">
+      <DependentUpon>frmConsultarTurnosPersonal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmConsultarTurnosPersonal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmFactura.Designer.vb">
+      <DependentUpon>frmFactura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmFactura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmFichaPersonalActividades.Designer.vb">
+      <DependentUpon>frmFichaPersonalActividades.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmFichaPersonalActividades.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmMarcacionesDetalle.Designer.vb">
+      <DependentUpon>frmMarcacionesDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmMarcacionesDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmTurnos.Designer.vb">
+      <DependentUpon>frmTurnos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmTurnos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmMarcaciones.Designer.vb">
+      <DependentUpon>frmMarcaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmMarcaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmTurnoDetalle.Designer.vb">
+      <DependentUpon>frmTurnoDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Administrator\Generalair\frmTurnoDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusinessActions\ErrorManager.vb" />
+    <Compile Include="BusinessActions\SecurityManager.vb" />
+    <Compile Include="Catalogs\frmCargo.Designer.vb">
+      <DependentUpon>frmCargo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmCargo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmCargoDetails.Designer.vb">
+      <DependentUpon>frmCargoDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmCargoDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmCompanias.Designer.vb">
+      <DependentUpon>frmCompanias.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmCompanias.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmConfiNotiTemp.Designer.vb">
+      <DependentUpon>frmConfiNotiTemp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmConfiNotiTemp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmDestinatarioContacts.Designer.vb">
+      <DependentUpon>frmDestinatarioContacts.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmDestinatarioContacts.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmDestinatarioDetails.Designer.vb">
+      <DependentUpon>frmDestinatarioDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmDestinatarioDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmbusqueda_elementos.Designer.vb">
+      <DependentUpon>frmbusqueda_elementos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmbusqueda_elementos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmDestinatarios.Designer.vb">
+      <DependentUpon>frmDestinatarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmDestinatarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmMatConfiNotiTemp.Designer.vb">
+      <DependentUpon>frmMatConfiNotiTemp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmMatConfiNotiTemp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPerfilDetalle.Designer.vb">
+      <DependentUpon>frmPerfilDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPerfilDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPerfiles.Designer.vb">
+      <DependentUpon>frmPerfiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPerfiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPermisosEspeciales.Designer.vb">
+      <DependentUpon>frmPermisosEspeciales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPermisosEspeciales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTarifas.Designer.vb">
+      <DependentUpon>frmTarifas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTarifas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTarifasDetails.Designer.vb">
+      <DependentUpon>frmTarifasDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTarifasDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTemperatura.Designer.vb">
+      <DependentUpon>frmTemperatura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTemperatura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmUsuarioDetails.Designer.vb">
+      <DependentUpon>frmUsuarioDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmUsuarioDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmUsuarios.Designer.vb">
+      <DependentUpon>frmUsuarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmUsuarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmVueloDetails.Designer.vb">
+      <DependentUpon>frmVueloDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmVueloDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoCamion.Designer.vb">
+      <DependentUpon>frmContactoCamion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoCamion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmArchivos.Designer.vb">
+      <DependentUpon>frmArchivos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmArchivos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoAgencia.Designer.vb">
+      <DependentUpon>frmContactoAgencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoAgencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoAgenciaDetails.Designer.vb">
+      <DependentUpon>frmContactoAgenciaDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoAgenciaDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmContacto.Designer.vb">
+      <DependentUpon>frmContacto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmContacto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoDetails.Designer.vb">
+      <DependentUpon>frmContactoDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmContactoDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposAgencia.Designer.vb">
+      <DependentUpon>frmTiposAgencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposAgencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposAgenciaDetails.Designer.vb">
+      <DependentUpon>frmTiposAgenciaDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposAgenciaDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPosicionDetails.Designer.vb">
+      <DependentUpon>frmPosicionDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPosicionDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPosiciones.Designer.vb">
+      <DependentUpon>frmPosiciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPosiciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmProductoDetails.Designer.vb">
+      <DependentUpon>frmProductoDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmProductoDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmProducto.Designer.vb">
+      <DependentUpon>frmProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmDolly.Designer.vb">
+      <DependentUpon>frmDolly.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmDolly.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmDollyDetails.Designer.vb">
+      <DependentUpon>frmDollyDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmDollyDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposProducto.Designer.vb">
+      <DependentUpon>frmTiposProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposProductoDetails.Designer.vb">
+      <DependentUpon>frmTiposProductoDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposProductoDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposElementoDetails.Designer.vb">
+      <DependentUpon>frmTiposElementoDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposElementoDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposElemento.Designer.vb">
+      <DependentUpon>frmTiposElemento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmTiposElemento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmMaterialDetails.Designer.vb">
+      <DependentUpon>frmMaterialDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmMaterialDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmMateriales.Designer.vb">
+      <DependentUpon>frmMateriales.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmMateriales.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmElementoDetails.Designer.vb">
+      <DependentUpon>frmElementoDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmElementoDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmElemento.Designer.vb">
+      <DependentUpon>frmElemento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmElemento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPaisDetails.Designer.vb">
+      <DependentUpon>frmPaisDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPaisDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPais.Designer.vb">
+      <DependentUpon>frmPais.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPais.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmCiudadDetails.Designer.vb">
+      <DependentUpon>frmCiudadDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmCiudadDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmCiudad.Designer.vb">
+      <DependentUpon>frmCiudad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmCiudad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmMatrizSeguridadDetails.Designer.vb">
+      <DependentUpon>frmMatrizSeguridadDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmMatrizSeguridadDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmMatrizSeguridad.Designer.vb">
+      <DependentUpon>frmMatrizSeguridad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmMatrizSeguridad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmCamion.Designer.vb">
+      <DependentUpon>frmCamion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmCamion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmCamionDetails.Designer.vb">
+      <DependentUpon>frmCamionDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmCamionDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmAirplaneDetails.Designer.vb">
+      <DependentUpon>frmAirplaneDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmAirplaneDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmAirplane.Designer.vb">
+      <DependentUpon>frmAirplane.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmAirplane.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmAgenciaDetails.Designer.vb">
+      <DependentUpon>frmAgenciaDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmAgenciaDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmAgencia.Designer.vb">
+      <DependentUpon>frmAgencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmAgencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmAirporDetails.Designer.vb">
+      <DependentUpon>frmAirporDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmAirporDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmAirport.Designer.vb">
+      <DependentUpon>frmAirport.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmAirport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmSesionContactosByZonas.Designer.vb">
+      <DependentUpon>frmSesionContactosByZonas.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmSesionContactosByZonas.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Class\ApplicationEvents.vb" />
+    <Compile Include="Class\ClassPrefacturacion.vb" />
+    <Compile Include="Class\CommonData.vb" />
+    <Compile Include="Class\CommonDataFact.vb" />
+    <Compile Include="Class\Config.vb" />
+    <Compile Include="Class\Ecuapass.vb" />
+    <Compile Include="Class\eDoc.vb" />
+    <Compile Include="Class\General.vb" />
+    <Compile Include="Class\GlobalModuleManager.vb" />
+    <Compile Include="Class\Header.vb" />
+    <Compile Include="Class\MessagesManager.vb" />
+    <Compile Include="Class\modGeneral.vb" />
+    <Compile Include="Class\ModuloCierre.vb" />
+    <Compile Include="Class\sendExportCargaIIE.vb" />
+    <Compile Include="Class\TimeTotalSummary.vb" />
+    <Compile Include="Class\UserClient.vb" />
+    <Compile Include="Class\WebCamVisor.vb" />
+    <Compile Include="exporexpress\FormAsignarCubeta.Designer.vb">
+      <DependentUpon>FormAsignarCubeta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="exporexpress\FormAsignarCubeta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="exporexpress\frmCapturaPesoExpor.Designer.vb">
+      <DependentUpon>frmCapturaPesoExpor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="exporexpress\frmCapturaPesoExpor.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPruebaCorreo.Designer.vb">
+      <DependentUpon>FormPruebaCorreo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FormPruebaCorreo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCheckUserManager.Designer.vb">
+      <DependentUpon>frmCheckUserManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCheckUserManager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCheckManager.Designer.vb">
+      <DependentUpon>frmCheckManager.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCheckManager.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConfigurationBalanza.Designer.vb">
+      <DependentUpon>frmConfigurationBalanza.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmConfigurationBalanza.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConfigurationEmail.Designer.vb">
+      <DependentUpon>frmConfigurationEmail.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmConfigurationEmail.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConfigurationGeneral.Designer.vb">
+      <DependentUpon>frmConfigurationGeneral.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmConfigurationGeneral.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAlert.Designer.vb">
+      <DependentUpon>frmAlert.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmAlert.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmMessage.Designer.vb">
+      <DependentUpon>frmMessage.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmMessage.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Catalogs\frmPermisoEspecialDetalle.Designer.vb">
+      <DependentUpon>frmPermisoEspecialDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Catalogs\frmPermisoEspecialDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmPrincipal.Designer.vb">
+      <DependentUpon>frmPrincipal.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmPrincipal.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVisualizar.Designer.vb">
+      <DependentUpon>frmVisualizar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmVisualizar.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmZonasHorarios.Designer.vb">
+      <DependentUpon>frmZonasHorarios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmZonasHorarios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmDevolucionDeCarga.Designer.vb">
+      <DependentUpon>frmDevolucionDeCarga.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmDevolucionDeCarga.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmPesoElemento.Designer.vb">
+      <DependentUpon>frmPesoElemento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmPesoElemento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmEntradaElementos.Designer.vb">
+      <DependentUpon>frmEntradaElementos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmEntradaElementos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmPreseleccionElementos.Designer.vb">
+      <DependentUpon>frmPreseleccionElementos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmPreseleccionElementos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmRecepcionUld.Designer.vb">
+      <DependentUpon>frmRecepcionUld.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmRecepcionUld.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmMovimientoDeCarga.Designer.vb">
+      <DependentUpon>frmMovimientoDeCarga.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmMovimientoDeCarga.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmConsultaVuelos.Designer.vb">
+      <DependentUpon>frmConsultaVuelos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmConsultaVuelos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmSalidaPallets.Designer.vb">
+      <DependentUpon>frmSalidaPallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmSalidaPallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmEntradaPallets.Designer.vb">
+      <DependentUpon>frmEntradaPallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmEntradaPallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\HorariosAgenciasSeguridad.Designer.vb">
+      <DependentUpon>HorariosAgenciasSeguridad.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\HorariosAgenciasSeguridad.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaPreElemento.Designer.vb">
+      <DependentUpon>frmConsultaPreElemento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaPreElemento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmEjecucionReportVueloAuto.Designer.vb">
+      <DependentUpon>frmEjecucionReportVueloAuto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmEjecucionReportVueloAuto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmMovientoCargaCuartoFrio.Designer.vb">
+      <DependentUpon>frmMovientoCargaCuartoFrio.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmMovientoCargaCuartoFrio.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmPreAlertElementos.Designer.vb">
+      <DependentUpon>frmPreAlertElementos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmPreAlertElementos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmRegistroSellosCamiones.Designer.vb">
+      <DependentUpon>frmRegistroSellosCamiones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmRegistroSellosCamiones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmStackPalletsPeso.Designer.vb">
+      <DependentUpon>frmStackPalletsPeso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmStackPalletsPeso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmDetalleReporteVueloDollys.Designer.vb">
+      <DependentUpon>frmDetalleReporteVueloDollys.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmDetalleReporteVueloDollys.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmElegirPersonalProceso.Designer.vb">
+      <DependentUpon>frmElegirPersonalProceso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmElegirPersonalProceso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmStackPallets.Designer.vb">
+      <DependentUpon>frmStackPallets.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmStackPallets.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmReporteVuelos.Designer.vb">
+      <DependentUpon>frmReporteVuelos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmReporteVuelos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmAsignarGuiaDetalle.Designer.vb">
+      <DependentUpon>frmAsignarGuiaDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmAsignarGuiaDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmAsignarGuia.Designer.vb">
+      <DependentUpon>frmAsignarGuia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmAsignarGuia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmConsultaProducto.Designer.vb">
+      <DependentUpon>frmConsultaProducto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmConsultaProducto.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmBriefingVuelos.Designer.vb">
+      <DependentUpon>frmBriefingVuelos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmBriefingVuelos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movimientos\frmConsultaAvion.Designer.vb">
+      <DependentUpon>frmConsultaAvion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Movimientos\frmConsultaAvion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Class\CommonProcess.vb" />
+    <Compile Include="Procesos\frmDetalleAcarreo.Designer.vb">
+      <DependentUpon>frmDetalleAcarreo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmDetalleAcarreo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmRegistroMula.Designer.vb">
+      <DependentUpon>frmRegistroMula.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmRegistroMula.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaElementos.Designer.vb">
+      <DependentUpon>frmConsultaElementos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaElementos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaEmpleados.Designer.vb">
+      <DependentUpon>frmConsultaEmpleados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaEmpleados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmCapturaPeso.Designer.vb">
+      <DependentUpon>frmCapturaPeso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmCapturaPeso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaAgentes.Designer.vb">
+      <DependentUpon>frmConsultaAgentes.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaAgentes.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaVuelosBriefing.Designer.vb">
+      <DependentUpon>frmConsultaVuelosBriefing.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmConsultaVuelosBriefing.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmElegirMatriz.Designer.vb">
+      <DependentUpon>frmElegirMatriz.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmElegirMatriz.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmAcarreo.Designer.vb">
+      <DependentUpon>frmAcarreo.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmAcarreo.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Procesos\frmComparacionPeso.Designer.vb">
+      <DependentUpon>frmComparacionPeso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Procesos\frmComparacionPeso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\ClassDetallePersonDeco.vb" />
+    <Compile Include="Reportes\Decomisos\ClassParametrosDeco.vb" />
+    <Compile Include="Reportes\Decomisos\ClassPersonDeco.vb" />
+    <Compile Include="Reportes\Decomisos\DecomisoDetalle.vb" />
+    <Compile Include="Reportes\Decomisos\DecomisoEncabezado.vb" />
+    <Compile Include="Reportes\Decomisos\frmDecomisoDetalle.Designer.vb">
+      <DependentUpon>frmDecomisoDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\frmDecomisoDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\RptActEntregaRecep.Designer.vb">
+      <DependentUpon>RptActEntregaRecep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\RptActEntregaRecep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\RptDecomiso.Designer.vb">
+      <DependentUpon>RptDecomiso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\RptDecomiso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Detallados\frmReporteDetallados.Designer.vb">
+      <DependentUpon>frmReporteDetallados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Detallados\frmReporteDetallados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorAgencia\DetalladoAgenciaDet.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorAgencia\DetalladoAgenciaEnc.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorAgencia\RptDetalladoPorAgencia.Designer.vb">
+      <DependentUpon>RptDetalladoPorAgencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorAgencia\RptDetalladoPorAgencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorDestino\DetalladoDestinoDet.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorDestino\DetalladoDestinoEnc.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorDestino\RptDetalladoPorDestino.Designer.vb">
+      <DependentUpon>RptDetalladoPorDestino.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorDestino\RptDetalladoPorDestino.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorElemento\DetalladoElementoDet.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorElemento\DetalladoElementoEnc.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorElemento\RptDetalladoPorElemento.Designer.vb">
+      <DependentUpon>RptDetalladoPorElemento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorElemento\RptDetalladoPorElemento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorGuia\DetalladoGuiaDet.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorGuia\DetalladoGuiaEnc.vb" />
+    <Compile Include="Reportes\Detallados\DetalladoPorGuia\RptDetalladoPorGuia.Designer.vb">
+      <DependentUpon>RptDetalladoPorGuia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Detallados\DetalladoPorGuia\RptDetalladoPorGuia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\frmDecomiso.Designer.vb">
+      <DependentUpon>frmDecomiso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Decomisos\frmDecomiso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\CabeceraMarcaciones.vb" />
+    <Compile Include="Reportes\Marcaciones\DatosFichapersonal.vb" />
+    <Compile Include="Reportes\Marcaciones\DatosReporte.vb" />
+    <Compile Include="Reportes\Marcaciones\DetalleMarcaciones.vb" />
+    <Compile Include="Reportes\Marcaciones\rptMarcacionesEmpleados.Designer.vb">
+      <DependentUpon>rptMarcacionesEmpleados.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\rptMarcacionesEmpleados.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\rptMarcaciones.Designer.vb">
+      <DependentUpon>rptMarcaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\rptMarcaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\rptReporteFichaEmpleado.Designer.vb">
+      <DependentUpon>rptReporteFichaEmpleado.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\rptReporteFichaEmpleado.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\rptSesionesMarcaciones.Designer.vb">
+      <DependentUpon>rptSesionesMarcaciones.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Marcaciones\rptSesionesMarcaciones.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PreFacturacion\ClassReportPrefact\DetallePesoVolumenVuelo.vb" />
+    <Compile Include="Reportes\PreFacturacion\ClassReportPrefact\DetalleServicioContainer.vb" />
+    <Compile Include="Reportes\PreFacturacion\ClassReportPrefact\DetalleServicoFacturar.vb" />
+    <Compile Include="Reportes\PreFacturacion\ClassReportPrefact\DetalleServMontCarga.vb" />
+    <Compile Include="Reportes\PreFacturacion\ClassReportPrefact\DetalleVuelos.vb" />
+    <Compile Include="Reportes\PreFacturacion\ClassReportPrefact\ListDetallePesoVolumenVuelo.vb" />
+    <Compile Include="Reportes\PreFacturacion\ClassReportPrefact\ListDetalleServicoFacturar.vb" />
+    <Compile Include="Reportes\PreFacturacion\RptProCargVolum.Designer.vb">
+      <DependentUpon>RptProCargVolum.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\PreFacturacion\RptProCargVolum.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\PreFacturacion\RptTotalServicios.Designer.vb">
+      <DependentUpon>RptTotalServicios.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\PreFacturacion\RptTotalServicios.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Produccion\ClasPesoVuelo.vb" />
+    <Compile Include="Reportes\Produccion\DetalleClasPesoVuelo.vb" />
+    <Compile Include="Reportes\Produccion\FrmReporteProduccion.Designer.vb">
+      <DependentUpon>FrmReporteProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Produccion\FrmReporteProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Produccion\FrmReporteProduccionView.Designer.vb">
+      <DependentUpon>FrmReporteProduccionView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Produccion\FrmReporteProduccionView.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmHistoricoProcesoDetalle.Designer.vb">
+      <DependentUpon>frmHistoricoProcesoDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmHistoricoProcesoDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmHistoriaProceso.Designer.vb">
+      <DependentUpon>frmHistoriaProceso.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmHistoriaProceso.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\HistorailElementos\frmHistorialElementoDetalle.Designer.vb">
+      <DependentUpon>frmHistorialElementoDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\HistorailElementos\frmHistorialElementoDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\HistorailElementos\frmHistorialElemento.Designer.vb">
+      <DependentUpon>frmHistorialElemento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\HistorailElementos\frmHistorialElemento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\RecepcionUld\elementoUld.vb" />
+    <Compile Include="Reportes\RecepcionUld\EncabezadoUld.vb" />
+    <Compile Include="Reportes\RecepcionUld\RptUld.Designer.vb">
+      <DependentUpon>RptUld.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\RecepcionUld\RptUld.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmProduccion.Designer.vb">
+      <DependentUpon>frmProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmProduccionDetalle.Designer.vb">
+      <DependentUpon>frmProduccionDetalle.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Reporte Produccion\frmProduccionDetalle.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReporteAutomaticos\ReporteVueloAutomatico.vb" />
+    <Compile Include="Reportes\ReportFlights\ElementosCargados.vb" />
+    <Compile Include="Reportes\ReportFlights\ElementosCargadossDetalle.vb" />
+    <Compile Include="Reportes\ReportFlights\ProcesoCarga2.vb" />
+    <Compile Include="Reportes\ReportFlights\ProcesoCargaDetalle2.vb" />
+    <Compile Include="Reportes\ReportFlights\ProcesoCargaAlmacenajeDetalle.vb" />
+    <Compile Include="Reportes\ReportFlights\ProcesoCargaAlmacenaje.vb" />
+    <Compile Include="Reportes\ReportFlights\Novedades.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorGuia\ResumidoGuiaDet.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorGuia\ResumidoGuiaEnc.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorGuia\RptResumidoPorGuia.Designer.vb">
+      <DependentUpon>RptResumidoPorGuia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\ResumidoPorGuia\RptResumidoPorGuia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\ResumidoPorDestino\ResumidoDestinoDet.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorDestino\ResumidoDestinoEnc.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorDestino\RptResumidoPorDestino.Designer.vb">
+      <DependentUpon>RptResumidoPorDestino.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\ResumidoPorDestino\RptResumidoPorDestino.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\ResumidoPorElemento\ResumidoElementoDet.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorElemento\ResumidoElementoEnc.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorElemento\RptResumidoPorElemento.Designer.vb">
+      <DependentUpon>RptResumidoPorElemento.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\ResumidoPorElemento\RptResumidoPorElemento.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\frmReporteResumidos.Designer.vb">
+      <DependentUpon>frmReporteResumidos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\frmReporteResumidos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReportFlights\BriefingEncabezado.vb" />
+    <Compile Include="Reportes\ReportFlights\BriefingDetalle.vb" />
+    <Compile Include="Reportes\ReportFlights\CamionesEncabezado.vb" />
+    <Compile Include="Reportes\ReportFlights\CamionesDetalle.vb" />
+    <Compile Include="Reportes\ReportFlights\Acarreo.vb" />
+    <Compile Include="Reportes\ReportFlights\ElementosPreseleccionados.vb" />
+    <Compile Include="Reportes\ReportFlights\ElementosPreseleccionadosDetalle.vb" />
+    <Compile Include="Reportes\ReportFlights\DetalleAcarreo.vb" />
+    <Compile Include="Reportes\ReportFlights\ProcesoCargaDetalle.vb" />
+    <Compile Include="Reportes\ReportFlights\ProcesoCarga.vb" />
+    <Compile Include="Reportes\ReportFlights\PersonalProceso.vb" />
+    <Compile Include="Reportes\ReportFlights\PersonalProcesoDetalle.vb" />
+    <Compile Include="Reportes\ReportFlights\GuiaDetallePorCamion.vb" />
+    <Compile Include="Reportes\ReportFlights\RptReportFlights.Designer.vb">
+      <DependentUpon>RptReportFlights.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReportFlights\RptReportFlights.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\ResumidoPorAgencia\ResumidoAgenciaDet.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorAgencia\ResumidoAgenciaEnc.vb" />
+    <Compile Include="Reportes\Resumidos\ResumidoPorAgencia\RptResumidoPorAgencia.Designer.vb">
+      <DependentUpon>RptResumidoPorAgencia.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Resumidos\ResumidoPorAgencia\RptResumidoPorAgencia.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\dtfotos.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dtfotos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\dtfotos.vb">
+      <DependentUpon>dtfotos.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\RptFotosElementosMalaCondicion.Designer.vb">
+      <DependentUpon>RptFotosElementosMalaCondicion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\RptFotosElementosMalaCondicion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\detalleElemento.vb" />
+    <Compile Include="Reportes\StockElementos\encabezadoElemento.vb" />
+    <Compile Include="Reportes\StockElementos\frmStockElementos.Designer.vb">
+      <DependentUpon>frmStockElementos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\frmStockElementos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\RptStockElementos.Designer.vb">
+      <DependentUpon>RptStockElementos.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\StockElementos\RptStockElementos.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\Temperatura\ClassDetalleTemp.vb" />
+    <Compile Include="Reportes\Temperatura\ClassTemp.vb" />
+    <Compile Include="Reportes\Temperatura\RptTemperatura.Designer.vb">
+      <DependentUpon>RptTemperatura.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Temperatura\RptTemperatura.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\VisorProduccion\frmVisorProduccion.Designer.vb">
+      <DependentUpon>frmVisorProduccion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\VisorProduccion\frmVisorProduccion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\WareHouse\Detalle.vb" />
+    <Compile Include="Reportes\WareHouse\Encabezado.vb" />
+    <Compile Include="Reportes\WareHouse\RptWareHouse.Designer.vb">
+      <DependentUpon>RptWareHouse.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\WareHouse\RptWareHouse.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Service References\Server.ControlTemp\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.CourrierService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.FaceDetectionService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.Facturacion\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.MarkingService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.ProcesoService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.ReportService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.SyncService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.UserService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\Server.VuelosService\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ServiceReference1\Reference.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmClientes.resx">
+      <DependentUpon>FrmClientes.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmConsultaVuelosGuias.resx">
+      <DependentUpon>FrmConsultaVuelosGuias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmDetalleCliente.resx">
+      <DependentUpon>FrmDetalleCliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmDetallePeriodicidad.resx">
+      <DependentUpon>FrmDetallePeriodicidad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmDetallePlantillaClientServ.resx">
+      <DependentUpon>FrmDetallePlantillaClientServ.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmDetalleServicio.resx">
+      <DependentUpon>FrmDetalleServicio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmPeriodicidad.resx">
+      <DependentUpon>FrmPeriodicidad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmPrefacturacion.resx">
+      <DependentUpon>FrmPrefacturacion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmRegistroConsuServ.resx">
+      <DependentUpon>FrmRegistroConsuServ.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmServicios.resx">
+      <DependentUpon>FrmServicios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Facturacion\FrmPlantillaClientServ.resx">
+      <DependentUpon>FrmPlantillaClientServ.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmAsignarTurnosPersonal.resx">
+      <DependentUpon>frmAsignarTurnosPersonal.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmConsultarTurnosPersonal.resx">
+      <DependentUpon>frmConsultarTurnosPersonal.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmFactura.resx">
+      <DependentUpon>frmFactura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmFichaPersonalActividades.resx">
+      <DependentUpon>frmFichaPersonalActividades.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmMarcacionesDetalle.resx">
+      <DependentUpon>frmMarcacionesDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmTurnoDetalle.resx">
+      <DependentUpon>frmTurnoDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmTurnos.resx">
+      <DependentUpon>frmTurnos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Administrator\Generalair\frmMarcaciones.resx">
+      <DependentUpon>frmMarcaciones.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmCargo.resx">
+      <DependentUpon>frmCargo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmCargoDetails.resx">
+      <DependentUpon>frmCargoDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmCompanias.resx">
+      <DependentUpon>frmCompanias.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmConfiNotiTemp.resx">
+      <DependentUpon>frmConfiNotiTemp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmDestinatarioContacts.resx">
+      <DependentUpon>frmDestinatarioContacts.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmDestinatarioDetails.resx">
+      <DependentUpon>frmDestinatarioDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmbusqueda_elementos.resx">
+      <DependentUpon>frmbusqueda_elementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmDestinatarios.resx">
+      <DependentUpon>frmDestinatarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmMatConfiNotiTemp.resx">
+      <DependentUpon>frmMatConfiNotiTemp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPerfilDetalle.resx">
+      <DependentUpon>frmPerfilDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPerfiles.resx">
+      <DependentUpon>frmPerfiles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPermisoEspecialDetalle.resx">
+      <DependentUpon>frmPermisoEspecialDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPermisosEspeciales.resx">
+      <DependentUpon>frmPermisosEspeciales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTarifas.resx">
+      <DependentUpon>frmTarifas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTarifasDetails.resx">
+      <DependentUpon>frmTarifasDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTemperatura.resx">
+      <DependentUpon>frmTemperatura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmUsuarioDetails.resx">
+      <DependentUpon>frmUsuarioDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmUsuarios.resx">
+      <DependentUpon>frmUsuarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmVueloDetails.resx">
+      <DependentUpon>frmVueloDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmContactoCamion.resx">
+      <DependentUpon>frmContactoCamion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmArchivos.resx">
+      <DependentUpon>frmArchivos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmContactoAgencia.resx">
+      <DependentUpon>frmContactoAgencia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmContactoAgenciaDetails.resx">
+      <DependentUpon>frmContactoAgenciaDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmContacto.resx">
+      <DependentUpon>frmContacto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmContactoDetails.resx">
+      <DependentUpon>frmContactoDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTiposAgencia.resx">
+      <DependentUpon>frmTiposAgencia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTiposAgenciaDetails.resx">
+      <DependentUpon>frmTiposAgenciaDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPosicionDetails.resx">
+      <DependentUpon>frmPosicionDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPosiciones.resx">
+      <DependentUpon>frmPosiciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmProductoDetails.resx">
+      <DependentUpon>frmProductoDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmProducto.resx">
+      <DependentUpon>frmProducto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmDolly.resx">
+      <DependentUpon>frmDolly.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmDollyDetails.resx">
+      <DependentUpon>frmDollyDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTiposProducto.resx">
+      <DependentUpon>frmTiposProducto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTiposProductoDetails.resx">
+      <DependentUpon>frmTiposProductoDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTiposElementoDetails.resx">
+      <DependentUpon>frmTiposElementoDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmTiposElemento.resx">
+      <DependentUpon>frmTiposElemento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmMaterialDetails.resx">
+      <DependentUpon>frmMaterialDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmMateriales.resx">
+      <DependentUpon>frmMateriales.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmElementoDetails.resx">
+      <DependentUpon>frmElementoDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmElemento.resx">
+      <DependentUpon>frmElemento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPaisDetails.resx">
+      <DependentUpon>frmPaisDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmPais.resx">
+      <DependentUpon>frmPais.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmCiudadDetails.resx">
+      <DependentUpon>frmCiudadDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmCiudad.resx">
+      <DependentUpon>frmCiudad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmMatrizSeguridadDetails.resx">
+      <DependentUpon>frmMatrizSeguridadDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmMatrizSeguridad.resx">
+      <DependentUpon>frmMatrizSeguridad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmCamion.resx">
+      <DependentUpon>frmCamion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmCamionDetails.resx">
+      <DependentUpon>frmCamionDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmAirplaneDetails.resx">
+      <DependentUpon>frmAirplaneDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmAgencia.resx">
+      <DependentUpon>frmAgencia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmAgenciaDetails.resx">
+      <DependentUpon>frmAgenciaDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmAirplane.resx">
+      <DependentUpon>frmAirplane.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmAirporDetails.resx">
+      <DependentUpon>frmAirporDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmAirport.resx">
+      <DependentUpon>frmAirport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Catalogs\frmSesionContactosByZonas.resx">
+      <DependentUpon>frmSesionContactosByZonas.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="exporexpress\FormAsignarCubeta.resx">
+      <DependentUpon>FormAsignarCubeta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="exporexpress\frmCapturaPesoExpor.resx">
+      <DependentUpon>frmCapturaPesoExpor.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPruebaCorreo.resx">
+      <DependentUpon>FormPruebaCorreo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCheckUserManager.resx">
+      <DependentUpon>frmCheckUserManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCheckManager.resx">
+      <DependentUpon>frmCheckManager.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConfigurationBalanza.resx">
+      <DependentUpon>frmConfigurationBalanza.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConfigurationEmail.resx">
+      <DependentUpon>frmConfigurationEmail.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConfigurationGeneral.resx">
+      <DependentUpon>frmConfigurationGeneral.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmAlert.resx">
+      <DependentUpon>frmAlert.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmMessage.resx">
+      <DependentUpon>frmMessage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmVisualizar.resx">
+      <DependentUpon>frmVisualizar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmZonasHorarios.resx">
+      <DependentUpon>frmZonasHorarios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmDevolucionDeCarga.resx">
+      <DependentUpon>frmDevolucionDeCarga.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmPesoElemento.resx">
+      <DependentUpon>frmPesoElemento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmEntradaElementos.resx">
+      <DependentUpon>frmEntradaElementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmPreseleccionElementos.resx">
+      <DependentUpon>frmPreseleccionElementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmRecepcionUld.resx">
+      <DependentUpon>frmRecepcionUld.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmMovimientoDeCarga.resx">
+      <DependentUpon>frmMovimientoDeCarga.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmConsultaVuelos.resx">
+      <DependentUpon>frmConsultaVuelos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmSalidaPallets.resx">
+      <DependentUpon>frmSalidaPallets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmEntradaPallets.resx">
+      <DependentUpon>frmEntradaPallets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\HorariosAgenciasSeguridad.resx">
+      <DependentUpon>HorariosAgenciasSeguridad.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmConsultaPreElemento.resx">
+      <DependentUpon>frmConsultaPreElemento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmEjecucionReportVueloAuto.resx">
+      <DependentUpon>frmEjecucionReportVueloAuto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmMovientoCargaCuartoFrio.resx">
+      <DependentUpon>frmMovientoCargaCuartoFrio.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmRegistroSellosCamiones.resx">
+      <DependentUpon>frmRegistroSellosCamiones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Decomisos\RptActEntregaRecep.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Decomisos\RptActEntregaRecep.resx">
+      <DependentUpon>RptActEntregaRecep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Marcaciones\Marcaciones.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportFichaPersonalActividad.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportFichaPersonalActividadv2.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportMarcacionesEmpleadosV30.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportMarcacionesEmpleadosV20Individual.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportMarcacionesEmpleadosV20.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportMarcacionesEmpleados.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportSesionMarcacionesV20.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\rptMarcacionesEmpleados.resx">
+      <DependentUpon>rptMarcacionesEmpleados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Marcaciones\ReportSesionMarcaciones.rdlc" />
+    <EmbeddedResource Include="Reportes\Marcaciones\rptMarcaciones.resx">
+      <DependentUpon>rptMarcaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Marcaciones\rptReporteFichaEmpleado.resx">
+      <DependentUpon>rptReporteFichaEmpleado.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Marcaciones\rptSesionesMarcaciones.resx">
+      <DependentUpon>rptSesionesMarcaciones.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptServContainer.rdlc" />
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptAgenCarVuelo.rdlc" />
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptAlquilerMonCarga.rdlc" />
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptEstibaDesestiba.rdlc" />
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptProCargVolum.rdlc" />
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptProCargVolum.resx">
+      <DependentUpon>RptProCargVolum.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptTotalServicios.resx">
+      <DependentUpon>RptTotalServicios.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\PreFacturacion\RptTotalServiciosFact.rdlc" />
+    <EmbeddedResource Include="Reportes\Produccion\FrmReporteProduccion.resx">
+      <DependentUpon>FrmReporteProduccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Produccion\FrmReporteProduccionView.resx">
+      <DependentUpon>FrmReporteProduccionView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Produccion\RptProduccion.rdlc" />
+    <EmbeddedResource Include="Reportes\StockElementos\RptFotosElementosMalaCondicion.resx">
+      <DependentUpon>RptFotosElementosMalaCondicion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\StockElementos\rptFotosElementosMalaCondicion.rdlc" />
+    <EmbeddedResource Include="Procesos\frmPreAlertElementos.resx">
+      <DependentUpon>frmPreAlertElementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmStackPalletsPeso.resx">
+      <DependentUpon>frmStackPalletsPeso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmDetalleReporteVueloDollys.resx">
+      <DependentUpon>frmDetalleReporteVueloDollys.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmElegirPersonalProceso.resx">
+      <DependentUpon>frmElegirPersonalProceso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmStackPallets.resx">
+      <DependentUpon>frmStackPallets.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmReporteVuelos.resx">
+      <DependentUpon>frmReporteVuelos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmAsignarGuiaDetalle.resx">
+      <DependentUpon>frmAsignarGuiaDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmAsignarGuia.resx">
+      <DependentUpon>frmAsignarGuia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmConsultaProducto.resx">
+      <DependentUpon>frmConsultaProducto.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmBriefingVuelos.resx">
+      <DependentUpon>frmBriefingVuelos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movimientos\frmConsultaAvion.resx">
+      <DependentUpon>frmConsultaAvion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\licenses.licx" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmDetalleAcarreo.resx">
+      <DependentUpon>frmDetalleAcarreo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmRegistroMula.resx">
+      <DependentUpon>frmRegistroMula.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmConsultaElementos.resx">
+      <DependentUpon>frmConsultaElementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmConsultaEmpleados.resx">
+      <DependentUpon>frmConsultaEmpleados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmCapturaPeso.resx">
+      <DependentUpon>frmCapturaPeso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmConsultaAgentes.resx">
+      <DependentUpon>frmConsultaAgentes.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmConsultaVuelosBriefing.resx">
+      <DependentUpon>frmConsultaVuelosBriefing.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmElegirMatriz.resx">
+      <DependentUpon>frmElegirMatriz.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmAcarreo.resx">
+      <DependentUpon>frmAcarreo.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Procesos\frmComparacionPeso.resx">
+      <DependentUpon>frmComparacionPeso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Decomisos\frmDecomisoDetalle.resx">
+      <DependentUpon>frmDecomisoDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Decomisos\RptDecomiso.resx">
+      <DependentUpon>RptDecomiso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Decomisos\Decomiso.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Detallados\frmReporteDetallados.resx">
+      <DependentUpon>frmReporteDetallados.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorAgencia\DetalladoPorAgencia.rdlc" />
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorAgencia\RptDetalladoPorAgencia.resx">
+      <DependentUpon>RptDetalladoPorAgencia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorDestino\DetalladoPorDestino.rdlc" />
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorDestino\RptDetalladoPorDestino.resx">
+      <DependentUpon>RptDetalladoPorDestino.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorElemento\DetalladoPorElemento.rdlc" />
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorElemento\RptDetalladoPorElemento.resx">
+      <DependentUpon>RptDetalladoPorElemento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorGuia\DetalladoPorGuia.rdlc" />
+    <EmbeddedResource Include="Reportes\Detallados\DetalladoPorGuia\RptDetalladoPorGuia.resx">
+      <DependentUpon>RptDetalladoPorGuia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Decomisos\frmDecomiso.resx">
+      <DependentUpon>frmDecomiso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Reporte Produccion\frmHistoricoProcesoDetalle.resx">
+      <DependentUpon>frmHistoricoProcesoDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Reporte Produccion\frmHistoriaProceso.resx">
+      <DependentUpon>frmHistoriaProceso.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\HistorailElementos\frmHistorialElementoDetalle.resx">
+      <DependentUpon>frmHistorialElementoDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\HistorailElementos\frmHistorialElemento.resx">
+      <DependentUpon>frmHistorialElemento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\RecepcionUld\rptULD.rdlc" />
+    <EmbeddedResource Include="Reportes\RecepcionUld\RptUld.resx">
+      <DependentUpon>RptUld.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Reporte Produccion\frmProduccion.resx">
+      <DependentUpon>frmProduccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Reporte Produccion\frmProduccionDetalle.resx">
+      <DependentUpon>frmProduccionDetalle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorGuia\ResumidoPorGuia.rdlc" />
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorGuia\RptResumidoPorGuia.resx">
+      <DependentUpon>RptResumidoPorGuia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorDestino\ResumidoPorDestino.rdlc" />
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorDestino\RptResumidoPorDestino.resx">
+      <DependentUpon>RptResumidoPorDestino.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorElemento\ResumidoPorElemento.rdlc" />
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorElemento\RptResumidoPorElemento.resx">
+      <DependentUpon>RptResumidoPorElemento.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Resumidos\frmReporteResumidos.resx">
+      <DependentUpon>frmReporteResumidos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportFlights\ReportFlights.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReportFlights\RptReportFlights.resx">
+      <DependentUpon>RptReportFlights.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorAgencia\ResumidoPorAgencia.rdlc" />
+    <EmbeddedResource Include="Reportes\Resumidos\ResumidoPorAgencia\RptResumidoPorAgencia.resx">
+      <DependentUpon>RptResumidoPorAgencia.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\StockElementos\StockElementos.rdlc" />
+    <EmbeddedResource Include="Reportes\StockElementos\frmStockElementos.resx">
+      <DependentUpon>frmStockElementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\StockElementos\RptStockElementos.resx">
+      <DependentUpon>RptStockElementos.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Temperatura\RptTemperatura.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Temperatura\RptTemperatura.resx">
+      <DependentUpon>RptTemperatura.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\VisorProduccion\frmVisorProduccion.resx">
+      <DependentUpon>frmVisorProduccion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\WareHouse\RptWareHouse.resx">
+      <DependentUpon>RptWareHouse.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\WareHouse\WareHouse.rdlc">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial110.dll" />
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial110.dll" />
+    <None Include="My Project\DataSources\System.Data.DataTable.datasource" />
+    <None Include="packages.config" />
+    <None Include="Resources\aduana.cer" />
+    <None Include="Service References\Server.FaceDetectionService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\configuration.svcinfo" />
+    <None Include="Service References\Server.FaceDetectionService\configuration91.svcinfo" />
+    <None Include="Service References\Server.FaceDetectionService\FaceDetectionMain.disco" />
+    <None Include="Service References\Server.CourrierService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.CourrierService\configuration.svcinfo" />
+    <None Include="Service References\Server.CourrierService\configuration91.svcinfo" />
+    <None Include="Service References\Server.CourrierService\CourrierService.disco" />
+    <None Include="My Project\DataSources\ClasPesoVuelo.datasource" />
+    <None Include="My Project\DataSources\DatosFichapersonal.datasource" />
+    <None Include="My Project\DataSources\DetalleClasPesoVuelo.datasource" />
+    <None Include="My Project\DataSources\FichaMarcaciones.datasource" />
+    <None Include="My Project\DataSources\FichaMarcacionesAtarasos.datasource" />
+    <None Include="My Project\DataSources\FichaProcesoCarga.datasource" />
+    <None Include="My Project\DataSources\SPC.Server.ReportService.ContactoCatalogItem.datasource" />
+    <None Include="Service References\Server.CourrierService\CourrierService.wsdl" />
+    <None Include="Service References\Server.CourrierService\SPC.Server.CourrierService.GavetaGuiaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\FaceDetectionMain.wsdl" />
+    <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.DetectaRostroResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.EPDetectionFaceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.EPDetectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.EPGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.EPParameterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.EPPerson.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.EPPersonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.MarkingService\SPC.Server.MarkingService.ContactoZonasSessionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.MarkingService\SPC.Server.MarkingService.HistoricoSesionContactosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.MarkingService\SPC.Server.MarkingService.HorarioAgenciaSeguridadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.MarkingService\SPC.Server.MarkingService.MarkingGeneralResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.MarkingService\SPC.Server.MarkingService.MarkingResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.MarkingService\SPC.Server.MarkingService.PermisoContactoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.MarkingService\SPC.Server.MarkingService.SesionContactosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.ControlEjecucionHiloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.DetalleSelloCamionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.ReportVuelosEnviadosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.ReportService\configuration.svcinfo" />
+    <None Include="Service References\Server.ReportService\configuration91.svcinfo" />
+    <None Include="Service References\Server.ReportService\ReportService.disco" />
+    <None Include="My Project\DataSources\Acarreo.datasource" />
+    <None Include="My Project\DataSources\BriefingDetalle.datasource" />
+    <None Include="My Project\DataSources\BriefingEncabezado.datasource" />
+    <None Include="My Project\DataSources\CabeceraMarcaciones.datasource" />
+    <None Include="My Project\DataSources\CamionesDetalle.datasource" />
+    <None Include="My Project\DataSources\CamionesEncabezado.datasource" />
+    <None Include="My Project\DataSources\ClassDetallePersonDeco.datasource" />
+    <None Include="My Project\DataSources\ClassDetalleTemp.datasource" />
+    <None Include="My Project\DataSources\ClassParametrosDeco.datasource" />
+    <None Include="My Project\DataSources\ClassPersonDeco.datasource" />
+    <None Include="My Project\DataSources\ClassPrefacturacion.datasource" />
+    <None Include="My Project\DataSources\ClassTemp.datasource" />
+    <None Include="My Project\DataSources\CommonData.datasource" />
+    <None Include="My Project\DataSources\CommonDataFact.datasource" />
+    <None Include="My Project\DataSources\CommonProcess.datasource" />
+    <None Include="My Project\DataSources\Config.datasource" />
+    <None Include="My Project\DataSources\DatosReporte.datasource" />
+    <None Include="My Project\DataSources\DecomisoDetalle.datasource" />
+    <None Include="My Project\DataSources\DecomisoEncabezado.datasource" />
+    <None Include="My Project\DataSources\DetalladoAgenciaDet.datasource" />
+    <None Include="My Project\DataSources\DetalladoAgenciaEnc.datasource" />
+    <None Include="My Project\DataSources\DetalladoDestinoDet.datasource" />
+    <None Include="My Project\DataSources\DetalladoDestinoEnc.datasource" />
+    <None Include="My Project\DataSources\DetalladoElementoDet.datasource" />
+    <None Include="My Project\DataSources\DetalladoElementoEnc.datasource" />
+    <None Include="My Project\DataSources\DetalladoGuiaDet.datasource" />
+    <None Include="My Project\DataSources\DetalladoGuiaEnc.datasource" />
+    <None Include="My Project\DataSources\Detalle.datasource" />
+    <None Include="My Project\DataSources\DetalleAcarreo.datasource" />
+    <None Include="My Project\DataSources\detalleElemento.datasource" />
+    <None Include="My Project\DataSources\DetalleMarcaciones.datasource" />
+    <None Include="My Project\DataSources\DetallePesoVolumenVuelo.datasource" />
+    <None Include="My Project\DataSources\DetalleServicioContainer.datasource" />
+    <None Include="My Project\DataSources\DetalleServicoFacturar.datasource" />
+    <None Include="My Project\DataSources\DetalleServMontCarga.datasource" />
+    <None Include="My Project\DataSources\DetalleVuelos.datasource" />
+    <None Include="My Project\DataSources\dtfotos.datasource" />
+    <None Include="My Project\DataSources\dtfotos.dtFotoDataTable.datasource" />
+    <None Include="My Project\DataSources\dtfotos.dtFotoRow.datasource" />
+    <None Include="My Project\DataSources\dtfotos.dtFotoRowChangeEvent.datasource" />
+    <None Include="My Project\DataSources\dtfotos.dtFotoRowChangeEventHandler.datasource" />
+    <None Include="My Project\DataSources\Ecuapass.datasource" />
+    <None Include="My Project\DataSources\ElementosCargados.datasource" />
+    <None Include="My Project\DataSources\ElementosCargadosDetalle.datasource" />
+    <None Include="My Project\DataSources\ElementosPreseleccionados.datasource" />
+    <None Include="My Project\DataSources\ElementosPreseleccionadosDetalle.datasource" />
+    <None Include="My Project\DataSources\elementoUld.datasource" />
+    <None Include="My Project\DataSources\Encabezado.datasource" />
+    <None Include="My Project\DataSources\encabezadoElemento.datasource" />
+    <None Include="My Project\DataSources\EncabezadoUld.datasource" />
+    <None Include="My Project\DataSources\ErrorManager.datasource" />
+    <None Include="My Project\DataSources\espcDataSet.datasource" />
+    <None Include="My Project\DataSources\FormPruebaCorreo.datasource" />
+    <None Include="My Project\DataSources\frmAcarreo.datasource" />
+    <None Include="My Project\DataSources\frmAcarreo.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\frmAgencia.datasource" />
+    <None Include="My Project\DataSources\frmAgenciaDetails.datasource" />
+    <None Include="My Project\DataSources\frmAirplane.datasource" />
+    <None Include="My Project\DataSources\frmAirplaneDetails.datasource" />
+    <None Include="My Project\DataSources\frmAirporDetails.datasource" />
+    <None Include="My Project\DataSources\frmAirports.datasource" />
+    <None Include="My Project\DataSources\frmArchivo.datasource" />
+    <None Include="My Project\DataSources\frmAsignarGuia.datasource" />
+    <None Include="My Project\DataSources\frmAsignarGuiaDetalle.datasource" />
+    <None Include="My Project\DataSources\frmAsignarTurnosPersonal.datasource" />
+    <None Include="My Project\DataSources\frmBriefingVuelos.datasource" />
+    <None Include="My Project\DataSources\frmbusqueda_elementos.datasource" />
+    <None Include="My Project\DataSources\frmCamion.datasource" />
+    <None Include="My Project\DataSources\frmCamionDetails.datasource" />
+    <None Include="My Project\DataSources\frmCapturaPeso.datasource" />
+    <None Include="My Project\DataSources\frmCapturaPeso.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\frmCargo.datasource" />
+    <None Include="My Project\DataSources\frmCargoDetails.datasource" />
+    <None Include="My Project\DataSources\frmCheckManager.datasource" />
+    <None Include="My Project\DataSources\frmCheckUserManager.datasource" />
+    <None Include="My Project\DataSources\frmCiudad.datasource" />
+    <None Include="My Project\DataSources\frmCiudadDetails.datasource" />
+    <None Include="My Project\DataSources\FrmClientes.datasource" />
+    <None Include="My Project\DataSources\frmCompanias.datasource" />
+    <None Include="My Project\DataSources\frmComparacionPeso.datasource" />
+    <None Include="My Project\DataSources\frmComparacionPeso.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\frmConfigurationBalanza.datasource" />
+    <None Include="My Project\DataSources\frmConfigurationEmail.datasource" />
+    <None Include="My Project\DataSources\frmConfigurationGeneral.datasource" />
+    <None Include="My Project\DataSources\frmConfiNotiTemp.datasource" />
+    <None Include="My Project\DataSources\frmConsultaAgencia.datasource" />
+    <None Include="My Project\DataSources\frmConsultaAgentes.datasource" />
+    <None Include="My Project\DataSources\frmConsultaElementos.datasource" />
+    <None Include="My Project\DataSources\frmConsultaEmpleados.datasource" />
+    <None Include="My Project\DataSources\frmConsultaPreElemento.datasource" />
+    <None Include="My Project\DataSources\frmConsultaProducto.datasource" />
+    <None Include="My Project\DataSources\frmConsultarTurnosPersonal.datasource" />
+    <None Include="My Project\DataSources\frmConsultaVuelos.datasource" />
+    <None Include="My Project\DataSources\frmConsultaVuelosBriefing.datasource" />
+    <None Include="My Project\DataSources\FrmConsultaVuelosGuias.datasource" />
+    <None Include="My Project\DataSources\frmContacto.datasource" />
+    <None Include="My Project\DataSources\frmContactoAgencia.datasource" />
+    <None Include="My Project\DataSources\frmContactoAgenciaDetails.datasource" />
+    <None Include="My Project\DataSources\frmContactoCamion.datasource" />
+    <None Include="My Project\DataSources\frmContactoDetails.datasource" />
+    <None Include="My Project\DataSources\frmDecomiso.datasource" />
+    <None Include="My Project\DataSources\frmDecomisoDetalle.datasource" />
+    <None Include="My Project\DataSources\frmDestinatarioContacts.datasource" />
+    <None Include="My Project\DataSources\frmDestinatarioDetails.datasource" />
+    <None Include="My Project\DataSources\frmDestinatarios.datasource" />
+    <None Include="My Project\DataSources\frmDetalleAcarreo.datasource" />
+    <None Include="My Project\DataSources\FrmDetalleCliente.datasource" />
+    <None Include="My Project\DataSources\FrmDetallePeriodicidad.datasource" />
+    <None Include="My Project\DataSources\FrmDetallePlantillaClientServ.datasource" />
+    <None Include="My Project\DataSources\frmDetalleReporteVueloDollys.datasource" />
+    <None Include="My Project\DataSources\FrmDetalleServicio.datasource" />
+    <None Include="My Project\DataSources\frmDevolucionDeCarga.datasource" />
+    <None Include="My Project\DataSources\frmDolly.datasource" />
+    <None Include="My Project\DataSources\frmDollyDetails.datasource" />
+    <None Include="My Project\DataSources\frmElegirMatriz.datasource" />
+    <None Include="My Project\DataSources\frmElegirPersonalProceso.datasource" />
+    <None Include="My Project\DataSources\frmElemento.datasource" />
+    <None Include="My Project\DataSources\frmElementoDetails.datasource" />
+    <None Include="My Project\DataSources\frmEntradaElementos.datasource" />
+    <None Include="My Project\DataSources\frmEntradaPallets.datasource" />
+    <None Include="My Project\DataSources\frmEntradaPallets.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\frmFactura.datasource" />
+    <None Include="My Project\DataSources\frmHistorialElemento.datasource" />
+    <None Include="My Project\DataSources\frmHistorialElementoDetalle.datasource" />
+    <None Include="My Project\DataSources\frmHistorialProceso.datasource" />
+    <None Include="My Project\DataSources\frmHistoricoProcesoDetalle.datasource" />
+    <None Include="My Project\DataSources\frmLogin.datasource" />
+    <None Include="My Project\DataSources\frmMainSpc.datasource" />
+    <None Include="My Project\DataSources\frmMarcaciones.datasource" />
+    <None Include="My Project\DataSources\frmMarcacionesDetalle.datasource" />
+    <None Include="My Project\DataSources\frmMatConfiNotiTemp.datasource" />
+    <None Include="My Project\DataSources\frmMaterialDetails.datasource" />
+    <None Include="My Project\DataSources\frmMateriales.datasource" />
+    <None Include="My Project\DataSources\frmMatrizSeguridad.datasource" />
+    <None Include="My Project\DataSources\frmMatrizSeguridadDetails.datasource" />
+    <None Include="My Project\DataSources\frmMessage.datasource" />
+    <None Include="My Project\DataSources\frmMovientoCargaCuartoFrio.datasource" />
+    <None Include="My Project\DataSources\frmMovimientoDeCarga.datasource" />
+    <None Include="My Project\DataSources\frmPais.datasource" />
+    <None Include="My Project\DataSources\frmPaisDetails.datasource" />
+    <None Include="My Project\DataSources\frmPerfilDetalle.datasource" />
+    <None Include="My Project\DataSources\frmPerfiles.datasource" />
+    <None Include="My Project\DataSources\FrmPeriodicidad.datasource" />
+    <None Include="My Project\DataSources\frmPermisoEspecialDetalle.datasource" />
+    <None Include="My Project\DataSources\frmPermisosEspeciales.datasource" />
+    <None Include="My Project\DataSources\frmPesoElemento.datasource" />
+    <None Include="My Project\DataSources\frmPesoElemento.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\FrmPlantillaClientServ.datasource" />
+    <None Include="My Project\DataSources\frmPosicionDetails.datasource" />
+    <None Include="My Project\DataSources\frmPosiciones.datasource" />
+    <None Include="My Project\DataSources\frmPreAlertElementos.datasource" />
+    <None Include="My Project\DataSources\FrmPrefacturacion.datasource" />
+    <None Include="My Project\DataSources\frmPreseleccionElementos.datasource" />
+    <None Include="My Project\DataSources\frmProduccion.datasource" />
+    <None Include="My Project\DataSources\frmProduccionDetalle.datasource" />
+    <None Include="My Project\DataSources\frmProducto.datasource" />
+    <None Include="My Project\DataSources\frmProductoDetails.datasource" />
+    <None Include="My Project\DataSources\frmRecepcionUld.datasource" />
+    <None Include="My Project\DataSources\frmRecepcionUld.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\FrmRegistroConsuServ.datasource" />
+    <None Include="My Project\DataSources\frmRegistroMula.datasource" />
+    <None Include="My Project\DataSources\frmReporteDetallados.datasource" />
+    <None Include="My Project\DataSources\frmReporteResumidos.datasource" />
+    <None Include="My Project\DataSources\frmReporteVuelos.datasource" />
+    <None Include="My Project\DataSources\frmReporteVuelos.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\frmSalidaPallets.datasource" />
+    <None Include="My Project\DataSources\FrmServicios.datasource" />
+    <None Include="My Project\DataSources\frmSesionContactosByZonas.datasource" />
+    <None Include="My Project\DataSources\frmStackPallets.datasource" />
+    <None Include="My Project\DataSources\frmStackPallets.SetTextCallback.datasource" />
+    <None Include="My Project\DataSources\frmStackPalletsPeso.datasource" />
+    <None Include="My Project\DataSources\frmStockElementos.datasource" />
+    <None Include="My Project\DataSources\frmTarifas.datasource" />
+    <None Include="My Project\DataSources\frmTarifasDetails.datasource" />
+    <None Include="My Project\DataSources\frmTemperatura.datasource" />
+    <None Include="My Project\DataSources\frmTiposAgencia.datasource" />
+    <None Include="My Project\DataSources\frmTiposAgenciaDetails.datasource" />
+    <None Include="My Project\DataSources\frmTiposElemento.datasource" />
+    <None Include="My Project\DataSources\frmTiposElementoDetails.datasource" />
+    <None Include="My Project\DataSources\frmTiposProducto.datasource" />
+    <None Include="My Project\DataSources\frmTiposProductoDetails.datasource" />
+    <None Include="My Project\DataSources\frmTurnoDetalle.datasource" />
+    <None Include="My Project\DataSources\frmTurnos.datasource" />
+    <None Include="My Project\DataSources\frmUsuarioDetails.datasource" />
+    <None Include="My Project\DataSources\frmUsuarios.datasource" />
+    <None Include="My Project\DataSources\frmVisorProduccion.datasource" />
+    <None Include="My Project\DataSources\frmVisualizar.datasource" />
+    <None Include="My Project\DataSources\frmVueloDetails.datasource" />
+    <None Include="My Project\DataSources\frmZonasHorarios.datasource" />
+    <None Include="My Project\DataSources\General.datasource" />
+    <None Include="My Project\DataSources\GuiaDetallePorCamion.datasource" />
+    <None Include="My Project\DataSources\Header.datasource" />
+    <None Include="My Project\DataSources\HorariosAgenciasSeguridad.datasource" />
+    <None Include="My Project\DataSources\ListDetallePesoVolumenVuelo.datasource" />
+    <None Include="My Project\DataSources\ListDetalleServicoFacturar.datasource" />
+    <None Include="My Project\DataSources\MessagesManager.datasource" />
+    <None Include="My Project\DataSources\MessagesManager.eDocType.datasource" />
+    <None Include="My Project\DataSources\Novedades.datasource" />
+    <None Include="My Project\DataSources\PersonalProceso.datasource" />
+    <None Include="My Project\DataSources\PersonalProcesoDetalle.datasource" />
+    <None Include="My Project\DataSources\ProcesoCarga.datasource" />
+    <None Include="My Project\DataSources\ProcesoCarga2.datasource" />
+    <None Include="My Project\DataSources\ProcesoCargaAlmacenaje.datasource" />
+    <None Include="My Project\DataSources\ProcesoCargaAlmacenajeDetalle.datasource" />
+    <None Include="My Project\DataSources\ProcesoCargaDetalle.datasource" />
+    <None Include="My Project\DataSources\ProcesoCargaDetalle2.datasource" />
+    <None Include="My Project\DataSources\ResumidoAgenciaDet.datasource" />
+    <None Include="My Project\DataSources\ResumidoAgenciaEnc.datasource" />
+    <None Include="My Project\DataSources\ResumidoDestinoDet.datasource" />
+    <None Include="My Project\DataSources\ResumidoDestinoEnc.datasource" />
+    <None Include="My Project\DataSources\ResumidoElementoDet.datasource" />
+    <None Include="My Project\DataSources\ResumidoElementoEnc.datasource" />
+    <None Include="My Project\DataSources\ResumidoGuiaDet.datasource" />
+    <None Include="My Project\DataSources\ResumidoGuiaEnc.datasource" />
+    <None Include="My Project\DataSources\RptActEntregaRecep.datasource" />
+    <None Include="My Project\DataSources\RptDecomiso.datasource" />
+    <None Include="My Project\DataSources\RptDetalladoPorAgencia.datasource" />
+    <None Include="My Project\DataSources\RptDetalladoPorDestino.datasource" />
+    <None Include="My Project\DataSources\RptDetalladoPorElemento.datasource" />
+    <None Include="My Project\DataSources\RptDetalladoPorGuia.datasource" />
+    <None Include="My Project\DataSources\RptElementoStock.datasource" />
+    <None Include="My Project\DataSources\RptFotosElementosMalaCondicion.datasource" />
+    <None Include="My Project\DataSources\rptMarcaciones.datasource" />
+    <None Include="My Project\DataSources\rptMarcacionesEmpleados.datasource" />
+    <None Include="My Project\DataSources\RptProCargVolum.datasource" />
+    <None Include="My Project\DataSources\RptReportFlights.datasource" />
+    <None Include="My Project\DataSources\RptResumidoPorAgencia.datasource" />
+    <None Include="My Project\DataSources\RptResumidoPorDestino.datasource" />
+    <None Include="My Project\DataSources\RptResumidoPorElemento.datasource" />
+    <None Include="My Project\DataSources\RptResumidoPorGuia.datasource" />
+    <None Include="My Project\DataSources\rptSesionesMarcaciones.datasource" />
+    <None Include="My Project\DataSources\RptTemperatura.datasource" />
+    <None Include="My Project\DataSources\RptTotalServicios.datasource" />
+    <None Include="My Project\DataSources\RptUld.datasource" />
+    <None Include="My Project\DataSources\RptWareHouse.datasource" />
+    <None Include="My Project\DataSources\SecurityManager.datasource" />
+    <None Include="My Project\DataSources\sendExportCargaIIE.datasource" />
+    <None Include="My Project\DataSources\TimeTotalSummary.datasource" />
+    <None Include="My Project\DataSources\UserClient.datasource" />
+    <None Include="Service References\Server.ControlTemp\SPC.Server.ControlTemp.NotificacionTempResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ControlTemp\SPC.Server.ControlTemp.TempBitacoraCuartoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ControlTemp\SPC.Server.ControlTemp.TempResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.ClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.PeriodicidadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.PlantillaClienServResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.ServConsuClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.ServiciosGAResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.TipoProcesoAlmacenajeCargaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.VuelosCanceladosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.AcarreoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.ActividadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.DetalleProcesoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.NovedadesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.PersonalProcesoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.ProcesoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.ProduccionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.ReportGroupResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ProcesoService\SPC.Server.ProcesoService.ReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\ReportService.wsdl" />
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.AgenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.AirplaneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.AirportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ArchivoAgenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.CamionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.CiudadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ContactoAgenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ContactoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.DestinatarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.DollyResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ElementoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.MaterialesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.MatrizSeguridadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.PaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.PosicionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ReportesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ReportResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.TipoAgenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.TipoProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.TiposElementoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.uldHistoricoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.UserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.SyncService\SPC.Server.SyncService.SyncResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.AprobarAutorizacionOnlineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.AutorizacionesOnlineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.CheckUserCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.GetAutorizacionesOnlineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.GetUserByCodeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.LogInResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.LogOutResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.SaveAutorizacionesOnlineResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.SaveBitacoraPermisoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.SaveUserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.UserService\SPC.Server.UserService.UserResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.VuelosService\SPC.Server.VuelosService.DetalleRutaVueloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.VuelosService\SPC.Server.VuelosService.DetalleVueloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.VuelosService\SPC.Server.VuelosService.GuiaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.VuelosService\SPC.Server.VuelosService.VueloResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\ControlTemp.disco" />
+    <None Include="Service References\Server.ControlTemp\ControlTemp.disco" />
+    <None Include="Service References\Server.ControlTemp\ControlTemp.wsdl" />
+    <None Include="Service References\Server.Facturacion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.Facturacion\configuration.svcinfo" />
+    <None Include="Service References\Server.Facturacion\configuration91.svcinfo" />
+    <None Include="Service References\Server.Facturacion\Facturacion.disco" />
+    <None Include="Service References\Server.ControlTemp\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.ControlTemp\configuration.svcinfo" />
+    <None Include="Service References\Server.ControlTemp\configuration91.svcinfo" />
+    <None Include="Service References\Server.Facturacion\Facturacion.wsdl">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Server.MarkingService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.MarkingService\configuration.svcinfo" />
+    <None Include="Service References\Server.MarkingService\configuration91.svcinfo" />
+    <None Include="Service References\Server.MarkingService\MarkingService.disco" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="Service References\Server.MarkingService\MarkingService.wsdl" />
+    <None Include="Service References\Server.UserService\UserService1.disco" />
+    <None Include="Service References\Server.ProcesoService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.ProcesoService\configuration.svcinfo" />
+    <None Include="Service References\Server.ProcesoService\configuration91.svcinfo" />
+    <None Include="Service References\Server.ProcesoService\ProcesoService.disco" />
+    <None Include="My Project\app.manifest" />
+    <None Include="Reportes\StockElementos\dtfotos.xsc">
+      <DependentUpon>dtfotos.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\StockElementos\dtfotos.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dtfotos.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Reportes\StockElementos\dtfotos.xss">
+      <DependentUpon>dtfotos.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\Actions-im-ban-user-icon.png" />
+    <Content Include="GA.ico" />
+    <Content Include="ga2.ico" />
+    <Content Include="logo general airsa azul-01.ico" />
+    <Content Include="Resources\Actions-view-calendar-day-icon.png" />
+    <Content Include="Resources\add16x16.png" />
+    <None Include="Service References\Server.ProcesoService\ProcesoService.wsdl" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\Server.SyncService\SyncService1.wsdl" />
+    <None Include="Service References\Server.UserService\UserService1.wsdl" />
+    <None Include="Service References\Server.VuelosService\VuelosService12.wsdl" />
+    <None Include="Service References\ServiceReference1\ControlTemp.wsdl" />
+    <None Include="Service References\ServiceReference1\SPC.ServiceReference1.NotificacionTempResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SPC.ServiceReference1.TempBitacoraCuartoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ServiceReference1\SPC.ServiceReference1.TempResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Server.ControlTemp\" />
+    <WCFMetadataStorage Include="Service References\Server.CourrierService\" />
+    <WCFMetadataStorage Include="Service References\Server.FaceDetectionService\" />
+    <WCFMetadataStorage Include="Service References\Server.Facturacion\" />
+    <WCFMetadataStorage Include="Service References\Server.MarkingService\" />
+    <WCFMetadataStorage Include="Service References\Server.ProcesoService\" />
+    <WCFMetadataStorage Include="Service References\Server.ReportService\" />
+    <WCFMetadataStorage Include="Service References\Server.SyncService\" />
+    <WCFMetadataStorage Include="Service References\Server.UserService\" />
+    <WCFMetadataStorage Include="Service References\Server.VuelosService\" />
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Server.SyncService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Server.SyncService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Server.SyncService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Server.VuelosService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.VuelosService\configuration.svcinfo" />
+    <None Include="Service References\Server.VuelosService\configuration91.svcinfo" />
+    <None Include="Service References\Server.UserService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.vb</LastGenOutput>
+    </None>
+    <None Include="Service References\Server.UserService\configuration.svcinfo" />
+    <None Include="Service References\Server.UserService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\" />
+    <Folder Include="Infragistics\Win\" />
+    <Folder Include="Reportes\Resumidos\ResumidoPorManipuleo\" />
+    <Folder Include="Tables\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\1361007137_Add-Male-User.png" />
+    <Content Include="Resources\bullet_excel.png" />
+    <Content Include="Resources\Calendar-icon.png" />
+    <Content Include="Resources\Calendar.png" />
+    <Content Include="Resources\Calendar1.png" />
+    <Content Include="Resources\cancel.png" />
+    <Content Include="Resources\categories.png" />
+    <Content Include="Resources\chart_bullseye.png" />
+    <Content Include="Resources\Clock-icon.png" />
+    <Content Include="Resources\clock.png" />
+    <Content Include="Resources\clock_48.png" />
+    <Content Include="Resources\Control_Panel.png" />
+    <Content Include="Resources\correoPNG.png" />
+    <Content Include="Resources\direction.png" />
+    <Content Include="Resources\door_out.png" />
+    <Content Include="Resources\ep_manager_3.png" />
+    <None Include="Resources\exporexpresssinF.png" />
+    <None Include="Resources\exporexprress.png" />
+    <Content Include="Resources\file_extension_xls.png" />
+    <Content Include="Resources\fingercheck.png" />
+    <Content Include="Resources\fingerprint.png" />
+    <None Include="Resources\GA2.jpg" />
+    <None Include="Resources\ga2.ico" />
+    <Content Include="Resources\imagenPerfil.jpg" />
+    <Content Include="Resources\Line Chart.png" />
+    <Content Include="Resources\Line Chart1.png" />
+    <Content Include="Resources\list16x16.png" />
+    <Content Include="Resources\lock_48.png" />
+    <None Include="Resources\logo 32x32.ico" />
+    <Content Include="Resources\logo general 2014.png" />
+    <Content Include="Resources\logo jpg general2.ico" />
+    <Content Include="Resources\logo jpg general2.jpg" />
+    <Content Include="Resources\logoBeplus.jpg" />
+    <Content Include="Resources\LogoSimpleB.jpg" />
+    <Content Include="Resources\LogoSimpleBcopy.png" />
+    <Content Include="Resources\Maps.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\money.png" />
+    <None Include="Resources\office-building-icon.png" />
+    <Content Include="Resources\ok.png" />
+    <Content Include="Resources\plugin_add.png" />
+    <Content Include="Resources\plugin_delete.png" />
+    <Content Include="Resources\plugin_edit.png" />
+    <Content Include="Resources\Print.jpg" />
+    <Content Include="Resources\Refresh.ico" />
+    <Content Include="Resources\resource\1361007193_Edit-Male-User.png" />
+    <Content Include="Resources\resource\aerolinea3.png" />
+    <Content Include="Resources\resource\aerolinea4.png" />
+    <Content Include="Resources\resource\aerolineas.png" />
+    <Content Include="Resources\resource\aerolineas2.png" />
+    <Content Include="Resources\resource\aeropuerto2.png" />
+    <Content Include="Resources\resource\aeropuertos.png" />
+    <Content Include="Resources\resource\age-carga.png" />
+    <Content Include="Resources\resource\age-instituciones.png" />
+    <Content Include="Resources\resource\age-rampa.png" />
+    <Content Include="Resources\resource\age-seguridad.png" />
+    <Content Include="Resources\resource\age-transporte.png" />
+    <Content Include="Resources\resource\agencia.png" />
+    <Content Include="Resources\resource\avion.png" />
+    <Content Include="Resources\resource\Camiones.png" />
+    <Content Include="Resources\resource\capturar-peso.png" />
+    <None Include="Service References\Server.VuelosService\VuelosService12.disco" />
+    <None Include="Service References\Server.SyncService\SyncService1.disco" />
+    <Content Include="Resources\resource\ComPeso.png" />
+    <Content Include="Resources\resource\consignatario.png" />
+    <Content Include="Resources\resource\destinos.png" />
+    <Content Include="Resources\resource\dev-bultos.png" />
+    <Content Include="Resources\resource\door_in.png" />
+    <Content Include="Resources\resource\door_out.png" />
+    <Content Include="Resources\resource\elemento.png" />
+    <Content Include="Resources\resource\entrada-elemento.png" />
+    <Content Include="Resources\resource\entrada-pallet.png" />
+    <Content Include="Resources\resource\entrada.jpg" />
+    <Content Include="Resources\resource\extras.png" />
+    <None Include="Resources\resource\Gaveta.png" />
+    <Content Include="Resources\resource\General.png" />
+    <Content Include="Resources\resource\historial_zonas128x128.png" />
+    <Content Include="Resources\resource\ingreso-vuelos.png" />
+    <Content Include="Resources\resource\logo_balanza.jpg" />
+    <Content Include="Resources\resource\matricula.png" />
+    <Content Include="Resources\resource\mov-bultos.png" />
+    <Content Include="Resources\resource\mula.png" />
+    <Content Include="Resources\resource\paises.png" />
+    <Content Include="Resources\resource\pallets.jpg" />
+    <Content Include="Resources\resource\personal_zn_128x128.png" />
+    <Content Include="Resources\resource\peso.png" />
+    <Content Include="Resources\resource\posiciones.png" />
+    <Content Include="Resources\resource\productos.png" />
+    <Content Include="Resources\resource\productos2.png" />
+    <Content Include="Resources\resource\registro-camiones.png" />
+    <Content Include="Resources\resource\registro-camiones2.png" />
+    <Content Include="Resources\resource\registro-mula.png" />
+    <Content Include="Resources\resource\rep-decomiso.png" />
+    <Content Include="Resources\resource\rep-detallado.png" />
+    <Content Include="Resources\resource\rep-fact.png" />
+    <Content Include="Resources\resource\rep-Inventario.png" />
+    <Content Include="Resources\resource\rep-resumido.png" />
+    <Content Include="Resources\resource\rep-seg.png" />
+    <Content Include="Resources\resource\rep-stock.png" />
+    <Content Include="Resources\resource\reporte_pr_peso128x128.png" />
+    <Content Include="Resources\resource\report_produ128x128.png" />
+    <Content Include="Resources\resource\salida-pallet.png" />
+    <Content Include="Resources\resource\salida-pallet2.png" />
+    <Content Include="Resources\resource\salida.png" />
+    <Content Include="Resources\resource\salida2.png" />
+    <Content Include="Resources\resource\Settings-icon.png" />
+    <Content Include="Resources\resource\tarifa.png" />
+    <Content Include="Resources\resource\tipo-elemento.png" />
+    <Content Include="Resources\resource\traspaso-pallet.png" />
+    <Content Include="Resources\resource\visor_pr128x128.png" />
+    <Content Include="Resources\save24x24.png" />
+    <Content Include="Resources\scroll_pane_detail.png" />
+    <Content Include="Resources\search16x16.png" />
+    <Content Include="Resources\shop.png" />
+    <Content Include="Resources\Synchro.png" />
+    <Content Include="Resources\table_chart.png" />
+    <Content Include="Resources\table_gear.png" />
+    <Content Include="Resources\table_money.png" />
+    <Content Include="Resources\table_multiple.png" />
+    <Content Include="Resources\terminal.png" />
+    <Content Include="Resources\user.png" />
+    <Content Include="Resources\user_cook.png" />
+    <Content Include="Resources\world.png" />
+    <Content Include="Resources\world_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="Infragistics2.Win.UltraWinDataSource.v10.3">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

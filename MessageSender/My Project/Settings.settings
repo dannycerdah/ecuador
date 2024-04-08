@@ -1,0 +1,199 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="Secuential" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">127</Value>
+    </Setting>
+    <Setting Name="SRCHEX_req" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"&gt;
+                &lt;soapenv:Header&gt; 
+                                               &lt;ns0:Header xmlns:ns0="http://soapinterop.org/xsd"&gt; 
+                                                      &lt;ns0:SecLv1&gt;usuarioEcuapass&lt;/ns0:SecLv1&gt;
+                                                      &lt;ns0:SecLv2&gt;claveEcuapass&lt;/ns0:SecLv2&gt;
+                                                      &lt;ns0:SecLv3&gt;keyEcuapass &lt;/ns0:SecLv3&gt; 
+                                                &lt;/ns0:Header&gt; 
+               &lt;/soapenv:Header&gt;
+   &lt;soapenv:Body&gt;
+      &lt;web:requestExportDespachoSRCHEX&gt;
+         &lt;!--Optional:--&gt;
+         &lt;arg0&gt;&amp;lt;DocumentMetadata xsi:schemaLocation="urn:wco:datamodel:EC:SRCHEX:1:0:0 EC_SRCHEX_0p1.03.xsd" xmlns="urn:wco:datamodel:EC:SRCHEX:1:0:0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&amp;gt;
+			&amp;lt;WCODataModelVersion&amp;gt;3.0&amp;lt;/WCODataModelVersion&amp;gt;
+			&amp;lt;WCODocumentName&amp;gt;SRCHEX&amp;lt;/WCODocumentName&amp;gt;
+			&amp;lt;CountryCode&amp;gt;EC&amp;lt;/CountryCode&amp;gt;
+			&amp;lt;AgencyName&amp;gt;SENAE&amp;lt;/AgencyName&amp;gt;
+			&amp;lt;AgencyAssignedCountrySubEntityID&amp;gt;String&amp;lt;/AgencyAssignedCountrySubEntityID&amp;gt;
+			&amp;lt;AgencyAssignedCustomizedDocumentName&amp;gt;SRCHEX&amp;lt;/AgencyAssignedCustomizedDocumentName&amp;gt;
+			&amp;lt;AgencyAssignedCustomizedDocumentVersion&amp;gt;1.0&amp;lt;/AgencyAssignedCustomizedDocumentVersion&amp;gt;
+			&amp;lt;Declaration&amp;gt;
+				&amp;lt;TypeCode&amp;gt;002&amp;lt;/TypeCode&amp;gt;
+				&amp;lt;Agent&amp;gt;
+					&amp;lt;OceCD&amp;gt;29000001&amp;lt;/OceCD&amp;gt;
+					&amp;lt;UserID&amp;gt;0801867177&amp;lt;/UserID&amp;gt;
+				&amp;lt;/Agent&amp;gt;
+				&amp;lt;SequenceNumeric&amp;gt;1&amp;lt;/SequenceNumeric&amp;gt;
+				&amp;lt;Consignment&amp;gt;
+					&amp;lt;ConsultTypeID&amp;gt;02&amp;lt;/ConsultTypeID&amp;gt;
+					&amp;lt;DeclarationOfficeID&amp;gt;028&amp;lt;/DeclarationOfficeID&amp;gt;
+					&amp;lt;ExporterDocumentID/&amp;gt;
+					&amp;lt;DeclarationNumber&amp;gt;
+						&amp;lt;DeclarationNumberID&amp;gt;&amp;lt;/DeclarationNumberID&amp;gt;
+					&amp;lt;/DeclarationNumber&amp;gt;
+					&amp;lt;Period&amp;gt;
+						&amp;lt;StartDate&amp;gt;2015-02-01&amp;lt;/StartDate&amp;gt;
+						&amp;lt;EndDate&amp;gt;2015-02-15&amp;lt;/EndDate&amp;gt;
+					&amp;lt;/Period&amp;gt;
+				&amp;lt;/Consignment&amp;gt;
+			&amp;lt;/Declaration&amp;gt;
+		&amp;lt;/DocumentMetadata&amp;gt;&lt;/arg0&gt;
+      &lt;/web:requestExportDespachoSRCHEX&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</Value>
+    </Setting>
+    <Setting Name="CommonResposeService" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://cdestest.aduana.gob.ec/cdes_svr/SENAE_CommonResponseService_EC?wsdl</Value>
+    </Setting>
+    <Setting Name="CommonResponseList_req" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:wco:datamodel:EC:RN:1:0:0"&gt;
+                &lt;soapenv:Header&gt; 
+                                               &lt;ns0:Header xmlns:ns0="http://soapinterop.org/xsd"&gt; 
+                                                      &lt;ns0:SecLv1&gt;usuarioEcuapass&lt;/ns0:SecLv1&gt;
+                                                      &lt;ns0:SecLv2&gt;claveEcuapass&lt;/ns0:SecLv2&gt;
+                                                      &lt;ns0:SecLv3&gt;keyEcuapass &lt;/ns0:SecLv3&gt; 
+                                                &lt;/ns0:Header&gt; 
+               &lt;/soapenv:Header&gt;
+    &lt;soapenv:Body&gt;
+        &lt;DocumentMetadata xsi:schemaLocation="urn:wco:datamodel:EC:RN:1:0:0 ..\maindoc\EC_RN_0p1.0.0.xsd" xmlns="urn:wco:datamodel:EC:RN:1:0:0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+            &lt;WCODataModelVersion&gt;String&lt;/WCODataModelVersion&gt;
+            &lt;WCODocumentName&gt;String&lt;/WCODocumentName&gt;
+            &lt;CountryCode&gt;String&lt;/CountryCode&gt;
+            &lt;AgencyName&gt;String&lt;/AgencyName&gt;
+            &lt;AgencyAssignedCountrySubEntityID&gt;String&lt;/AgencyAssignedCountrySubEntityID&gt;
+            &lt;AgencyAssignedCustomizedDocumentName&gt;String&lt;/AgencyAssignedCustomizedDocumentName&gt;
+            &lt;AgencyAssignedCustomizedDocumentVersion&gt;String&lt;/AgencyAssignedCustomizedDocumentVersion&gt;
+            &lt;Declaration&gt;
+                &lt;TypeCode&gt;&lt;/TypeCode&gt;
+                &lt;RequestTypeCode&gt;044&lt;/RequestTypeCode&gt; 
+                &lt;IssueDateTime&gt;2015-02-24 09:37:00&lt;/IssueDateTime&gt;
+                &lt;DeclarationOfficeID&gt;&lt;/DeclarationOfficeID&gt;
+                &lt;VersionID&gt;1.0&lt;/VersionID&gt;
+                &lt;OriginDocumentTypeCode&gt;031&lt;/OriginDocumentTypeCode&gt;
+                &lt;SequenceNumeric&gt;1&lt;/SequenceNumeric&gt; 
+                &lt;StatusCode&gt;N&lt;/StatusCode&gt;
+                &lt;Agent&gt;
+                    &lt;ID&gt;29000001&lt;/ID&gt;
+                    &lt;Name&gt;GENERALAIR&lt;/Name&gt;
+                &lt;/Agent&gt;
+                &lt;Status&gt;
+                    &lt;EffectiveDateTime&gt;2015-02-23&lt;/EffectiveDateTime&gt;
+                    &lt;ReleaseDateTime&gt;2015-02-23&lt;/ReleaseDateTime&gt;
+                &lt;/Status&gt;
+            &lt;/Declaration&gt;
+        &lt;/DocumentMetadata&gt;
+    &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</Value>
+    </Setting>
+    <Setting Name="DocumentResponse_req" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:wco:datamodel:EC:RN:1:0:0"&gt;
+&lt;soapenv:Header&gt; 
+	&lt;ns0:Header xmlns:ns0="http://soapinterop.org/xsd"&gt; 
+		&lt;ns0:SecLv1&gt;usuarioEcuapass&lt;/ns0:SecLv1&gt;
+		&lt;ns0:SecLv2&gt;claveEcuapass&lt;/ns0:SecLv2&gt;
+		&lt;ns0:SecLv3&gt;keyEcuapass &lt;/ns0:SecLv3&gt; 
+	&lt;/ns0:Header&gt; 
+&lt;/soapenv:Header&gt;   
+&lt;soapenv:Body&gt;
+     &lt;DocumentMetadata xsi:schemaLocation="urn:wco:datamodel:EC:RN:1:0:0 ..\maindoc\EC_RN_0p1.0.0.xsd" xmlns="urn:wco:datamodel:EC:RN:1:0:0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+                &lt;WCODataModelVersion&gt;String&lt;/WCODataModelVersion&gt;
+                &lt;WCODocumentName&gt;String&lt;/WCODocumentName&gt;
+                &lt;CountryCode&gt;String&lt;/CountryCode&gt;
+                &lt;AgencyName&gt;String&lt;/AgencyName&gt;
+                &lt;AgencyAssignedCountrySubEntityID&gt;String&lt;/AgencyAssignedCountrySubEntityID&gt;
+                &lt;AgencyAssignedCustomizedDocumentName&gt;String&lt;/AgencyAssignedCustomizedDocumentName&gt;
+                &lt;AgencyAssignedCustomizedDocumentVersion&gt;String&lt;/AgencyAssignedCustomizedDocumentVersion&gt;
+                &lt;Declaration&gt;
+       &lt;TypeCode&gt;031&lt;/TypeCode&gt;
+                               &lt;RequestTypeCode&gt;044&lt;/RequestTypeCode&gt;
+                               &lt;IssueDateTime&gt;2015-02-24 09:37:00&lt;/IssueDateTime&gt;
+                               &lt;FunctionalReferenceID&gt;201502231317053&lt;/FunctionalReferenceID&gt;
+                               &lt;VersionID&gt;1.0&lt;/VersionID&gt;
+                               &lt;OriginDocumentTypeCode&gt;031&lt;/OriginDocumentTypeCode&gt;
+                               &lt;Agent&gt;
+                                               &lt;ID&gt;29000001&lt;/ID&gt;
+                                               &lt;Name&gt;GENERALAIR&lt;/Name&gt;
+                               &lt;/Agent&gt;
+                               &lt;Status&gt;
+                                               &lt;EffectiveDateTime&gt;2015-02-23&lt;/EffectiveDateTime&gt;
+                                               &lt;ReleaseDateTime&gt;2015-02-23&lt;/ReleaseDateTime&gt;
+                               &lt;/Status&gt;
+                &lt;/Declaration&gt;
+&lt;/DocumentMetadata&gt;
+   &lt;/soapenv:Body&gt;</Value>
+    </Setting>
+    <Setting Name="KeepDaeLog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WriteDaeViewer" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DaeTimer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="WriteDocViewer" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DocTimer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="KeepDocLog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DASEX_req" Type="System.String" Scope="User">
+      <Value Profile="(Default)">
+&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"&gt;
+		&lt;soapenv:Header&gt; 
+                                               &lt;ns0:Header xmlns:ns0="http://soapinterop.org/xsd"&gt; 
+                                                      &lt;ns0:SecLv1&gt;usuarioEcuapass&lt;/ns0:SecLv1&gt;
+                                                      &lt;ns0:SecLv2&gt;claveEcuapass&lt;/ns0:SecLv2&gt;
+                                                      &lt;ns0:SecLv3&gt;keyEcuapass &lt;/ns0:SecLv3&gt; 
+                                                &lt;/ns0:Header&gt; 
+                              &lt;/soapenv:Header&gt;
+   &lt;soapenv:Body&gt;
+      &lt;web:requestExportDespachoDASEX&gt;
+          &lt;!--Optional:--&gt;
+         &lt;arg0&gt;&amp;lt;DocumentMetadata xsi:schemaLocation="urn:wco:datamodel:EC:DASEX:1:0:0 EC_DASEX_0p1.03.xsd" xmlns="urn:wco:datamodel:EC:DASEX:1:0:0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&amp;gt;
+                                               &amp;lt;WCODataModelVersion&amp;gt;3.0&amp;lt;/WCODataModelVersion&amp;gt;
+                                               &amp;lt;WCODocumentName&amp;gt;DASEX&amp;lt;/WCODocumentName&amp;gt;
+                                               &amp;lt;CountryCode&amp;gt;EC&amp;lt;/CountryCode&amp;gt;
+                                               &amp;lt;AgencyName&amp;gt;SENAE&amp;lt;/AgencyName&amp;gt;
+                                               &amp;lt;AgencyAssignedCountrySubEntityID&amp;gt;String&amp;lt;/AgencyAssignedCountrySubEntityID&amp;gt;
+                                               &amp;lt;AgencyAssignedCustomizedDocumentName&amp;gt;DASEX&amp;lt;/AgencyAssignedCustomizedDocumentName&amp;gt;
+                                               &amp;lt;AgencyAssignedCustomizedDocumentVersion&amp;gt;1.0&amp;lt;/AgencyAssignedCustomizedDocumentVersion&amp;gt;
+                                               &amp;lt;Declaration&amp;gt;
+                                                               &amp;lt;TypeCode&amp;gt;037&amp;lt;/TypeCode&amp;gt;
+                                                               &amp;lt;Agent&amp;gt;
+                                                                              &amp;lt;OceCD&amp;gt;29000001&amp;lt;/OceCD&amp;gt;
+                                                                              &amp;lt;UserID&amp;gt;0801867177&amp;lt;/UserID&amp;gt;
+                                                               &amp;lt;/Agent&amp;gt;
+                                                               &amp;lt;SequenceNumeric&amp;gt;1&amp;lt;/SequenceNumeric&amp;gt;
+                                                               &amp;lt;Consignment&amp;gt;
+                                                                              &amp;lt;ConsultTypeID&amp;gt;02&amp;lt;/ConsultTypeID&amp;gt;
+                                                                              &amp;lt;DeclarationOfficeID&amp;gt;019&amp;lt;/DeclarationOfficeID&amp;gt;
+                                                                              &amp;lt;ExporterDocumentID/&amp;gt;
+                                                                              &amp;lt;DeclarationNumber&amp;gt;
+                                                                                              &amp;lt;DeclarationNumberID&amp;gt;&amp;lt;/DeclarationNumberID&amp;gt;
+                                                                              &amp;lt;/DeclarationNumber&amp;gt;
+                                                                              &amp;lt;Period&amp;gt;
+                                                                                              &amp;lt;StartDate&amp;gt;2015-07-28&amp;lt;/StartDate&amp;gt;
+                                                                                              &amp;lt;EndDate&amp;gt;2015-07-30&amp;lt;/EndDate&amp;gt;
+                                                                              &amp;lt;/Period&amp;gt;
+                                                               &amp;lt;/Consignment&amp;gt;
+                                               &amp;lt;/Declaration&amp;gt;
+                               &amp;lt;/DocumentMetadata&amp;gt;&lt;/arg0&gt;
+      &lt;/web:requestExportDespachoDASEX&gt;
+   &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;
+</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

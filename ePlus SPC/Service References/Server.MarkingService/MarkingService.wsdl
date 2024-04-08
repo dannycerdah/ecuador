@@ -1,0 +1,1546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://espc.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://espc.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://espc.org/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="GetAllInfoContacto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:MarcacionContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MarcacionContactoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myMarcacionContactoCatalogItem" type="tns:MarcacionContactoCatalogItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IpAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TerminalId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ActionKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InterfaceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="PcId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="myManagementAction" type="tns:ManagementActions" />
+          <s:element minOccurs="1" maxOccurs="1" name="SessionKey" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaIni" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="codigoVuelo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ManagementActions">
+        <s:restriction base="s:string">
+          <s:enumeration value="NOTHING" />
+          <s:enumeration value="INSERT" />
+          <s:enumeration value="UPDATE" />
+          <s:enumeration value="DELETE" />
+          <s:enumeration value="QUERY" />
+          <s:enumeration value="REPLICATED" />
+          <s:enumeration value="REFRESH" />
+          <s:enumeration value="EXPORT" />
+          <s:enumeration value="SEARCH" />
+          <s:enumeration value="PRINT" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="MarcacionContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idcod_Contacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerApellidoContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoApellidoContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="detalle" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImagenPerfil" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetAllInfoContactoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllInfoContactoResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MarkingResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="GenericResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ErrorCode" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ActionResult" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckNewBioRecords">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ContactoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myContactoItem" type="tns:ContactoCatalogItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myArchivoContactoItem" type="tns:ArchivoContactoCatalogItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myCargoItem" type="tns:CargoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myUsuarioItem" type="tns:UsuarioItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myRegBiometricoItem" type="tns:ArrayOfRegBiometricoCatalogItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myZonasAutorizadas" type="tns:ArrayOfZonasAutorizadasCatalogItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myZonasAutorizadasByContacto" type="tns:ArrayOfZonasAutorizadasByContactoCatalogItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myPerfilItem" type="tns:PerfilItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myPerfilesByContacto" type="tns:PerfilesUsuarioItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myPermisosByPerfil" type="tns:PermisosPerfilItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myTurno" type="tns:TurnoItem" />
+              <s:element minOccurs="0" maxOccurs="1" name="myPermisoEspecial" type="tns:PermisoEspecialItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipoDocumento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cargo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idPais" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCiudad" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="direccion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="tagsa" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaCaducaTagsa" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagenPerfil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagenesPerfil" type="tns:ArrayOfContactoImagenCatalogoItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="BioRecords" type="tns:ArrayOfRegBiometricoCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZonasAutorizadas" type="tns:ArrayOfZonasAutorizadasCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZonasAutorizadasByContacto" type="tns:ArrayOfZonasAutorizadasByContactoCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="AgenciaContacto" type="tns:ArrayOfContactoAgenciaCatalogItem" />
+          <s:element minOccurs="0" maxOccurs="1" name="huella" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdContactoUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfContactoImagenCatalogoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContactoImagenCatalogoItem" nillable="true" type="tns:ContactoImagenCatalogoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContactoImagenCatalogoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idImagen" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="imagen" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="estado" type="tns:estadoImagen" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="estadoImagen">
+        <s:restriction base="s:string">
+          <s:enumeration value="Nuevo" />
+          <s:enumeration value="Activo" />
+          <s:enumeration value="Inactivo" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfRegBiometricoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RegBiometricoCatalogItem" nillable="true" type="tns:RegBiometricoCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RegBiometricoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idcod_Contacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idregistro_biometrico" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tag" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="detalle" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="calificacion" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="tipo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfZonasAutorizadasCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ZonasAutorizadasCatalogItem" nillable="true" type="tns:ZonasAutorizadasCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZonasAutorizadasCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idZona" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfZonasAutorizadasByContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ZonasAutorizadasByContactoCatalogItem" nillable="true" type="tns:ZonasAutorizadasByContactoCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ZonasAutorizadasByContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idZonaAutorizada_Contacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idZona" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DiaPermitido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorarioDesde" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HorarioHasta" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfContactoAgenciaCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ContactoAgenciaCatalogItem" nillable="true" type="tns:ContactoAgenciaCatalogItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ContactoAgenciaCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionAgencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="primerApellido" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="segundoApellido" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comentario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="cargo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdContactoUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArchivoContactoCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="idArchivo" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionArchivo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="extArchivo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="binArchivo" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CargoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idCargo" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcionCargo" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UsuarioItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idUsuario" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="admin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContactoCreacion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaCreacion" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaAct" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="perfilesUsuario" type="tns:ArrayOfPerfilesUsuarioItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPerfilesUsuarioItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PerfilesUsuarioItem" nillable="true" type="tns:PerfilesUsuarioItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PerfilesUsuarioItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idPerfil" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PerfilItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idPerfil" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombrePerfil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="comentarioPerfil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estadoPerfil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idUsuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="padrePerfil" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="permisosPerfil" type="tns:ArrayOfPermisosPerfilItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPermisosPerfilItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PermisosPerfilItem" nillable="true" type="tns:PermisosPerfilItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PermisosPerfilItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idPerfil" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idKey" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="detalleKey" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TurnoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="atraso" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="inicio" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="fin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="daysTurnoContacto" type="tns:ArrayOfDaysTurnosContactoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDaysTurnosContactoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DaysTurnosContactoItem" nillable="true" type="tns:DaysTurnosContactoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DaysTurnosContactoItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="day" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="horario" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="contacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="fechaFin" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PermisoEspecialItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="beginDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="endDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="beginTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="endTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="observation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="permisosContacto" type="tns:ArrayOfPermisosContactoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPermisosContactoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PermisosContactoItem" nillable="true" type="tns:PermisosContactoItem" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PermisosContactoItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="contacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s1:guid" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CheckNewBioRecordsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CheckNewBioRecordsResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZonasAutorizadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ZonasAutorizadasRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ZonasAutorizadasRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myZonasAutorizadas" type="tns:ZonasAutorizadasCatalogItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetZonasAutorizadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZonasAutorizadasResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetZonasAutorizadasByContacto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ZonasAutorizadasByContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ZonasAutorizadasByContactoRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myZonasAutorizadasByContacto" type="tns:ZonasAutorizadasByContactoCatalogItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetZonasAutorizadasByContactoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetZonasAutorizadasByContactoResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetSesionContactoById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:SesionContactosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SesionContactosRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="mySesionContactosItem" type="tns:SesionContactosCatalogItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="SesionContactosCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idZona" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Agencia" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetSesionContactoByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetSesionContactoByIdResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveSesionContacto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:SesionContactosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveSesionContactoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveSesionContactoResult" type="tns:SesionContactosResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SesionContactosResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="mySesionContactosItem" type="tns:SesionContactosCatalogItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SaveHistoricoSesionContacto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:HistoricoSesionContactosRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HistoricoSesionContactosRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myHistoricoSesionContactosItem" type="tns:HistoricoSesionContactosCatalogItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="HistoricoSesionContactosCatalogItem">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="idZona" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraIngreso" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraSalida" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="idBiometrico" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveHistoricoSesionContactoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveHistoricoSesionContactoResult" type="tns:HistoricoSesionContactosResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HistoricoSesionContactosResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myHistoricoSesionContactosItem" type="tns:HistoricoSesionContactosCatalogItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetContactoZonasSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoZonasSessionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ContactoZonasSessionRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myContactoZonasSession" type="tns:ContactoZonasSessionItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ContactoZonasSessionItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="IdContacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaFinal" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoReporte" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetContactoZonasSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactoZonasSessionResult" type="tns:ContactoZonasSessionResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ContactoZonasSessionResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="DsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="myContactoZonasSession" type="tns:ContactoZonasSessionItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetLogContactoZonasSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoZonasSessionRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLogContactoZonasSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLogContactoZonasSessionResult" type="tns:ContactoZonasSessionResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SaveMarkingGeneral">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:MarkingGeneralRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MarkingGeneralRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myMarkingGeneral" type="tns:MarkingGeneralItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="MarkingGeneralItem">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="contacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ingreso" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="salida" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="flag" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="observation" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SaveMarkingGeneralResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SaveMarkingGeneralResult" type="tns:MarkingGeneralResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="MarkingGeneralResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myMarkingGeneral" type="tns:MarkingGeneralItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetMarkingsGeneralair">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMarkingsGeneralairResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMarkingsGeneralairResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMarkingGeneralair">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:MarkingGeneralRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateMarkingGeneralairResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="UpdateMarkingGeneralairResult" type="tns:MarkingGeneralResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactoByAgenciaById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactoByAgenciaByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactoByAgenciaByIdResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPermisosEspeciales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllPermisosEspecialesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllPermisosEspecialesResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SavePermisoEspecialItem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SavePermisoEspecialItemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SavePermisoEspecialItemResult" type="tns:PermisoContactoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PermisoContactoResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="myPermisoEspecial" type="tns:PermisoEspecialItem" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetContactosByPermiso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactosByPermisoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactosByPermisoResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPermisoEspecialById">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPermisoEspecialByIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPermisoEspecialByIdResult" type="tns:PermisoContactoResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPermisosEspecialesByContacto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPermisosEspecialesByContactoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPermisosEspecialesByContactoResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactoByContactoByTipoAgencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetContactoByContactoByTipoAgenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetContactoByContactoByTipoAgenciaResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHorarioDayByEmpleado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHorarioDayByEmpleadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHorarioDayByEmpleadoResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUldEntradaToday">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ContactoRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUldEntradaTodayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUldEntradaTodayResult" type="tns:MarkingResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MantHorarioAgenciaSeguridad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:HorarioAgenciaSeguridadRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HorarioAgenciaSeguridadRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="HorarioAgenciaSeguridad" type="tns:HorarioAgenciaSeguridad" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="HorarioAgenciaSeguridad">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idHorarioAgenciaSeguridad" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idBriefing" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="idContacto" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaInicio" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaFin" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaActualizacion" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="UsuarioActualizacion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="MantHorarioAgenciaSeguridadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MantHorarioAgenciaSeguridadResult" type="tns:HorarioAgenciaSeguridadResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="HorarioAgenciaSeguridadResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetHorAgenSeguridad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:HorarioAgenciaSeguridadRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHorAgenSeguridadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHorAgenSeguridadResult" type="tns:HorarioAgenciaSeguridadResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgenciaExcluidaMarcacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:HorarioAgenciaSeguridadRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgenciaExcluidaMarcacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgenciaExcluidaMarcacionResult" type="tns:HorarioAgenciaSeguridadResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetAllInfoContactoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllInfoContacto" />
+  </wsdl:message>
+  <wsdl:message name="GetAllInfoContactoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllInfoContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CheckNewBioRecordsSoapIn">
+    <wsdl:part name="parameters" element="tns:CheckNewBioRecords" />
+  </wsdl:message>
+  <wsdl:message name="CheckNewBioRecordsSoapOut">
+    <wsdl:part name="parameters" element="tns:CheckNewBioRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetZonasAutorizadasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetZonasAutorizadas" />
+  </wsdl:message>
+  <wsdl:message name="GetZonasAutorizadasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetZonasAutorizadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetZonasAutorizadasByContactoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetZonasAutorizadasByContacto" />
+  </wsdl:message>
+  <wsdl:message name="GetZonasAutorizadasByContactoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetZonasAutorizadasByContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSesionContactoByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetSesionContactoById" />
+  </wsdl:message>
+  <wsdl:message name="GetSesionContactoByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetSesionContactoByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveSesionContactoSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveSesionContacto" />
+  </wsdl:message>
+  <wsdl:message name="SaveSesionContactoSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveSesionContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveHistoricoSesionContactoSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveHistoricoSesionContacto" />
+  </wsdl:message>
+  <wsdl:message name="SaveHistoricoSesionContactoSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveHistoricoSesionContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactoZonasSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactoZonasSession" />
+  </wsdl:message>
+  <wsdl:message name="GetContactoZonasSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactoZonasSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLogContactoZonasSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLogContactoZonasSession" />
+  </wsdl:message>
+  <wsdl:message name="GetLogContactoZonasSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLogContactoZonasSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="SaveMarkingGeneralSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveMarkingGeneral" />
+  </wsdl:message>
+  <wsdl:message name="SaveMarkingGeneralSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveMarkingGeneralResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMarkingsGeneralairSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMarkingsGeneralair" />
+  </wsdl:message>
+  <wsdl:message name="GetMarkingsGeneralairSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMarkingsGeneralairResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMarkingGeneralairSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateMarkingGeneralair" />
+  </wsdl:message>
+  <wsdl:message name="UpdateMarkingGeneralairSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateMarkingGeneralairResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactoByAgenciaByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactoByAgenciaById" />
+  </wsdl:message>
+  <wsdl:message name="GetContactoByAgenciaByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactoByAgenciaByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPermisosEspecialesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllPermisosEspeciales" />
+  </wsdl:message>
+  <wsdl:message name="GetAllPermisosEspecialesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllPermisosEspecialesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SavePermisoEspecialItemSoapIn">
+    <wsdl:part name="parameters" element="tns:SavePermisoEspecialItem" />
+  </wsdl:message>
+  <wsdl:message name="SavePermisoEspecialItemSoapOut">
+    <wsdl:part name="parameters" element="tns:SavePermisoEspecialItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactosByPermisoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactosByPermiso" />
+  </wsdl:message>
+  <wsdl:message name="GetContactosByPermisoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactosByPermisoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPermisoEspecialByIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPermisoEspecialById" />
+  </wsdl:message>
+  <wsdl:message name="GetPermisoEspecialByIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPermisoEspecialByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPermisosEspecialesByContactoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPermisosEspecialesByContacto" />
+  </wsdl:message>
+  <wsdl:message name="GetPermisosEspecialesByContactoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPermisosEspecialesByContactoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetContactoByContactoByTipoAgenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetContactoByContactoByTipoAgencia" />
+  </wsdl:message>
+  <wsdl:message name="GetContactoByContactoByTipoAgenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetContactoByContactoByTipoAgenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHorarioDayByEmpleadoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHorarioDayByEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="GetHorarioDayByEmpleadoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHorarioDayByEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUldEntradaTodaySoapIn">
+    <wsdl:part name="parameters" element="tns:GetUldEntradaToday" />
+  </wsdl:message>
+  <wsdl:message name="GetUldEntradaTodaySoapOut">
+    <wsdl:part name="parameters" element="tns:GetUldEntradaTodayResponse" />
+  </wsdl:message>
+  <wsdl:message name="MantHorarioAgenciaSeguridadSoapIn">
+    <wsdl:part name="parameters" element="tns:MantHorarioAgenciaSeguridad" />
+  </wsdl:message>
+  <wsdl:message name="MantHorarioAgenciaSeguridadSoapOut">
+    <wsdl:part name="parameters" element="tns:MantHorarioAgenciaSeguridadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHorAgenSeguridadSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHorAgenSeguridad" />
+  </wsdl:message>
+  <wsdl:message name="GetHorAgenSeguridadSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHorAgenSeguridadResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgenciaExcluidaMarcacionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgenciaExcluidaMarcacion" />
+  </wsdl:message>
+  <wsdl:message name="GetAgenciaExcluidaMarcacionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgenciaExcluidaMarcacionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MarkingServiceSoap">
+    <wsdl:operation name="GetAllInfoContacto">
+      <wsdl:input message="tns:GetAllInfoContactoSoapIn" />
+      <wsdl:output message="tns:GetAllInfoContactoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckNewBioRecords">
+      <wsdl:input message="tns:CheckNewBioRecordsSoapIn" />
+      <wsdl:output message="tns:CheckNewBioRecordsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZonasAutorizadas">
+      <wsdl:input message="tns:GetZonasAutorizadasSoapIn" />
+      <wsdl:output message="tns:GetZonasAutorizadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetZonasAutorizadasByContacto">
+      <wsdl:input message="tns:GetZonasAutorizadasByContactoSoapIn" />
+      <wsdl:output message="tns:GetZonasAutorizadasByContactoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSesionContactoById">
+      <wsdl:input message="tns:GetSesionContactoByIdSoapIn" />
+      <wsdl:output message="tns:GetSesionContactoByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveSesionContacto">
+      <wsdl:input message="tns:SaveSesionContactoSoapIn" />
+      <wsdl:output message="tns:SaveSesionContactoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveHistoricoSesionContacto">
+      <wsdl:input message="tns:SaveHistoricoSesionContactoSoapIn" />
+      <wsdl:output message="tns:SaveHistoricoSesionContactoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoZonasSession">
+      <wsdl:input message="tns:GetContactoZonasSessionSoapIn" />
+      <wsdl:output message="tns:GetContactoZonasSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLogContactoZonasSession">
+      <wsdl:input message="tns:GetLogContactoZonasSessionSoapIn" />
+      <wsdl:output message="tns:GetLogContactoZonasSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveMarkingGeneral">
+      <wsdl:input message="tns:SaveMarkingGeneralSoapIn" />
+      <wsdl:output message="tns:SaveMarkingGeneralSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMarkingsGeneralair">
+      <wsdl:input message="tns:GetMarkingsGeneralairSoapIn" />
+      <wsdl:output message="tns:GetMarkingsGeneralairSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarkingGeneralair">
+      <wsdl:input message="tns:UpdateMarkingGeneralairSoapIn" />
+      <wsdl:output message="tns:UpdateMarkingGeneralairSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoByAgenciaById">
+      <wsdl:input message="tns:GetContactoByAgenciaByIdSoapIn" />
+      <wsdl:output message="tns:GetContactoByAgenciaByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPermisosEspeciales">
+      <wsdl:input message="tns:GetAllPermisosEspecialesSoapIn" />
+      <wsdl:output message="tns:GetAllPermisosEspecialesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SavePermisoEspecialItem">
+      <wsdl:input message="tns:SavePermisoEspecialItemSoapIn" />
+      <wsdl:output message="tns:SavePermisoEspecialItemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactosByPermiso">
+      <wsdl:input message="tns:GetContactosByPermisoSoapIn" />
+      <wsdl:output message="tns:GetContactosByPermisoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoEspecialById">
+      <wsdl:input message="tns:GetPermisoEspecialByIdSoapIn" />
+      <wsdl:output message="tns:GetPermisoEspecialByIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisosEspecialesByContacto">
+      <wsdl:input message="tns:GetPermisosEspecialesByContactoSoapIn" />
+      <wsdl:output message="tns:GetPermisosEspecialesByContactoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoByContactoByTipoAgencia">
+      <wsdl:input message="tns:GetContactoByContactoByTipoAgenciaSoapIn" />
+      <wsdl:output message="tns:GetContactoByContactoByTipoAgenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioDayByEmpleado">
+      <wsdl:input message="tns:GetHorarioDayByEmpleadoSoapIn" />
+      <wsdl:output message="tns:GetHorarioDayByEmpleadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUldEntradaToday">
+      <wsdl:input message="tns:GetUldEntradaTodaySoapIn" />
+      <wsdl:output message="tns:GetUldEntradaTodaySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MantHorarioAgenciaSeguridad">
+      <wsdl:input message="tns:MantHorarioAgenciaSeguridadSoapIn" />
+      <wsdl:output message="tns:MantHorarioAgenciaSeguridadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorAgenSeguridad">
+      <wsdl:input message="tns:GetHorAgenSeguridadSoapIn" />
+      <wsdl:output message="tns:GetHorAgenSeguridadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgenciaExcluidaMarcacion">
+      <wsdl:input message="tns:GetAgenciaExcluidaMarcacionSoapIn" />
+      <wsdl:output message="tns:GetAgenciaExcluidaMarcacionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MarkingServiceSoap" type="tns:MarkingServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllInfoContacto">
+      <soap:operation soapAction="http://espc.org/GetAllInfoContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckNewBioRecords">
+      <soap:operation soapAction="http://espc.org/CheckNewBioRecords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZonasAutorizadas">
+      <soap:operation soapAction="http://espc.org/GetZonasAutorizadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZonasAutorizadasByContacto">
+      <soap:operation soapAction="http://espc.org/GetZonasAutorizadasByContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSesionContactoById">
+      <soap:operation soapAction="http://espc.org/GetSesionContactoById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSesionContacto">
+      <soap:operation soapAction="http://espc.org/SaveSesionContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveHistoricoSesionContacto">
+      <soap:operation soapAction="http://espc.org/SaveHistoricoSesionContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoZonasSession">
+      <soap:operation soapAction="http://espc.org/GetContactoZonasSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogContactoZonasSession">
+      <soap:operation soapAction="http://espc.org/GetLogContactoZonasSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveMarkingGeneral">
+      <soap:operation soapAction="http://espc.org/SaveMarkingGeneral" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarkingsGeneralair">
+      <soap:operation soapAction="http://espc.org/GetMarkingsGeneralair" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarkingGeneralair">
+      <soap:operation soapAction="http://espc.org/UpdateMarkingGeneralair" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoByAgenciaById">
+      <soap:operation soapAction="http://espc.org/GetContactoByAgenciaById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPermisosEspeciales">
+      <soap:operation soapAction="http://espc.org/GetAllPermisosEspeciales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePermisoEspecialItem">
+      <soap:operation soapAction="http://espc.org/SavePermisoEspecialItem" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactosByPermiso">
+      <soap:operation soapAction="http://espc.org/GetContactosByPermiso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoEspecialById">
+      <soap:operation soapAction="http://espc.org/GetPermisoEspecialById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisosEspecialesByContacto">
+      <soap:operation soapAction="http://espc.org/GetPermisosEspecialesByContacto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoByContactoByTipoAgencia">
+      <soap:operation soapAction="http://espc.org/GetContactoByContactoByTipoAgencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioDayByEmpleado">
+      <soap:operation soapAction="http://espc.org/GetHorarioDayByEmpleado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUldEntradaToday">
+      <soap:operation soapAction="http://espc.org/GetUldEntradaToday" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantHorarioAgenciaSeguridad">
+      <soap:operation soapAction="http://espc.org/MantHorarioAgenciaSeguridad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorAgenSeguridad">
+      <soap:operation soapAction="http://espc.org/GetHorAgenSeguridad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgenciaExcluidaMarcacion">
+      <soap:operation soapAction="http://espc.org/GetAgenciaExcluidaMarcacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MarkingServiceSoap12" type="tns:MarkingServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetAllInfoContacto">
+      <soap12:operation soapAction="http://espc.org/GetAllInfoContacto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckNewBioRecords">
+      <soap12:operation soapAction="http://espc.org/CheckNewBioRecords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZonasAutorizadas">
+      <soap12:operation soapAction="http://espc.org/GetZonasAutorizadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetZonasAutorizadasByContacto">
+      <soap12:operation soapAction="http://espc.org/GetZonasAutorizadasByContacto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSesionContactoById">
+      <soap12:operation soapAction="http://espc.org/GetSesionContactoById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveSesionContacto">
+      <soap12:operation soapAction="http://espc.org/SaveSesionContacto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveHistoricoSesionContacto">
+      <soap12:operation soapAction="http://espc.org/SaveHistoricoSesionContacto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoZonasSession">
+      <soap12:operation soapAction="http://espc.org/GetContactoZonasSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLogContactoZonasSession">
+      <soap12:operation soapAction="http://espc.org/GetLogContactoZonasSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveMarkingGeneral">
+      <soap12:operation soapAction="http://espc.org/SaveMarkingGeneral" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMarkingsGeneralair">
+      <soap12:operation soapAction="http://espc.org/GetMarkingsGeneralair" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarkingGeneralair">
+      <soap12:operation soapAction="http://espc.org/UpdateMarkingGeneralair" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoByAgenciaById">
+      <soap12:operation soapAction="http://espc.org/GetContactoByAgenciaById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllPermisosEspeciales">
+      <soap12:operation soapAction="http://espc.org/GetAllPermisosEspeciales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SavePermisoEspecialItem">
+      <soap12:operation soapAction="http://espc.org/SavePermisoEspecialItem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactosByPermiso">
+      <soap12:operation soapAction="http://espc.org/GetContactosByPermiso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisoEspecialById">
+      <soap12:operation soapAction="http://espc.org/GetPermisoEspecialById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisosEspecialesByContacto">
+      <soap12:operation soapAction="http://espc.org/GetPermisosEspecialesByContacto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContactoByContactoByTipoAgencia">
+      <soap12:operation soapAction="http://espc.org/GetContactoByContactoByTipoAgencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioDayByEmpleado">
+      <soap12:operation soapAction="http://espc.org/GetHorarioDayByEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUldEntradaToday">
+      <soap12:operation soapAction="http://espc.org/GetUldEntradaToday" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MantHorarioAgenciaSeguridad">
+      <soap12:operation soapAction="http://espc.org/MantHorarioAgenciaSeguridad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorAgenSeguridad">
+      <soap12:operation soapAction="http://espc.org/GetHorAgenSeguridad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgenciaExcluidaMarcacion">
+      <soap12:operation soapAction="http://espc.org/GetAgenciaExcluidaMarcacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MarkingService">
+    <wsdl:port name="MarkingServiceSoap" binding="tns:MarkingServiceSoap">
+      <soap:address location="http://localhost:20028/MarkingService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MarkingServiceSoap12" binding="tns:MarkingServiceSoap12">
+      <soap12:address location="http://localhost:20028/MarkingService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
