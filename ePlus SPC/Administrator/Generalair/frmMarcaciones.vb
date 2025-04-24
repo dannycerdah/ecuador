@@ -133,6 +133,8 @@ Public Class frmMarcaciones
                     .atraso = r.Item("tiempoatraso")
                     .imagen = r.Item("imagenPerfil")
                     .fechacaducidadtagsa = r.Item("fechacaducaTagsa")
+                    .fechaInicioJornada = IIf(IsDBNull(r.Item("fechaInicioJornada")), "", r.Item("fechaInicioJornada"))
+                    .fechaFinalJornada = IIf(IsDBNull(r.Item("fechaFinJornada")), "", r.Item("fechaFinJornada"))
 
                     If uceTipoConsulta.SelectedIndex = 1 Or uceTipoConsulta.SelectedIndex = 2 Then
                         If uceEmpleados.SelectedIndex <> 0 Or uceContactos.SelectedIndex > 0 Then

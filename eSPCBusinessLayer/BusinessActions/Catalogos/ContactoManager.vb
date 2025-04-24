@@ -1274,45 +1274,45 @@ Public Class ContactoManager
         Return Result
     End Function
 
-    Public Shared Function GetParameter() As FParameter
-        Dim wsClient As New FaceDetectionMainSoapClient
-        Dim res As New EPParameterResponse
-        Dim req As New EPParameterRequest
-        Dim result As New FParameter
+    'Public Shared Function GetParameter() As FParameter
+    '    Dim wsClient As New FaceDetectionMainSoapClient
+    '    Dim res As New EPParameterResponse
+    '    Dim req As New EPParameterRequest
+    '    Dim result As New FParameter
 
-        Dim DtParametros As New DataTable("Parametros")
-        Try
-            res = wsClient.GetParameterFaceDetect(req)
-            If res.ActionResult Then
-                DtParametros = res.DsResult.Tables(0)
-                Dim rows As DataRow()
+    '    Dim DtParametros As New DataTable("Parametros")
+    '    Try
+    '        res = wsClient.GetParameterFaceDetect(req)
+    '        If res.ActionResult Then
+    '            DtParametros = res.DsResult.Tables(0)
+    '            Dim rows As DataRow()
 
-                rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='SubscriptionKeyFace'")
-                For Each r As DataRow In rows
-                    result.SubscriptionKey = r.Item(3)
-                Next
+    '            rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='SubscriptionKeyFace'")
+    '            For Each r As DataRow In rows
+    '                result.SubscriptionKey = r.Item(3)
+    '            Next
 
-                rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='LocationApiFace'")
-                For Each r As DataRow In rows
-                    result.LocationApi = r.Item(3)
-                Next
+    '            rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='LocationApiFace'")
+    '            For Each r As DataRow In rows
+    '                result.LocationApi = r.Item(3)
+    '            Next
 
-                rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='IdGroup'")
-                For Each r As DataRow In rows
-                    result.IdGrupo = r.Item(3)
-                Next
+    '            rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='IdGroup'")
+    '            For Each r As DataRow In rows
+    '                result.IdGrupo = r.Item(3)
+    '            Next
 
-                rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='TipGroup'")
-                For Each r As DataRow In rows
-                    result.TipGroup = r.Item(3)
-                Next
+    '            rows = DtParametros.Select("TipoParametro='FaceDetection' and  NombreParametro='TipGroup'")
+    '            For Each r As DataRow In rows
+    '                result.TipGroup = r.Item(3)
+    '            Next
 
-            End If
-            Return result
-        Catch ex As Exception
-            SetLogEvent(ex, result, req)
-        End Try
-    End Function
+    '        End If
+    '        Return result
+    '    Catch ex As Exception
+    '        SetLogEvent(ex, result, req)
+    '    End Try
+    'End Function
 
 
 
