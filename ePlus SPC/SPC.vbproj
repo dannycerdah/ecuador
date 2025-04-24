@@ -119,12 +119,13 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FaceDetectLibrary">
-      <HintPath>..\..\..\GA\FaceDetectLibrary\bin\Debug\FaceDetectLibrary.dll</HintPath>
+    <Reference Include="FaceDetectLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DependenciesDll\FaceDetectLibrary.dll</HintPath>
     </Reference>
     <Reference Include="FaceRekoClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\GA\GAFaceReko\FaceRekoClient\bin\Debug\FaceRekoClient.dll</HintPath>
+      <HintPath>..\DependenciesDll\FaceRekoClient.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics.Core, Version=21.2.20212.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Infragistics.WinUI.Core.21.2.36-alpha\lib\netstandard2.0\Infragistics.Core.dll</HintPath>
@@ -231,8 +232,9 @@
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="SecuGen.FDxSDKPro.Windows">
-      <HintPath>C:\Users\hp\Desktop\SPC_PreFacturacion\ePlus SPC\bin\Debug\SecuGen.FDxSDKPro.Windows.dll</HintPath>
+    <Reference Include="SecuGen.FDxSDKPro.Windows, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4c4e1bcde5201535, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\DependenciesDll\SecuGen.FDxSDKPro.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System">
       <Private>True</Private>
