@@ -124,10 +124,12 @@
                     .Host = Config.correoHost
                     .Credentials = New System.Net.NetworkCredential(Config.UsuarioCorreo, Config.correoClave)
                     .EnableSsl = Config.correoSSL
+                    .DeliveryMethod = Net.Mail.SmtpDeliveryMethod.Network
                 End With
                 Using msg As New Net.Mail.MailMessage(Config.correoRemitente, destinatarios, descripcionReporte, msj)
                     Dim attachment As System.Net.Mail.Attachment
                     attachment = New System.Net.Mail.Attachment(direccionAdjunto)
+                    msg.IsBodyHtml = True
                     msg.Attachments.Add(attachment)
                     sender.Send(msg)
                 End Using
