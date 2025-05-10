@@ -23,4 +23,6 @@
     Public Property AgenciaContacto As New List(Of ContactoAgenciaCatalogItem)
     Public Property huella As String
     Public Property IdContactoUser As String 'jro 14062018 se agreaga para tener el usuario q regalizo el ingreso o actualizacion del contacto
+    Public Property EmailContactoAgencia As String 'jro spint01 24/04/2025
+    Public Property DescripcionAgencia As String 'jro spint01 24/04/2025
 End Class
