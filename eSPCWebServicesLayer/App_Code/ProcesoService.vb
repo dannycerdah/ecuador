@@ -439,5 +439,10 @@ Public Class ProcesoService
     Public Function MovimientoPorGuia(req As ProcesoRequest) As ProcesoResponse
         Return ProcesoManager.MovimientoPorGuia(req)
     End Function
-
+    'ini jrodriguez sprint01 25/04/2025
+    <WebMethod()>
+    Public Function AgregaNotificacionWarehouse(req As NotificacionWarehouseRequest) As NotificacionWarehouseResponse
+        Return ProcesoManager.AgregaNotificacionWarehouse(req)
+    End Function
+    'fin jrodriguez sprint01 25/04/2025
 End Class
