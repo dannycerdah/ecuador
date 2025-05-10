@@ -14,4 +14,5 @@
     Public Property cargo As String
     Public Property indice As Guid
     Public Property IdContactoUser As String
+    Public Property mailConactoAgencia As String 'jro spint01 24/04/2025
 End Class
