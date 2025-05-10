@@ -2373,4 +2373,37 @@ Public Class ProcesoManager
         End Try
         Return Result
     End Function
+    'ini jrodriguez sprint01 25/04/2025
+    Public Shared Function AgregaNotificacionWarehouse(req As NotificacionWarehouseRequest) As NotificacionWarehouseResponse
+        Dim Result As New NotificacionWarehouseResponse
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Dim param As Object()
+        Try
+            dbTran = MyDbFactory.CreateDatabase("TranDB")
+            If ValidateSession(req) Then
+                With cmd
+                    .Parameters.AddWithValue("guia", req.Notificacion.Guia)
+                    .Parameters.AddWithValue("agencia", req.Notificacion.Agencia)
+                    .Parameters.AddWithValue("correos_notificados", req.Notificacion.CorreosNotificados)
+                    .Parameters.AddWithValue("ruta_warehouse", req.Notificacion.RutaWarehouse)
+                    .CommandText = "agregaNotificacionWarehouse"
+                    .CommandType = CommandType.StoredProcedure
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                    .ExecuteNonQuery()
+                End With
+                cmd.Connection.Close()
+            End If
+            Result.ActionResult = True
+        Catch ex As Exception
+            Result.ActionResult = False
+            Result.ErrorMessage = ex.Message
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
+    'fin jrodriguez sprint01 25/04/2025
 End Class
