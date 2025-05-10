@@ -1,4 +1,5 @@
 ﻿
+Imports System.Text.RegularExpressions
 Imports SPC.Server.ReportService
 
 Public Class frmDestinatarioContacts
@@ -64,6 +65,10 @@ Public Class frmDestinatarioContacts
         InitializeComponent()
         InitializeValues()
         myDestinatario = CommonData.GetDestinatariosItemPorId(Id)
+        'ini  jrodigue sprint01 24/04/2025 se corrigue bug existente
+        idReporteDestinatario = myDestinatario.idReporte
+        FillDestinatarioAgenciaReporte()
+        'fin  jrodigue sprint01 24/04/2025
         'ugdDestinatarios.DataSource = CommonData.GetDestinatariosbyIdReporteyAgencia(destinatarioIdReporte, destinatarioIdAgencia)
     End Sub
 
@@ -233,5 +238,22 @@ Public Class frmDestinatarioContacts
             End If
         End If
     End Sub
+    'ini jrodigue sprint01 24/04/2025
+    'se crea funcion de validacion de formato de correo
+    Public Function EsCorreoValido(correo As String) As Boolean
+        Dim patron As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        Dim regex As New Regex(patron)
+        Return regex.IsMatch(correo)
+    End Function
 
+    'Metodo que se ejecuta al valdiar el campo txtCorreo
+    Private Sub txtCorreo_Validated(sender As Object, e As EventArgs) Handles txtCorreo.Validated
+        If txtCorreo.Text IsNot Nothing And txtCorreo.Text.Length > 0 Then
+            If EsCorreoValido(txtCorreo.Text) = False Then
+                MessageBox.Show("Debe ingresar un correo valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                txtCorreo.Select()
+            End If
+        End If
+    End Sub
+    'fin  jrodigue sprint01 24/04/2025
 End Class
