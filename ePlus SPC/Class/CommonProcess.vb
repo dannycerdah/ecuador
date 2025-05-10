@@ -1865,7 +1865,28 @@ Public Class CommonProcess
         End Try
         Return result
     End Function
-
+    'ini jrodriguez sprint01 25/04/2025
+    'Se crea funcion encargara de llamar al servicio que realizara el ingreso de notificacion
+    Public Shared Function NotificacionWarehouse(ByVal notificacion As Notificacion) As Boolean
+        Dim result As Boolean = False
+        Dim req As New NotificacionWarehouseRequest
+        Dim res As New NotificacionWarehouseResponse
+        Dim WsClnt As New ProcesoServiceSoapClient
+        Try
+            General.SetBARequest(req)
+            req.Notificacion = notificacion
+            res = WsClnt.AgregaNotificacionWarehouse(req)
+            If res.ActionResult Then
+                result = True
+            Else
+                Throw New Exception(res.ErrorMessage)
+            End If
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex, res, req)
+        End Try
+        Return result
+        'fin jrodriguez sprint01 25/04/2025
+    End Function
 
 
 
