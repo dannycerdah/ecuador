@@ -21,6 +21,7 @@ Public Class frmConsultaEmpleados
             .Add("estado", GetType(String))
             .Add("comentario", GetType(String))
             .Add("indice", GetType(Guid))
+            .Add("mailConactoAgencia", GetType(String)) 'jro spint01 24/04/2025
         End With
         ugdPersonalGeneral.DataSource = dtContactos
         ugdPersonalGeneral.DataBind()
@@ -38,6 +39,7 @@ Public Class frmConsultaEmpleados
             nr.Item("fechaInicio") = r.Item("fechaInicio")
             nr.Item("fechaFin") = r.Item("fechaFin")
             nr.Item("comentario") = r.Item("comentario")
+            nr.Item("mailConactoAgencia") = r.Item("mailConactoAgencia") 'jro spint01 24/04/2025
             dtContactos.Rows.Add(nr)
         Next
         ugdPersonalGeneral.Refresh()
@@ -63,6 +65,7 @@ Public Class frmConsultaEmpleados
             nr.Item("fechaInicio") = r.Item("fechaInicio")
             nr.Item("fechaFin") = r.Item("fechaFin")
             nr.Item("comentario") = r.Item("comentario")
+            nr.Item("mailConactoAgencia") = r.Item("mailConactoAgencia") 'jro spint01 24/04/2025
             dtContactos.Rows.Add(nr)
         Next
         ugdPersonalGeneral.DataBind()
@@ -85,6 +88,7 @@ Public Class frmConsultaEmpleados
             ugdPersonalGeneral.DisplayLayout.Bands(0).Columns("estado").Hidden = True
             ugdPersonalGeneral.DisplayLayout.Bands(0).Columns("comentario").Hidden = True
             ugdPersonalGeneral.DisplayLayout.Bands(0).Columns("indice").Hidden = True
+            ugdPersonalGeneral.DisplayLayout.Bands(0).Columns("mailConactoAgencia").Hidden = True 'jro spint01 24/04/2025
         Catch ex As Exception
             General.SetLogEvent(ex)
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -101,6 +105,8 @@ Public Class frmConsultaEmpleados
             Contacto.primerApellido = ugdPersonalGeneral.ActiveRow.Cells("primerApellidoContacto").Value
             Contacto.segundoApellido = ugdPersonalGeneral.ActiveRow.Cells("segundoApellidoContacto").Value
             Contacto.cargo = ugdPersonalGeneral.ActiveRow.Cells("cargo").Value
+            Contacto.EmailContactoAgencia = If(IsDBNull(ugdPersonalGeneral.ActiveRow.Cells("mailConactoAgencia").Value), "", ugdPersonalGeneral.ActiveRow.Cells("mailConactoAgencia").Value.ToString()) 'jro spint01 24/04/2025
+            Contacto.DescripcionAgencia = If(IsDBNull(ugdPersonalGeneral.ActiveRow.Cells("descripcionAgencia").Value), "", ugdPersonalGeneral.ActiveRow.Cells("descripcionAgencia").Value.ToString()) 'jro spint01 24/04/2025
             Me.Close()
         Catch ex As Exception
             General.SetLogEvent(ex)
