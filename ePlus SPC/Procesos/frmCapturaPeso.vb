@@ -3000,7 +3000,7 @@ Public Class frmCapturaPeso
                                     enc.Chofer = frmPersonalProceso.personaAgenciaCarga.primerApellido + " " + frmPersonalProceso.personaAgenciaCarga.segundoApellido + " " + frmPersonalProceso.personaAgenciaCarga.primerNombre
                                     'ini jrodriguez sprint01 25/04/2025
                                     'se determina el correo del chofer
-                                    emailRecibe = ObtenerCorreoMatris(enc.idRecibe)
+                                    emailRecibe = tempRecibe.correo
                                     If emailRecibe <> String.Empty Then
                                         emailsDestinatarios = emailRecibe
                                     Else
@@ -3621,7 +3621,7 @@ Public Class frmCapturaPeso
                                     enc.Chofer = frmPersonalProceso.personaAgenciaCarga.primerApellido + " " + frmPersonalProceso.personaAgenciaCarga.segundoApellido + " " + frmPersonalProceso.personaAgenciaCarga.primerNombre
                                     'ini jrodriguez sprint01 25/04/2025
                                     'se determina el correo del chofer
-                                    emailRecibe = ObtenerCorreoMatris(enc.idRecibe)
+                                    emailRecibe = tempRecibe.correo
                                     If emailRecibe <> String.Empty Then
                                         emailsDestinatarios = emailRecibe
                                     Else
@@ -4209,7 +4209,7 @@ Public Class frmCapturaPeso
                         enc.Chofer = frmPersonalProceso.personaAgenciaCarga.primerApellido + " " + frmPersonalProceso.personaAgenciaCarga.segundoApellido + " " + frmPersonalProceso.personaAgenciaCarga.primerNombre
                         'ini jrodriguez sprint01 25/04/2025
                         'se determina el correo del chofer
-                        emailRecibe = ObtenerCorreoMatris(enc.idRecibe)
+                        emailRecibe = tempRecibe.correo
                         If emailRecibe <> String.Empty Then
                             emailsDestinatarios = emailRecibe
                         Else
