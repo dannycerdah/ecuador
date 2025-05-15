@@ -33,7 +33,15 @@ Public Class frmCapturaPeso
     Dim dtdetalleProcesoTemp As New DataTable("ProcesosTemp")
     Dim dtElementoProceso As New DataTable("dtElementoProceso")
     Dim dtSellocamiones As New DataTable("Sellocamiones")
-
+    'ini jrodriguez sprint01 25/04/2025
+    'Variables utilizadas para las notificaciones de correo
+    Dim emailsDestinatarios As String
+    Dim emailChofer As String
+    Dim emailEnvia As String
+    Dim emailSeguridad As String
+    Dim emailRecibe As String
+    Dim existenTodosLosCorreos As Boolean = True
+    'fin jrodriguez sprint01 25/04/2025
     Public resDtVuelo As New DetalleVuelo
     Public resDsVuelo As New DataSet
     Dim DataIn As String = String.Empty
@@ -487,6 +495,11 @@ Public Class frmCapturaPeso
             Next
             ugvPersonal.ActiveRow.Cells("idAgencia").Value = tempContacto.idAgencia
             ugvPersonal.ActiveRow.Cells("idContacto").Value = tempContacto.idContacto
+            'ini jrodriguez sprint01 25/04/2025
+            'Se setean valores de agencia del contacto y el correo que viene relacionado con el modulo de destinatarios
+            ugvPersonal.ActiveRow.Cells("agenciaContacto").Value = tempContacto.DescripcionAgencia
+            ugvPersonal.ActiveRow.Cells("correo").Value = tempContacto.EmailContactoAgencia
+            'fin jrodriguez sprint01 25/04/2025
             ugvPersonal.ActiveRow.Cells("contacto").Value = tempContacto.primerNombre + " " + tempContacto.primerApellido
             ugvPersonal.ActiveRow.Cells("horaEntrada").Value = DateTime.Now
             ugvPersonal.ActiveRow.Cells("horaSalida").Value = Date.Parse("00:00:00")
@@ -563,6 +576,11 @@ Public Class frmCapturaPeso
                 .Add("idAgencia", GetType(Guid))
                 .Add("idContacto", GetType(String))
                 .Add("contacto", GetType(String))
+                'ini jrodriguez sprint01 25/04/2025
+                'Se setean valores de agencia del contacto y el correo que viene relacionado con el modulo de destinatarios
+                .Add("correo", GetType(String))
+                .Add("agenciaContacto", GetType(String))
+                'fin jrodriguez sprint01 25/04/2025
                 .Add("horaEntrada", GetType(DateTime))
                 .Add("horaSalida", GetType(DateTime))
             End With
@@ -855,6 +873,11 @@ Public Class frmCapturaPeso
             ugvPersonal.DisplayLayout.Bands(0).Columns("idAgencia").Hidden = True
             ugvPersonal.DisplayLayout.Bands(0).Columns("idContacto").Hidden = True
             ugvPersonal.DisplayLayout.Bands(0).Columns("contacto").Header.Caption = "Contacto"
+            'ini jrodriguez sprint01 25/04/2025
+            'Se setean valores de agencia del contacto y el correo que viene relacionado con el modulo de destinatarios
+            ugvPersonal.DisplayLayout.Bands(0).Columns("agenciaContacto").Header.Caption = "Agencia"
+            ugvPersonal.DisplayLayout.Bands(0).Columns("correo").Header.Caption = "Correo Contacto"
+            'fin ini jrodriguez sprint01 25/04/2025
             ugvPersonal.DisplayLayout.Bands(0).Columns("horaEntrada").Header.Caption = "Hora Entrada"
             ugvPersonal.DisplayLayout.Bands(0).Columns("horaEntrada").CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
             ugvPersonal.DisplayLayout.Bands(0).Columns("horaSalida").Header.Caption = "Hora Salida"
@@ -2185,6 +2208,11 @@ Public Class frmCapturaPeso
                                     r2.Item("horaEntrada") = r.Item("horaInicio")
                                     r2.Item("horaSalida") = r.Item("horaFin")
                                     r.Item("cargo") = "HECHO-" & r.Item("cargo")
+                                    'ini jrodriguez sprint01 25/04/2025
+                                    'Se setean valores de agencia del contacto y el correo que viene relacionado con el modulo de destinatarios
+                                    r2.Item("agenciaContacto") = r.Item("descripcionAgencia")
+                                    r2.Item("correo") = r.Item("mailConactoAgencia")
+                                    'fin jrodriguez sprint01 25/04/2025
                                     Exit For
                                 End If
                             End If
@@ -2205,6 +2233,11 @@ Public Class frmCapturaPeso
                         r2.Item("contacto") = r.Item("primerNombreContacto") + " " + r.Item("primerApellidoContacto")
                         r2.Item("horaEntrada") = r.Item("horaInicio")
                         r2.Item("horaSalida") = r.Item("horaFin")
+                        'ini jrodriguez sprint01 25/04/2025
+                        'Se setean valores de agencia del contacto y el correo que viene relacionado con el modulo de destinatarios
+                        r2.Item("agenciaContacto") = r.Item("descripcionAgencia")
+                        r2.Item("correo") = r.Item("mailConactoAgencia")
+                        'fin jrodriguez sprint01 25/04/2025
                         dtMatriz.Rows.Add(r2)
                         r.Item("cargo") = r.Item("cargo") & "-Hecho"
                     End If
@@ -2941,6 +2974,15 @@ Public Class frmCapturaPeso
                                 enc.Eds = ugvTotalGuias.ActiveRow.Cells("Eds").Value
                                 enc.Observacion = ugvTotalGuias.ActiveRow.Cells("observacion").Value.ToString
                                 Dim frmPersonalProceso As New frmElegirPersonalProceso
+                                'ini jrodriguez sprint01 25/04/2025
+                                'Se inicializan valores para determinacion de destinatarios para la notificacion y la alerta de mensaje
+                                emailsDestinatarios = ""
+                                emailRecibe = ""
+                                emailChofer = ""
+                                emailEnvia = ""
+                                emailSeguridad = ""
+                                existenTodosLosCorreos = True
+                                'fin jrodriguez sprint01 25/04/2025
                                 frmPersonalProceso.dtPersonal = dtCamiones
                                 frmPersonalProceso.tempGuiaItem = GuiaItem
                                 frmPersonalProceso.idAerolinea = myDetalleVuelo.idAgencia
@@ -2956,12 +2998,36 @@ Public Class frmCapturaPeso
                                 Try
                                     enc.idChofer = frmPersonalProceso.personaAgenciaCarga.idContacto
                                     enc.Chofer = frmPersonalProceso.personaAgenciaCarga.primerApellido + " " + frmPersonalProceso.personaAgenciaCarga.segundoApellido + " " + frmPersonalProceso.personaAgenciaCarga.primerNombre
+                                    'ini jrodriguez sprint01 25/04/2025
+                                    'se determina el correo del chofer
+                                    emailRecibe = tempRecibe.correo
+                                    If emailRecibe <> String.Empty Then
+                                        emailsDestinatarios = emailRecibe
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    emailChofer = ObtenerCorreoMatris(enc.idChofer)
+                                    If emailChofer <> String.Empty Then
+                                        emailsDestinatarios = emailsDestinatarios + ";" + emailChofer
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    'fin jrodriguez sprint01 25/04/2025
                                 Catch ex As Exception
                                     General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Chofer")
                                 End Try
                                 Try
                                     enc.idEnvia = frmPersonalProceso.personaAerolinea.idContacto
                                     enc.Envia = frmPersonalProceso.personaAerolinea.primerApellido + " " + frmPersonalProceso.personaAerolinea.segundoApellido + " " + frmPersonalProceso.personaAerolinea.primerNombre
+                                    'ini jrodriguez sprint01 25/04/2025
+                                    'se determina el correo del contacto de la agencia que envia
+                                    emailEnvia = ObtenerCorreoMatris(enc.idEnvia)
+                                    If emailEnvia <> String.Empty Then
+                                        emailsDestinatarios = emailsDestinatarios + ";" + emailEnvia
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    'fin jrodriguez sprint01 25/04/2025
                                 Catch ex As Exception
                                     General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Quien Envia")
                                 End Try
@@ -2969,6 +3035,15 @@ Public Class frmCapturaPeso
                                     enc.idSeguridad = frmPersonalProceso.personaSeguridad.idContacto
                                     enc.seguridad = frmPersonalProceso.personaSeguridad.primerApellido + " " + frmPersonalProceso.personaSeguridad.segundoApellido + " " + frmPersonalProceso.personaSeguridad.primerNombre
                                     enc.AgenciaSeguridad = frmPersonalProceso.agenciaSeguridad
+                                    'ini jrodriguez sprint01 25/04/2025
+                                    'se determina el correo de seguridad
+                                    emailSeguridad = ObtenerCorreoMatris(enc.idSeguridad)
+                                    If emailSeguridad <> String.Empty Then
+                                        emailsDestinatarios = emailsDestinatarios + ";" + emailSeguridad
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    'fin jrodriguez sprint01 25/04/2025
                                 Catch ex As Exception
                                     General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Seguridad")
                                 End Try
@@ -3466,6 +3541,11 @@ Public Class frmCapturaPeso
                                 Rpt.idGuia = Guid.Parse(idGuia)
                                 Rpt.vuelo = enc.Vuelo
                                 Rpt.fecha = enc.Fecha.ToString
+                                'ini jrodriguez sprint01 25/04/2025
+                                'se setean variables para ser utilizadas en notificacion y alerta
+                                Rpt.DestinatarioNotificacion = emailsDestinatarios
+                                Rpt.NotificacionTotal = existenTodosLosCorreos
+                                'fin jrodriguez sprint01 25/04/2025
                                 Rpt.Show()
 
                             Else
@@ -3515,6 +3595,15 @@ Public Class frmCapturaPeso
                                 enc.Eds = r.Item("Eds")
                                 enc.Observacion = r.Item("observacion").ToString
                                 Dim frmPersonalProceso As New frmElegirPersonalProceso
+                                'ini jrodriguez sprint01 25/04/2025
+                                'Se inicializan valores para determinacion de destinatarios para la notificacion y la alerta de mensaje
+                                emailsDestinatarios = ""
+                                emailRecibe = ""
+                                emailChofer = ""
+                                emailEnvia = ""
+                                emailSeguridad = ""
+                                existenTodosLosCorreos = True
+                                'fin jrodriguez sprint01 25/04/2025
                                 frmPersonalProceso.dtPersonal = dtCamiones
                                 frmPersonalProceso.tempGuiaItem = GuiaItem
                                 frmPersonalProceso.idAerolinea = myDetalleVuelo.idAgencia
@@ -3530,12 +3619,36 @@ Public Class frmCapturaPeso
                                 Try
                                     enc.idChofer = frmPersonalProceso.personaAgenciaCarga.idContacto
                                     enc.Chofer = frmPersonalProceso.personaAgenciaCarga.primerApellido + " " + frmPersonalProceso.personaAgenciaCarga.segundoApellido + " " + frmPersonalProceso.personaAgenciaCarga.primerNombre
+                                    'ini jrodriguez sprint01 25/04/2025
+                                    'se determina el correo del chofer
+                                    emailRecibe = tempRecibe.correo
+                                    If emailRecibe <> String.Empty Then
+                                        emailsDestinatarios = emailRecibe
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    emailChofer = ObtenerCorreoMatris(enc.idChofer)
+                                    If emailChofer <> String.Empty Then
+                                        emailsDestinatarios = emailsDestinatarios + ";" + emailChofer
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    'fin jrodriguez sprint01 25/04/2025
                                 Catch ex As Exception
                                     General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Chofer")
                                 End Try
                                 Try
                                     enc.idEnvia = frmPersonalProceso.personaAerolinea.idContacto
                                     enc.Envia = frmPersonalProceso.personaAerolinea.primerApellido + " " + frmPersonalProceso.personaAerolinea.segundoApellido + " " + frmPersonalProceso.personaAerolinea.primerNombre
+                                    'ini jrodriguez sprint01 25/04/2025
+                                    'se determina el correo del contacto de la agencia que envia
+                                    emailEnvia = ObtenerCorreoMatris(enc.idEnvia)
+                                    If emailEnvia <> String.Empty Then
+                                        emailsDestinatarios = emailsDestinatarios + ";" + emailEnvia
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    'fin jrodriguez sprint01 25/04/2025
                                 Catch ex As Exception
                                     General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Quien Envia")
                                 End Try
@@ -3543,6 +3656,15 @@ Public Class frmCapturaPeso
                                     enc.idSeguridad = frmPersonalProceso.personaSeguridad.idContacto
                                     enc.seguridad = frmPersonalProceso.personaSeguridad.primerApellido + " " + frmPersonalProceso.personaSeguridad.segundoApellido + " " + frmPersonalProceso.personaSeguridad.primerNombre
                                     enc.AgenciaSeguridad = frmPersonalProceso.agenciaSeguridad
+                                    'ini jrodriguez sprint01 25/04/2025
+                                    'se determina el correo de seguridad
+                                    emailSeguridad = ObtenerCorreoMatris(enc.idSeguridad)
+                                    If emailSeguridad <> String.Empty Then
+                                        emailsDestinatarios = emailsDestinatarios + ";" + emailSeguridad
+                                    Else
+                                        existenTodosLosCorreos = False
+                                    End If
+                                    'fin jrodriguez sprint01 25/04/2025
                                 Catch ex As Exception
                                     General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Seguridad")
                                 End Try
@@ -4004,6 +4126,11 @@ Public Class frmCapturaPeso
                                 Rpt.idGuia = Guid.Parse(idGuia)
                                 Rpt.vuelo = enc.Vuelo
                                 Rpt.fecha = enc.Fecha.ToString
+                                'ini jrodriguez sprint01 25/04/2025
+                                'se setean variables para ser utilizadas en notificacion y alerta
+                                Rpt.DestinatarioNotificacion = emailsDestinatarios
+                                Rpt.NotificacionTotal = existenTodosLosCorreos
+                                'fin jrodriguez sprint01 25/04/2025
                                 Rpt.Show()
                             End If
                         End If
@@ -4060,6 +4187,15 @@ Public Class frmCapturaPeso
                     frmPersonalProceso.tempGuiaItem = GuiaItem
                     frmPersonalProceso.idAerolinea = myDetalleVuelo.idAgencia
                     frmPersonalProceso.ShowDialog()
+                    'ini jrodriguez sprint01 25/04/2025
+                    'Se inicializan valores para determinacion de destinatarios para la notificacion y la alerta de mensaje
+                    emailsDestinatarios = ""
+                    emailRecibe = ""
+                    emailChofer = ""
+                    emailEnvia = ""
+                    emailSeguridad = ""
+                    existenTodosLosCorreos = True
+                    'fin jrodriguez sprint01 25/04/2025
                     If myDetalleVuelo.idAgencia <> Guid.Parse("78613da6-1277-11e4-981b-8f9d682eafe3") Or myDetalleVuelo.idAgencia <> Guid.Parse("b86b9024-12ac-11e4-981b-8f9d682eafe3") Then
                         If frmPersonalProceso.isCancel Then
                             Exit Sub
@@ -4071,12 +4207,36 @@ Public Class frmCapturaPeso
                     Try
                         enc.idChofer = frmPersonalProceso.personaAgenciaCarga.idContacto
                         enc.Chofer = frmPersonalProceso.personaAgenciaCarga.primerApellido + " " + frmPersonalProceso.personaAgenciaCarga.segundoApellido + " " + frmPersonalProceso.personaAgenciaCarga.primerNombre
+                        'ini jrodriguez sprint01 25/04/2025
+                        'se determina el correo del chofer
+                        emailRecibe = tempRecibe.correo
+                        If emailRecibe <> String.Empty Then
+                            emailsDestinatarios = emailRecibe
+                        Else
+                            existenTodosLosCorreos = False
+                        End If
+                        emailChofer = ObtenerCorreoMatris(enc.idChofer)
+                        If emailChofer <> String.Empty Then
+                            emailsDestinatarios = emailsDestinatarios + ";" + emailChofer
+                        Else
+                            existenTodosLosCorreos = False
+                        End If
+                        'fin jrodriguez sprint01 25/04/2025
                     Catch ex As Exception
                         General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Chofer")
                     End Try
                     Try
                         enc.idEnvia = frmPersonalProceso.personaAerolinea.idContacto
                         enc.Envia = frmPersonalProceso.personaAerolinea.primerApellido + " " + frmPersonalProceso.personaAerolinea.segundoApellido + " " + frmPersonalProceso.personaAerolinea.primerNombre
+                        'ini jrodriguez sprint01 25/04/2025
+                        'se determina el correo del contacto de la agencia que envia
+                        emailEnvia = ObtenerCorreoMatris(enc.idEnvia)
+                        If emailEnvia <> String.Empty Then
+                            emailsDestinatarios = emailsDestinatarios + ";" + emailEnvia
+                        Else
+                            existenTodosLosCorreos = False
+                        End If
+                        'fin jrodriguez sprint01 25/04/2025
                     Catch ex As Exception
                         General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Quien Envia")
                     End Try
@@ -4084,6 +4244,15 @@ Public Class frmCapturaPeso
                         enc.idSeguridad = frmPersonalProceso.personaSeguridad.idContacto
                         enc.seguridad = frmPersonalProceso.personaSeguridad.primerApellido + " " + frmPersonalProceso.personaSeguridad.segundoApellido + " " + frmPersonalProceso.personaSeguridad.primerNombre
                         enc.AgenciaSeguridad = frmPersonalProceso.agenciaSeguridad
+                        'ini jrodriguez sprint01 25/04/2025
+                        'se determina el correo de seguridad
+                        emailSeguridad = ObtenerCorreoMatris(enc.idSeguridad)
+                        If emailSeguridad <> String.Empty Then
+                            emailsDestinatarios = emailsDestinatarios + ";" + emailSeguridad
+                        Else
+                            existenTodosLosCorreos = False
+                        End If
+                        'fin jrodriguez sprint01 25/04/2025
                     Catch ex As Exception
                         General.SetLogEvent(ex, "ugvTotalGuias_DoubleClickCell Seguridad")
                     End Try
@@ -4572,6 +4741,11 @@ Public Class frmCapturaPeso
                     Rpt.idGuia = Guid.Parse(idGuia)
                     Rpt.vuelo = enc.Vuelo
                     Rpt.fecha = enc.Fecha.ToString
+                    'ini jrodriguez sprint01 25/04/2025
+                    'se setean variables para ser utilizadas en notificacion y alerta
+                    Rpt.DestinatarioNotificacion = emailsDestinatarios
+                    Rpt.NotificacionTotal = existenTodosLosCorreos
+                    'fin jrodriguez sprint01 25/04/2025
                     Rpt.Show()
                 End If
             End If
@@ -5731,10 +5905,15 @@ Public Class frmCapturaPeso
     Private Sub txtcodSello_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtcodSello.KeyPress
         e.KeyChar = UCase(e.KeyChar)
     End Sub
-
-    Private Sub txtPeso_ValueChanged(sender As Object, e As EventArgs) Handles txtPeso.ValueChanged
-
-    End Sub
-
+    'ini jrodriguez sprint01 25/04/2025
+    'se crea metodo encargado de obtener el correo que se encuentra registrado en la matriz que es extraido desde destinatario
+    Private Function ObtenerCorreoMatris(idContacto As String) As String
+        For Each r As Infragistics.Win.UltraWinGrid.UltraGridRow In ugvPersonal.Rows
+            If If(IsDBNull(r.Cells("idContacto").Value), "", r.Cells("idContacto").Value.ToString()) = idContacto Then
+                Return If(IsDBNull(r.Cells("correo").Value), "", r.Cells("correo").Value.ToString())
+            End If
+        Next
+    End Function
+    'fin jrodriguez sprint01 25/04/2025
 
 End Class

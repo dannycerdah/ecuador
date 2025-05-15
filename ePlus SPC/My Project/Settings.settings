@@ -35,51 +35,6 @@
     <Setting Name="CommonResposeService" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://cdestest.aduana.gob.ec/cdes_svr/SENAE_CommonResponseService_EC?wsdl</Value>
     </Setting>
-    <Setting Name="SRCHEX_req" Type="System.String" Scope="User">
-      <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"&gt;
-                &lt;soapenv:Header&gt; 
-                                               &lt;ns0:Header xmlns:ns0="http://soapinterop.org/xsd"&gt; 
-                                                      &lt;ns0:SecLv1&gt;usuarioEcuapass&lt;/ns0:SecLv1&gt;
-                                                      &lt;ns0:SecLv2&gt;claveEcuapass&lt;/ns0:SecLv2&gt;
-                                                      &lt;ns0:SecLv3&gt;keyEcuapass &lt;/ns0:SecLv3&gt; 
-                                                &lt;/ns0:Header&gt; 
-               &lt;/soapenv:Header&gt;
-	 &lt;soapenv:Body&gt;
-			&lt;web:requestExportDespachoSRCHEX&gt;
-				 &lt;!--Optional:--&gt;
-				 &lt;arg0&gt;&amp;lt;DocumentMetadata xsi:schemaLocation="urn:wco:datamodel:EC:SRCHEX:1:0:0 EC_SRCHEX_0p1.03.xsd" xmlns="urn:wco:datamodel:EC:SRCHEX:1:0:0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&amp;gt;
-			&amp;lt;WCODataModelVersion&amp;gt;3.0&amp;lt;/WCODataModelVersion&amp;gt;
-			&amp;lt;WCODocumentName&amp;gt;SRCHEX&amp;lt;/WCODocumentName&amp;gt;
-			&amp;lt;CountryCode&amp;gt;EC&amp;lt;/CountryCode&amp;gt;
-			&amp;lt;AgencyName&amp;gt;SENAE&amp;lt;/AgencyName&amp;gt;
-			&amp;lt;AgencyAssignedCountrySubEntityID&amp;gt;String&amp;lt;/AgencyAssignedCountrySubEntityID&amp;gt;
-			&amp;lt;AgencyAssignedCustomizedDocumentName&amp;gt;SRCHEX&amp;lt;/AgencyAssignedCustomizedDocumentName&amp;gt;
-			&amp;lt;AgencyAssignedCustomizedDocumentVersion&amp;gt;1.0&amp;lt;/AgencyAssignedCustomizedDocumentVersion&amp;gt;
-			&amp;lt;Declaration&amp;gt;
-				&amp;lt;TypeCode&amp;gt;002&amp;lt;/TypeCode&amp;gt;
-				&amp;lt;Agent&amp;gt;
-					&amp;lt;OceCD&amp;gt;29000001&amp;lt;/OceCD&amp;gt;
-					&amp;lt;UserID&amp;gt;0801867177&amp;lt;/UserID&amp;gt;
-				&amp;lt;/Agent&amp;gt;
-				&amp;lt;SequenceNumeric&amp;gt;1&amp;lt;/SequenceNumeric&amp;gt;
-				&amp;lt;Consignment&amp;gt;
-					&amp;lt;ConsultTypeID&amp;gt;02&amp;lt;/ConsultTypeID&amp;gt;
-					&amp;lt;DeclarationOfficeID&amp;gt;028&amp;lt;/DeclarationOfficeID&amp;gt;
-					&amp;lt;ExporterDocumentID/&amp;gt;
-					&amp;lt;DeclarationNumber&amp;gt;
-						&amp;lt;DeclarationNumberID&amp;gt;&amp;lt;/DeclarationNumberID&amp;gt;
-					&amp;lt;/DeclarationNumber&amp;gt;
-					&amp;lt;Period&amp;gt;
-						&amp;lt;StartDate&amp;gt;2015-02-01&amp;lt;/StartDate&amp;gt;
-						&amp;lt;EndDate&amp;gt;2015-02-15&amp;lt;/EndDate&amp;gt;
-					&amp;lt;/Period&amp;gt;
-				&amp;lt;/Consignment&amp;gt;
-			&amp;lt;/Declaration&amp;gt;
-		&amp;lt;/DocumentMetadata&amp;gt;&lt;/arg0&gt;
-			&lt;/web:requestExportDespachoSRCHEX&gt;
-	 &lt;/soapenv:Body&gt;
-&lt;/soapenv:Envelope&gt;</Value>
-    </Setting>
     <Setting Name="DocumentResponse_req" Type="System.String" Scope="User">
       <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:wco:datamodel:EC:RN:1:0:0"&gt;
 &lt;soapenv:Header&gt; 
@@ -158,19 +113,19 @@
 &lt;/soapenv:Envelope&gt;</Value>
     </Setting>
     <Setting Name="hostCorreo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.10.181</Value>
+      <Value Profile="(Default)">smtp.office365.com</Value>
     </Setting>
     <Setting Name="puertoCorreo" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">587</Value>
     </Setting>
     <Setting Name="remitenteCorreo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">reportes@generalairsa.com</Value>
+      <Value Profile="(Default)">notificaciones.carga@talma.com.ec</Value>
     </Setting>
     <Setting Name="claveCorreo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Pa$$w0rd19</Value>
+      <Value Profile="(Default)">Noti2025$$</Value>
     </Setting>
     <Setting Name="sslCorreo" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="espcConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -190,10 +145,141 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="UsuarioCorreo" Type="System.String" Scope="User">
-      <Value Profile="(Default)">reportes</Value>
+      <Value Profile="(Default)">notificaciones.carga@talma.com.ec</Value>
+    </Setting>
+    <Setting Name="SRCHEX_req" Type="System.String" Scope="User">
+      <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"&gt;
+                &lt;soapenv:Header&gt; 
+                                               &lt;ns0:Header xmlns:ns0="http://soapinterop.org/xsd"&gt; 
+                                                      &lt;ns0:SecLv1&gt;usuarioEcuapass&lt;/ns0:SecLv1&gt;
+                                                      &lt;ns0:SecLv2&gt;claveEcuapass&lt;/ns0:SecLv2&gt;
+                                                      &lt;ns0:SecLv3&gt;keyEcuapass &lt;/ns0:SecLv3&gt; 
+                                                &lt;/ns0:Header&gt; 
+               &lt;/soapenv:Header&gt;
+	 &lt;soapenv:Body&gt;
+			&lt;web:requestExportDespachoSRCHEX&gt;
+				 &lt;!--Optional:--&gt;
+				 &lt;arg0&gt;&amp;lt;DocumentMetadata xsi:schemaLocation="urn:wco:datamodel:EC:SRCHEX:1:0:0 EC_SRCHEX_0p1.03.xsd" xmlns="urn:wco:datamodel:EC:SRCHEX:1:0:0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&amp;gt;
+			&amp;lt;WCODataModelVersion&amp;gt;3.0&amp;lt;/WCODataModelVersion&amp;gt;
+			&amp;lt;WCODocumentName&amp;gt;SRCHEX&amp;lt;/WCODocumentName&amp;gt;
+			&amp;lt;CountryCode&amp;gt;EC&amp;lt;/CountryCode&amp;gt;
+			&amp;lt;AgencyName&amp;gt;SENAE&amp;lt;/AgencyName&amp;gt;
+			&amp;lt;AgencyAssignedCountrySubEntityID&amp;gt;String&amp;lt;/AgencyAssignedCountrySubEntityID&amp;gt;
+			&amp;lt;AgencyAssignedCustomizedDocumentName&amp;gt;SRCHEX&amp;lt;/AgencyAssignedCustomizedDocumentName&amp;gt;
+			&amp;lt;AgencyAssignedCustomizedDocumentVersion&amp;gt;1.0&amp;lt;/AgencyAssignedCustomizedDocumentVersion&amp;gt;
+			&amp;lt;Declaration&amp;gt;
+				&amp;lt;TypeCode&amp;gt;002&amp;lt;/TypeCode&amp;gt;
+				&amp;lt;Agent&amp;gt;
+					&amp;lt;OceCD&amp;gt;29000001&amp;lt;/OceCD&amp;gt;
+					&amp;lt;UserID&amp;gt;VALERIAROSERO&amp;lt;/UserID&amp;gt;
+				&amp;lt;/Agent&amp;gt;
+				&amp;lt;SequenceNumeric&amp;gt;1&amp;lt;/SequenceNumeric&amp;gt;
+				&amp;lt;Consignment&amp;gt;
+					&amp;lt;ConsultTypeID&amp;gt;02&amp;lt;/ConsultTypeID&amp;gt;
+					&amp;lt;DeclarationOfficeID&amp;gt;028&amp;lt;/DeclarationOfficeID&amp;gt;
+					&amp;lt;ExporterDocumentID/&amp;gt;
+					&amp;lt;DeclarationNumber&amp;gt;
+						&amp;lt;DeclarationNumberID&amp;gt;&amp;lt;/DeclarationNumberID&amp;gt;
+					&amp;lt;/DeclarationNumber&amp;gt;
+					&amp;lt;Period&amp;gt;
+						&amp;lt;StartDate&amp;gt;2015-02-01&amp;lt;/StartDate&amp;gt;
+						&amp;lt;EndDate&amp;gt;2015-02-15&amp;lt;/EndDate&amp;gt;
+					&amp;lt;/Period&amp;gt;
+				&amp;lt;/Consignment&amp;gt;
+			&amp;lt;/Declaration&amp;gt;
+		&amp;lt;/DocumentMetadata&amp;gt;&lt;/arg0&gt;
+			&lt;/web:requestExportDespachoSRCHEX&gt;
+	 &lt;/soapenv:Body&gt;
+&lt;/soapenv:Envelope&gt;</Value>
     </Setting>
     <Setting Name="LoginEmpr" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="CuerpoMsjNotiWH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+   &lt;head&gt;
+      &lt;meta charset="UTF-8"&gt;
+      &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+      &lt;title&gt;Notificación de Envío&lt;/title&gt;
+   &lt;/head&gt;
+   &lt;body style="margin: 0; padding: 0; background-color: #F5F6F5; font-family: 'Roboto', Arial, sans-serif;"&gt;
+      &lt;table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px; margin: 20px auto;"&gt;
+         &lt;tr&gt;
+            &lt;td align="center" style="padding: 0;"&gt;
+               &lt;h2 style="font-family: 'Roboto', Arial, sans-serif; font-size: 24px; color: #003087; margin: 0 0 20px 0;"&gt;
+                  Notificación de Envío
+               &lt;/h2&gt;
+            &lt;/td&gt;
+         &lt;/tr&gt;
+         &lt;tr&gt;
+            &lt;td style="background-color: #F5F6F5; padding: 20px; border-radius: 8px;"&gt;
+               &lt;table border="0" cellpadding="0" cellspacing="0" width="100%"&gt;
+                  &lt;tr&gt;
+                     &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 16px; color: #333333; line-height: 1.6; text-align: justify;"&gt;
+                        Le informamos que el envío correspondiente a la guía N.º @guia ha sido gestionado exitosamente desde nuestro almacén (warehouse).
+                     &lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                     &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 16px; color: #333333; line-height: 1.6; text-align: justify; padding-top: 15px;"&gt;
+                        A continuación, los detalles del envío:
+                     &lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                     &lt;td style="padding-top: 15px;"&gt;
+                        &lt;table border="0" cellpadding="0" cellspacing="0" width="100%"&gt;
+                           &lt;tr&gt;
+                              &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 16px; color: #333333; padding-bottom: 8px;"&gt;
+                                 &lt;strong style="color: #003087;"&gt;Vuelo:&lt;/strong&gt; @vuelo
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                           &lt;tr&gt;
+                              &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 16px; color: #333333; padding-bottom: 8px;"&gt;
+                                 &lt;strong style="color: #003087;"&gt;Guía de despacho:&lt;/strong&gt; @guia
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                           &lt;tr&gt;
+                              &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 16px; color: #333333; padding-bottom: 8px;"&gt;
+                                 &lt;strong style="color: #003087;"&gt;Destino:&lt;/strong&gt; @destino
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                           &lt;tr&gt;
+                              &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 16px; color: #333333; padding-bottom: 8px;"&gt;
+                                 &lt;strong style="color: #003087;"&gt;Agencia:&lt;/strong&gt; @agencia
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                           &lt;tr&gt;
+                              &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 16px; color: #333333; padding-bottom: 8px;"&gt;
+                                 &lt;strong style="color: #003087;"&gt;Fecha de envío:&lt;/strong&gt; @fecha
+                              &lt;/td&gt;
+                           &lt;/tr&gt;
+                        &lt;/table&gt;
+                     &lt;/td&gt;
+                  &lt;/tr&gt;
+                  &lt;tr&gt;
+                     &lt;td style="font-family: 'Roboto', Arial, sans-serif; font-size: 14px; color: #333333; line-height: 1.6; text-align: justify; padding-top: 15px;"&gt;
+                        Este mensaje es solo informativo. Para cualquier consulta o seguimiento, no dude en contactarnos.
+                     &lt;/td&gt;
+                  &lt;/tr&gt;
+               &lt;/table&gt;
+            &lt;/td&gt;
+         &lt;/tr&gt;
+      &lt;/table&gt;
+   &lt;/body&gt;
+&lt;/html&gt;
+</Value>
+    </Setting>
+    <Setting Name="AsuntoNotiWH" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Confirmación de envío warehouse – Guía @guia</Value>
+    </Setting>
+    <Setting Name="MsjAlertaNotiEmailOk" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">El warehouse fue enviado exitosamente a todos los correos</Value>
+    </Setting>
+    <Setting Name="MsjAlertaNotiEmailError" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">No todos los contactos tienen correo. Se envió el Warehouse solo a los disponibles.</Value>
+    </Setting>
+    <Setting Name="RutaNotificacion" Type="System.String" Scope="User">
+      <Value Profile="(Default)">\\192.168.153.26\Notificacion</Value>
     </Setting>
   </Settings>
 </SettingsFile>

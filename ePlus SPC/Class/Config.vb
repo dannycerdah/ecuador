@@ -139,5 +139,33 @@
         End With
         My.Settings.Save()
     End Sub
-
+    'ini jrodriguez sprint01 25/04/2025
+    'Se crean propiedades que contienen los valores de configuración de la aplicación. Estas serán utilizadas para el envío de notificaciones,
+    'asegurando que los parámetros adecuados estén disponibles y correctos para cada evento, mejorando la funcionalidad y la experiencia del usuario.
+    Public Shared ReadOnly Property CuerpoNotificacionWH As String
+        Get
+            Return My.Settings.CuerpoMsjNotiWH
+        End Get
+    End Property
+    Public Shared ReadOnly Property AsuntoNotificacionWH As String
+        Get
+            Return My.Settings.AsuntoNotiWH
+        End Get
+    End Property
+    Public Shared ReadOnly Property MsjAlertaNotiEmailOk As String
+        Get
+            Return My.Settings.MsjAlertaNotiEmailOk
+        End Get
+    End Property
+    Public Shared ReadOnly Property MsjAlertaNotiEmailError As String
+        Get
+            Return My.Settings.MsjAlertaNotiEmailError
+        End Get
+    End Property
+    Public Shared ReadOnly Property RutaNotificacion As String
+        Get
+            Return My.Settings.RutaNotificacion
+        End Get
+    End Property
+    'fin jrodriguez sprint01 25/04/2025
 End Class

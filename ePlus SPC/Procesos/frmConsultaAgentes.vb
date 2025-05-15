@@ -42,6 +42,7 @@ Public Class frmConsultaAgentes
             ugdAgentes.DisplayLayout.Bands(0).Columns("estado").Hidden = True
             ugdAgentes.DisplayLayout.Bands(0).Columns("comentario").Hidden = True
             ugdAgentes.DisplayLayout.Bands(0).Columns("indice").Hidden = True
+            ugdAgentes.DisplayLayout.Bands(0).Columns("mailConactoAgencia").Hidden = True 'jro spint01 24/04/2025
         Catch ex As Exception
             General.SetLogEvent(ex)
             MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
@@ -59,6 +60,9 @@ Public Class frmConsultaAgentes
         Contacto.primerApellido = ugdAgentes.ActiveRow.Cells("primerApellidoContacto").Value
         Contacto.segundoApellido = ugdAgentes.ActiveRow.Cells("segundoApellidoContacto").Value
         Contacto.cargo = ugdAgentes.ActiveRow.Cells("cargo").Value
+        Contacto.EmailContactoAgencia = If(IsDBNull(ugdAgentes.ActiveRow.Cells("mailConactoAgencia").Value), "", ugdAgentes.ActiveRow.Cells("mailConactoAgencia").Value.ToString())
+        'jro spint01 24/04/2025
+        Contacto.DescripcionAgencia = If(IsDBNull(ugdAgentes.ActiveRow.Cells("descripcionAgencia").Value), "", ugdAgentes.ActiveRow.Cells("descripcionAgencia").Value.ToString()) 'jro spint01 24/04/2025
         Me.Close()
     End Sub
 

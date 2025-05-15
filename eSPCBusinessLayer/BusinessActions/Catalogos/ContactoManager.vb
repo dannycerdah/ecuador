@@ -549,6 +549,7 @@ Public Class ContactoManager
                         .comentario = drReader.GetValue(drReader.GetOrdinal("comentario"))
                         .cargo = drReader.GetValue(drReader.GetOrdinal("cargo"))
                         .indice = drReader.GetValue(drReader.GetOrdinal("indice"))
+                        .mailConactoAgencia = drReader.GetValue(drReader.GetOrdinal("mailConactoAgencia")) 'jro spint01 24/04/2025
                     End With
                     Result.myContactoAgenciaItem = myContactoAgencia
                 End If

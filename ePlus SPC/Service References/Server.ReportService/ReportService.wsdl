@@ -800,6 +800,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="AgenciaContacto" type="tns:ArrayOfContactoAgenciaCatalogItem" />
           <s:element minOccurs="0" maxOccurs="1" name="huella" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="IdContactoUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailContactoAgencia" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DescripcionAgencia" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfContactoImagenCatalogoItem">
@@ -886,6 +888,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="cargo" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="indice" type="s1:guid" />
           <s:element minOccurs="0" maxOccurs="1" name="IdContactoUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="mailConactoAgencia" type="s:string" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArchivoContactoCatalogItem">
