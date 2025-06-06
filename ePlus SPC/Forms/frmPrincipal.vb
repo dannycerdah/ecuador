@@ -361,7 +361,7 @@ Public Class frmMainSpc
                 Case "SPC.REP.REP.RDP" '#12 REPORTE DE PRODUCCIÓN
                     If MyCurrentUser.isAdministrador Then
                         SetCurrentForm(MyFrmHistorialProceso, GetType(frmHistorialProceso))
-                        MyFrmHistorialProceso.RefreshData()
+                        'MyFrmHistorialProceso.RefreshData()
                     Else
                         MessageBox.Show("Opción no habilitada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     End If
