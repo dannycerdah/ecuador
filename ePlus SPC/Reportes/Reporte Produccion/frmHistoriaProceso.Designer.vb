@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmHistorialProceso
     Inherits System.Windows.Forms.Form
 
     'Form reemplaza a Dispose para limpiar la lista de componentes.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,14 +20,16 @@ Partial Class frmHistorialProceso
     'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
     'Se puede modificar usando el Diseñador de Windows Forms.  
     'No lo modifique con el editor de código.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim Appearance6 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance36 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHistorialProceso))
+        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance5 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmHistorialProceso))
         Dim Appearance11 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance12 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance8 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
@@ -36,6 +38,11 @@ Partial Class frmHistorialProceso
         Me.ugbCamion = New Infragistics.Win.Misc.UltraGroupBox()
         Me.btnExcelExport = New Infragistics.Win.Misc.UltraButton()
         Me.UltraGroupBox3 = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.btnConsVuelo = New Infragistics.Win.Misc.UltraButton()
+        Me.txtNumVuelo = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
+        Me.txtAgencia = New Infragistics.Win.UltraWinEditors.UltraTextEditor()
+        Me.lblVuelo = New Infragistics.Win.Misc.UltraLabel()
+        Me.CheckedListBoxAgencia = New System.Windows.Forms.CheckedListBox()
         Me.UltraLabel2 = New Infragistics.Win.Misc.UltraLabel()
         Me.btnBuscar = New Infragistics.Win.Misc.UltraButton()
         Me.uceAerolinea = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
@@ -45,11 +52,12 @@ Partial Class frmHistorialProceso
         Me.udtfechaIni = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
         Me.UltraGroupBox2 = New Infragistics.Win.Misc.UltraGroupBox()
         Me.ugdDetalle = New Infragistics.Win.UltraWinGrid.UltraGrid()
-        Me.CheckedListBoxAgencia = New System.Windows.Forms.CheckedListBox()
         CType(Me.ugbCamion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ugbCamion.SuspendLayout()
         CType(Me.UltraGroupBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.UltraGroupBox3.SuspendLayout()
+        CType(Me.txtNumVuelo, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.txtAgencia, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.uceAerolinea, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.udtfechaFin, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.udtfechaIni, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -65,7 +73,7 @@ Partial Class frmHistorialProceso
         Me.ugbCamion.Dock = System.Windows.Forms.DockStyle.Top
         Me.ugbCamion.Location = New System.Drawing.Point(0, 0)
         Me.ugbCamion.Name = "ugbCamion"
-        Me.ugbCamion.Size = New System.Drawing.Size(874, 133)
+        Me.ugbCamion.Size = New System.Drawing.Size(1057, 133)
         Me.ugbCamion.TabIndex = 9
         Me.ugbCamion.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
         '
@@ -79,7 +87,7 @@ Partial Class frmHistorialProceso
         Me.btnExcelExport.Appearance = Appearance6
         Me.btnExcelExport.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button
         Me.btnExcelExport.ImageSize = New System.Drawing.Size(22, 22)
-        Me.btnExcelExport.Location = New System.Drawing.Point(759, 57)
+        Me.btnExcelExport.Location = New System.Drawing.Point(942, 57)
         Me.btnExcelExport.Name = "btnExcelExport"
         Me.btnExcelExport.Size = New System.Drawing.Size(109, 32)
         Me.btnExcelExport.TabIndex = 8
@@ -87,6 +95,10 @@ Partial Class frmHistorialProceso
         '
         'UltraGroupBox3
         '
+        Me.UltraGroupBox3.Controls.Add(Me.btnConsVuelo)
+        Me.UltraGroupBox3.Controls.Add(Me.txtNumVuelo)
+        Me.UltraGroupBox3.Controls.Add(Me.txtAgencia)
+        Me.UltraGroupBox3.Controls.Add(Me.lblVuelo)
         Me.UltraGroupBox3.Controls.Add(Me.CheckedListBoxAgencia)
         Me.UltraGroupBox3.Controls.Add(Me.UltraLabel2)
         Me.UltraGroupBox3.Controls.Add(Me.btnBuscar)
@@ -97,10 +109,63 @@ Partial Class frmHistorialProceso
         Me.UltraGroupBox3.Controls.Add(Me.udtfechaIni)
         Me.UltraGroupBox3.Location = New System.Drawing.Point(6, 3)
         Me.UltraGroupBox3.Name = "UltraGroupBox3"
-        Me.UltraGroupBox3.Size = New System.Drawing.Size(683, 130)
+        Me.UltraGroupBox3.Size = New System.Drawing.Size(930, 130)
         Me.UltraGroupBox3.TabIndex = 23
         Me.UltraGroupBox3.Text = "Buscar:"
         Me.UltraGroupBox3.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
+        '
+        'btnConsVuelo
+        '
+        Appearance36.Image = CType(resources.GetObject("Appearance36.Image"), Object)
+        Me.btnConsVuelo.Appearance = Appearance36
+        Me.btnConsVuelo.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button
+        Me.btnConsVuelo.Location = New System.Drawing.Point(288, 17)
+        Me.btnConsVuelo.Name = "btnConsVuelo"
+        Me.btnConsVuelo.Size = New System.Drawing.Size(27, 27)
+        Me.btnConsVuelo.TabIndex = 48
+        '
+        'txtNumVuelo
+        '
+        Me.txtNumVuelo.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2010
+        Me.txtNumVuelo.Enabled = False
+        Me.txtNumVuelo.Location = New System.Drawing.Point(185, 20)
+        Me.txtNumVuelo.Name = "txtNumVuelo"
+        Me.txtNumVuelo.ReadOnly = True
+        Me.txtNumVuelo.Size = New System.Drawing.Size(91, 21)
+        Me.txtNumVuelo.TabIndex = 47
+        '
+        'txtAgencia
+        '
+        Me.txtAgencia.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2010
+        Me.txtAgencia.Enabled = False
+        Me.txtAgencia.Location = New System.Drawing.Point(72, 19)
+        Me.txtAgencia.Name = "txtAgencia"
+        Me.txtAgencia.ReadOnly = True
+        Me.txtAgencia.Size = New System.Drawing.Size(101, 21)
+        Me.txtAgencia.TabIndex = 46
+        '
+        'lblVuelo
+        '
+        Appearance12.BackColor = System.Drawing.Color.Transparent
+        Appearance12.TextHAlignAsString = "Right"
+        Appearance12.TextVAlignAsString = "Middle"
+        Me.lblVuelo.Appearance = Appearance12
+        Me.lblVuelo.Location = New System.Drawing.Point(6, 20)
+        Me.lblVuelo.Name = "lblVuelo"
+        Me.lblVuelo.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblVuelo.Size = New System.Drawing.Size(60, 20)
+        Me.lblVuelo.TabIndex = 49
+        Me.lblVuelo.Text = "Vuelo:"
+        '
+        'CheckedListBoxAgencia
+        '
+        Me.CheckedListBoxAgencia.CheckOnClick = True
+        Me.CheckedListBoxAgencia.FormattingEnabled = True
+        Me.CheckedListBoxAgencia.Location = New System.Drawing.Point(386, 21)
+        Me.CheckedListBoxAgencia.Name = "CheckedListBoxAgencia"
+        Me.CheckedListBoxAgencia.ScrollAlwaysVisible = True
+        Me.CheckedListBoxAgencia.Size = New System.Drawing.Size(192, 109)
+        Me.CheckedListBoxAgencia.TabIndex = 24
         '
         'UltraLabel2
         '
@@ -108,7 +173,7 @@ Partial Class frmHistorialProceso
         Appearance2.TextHAlignAsString = "Right"
         Appearance2.TextVAlignAsString = "Middle"
         Me.UltraLabel2.Appearance = Appearance2
-        Me.UltraLabel2.Location = New System.Drawing.Point(253, 73)
+        Me.UltraLabel2.Location = New System.Drawing.Point(571, 47)
         Me.UltraLabel2.Name = "UltraLabel2"
         Me.UltraLabel2.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel2.Size = New System.Drawing.Size(77, 20)
@@ -120,7 +185,7 @@ Partial Class frmHistorialProceso
         Appearance5.Image = CType(resources.GetObject("Appearance5.Image"), Object)
         Me.btnBuscar.Appearance = Appearance5
         Me.btnBuscar.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button
-        Me.btnBuscar.Location = New System.Drawing.Point(519, 45)
+        Me.btnBuscar.Location = New System.Drawing.Point(837, 19)
         Me.btnBuscar.Name = "btnBuscar"
         Me.btnBuscar.Size = New System.Drawing.Size(88, 48)
         Me.btnBuscar.TabIndex = 45
@@ -131,9 +196,9 @@ Partial Class frmHistorialProceso
         Me.uceAerolinea.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend
         Me.uceAerolinea.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2010
         Me.uceAerolinea.LimitToList = True
-        Me.uceAerolinea.Location = New System.Drawing.Point(396, 18)
+        Me.uceAerolinea.Location = New System.Drawing.Point(870, 103)
         Me.uceAerolinea.Name = "uceAerolinea"
-        Me.uceAerolinea.Size = New System.Drawing.Size(272, 21)
+        Me.uceAerolinea.Size = New System.Drawing.Size(54, 21)
         Me.uceAerolinea.TabIndex = 16
         Me.uceAerolinea.Visible = False
         '
@@ -141,7 +206,7 @@ Partial Class frmHistorialProceso
         '
         Me.udtfechaFin.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2010
         Me.udtfechaFin.FormatString = "dd/MM/yyyy"
-        Me.udtfechaFin.Location = New System.Drawing.Point(336, 72)
+        Me.udtfechaFin.Location = New System.Drawing.Point(654, 46)
         Me.udtfechaFin.MaskInput = "{LOC}dd/mm/yyyy"
         Me.udtfechaFin.Name = "udtfechaFin"
         Me.udtfechaFin.Size = New System.Drawing.Size(177, 21)
@@ -153,7 +218,7 @@ Partial Class frmHistorialProceso
         Appearance11.TextHAlignAsString = "Left"
         Appearance11.TextVAlignAsString = "Middle"
         Me.lblAerolinea.Appearance = Appearance11
-        Me.lblAerolinea.Location = New System.Drawing.Point(6, 18)
+        Me.lblAerolinea.Location = New System.Drawing.Point(322, 20)
         Me.lblAerolinea.Name = "lblAerolinea"
         Me.lblAerolinea.Size = New System.Drawing.Size(65, 20)
         Me.lblAerolinea.TabIndex = 17
@@ -161,11 +226,11 @@ Partial Class frmHistorialProceso
         '
         'UltraLabel1
         '
-        Appearance12.BackColor = System.Drawing.Color.Transparent
-        Appearance12.TextHAlignAsString = "Right"
-        Appearance12.TextVAlignAsString = "Middle"
-        Me.UltraLabel1.Appearance = Appearance12
-        Me.UltraLabel1.Location = New System.Drawing.Point(253, 47)
+        Appearance4.BackColor = System.Drawing.Color.Transparent
+        Appearance4.TextHAlignAsString = "Right"
+        Appearance4.TextVAlignAsString = "Middle"
+        Me.UltraLabel1.Appearance = Appearance4
+        Me.UltraLabel1.Location = New System.Drawing.Point(571, 21)
         Me.UltraLabel1.Name = "UltraLabel1"
         Me.UltraLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.UltraLabel1.Size = New System.Drawing.Size(77, 20)
@@ -176,7 +241,7 @@ Partial Class frmHistorialProceso
         '
         Me.udtfechaIni.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2010
         Me.udtfechaIni.FormatString = "dd/MM/yyyy"
-        Me.udtfechaIni.Location = New System.Drawing.Point(336, 45)
+        Me.udtfechaIni.Location = New System.Drawing.Point(654, 19)
         Me.udtfechaIni.MaskInput = "{LOC}dd/mm/yyyy"
         Me.udtfechaIni.Name = "udtfechaIni"
         Me.udtfechaIni.Size = New System.Drawing.Size(177, 21)
@@ -188,7 +253,7 @@ Partial Class frmHistorialProceso
         Me.UltraGroupBox2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.UltraGroupBox2.Location = New System.Drawing.Point(0, 133)
         Me.UltraGroupBox2.Name = "UltraGroupBox2"
-        Me.UltraGroupBox2.Size = New System.Drawing.Size(874, 301)
+        Me.UltraGroupBox2.Size = New System.Drawing.Size(1057, 301)
         Me.UltraGroupBox2.TabIndex = 24
         Me.UltraGroupBox2.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
         '
@@ -226,25 +291,15 @@ Partial Class frmHistorialProceso
         Me.ugdDetalle.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ugdDetalle.Location = New System.Drawing.Point(3, 0)
         Me.ugdDetalle.Name = "ugdDetalle"
-        Me.ugdDetalle.Size = New System.Drawing.Size(868, 298)
+        Me.ugdDetalle.Size = New System.Drawing.Size(1051, 298)
         Me.ugdDetalle.TabIndex = 4
         Me.ugdDetalle.Text = "PRODUCCIÓN"
-        '
-        'CheckedListBoxAgencia
-        '
-        Me.CheckedListBoxAgencia.CheckOnClick = True
-        Me.CheckedListBoxAgencia.FormattingEnabled = True
-        Me.CheckedListBoxAgencia.Location = New System.Drawing.Point(70, 19)
-        Me.CheckedListBoxAgencia.Name = "CheckedListBoxAgencia"
-        Me.CheckedListBoxAgencia.ScrollAlwaysVisible = True
-        Me.CheckedListBoxAgencia.Size = New System.Drawing.Size(192, 109)
-        Me.CheckedListBoxAgencia.TabIndex = 24
         '
         'frmHistorialProceso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(874, 434)
+        Me.ClientSize = New System.Drawing.Size(1057, 434)
         Me.Controls.Add(Me.UltraGroupBox2)
         Me.Controls.Add(Me.ugbCamion)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
@@ -256,6 +311,8 @@ Partial Class frmHistorialProceso
         CType(Me.UltraGroupBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.UltraGroupBox3.ResumeLayout(False)
         Me.UltraGroupBox3.PerformLayout()
+        CType(Me.txtNumVuelo, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.txtAgencia, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.uceAerolinea, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.udtfechaFin, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.udtfechaIni, System.ComponentModel.ISupportInitialize).EndInit()
@@ -278,4 +335,8 @@ Partial Class frmHistorialProceso
     Friend WithEvents UltraGroupBox2 As Infragistics.Win.Misc.UltraGroupBox
     Friend WithEvents ugdDetalle As Infragistics.Win.UltraWinGrid.UltraGrid
     Friend WithEvents CheckedListBoxAgencia As CheckedListBox
+    Friend WithEvents btnConsVuelo As Infragistics.Win.Misc.UltraButton
+    Friend WithEvents txtNumVuelo As Infragistics.Win.UltraWinEditors.UltraTextEditor
+    Friend WithEvents txtAgencia As Infragistics.Win.UltraWinEditors.UltraTextEditor
+    Friend WithEvents lblVuelo As Infragistics.Win.Misc.UltraLabel
 End Class
