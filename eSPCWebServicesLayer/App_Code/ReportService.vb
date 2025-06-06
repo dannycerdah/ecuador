@@ -755,5 +755,9 @@ Public Class ReportService
     Public Function GetUsuarioEmpresa(req As ContactoRequest) As ReportResponse
         Return ContactoManager.GetUsuarioEmpresa(req)
     End Function
+    <WebMethod()>
+    Public Function GetReporteProduccionFacturacion(req As ReportRequest) As ReportResponse
+        Return ReportsManager.GetReporteProduccionFacturacion(req)
+    End Function
 
 End Class

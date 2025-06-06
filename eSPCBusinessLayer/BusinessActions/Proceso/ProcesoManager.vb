@@ -1098,6 +1098,7 @@ Public Class ProcesoManager
                 End With
                 Result.dsResult = New DataSet
                 Result.dsResult.Tables.Add(New DataTable("dtDetalleProceso"))
+                cmd.CommandTimeout = 15 * 60
                 Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
                 cmd.Connection.Close()
             End If
@@ -1128,6 +1129,7 @@ Public Class ProcesoManager
                 End With
                 Result.dsResult = New DataSet
                 Result.dsResult.Tables.Add(New DataTable("dtDetalleProcesoDev"))
+                cmd.CommandTimeout = 15 * 60
                 Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
                 cmd.Connection.Close()
             End If
@@ -1255,6 +1257,7 @@ Public Class ProcesoManager
                 End With
                 Result.dsResult = New DataSet
                 Result.dsResult.Tables.Add(New DataTable("dtDetalleProceso"))
+                cmd.CommandTimeout = 15 * 60
                 Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
                 cmd.Connection.Close()
             End If
@@ -1429,6 +1432,7 @@ Public Class ProcesoManager
                 End With
                 Result.dsResult = New DataSet
                 Result.dsResult.Tables.Add(New DataTable("dtDetalleProceso"))
+                cmd.CommandTimeout = 15 * 60
                 Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
                 cmd.Connection.Close()
             End If
@@ -1458,6 +1462,7 @@ Public Class ProcesoManager
                 End With
                 Result.dsResult = New DataSet
                 Result.dsResult.Tables.Add(New DataTable("dtDetalleProcesoCargaI"))
+                cmd.CommandTimeout = 15 * 60
                 Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
                 cmd.Connection.Close()
             End If
@@ -1487,6 +1492,7 @@ Public Class ProcesoManager
                 End With
                 Result.dsResult = New DataSet
                 Result.dsResult.Tables.Add(New DataTable("dtDetalleProcesoCargaR"))
+                cmd.CommandTimeout = 15 * 60
                 Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
                 cmd.Connection.Close()
             End If
@@ -1636,6 +1642,7 @@ Public Class ProcesoManager
                 End With
                 Result.dsResult = New DataSet
                 Result.dsResult.Tables.Add(New DataTable("dtDetalleProcesoReporte"))
+                cmd.CommandTimeout = 15 * 60
                 Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
                 cmd.Connection.Close()
             End If

@@ -92,5 +92,8 @@ Public Class Facturacion
     Public Function PreFactObtenerPesoVolumenPorBriefGuia(req As ServConsuClienteRequest) As ServConsuClienteResponse
         Return FacturacionManager.PreFactObtenerPesoVolumenPorBriefGuia(req)
     End Function
-
+    <WebMethod()>
+    Public Function GetTarifaCarga(req As TarifaCargaRequest) As TarifaCargaResponse
+        Return FacturacionManager.GetTarifaCarga(req)
+    End Function
 End Class

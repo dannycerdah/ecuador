@@ -12,6 +12,7 @@ Public Class User
     Public Property password As String
     Public Property isUserAvailability As Boolean
     Public Property userAdmin As String
+    Public Property roles As String
     Public Property errorString As String
     Public Property myPermisos As New List(Of String) 'MARZ
 
@@ -86,6 +87,7 @@ Public Class User
                     password = drReader.GetValue(drReader.GetOrdinal("password"))
                     estado = drReader.GetValue(drReader.GetOrdinal("estado"))
                     isAdmin = drReader.GetValue(drReader.GetOrdinal("admin"))
+                    roles = drReader.GetValue(drReader.GetOrdinal("roles"))
                 End If
                 If Not drReader.IsClosed Then drReader.Close()
             Catch ex As Exception
@@ -123,6 +125,7 @@ Public Class User
                 idContacto = drReader.GetValue(drReader.GetOrdinal("idContacto"))
                 estado = drReader.GetValue(drReader.GetOrdinal("estado"))
                 isAdmin = drReader.GetValue(drReader.GetOrdinal("admin"))
+                roles = drReader.GetValue(drReader.GetOrdinal("roles"))
                 userName = idUsuario
             End If
             If Not drReader.IsClosed Then drReader.Close()
@@ -162,6 +165,7 @@ Public Class User
                 estado = drReader.GetValue(drReader.GetOrdinal("estado"))
                 password = drReader.GetValue(drReader.GetOrdinal("password"))
                 userAdmin = drReader.GetValue(drReader.GetOrdinal("admin"))
+                roles = drReader.GetValue(drReader.GetOrdinal("roles"))
             Else
                 Throw New UserNotFoundException
             End If

@@ -410,4 +410,34 @@ Public Class ReportsManager
         End Try
         Return Result
     End Function
+    Shared Function GetReporteProduccionFacturacion(req As ReportRequest) As ReportResponse
+        Dim Result As New ReportResponse
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(req) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .Parameters.AddWithValue("pIdProceso", New String(req.prmArr(0)))
+                    .Parameters.AddWithValue("pidAgencia", New String(req.prmArr(1)))
+                    .Parameters.AddWithValue("pfechaInicio", Date.ParseExact(req.prmArr(2), "M/d/yyyy", System.Globalization.CultureInfo.InvariantCulture))
+                    .Parameters.AddWithValue("pfechaFin", Date.ParseExact(req.prmArr(3), "M/d/yyyy", System.Globalization.CultureInfo.InvariantCulture))
+                    .CommandText = "obtenerReporteProduccionFacturacion"
+                    .CommandType = CommandType.StoredProcedure
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                End With
+                Result.dsResult = New DataSet
+                Result.dsResult.Tables.Add(New DataTable("reportes"))
+                Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex, Result, req)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
 End Class
