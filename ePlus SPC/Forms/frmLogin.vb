@@ -65,6 +65,7 @@ Public Class frmLogin
                 MyCurrentUser.userName = res.myUser.idContacto
                 MyCurrentUser.isAdministrador = res.myUser.isAdmin
                 MyCurrentUser.permisosUsuario = res.myUser.myPermisos 'MARZ
+                MyCurrentUser.roles = res.myUser.roles
                 'verifica si tiene autorizacion para empresa
                 autrempr = False
                 dt = CommonData.Getusuarioempresabyidcontacto(res.myUser.idContacto)
