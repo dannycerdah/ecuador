@@ -2,6 +2,7 @@
 Imports SPC.Server.VuelosService
 Imports SPC.Server.ReportService
 Imports SPC.Server.ControlTemp
+Imports SPC.Server.Facturacion
 
 Public Class CommonProcess
 
@@ -1887,7 +1888,72 @@ Public Class CommonProcess
         Return result
         'fin jrodriguez sprint01 25/04/2025
     End Function
-
-
-
+    'jrodriguez sprint2 30/05/2025
+    'Metodo encargado de obtener el reporte de procuccion
+    Public Shared Function GetReporteProduccionFacturacion(idProceso As Guid, idAgencias As String, fecha_inicio As Date, fecha_fin As Date) As DataTable
+        Dim Result As New DataTable("dtReporteProduccionFacturacion")
+        Dim req As New Server.ReportService.ReportRequest
+        Dim res As New Server.ReportService.ReportResponse
+        Dim wsClnt As New ReportServiceSoapClient
+        Try
+            General.SetBARequest(req)
+            req.prmArr = New String() {idProceso.ToString(), idAgencias, fecha_inicio, fecha_fin}
+            res = wsClnt.GetReporteProduccionFacturacion(req)
+            If res.ActionResult Then
+                Result = res.DsResult.Tables(0)
+            Else
+                Throw New Exception(res.ErrorMessage)
+            End If
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex, res, req)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res.DsResult.Tables(0)
+    End Function
+    'jrodriguez sprint2 30/05/2025
+    'Metodo encargado de obtener el detalle de vuelo
+    Public Shared Function obtenerDetalleVuelo(ByVal BriefingId As Guid) As DetalleVuelo
+        Dim wsClient As New VuelosServiceSoapClient
+        Dim req As New DetalleVueloRequest
+        Dim res As New DetalleVueloResponse
+        Dim dtVuelo As New DetalleVuelo
+        With dtVuelo
+            .idBriefing = BriefingId
+        End With
+        Try
+            General.SetBARequest(req)
+            req.myDetalleVuelo = dtVuelo
+            res = wsClient.GetDetalleVueloPorIdBriefing(req)
+            If res.ActionResult Then
+                dtVuelo = res.myDetalleVuelo
+            Else
+                Throw New Exception(res.ErrorMessage)
+            End If
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex, res, req)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return dtVuelo
+    End Function
+    'jrodriguez sprint2 30/05/2025
+    'Metodo encargado de obtener las tarifas de carga
+    Public Shared Function GetTarifaCarga() As DataTable
+        Dim Result As New DataTable("TarifaCarga")
+        Dim req As New TarifaCargaRequest
+        Dim res As New TarifaCargaResponse
+        Dim wsClnt As New FacturacionSoapClient
+        Try
+            General.SetBARequest(req)
+            res = wsClnt.GetTarifaCarga(req)
+            If res.ActionResult Then
+                Result = res.dsResult.Tables(0)
+            Else
+                Throw New Exception(res.ErrorMessage)
+            End If
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex, res, req)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res.dsResult.Tables(0)
+    End Function
 End Class
