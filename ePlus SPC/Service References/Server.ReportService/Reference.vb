@@ -622,6 +622,15 @@ Namespace Server.ReportService
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetUsuarioEmpresa", ReplyAction:="*")>
         Function GetUsuarioEmpresaAsync(ByVal req As Server.ReportService.ContactoRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
 
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteProduccionFacturacion", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function GetReporteProduccionFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteProduccionFacturacion", ReplyAction:="*")>
+        Function GetReporteProduccionFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
+
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetEntireTarifasCatalog", ReplyAction:="*"),
          System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
@@ -3569,7 +3578,7 @@ Namespace Server.ReportService
                 Return Me.perfilesUsuarioField
             End Get
             Set
-                Me.perfilesUsuarioField = value
+                Me.perfilesUsuarioField = Value
                 Me.RaisePropertyChanged("perfilesUsuario")
             End Set
         End Property
@@ -3581,7 +3590,7 @@ Namespace Server.ReportService
                 Return Me.usuarioEmpresaField
             End Get
             Set
-                Me.usuarioEmpresaField = value
+                Me.usuarioEmpresaField = Value
                 Me.RaisePropertyChanged("usuarioEmpresa")
             End Set
         End Property
@@ -5091,7 +5100,7 @@ Namespace Server.ReportService
                 Return Me.imagenesPerfilField
             End Get
             Set
-                Me.imagenesPerfilField = value
+                Me.imagenesPerfilField = Value
                 Me.RaisePropertyChanged("imagenesPerfil")
             End Set
         End Property
@@ -5103,7 +5112,7 @@ Namespace Server.ReportService
                 Return Me.bioRecordsField
             End Get
             Set
-                Me.bioRecordsField = value
+                Me.bioRecordsField = Value
                 Me.RaisePropertyChanged("BioRecords")
             End Set
         End Property
@@ -5115,7 +5124,7 @@ Namespace Server.ReportService
                 Return Me.zonasAutorizadasField
             End Get
             Set
-                Me.zonasAutorizadasField = value
+                Me.zonasAutorizadasField = Value
                 Me.RaisePropertyChanged("ZonasAutorizadas")
             End Set
         End Property
@@ -5127,7 +5136,7 @@ Namespace Server.ReportService
                 Return Me.zonasAutorizadasByContactoField
             End Get
             Set
-                Me.zonasAutorizadasByContactoField = value
+                Me.zonasAutorizadasByContactoField = Value
                 Me.RaisePropertyChanged("ZonasAutorizadasByContacto")
             End Set
         End Property
@@ -5139,7 +5148,7 @@ Namespace Server.ReportService
                 Return Me.agenciaContactoField
             End Get
             Set
-                Me.agenciaContactoField = value
+                Me.agenciaContactoField = Value
                 Me.RaisePropertyChanged("AgenciaContacto")
             End Set
         End Property
@@ -5847,7 +5856,7 @@ Namespace Server.ReportService
                 Return Me.permisosPerfilField
             End Get
             Set
-                Me.permisosPerfilField = value
+                Me.permisosPerfilField = Value
                 Me.RaisePropertyChanged("permisosPerfil")
             End Set
         End Property
@@ -6055,7 +6064,7 @@ Namespace Server.ReportService
                 Return Me.daysTurnoContactoField
             End Get
             Set
-                Me.daysTurnoContactoField = value
+                Me.daysTurnoContactoField = Value
                 Me.RaisePropertyChanged("daysTurnoContacto")
             End Set
         End Property
@@ -9507,6 +9516,14 @@ Namespace Server.ReportService
 
         Public Function GetUsuarioEmpresaAsync(ByVal req As Server.ReportService.ContactoRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetUsuarioEmpresaAsync
             Return MyBase.Channel.GetUsuarioEmpresaAsync(req)
+        End Function
+
+        Public Function GetReporteProduccionFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetReporteProduccionFacturacion
+            Return MyBase.Channel.GetReporteProduccionFacturacion(req)
+        End Function
+
+        Public Function GetReporteProduccionFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetReporteProduccionFacturacionAsync
+            Return MyBase.Channel.GetReporteProduccionFacturacionAsync(req)
         End Function
 
         Public Function GetEntireTarifasCatalog(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetEntireTarifasCatalog
