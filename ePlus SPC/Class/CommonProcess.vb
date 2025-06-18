@@ -1956,4 +1956,25 @@ Public Class CommonProcess
         End Try
         Return res.dsResult.Tables(0)
     End Function
+    'jrodriguez sprint2 30/05/2025
+    'Metodo encargado de obtener los catalaogos de calculo para determinar el total de carga
+    Public Shared Function GeCatalogoCalculoCarga() As DataTable
+        Dim Result As New DataTable("CatalogoCalculoCarga")
+        Dim req As New CatalogoCalculoCargaRequest
+        Dim res As New CatalogoCalculoCargaResponse
+        Dim wsClnt As New FacturacionSoapClient
+        Try
+            General.SetBARequest(req)
+            res = wsClnt.GeCatalogoCalculoCarga(req)
+            If res.ActionResult Then
+                Result = res.dsResult.Tables(0)
+            Else
+                Throw New Exception(res.ErrorMessage)
+            End If
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex, res, req)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res.dsResult.Tables(0)
+    End Function
 End Class
