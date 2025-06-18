@@ -742,4 +742,30 @@ Public Class FacturacionManager
         End Try
         Return Result
     End Function
+    Public Shared Function GeCatalogoCalculoCarga(req As CatalogoCalculoCargaRequest) As CatalogoCalculoCargaResponse
+        Dim Result As New CatalogoCalculoCargaResponse
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(req) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .CommandText = "obtenerCatalogoCalculoCarga"
+                    .CommandType = CommandType.StoredProcedure
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                End With
+                Result.dsResult = New DataSet
+                Result.dsResult.Tables.Add(New DataTable("TarifaCarga"))
+                Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex, Result, req)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
 End Class
