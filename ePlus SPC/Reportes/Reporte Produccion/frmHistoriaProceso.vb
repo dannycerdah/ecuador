@@ -11,7 +11,8 @@ Public Class frmHistorialProceso
     Public resDtVuelo As New DetalleVuelo
     Public Property myDetalleVuelo As New DetalleVuelo
     Public Property myProceso As New ProcesoItem
-    Dim dtParametros As DataTable
+    Private dtParametros As DataTable
+    Private dtDataCatalogoCalculo As New DataTable()
     'fin jrodriguea sprint2 30/05/2025
     'Public Sub RefreshData()
     '    'ugdDetalle.DataSource = CommonData.GetElementoCatalog()
@@ -51,47 +52,42 @@ Public Class frmHistorialProceso
         Try
             Dim dtData As New DataTable()
             Dim dtDataTarifa As New DataTable()
+
             Dim iva As Double
+            Dim existeCatalogo As Double = False
             If validaInfo() Then
                 'ini jrodriguea sprint2 30/05/2025
                 'se llama nuevo metodo de consulta de reporte de facturacion
                 ugdDetalle.DataSource = Nothing
                 dtDataTarifa = CommonProcess.GetTarifaCarga()
+                dtDataCatalogoCalculo = CommonProcess.GeCatalogoCalculoCarga()
                 dtData = CommonProcess.GetReporteProduccionFacturacion(If(myProceso?.IdProceso, Guid.Empty), CheckeadosList(), udtfechaIni.Value, udtfechaFin.Value)
                 iva = CommonProcess.GetParametro("IVA").Rows(0).Item("prmNumero")
                 For Each rows As DataRow In dtData.Rows
+                    rows("TOTAL_VOLUMEN_FACTURAR") = calculaTotalFacturar(rows)
                     For Each rowsTarias As DataRow In dtDataTarifa.Select("idAgencia = '" & rows.Item("idAgencia").ToString() & "'")
                         If rowsTarias.Item("idProducto") = rows.Item("idProducto") And rowsTarias.Item("idCompania") = rows.Item("idAgenciaCompañia") Then
                             rows.Item("Tarifa") = rowsTarias.Item("valorTarifa")
-                            rows.Item("Subtotal") = rowsTarias.Item("valorTarifa") * rows.Item("TOTAL_VOLUMEN_FACTURAR")
-                            rows.Item("Iva") = (rows.Item("Subtotal") + rows.Item("Fee")) * iva
-                            rows.Item("Total") = rows.Item("Subtotal") + rows.Item("Iva") + rows.Item("Fee")
-                            Continue For
+                            Exit For
                         End If
                         If rowsTarias.Item("idProducto") = rows.Item("idProducto") And rowsTarias.Item("idCompania").ToString() = Guid.Empty.ToString() Then
                             rows.Item("Tarifa") = rowsTarias.Item("valorTarifa")
-                            rows.Item("Subtotal") = rowsTarias.Item("valorTarifa") * rows.Item("TOTAL_VOLUMEN_FACTURAR")
-                            rows.Item("Iva") = (rows.Item("Subtotal") + rows.Item("Fee")) * iva
-                            rows.Item("Total") = rows.Item("Subtotal") + rows.Item("Iva") + rows.Item("Fee")
-                            Continue For
+                            Exit For
                         End If
                         If rowsTarias.Item("idProducto").ToString() = Guid.Empty.ToString() And rowsTarias.Item("idCompania") = rows.Item("idAgenciaCompañia") Then
                             rows.Item("Tarifa") = rowsTarias.Item("valorTarifa")
-                            rows.Item("Subtotal") = rowsTarias.Item("valorTarifa") * rows.Item("TOTAL_VOLUMEN_FACTURAR")
-                            rows.Item("Iva") = (rows.Item("Subtotal") + rows.Item("Fee")) * iva
-                            rows.Item("Total") = rows.Item("Subtotal") + rows.Item("Iva") + rows.Item("Fee")
-                            Continue For
+                            Exit For
                         End If
                         If rowsTarias.Item("idProducto").ToString() = Guid.Empty.ToString() And rowsTarias.Item("idCompania").ToString() = Guid.Empty.ToString() Then
                             rows.Item("Tarifa") = rowsTarias.Item("valorTarifa")
-                            rows.Item("Subtotal") = rowsTarias.Item("valorTarifa") * rows.Item("TOTAL_VOLUMEN_FACTURAR")
-                            rows.Item("Iva") = (rows.Item("Subtotal") + rows.Item("Fee")) * iva
-                            rows.Item("Total") = rows.Item("Subtotal") + rows.Item("Iva") + rows.Item("Fee")
-                            Continue For
+                            Exit For
                         End If
                     Next
+                    rows.Item("Subtotal") = rows.Item("Tarifa") * rows.Item("TOTAL_VOLUMEN_FACTURAR")
+                    rows.Item("Iva") = (rows.Item("Subtotal") + rows.Item("Fee")) * iva
+                    rows.Item("Total") = rows.Item("Subtotal") + rows.Item("Iva") + rows.Item("Fee")
                 Next
-                    ugdDetalle.DataSource = dtData
+                ugdDetalle.DataSource = dtData
                 'se comenta codigo debido a que no va hacer utilizada dicha logica
                 'If isAll Then 'If uceAerolinea.SelectedIndex = 0 Or isAll Then
                 '    'ugdDetalle.DataSource = CommonProcess.GetInfoProcesoPorIdAgenciaYFecha(uceAerolinea.Value, udtfechaIni.Value, udtfechaFin.Value, "T")
@@ -311,24 +307,24 @@ Public Class frmHistorialProceso
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenA").Header.Caption = "C. procesada hoy (Vol.)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_PROCESADA").Header.Caption = "C. procesada hoy (a facturar)"
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_PROCESADA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_PROCESADA").Header.Caption = "C. procesada hoy (a facturar)"
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_PROCESADA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
 
         ugdDetalle.DisplayLayout.Bands(0).Columns("piezasI").Header.Caption = "Piezas Quedada"
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoI").Header.Caption = "C. quedada (Peso)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoI").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenI").Header.Caption = "C. quedada (Vol.)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenI").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_QUEDADA_ESTE_VUELO").Header.Caption = "C. quedada (a facturar)"
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_QUEDADA_ESTE_VUELO").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_QUEDADA_ESTE_VUELO").Header.Caption = "C. quedada (a facturar)"
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_QUEDADA_ESTE_VUELO").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
 
         ugdDetalle.DisplayLayout.Bands(0).Columns("piezasR").Header.Caption = "Piezas Q. Otros Vuelo"
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoR").Header.Caption = "C. Quedada Otros Vuelos(Peso)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoR").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenR").Header.Caption = "C. Quedada Otros Vuelos(Vol.)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenR").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOL_NOV_CAR_QUED_OTRO_VUE_EST_VUELO").Header.Caption = "C. Quedada Otros Vuelos(a facturar)"
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOL_NOV_CAR_QUED_OTRO_VUE_EST_VUELO").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOL_NOV_CAR_QUED_OTRO_VUE_EST_VUELO").Header.Caption = "C. Quedada Otros Vuelos(a facturar)"
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOL_NOV_CAR_QUED_OTRO_VUE_EST_VUELO").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
 
 
         ugdDetalle.DisplayLayout.Bands(0).Columns("piezasC").Header.Caption = "Piezas Decomisadas"
@@ -336,16 +332,16 @@ Public Class frmHistorialProceso
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoC").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenC").Header.Caption = "C. decomisada (Vol.)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenC").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DECOMISADA").Header.Caption = "C. decomisada (a facturar)"
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DECOMISADA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DECOMISADA").Header.Caption = "C. decomisada (a facturar)"
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DECOMISADA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
 
         ugdDetalle.DisplayLayout.Bands(0).Columns("piezasD").Header.Caption = "Piezas Devuelta"
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoD").Header.Caption = "C. devuelta a la agencia (Peso)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("pesoD").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenD").Header.Caption = "C. devuelta a la agencia (Vol.)"
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumenD").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DEVUELTA").Header.Caption = "C. devuelta a la agencia (a facturar)"
-        ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DEVUELTA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DEVUELTA").Header.Caption = "C. devuelta a la agencia (a facturar)"
+        'ugdDetalle.DisplayLayout.Bands(0).Columns("VOLUMEN_NOVEDAD_CARGA_DEVUELTA").AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.True
 
         ugdDetalle.DisplayLayout.Bands(0).Columns("peso").Format = "N2"
         ugdDetalle.DisplayLayout.Bands(0).Columns("volumen").Format = "N2"
@@ -394,6 +390,45 @@ Public Class frmHistorialProceso
                 End If
             End If
         Next
-
     End Sub
+    Private Function calculaTotalFacturar(rows As DataRow) As Double
+        Dim totalFacturar As Double = 0
+        ' Buscar catálogo por idAgencia
+        Dim catalogos = dtDataCatalogoCalculo.Select("idAgencia = '" & rows("idAgencia").ToString() & "'")
+        If catalogos.Length > 0 Then
+            For Each cat As DataRow In catalogos
+                totalFacturar += ProcesarCampo(cat("procesada"), rows("pesoA"), rows("volumenA"))
+                totalFacturar += ProcesarCampo(cat("quedada"), rows("pesoI"), rows("volumenI"))
+                totalFacturar += ProcesarCampo(cat("decomisada"), rows("pesoC"), rows("volumenC"))
+                totalFacturar += ProcesarCampo(cat("quedada_otro"), rows("pesoR"), rows("volumenR"))
+                totalFacturar += ProcesarCampo(cat("devuelta"), rows("pesoD"), rows("volumenD"))
+            Next
+        Else
+            ' Usar catálogo por defecto
+            catalogos = dtDataCatalogoCalculo.Select("idAgencia = '00000000-0000-0000-0000-000000000000'")
+            For Each cat As DataRow In catalogos
+                totalFacturar += ProcesarCampo(cat("procesada"), rows("pesoA"), rows("volumenA"))
+                totalFacturar += ProcesarCampo(cat("quedada"), rows("pesoI"), rows("volumenI"))
+                totalFacturar += ProcesarCampo(cat("decomisada"), rows("pesoC"), rows("volumenC"))
+                totalFacturar += ProcesarCampo(cat("quedada_otro"), rows("pesoR"), rows("volumenR"))
+                totalFacturar += ProcesarCampo(cat("devuelta"), rows("pesoD"), rows("volumenD"))
+            Next
+        End If
+        Return totalFacturar
+    End Function
+    ' Función auxiliar que aplica la lógica del Select Case original
+    Private Function ProcesarCampo(accion As Object, peso As Object, volumen As Object) As Double
+        Dim tipo As Integer = Convert.ToInt32(accion)
+        Dim valor As Double = Math.Max(Convert.ToDouble(peso), Convert.ToDouble(volumen))
+
+        Select Case tipo
+            Case 1
+                Return valor
+            Case -1
+                Return -valor
+            Case Else
+                Return 0
+        End Select
+    End Function
+
 End Class
