@@ -96,4 +96,9 @@ Public Class Facturacion
     Public Function GetTarifaCarga(req As TarifaCargaRequest) As TarifaCargaResponse
         Return FacturacionManager.GetTarifaCarga(req)
     End Function
+    <WebMethod()>
+    Public Function GeCatalogoCalculoCarga(req As CatalogoCalculoCargaRequest) As CatalogoCalculoCargaResponse
+        Return FacturacionManager.GeCatalogoCalculoCarga(req)
+    End Function
+
 End Class
