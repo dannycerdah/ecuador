@@ -2021,6 +2021,9 @@
     <None Include="Service References\Server.FaceDetectionService\SPC.Server.FaceDetectionService.EPPersonResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.CatalogoCalculoCargaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Server.Facturacion\SPC.Server.Facturacion.TarifaCargaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
