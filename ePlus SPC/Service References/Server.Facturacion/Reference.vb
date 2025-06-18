@@ -207,6 +207,15 @@ Namespace Server.Facturacion
         
         <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/GetTarifaCarga", ReplyAction:="*")>  _
         Function GetTarifaCargaAsync(ByVal req As Server.Facturacion.TarifaCargaRequest) As System.Threading.Tasks.Task(Of Server.Facturacion.TarifaCargaResponse)
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/GeCatalogoCalculoCarga", ReplyAction:="*"),  _
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=true),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),  _
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>  _
+        Function GeCatalogoCalculoCarga(ByVal req As Server.Facturacion.CatalogoCalculoCargaRequest) As Server.Facturacion.CatalogoCalculoCargaResponse
+        
+        <System.ServiceModel.OperationContractAttribute(Action:="http://tempuri.org/GeCatalogoCalculoCarga", ReplyAction:="*")>  _
+        Function GeCatalogoCalculoCargaAsync(ByVal req As Server.Facturacion.CatalogoCalculoCargaRequest) As System.Threading.Tasks.Task(Of Server.Facturacion.CatalogoCalculoCargaResponse)
     End Interface
     
     '''<remarks/>
@@ -352,7 +361,8 @@ Namespace Server.Facturacion
     End Class
     
     '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(TarifaCargaResponse)),  _
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(CatalogoCalculoCargaResponse)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(TarifaCargaResponse)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(TipoProcesoAlmacenajeCargaResponse)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(VuelosCanceladosResponse)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ServConsuClienteResponse)),  _
@@ -419,6 +429,30 @@ Namespace Server.Facturacion
                 propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
             End If
         End Sub
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://tempuri.org/")>  _
+    Partial Public Class CatalogoCalculoCargaResponse
+        Inherits GenericResponse
+        
+        Private dsResultField As System.Data.DataSet
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=0)>  _
+        Public Property dsResult() As System.Data.DataSet
+            Get
+                Return Me.dsResultField
+            End Get
+            Set
+                Me.dsResultField = value
+                Me.RaisePropertyChanged("dsResult")
+            End Set
+        End Property
     End Class
     
     '''<remarks/>
@@ -611,6 +645,124 @@ Namespace Server.Facturacion
                 Me.RaisePropertyChanged("dsResult")
             End Set
         End Property
+    End Class
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://tempuri.org/")>  _
+    Partial Public Class CatalogoCalculoCarga
+        Inherits Object
+        Implements System.ComponentModel.INotifyPropertyChanged
+        
+        Private idCatalogoField As Integer
+        
+        Private idAgenciaField As System.Guid
+        
+        Private procesadaField As Integer
+        
+        Private quedadaField As Integer
+        
+        Private quedadaOtroField As Integer
+        
+        Private devueltaField As Integer
+        
+        Private estadoField As Boolean
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=0)>  _
+        Public Property IdCatalogo() As Integer
+            Get
+                Return Me.idCatalogoField
+            End Get
+            Set
+                Me.idCatalogoField = value
+                Me.RaisePropertyChanged("IdCatalogo")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=1)>  _
+        Public Property IdAgencia() As System.Guid
+            Get
+                Return Me.idAgenciaField
+            End Get
+            Set
+                Me.idAgenciaField = value
+                Me.RaisePropertyChanged("IdAgencia")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=2)>  _
+        Public Property Procesada() As Integer
+            Get
+                Return Me.procesadaField
+            End Get
+            Set
+                Me.procesadaField = value
+                Me.RaisePropertyChanged("Procesada")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=3)>  _
+        Public Property Quedada() As Integer
+            Get
+                Return Me.quedadaField
+            End Get
+            Set
+                Me.quedadaField = value
+                Me.RaisePropertyChanged("Quedada")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=4)>  _
+        Public Property QuedadaOtro() As Integer
+            Get
+                Return Me.quedadaOtroField
+            End Get
+            Set
+                Me.quedadaOtroField = value
+                Me.RaisePropertyChanged("QuedadaOtro")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=5)>  _
+        Public Property Devuelta() As Integer
+            Get
+                Return Me.devueltaField
+            End Get
+            Set
+                Me.devueltaField = value
+                Me.RaisePropertyChanged("Devuelta")
+            End Set
+        End Property
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=6)>  _
+        Public Property estado() As Boolean
+            Get
+                Return Me.estadoField
+            End Get
+            Set
+                Me.estadoField = value
+                Me.RaisePropertyChanged("estado")
+            End Set
+        End Property
+        
+        Public Event PropertyChanged As System.ComponentModel.PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+        
+        Protected Sub RaisePropertyChanged(ByVal propertyName As String)
+            Dim propertyChanged As System.ComponentModel.PropertyChangedEventHandler = Me.PropertyChangedEvent
+            If (Not (propertyChanged) Is Nothing) Then
+                propertyChanged(Me, New System.ComponentModel.PropertyChangedEventArgs(propertyName))
+            End If
+        End Sub
     End Class
     
     '''<remarks/>
@@ -1650,7 +1802,8 @@ Namespace Server.Facturacion
     End Class
     
     '''<remarks/>
-    <System.Xml.Serialization.XmlIncludeAttribute(GetType(TarifaCargaRequest)),  _
+    <System.Xml.Serialization.XmlIncludeAttribute(GetType(CatalogoCalculoCargaRequest)),  _
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(TarifaCargaRequest)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(TipoProcesoAlmacenajeCargaRequest)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(VuelosCanceladosRequest)),  _
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ServConsuClienteRequest)),  _
@@ -1895,6 +2048,30 @@ Namespace Server.Facturacion
         '''<remarks/>
         PRINT
     End Enum
+    
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),  _
+     System.SerializableAttribute(),  _
+     System.Diagnostics.DebuggerStepThroughAttribute(),  _
+     System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://tempuri.org/")>  _
+    Partial Public Class CatalogoCalculoCargaRequest
+        Inherits GenericRequest
+        
+        Private catalogoCalculoCargaRequest1Field As CatalogoCalculoCarga
+        
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute("CatalogoCalculoCargaRequest", Order:=0)>  _
+        Public Property CatalogoCalculoCargaRequest1() As CatalogoCalculoCarga
+            Get
+                Return Me.catalogoCalculoCargaRequest1Field
+            End Get
+            Set
+                Me.catalogoCalculoCargaRequest1Field = value
+                Me.RaisePropertyChanged("CatalogoCalculoCargaRequest1")
+            End Set
+        End Property
+    End Class
     
     '''<remarks/>
     <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),  _
@@ -2261,6 +2438,14 @@ Namespace Server.Facturacion
         
         Public Function GetTarifaCargaAsync(ByVal req As Server.Facturacion.TarifaCargaRequest) As System.Threading.Tasks.Task(Of Server.Facturacion.TarifaCargaResponse) Implements Server.Facturacion.FacturacionSoap.GetTarifaCargaAsync
             Return MyBase.Channel.GetTarifaCargaAsync(req)
+        End Function
+        
+        Public Function GeCatalogoCalculoCarga(ByVal req As Server.Facturacion.CatalogoCalculoCargaRequest) As Server.Facturacion.CatalogoCalculoCargaResponse Implements Server.Facturacion.FacturacionSoap.GeCatalogoCalculoCarga
+            Return MyBase.Channel.GeCatalogoCalculoCarga(req)
+        End Function
+        
+        Public Function GeCatalogoCalculoCargaAsync(ByVal req As Server.Facturacion.CatalogoCalculoCargaRequest) As System.Threading.Tasks.Task(Of Server.Facturacion.CatalogoCalculoCargaResponse) Implements Server.Facturacion.FacturacionSoap.GeCatalogoCalculoCargaAsync
+            Return MyBase.Channel.GeCatalogoCalculoCargaAsync(req)
         End Function
     End Class
 End Namespace
