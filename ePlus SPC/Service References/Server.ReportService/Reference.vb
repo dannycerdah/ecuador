@@ -631,6 +631,15 @@ Namespace Server.ReportService
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteProduccionFacturacion", ReplyAction:="*")>
         Function GetReporteProduccionFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
 
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteContenedoresFacturacion", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function GetReporteContenedoresFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteContenedoresFacturacion", ReplyAction:="*")>
+        Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
+
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetEntireTarifasCatalog", ReplyAction:="*"),
          System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
@@ -3578,7 +3587,7 @@ Namespace Server.ReportService
                 Return Me.perfilesUsuarioField
             End Get
             Set
-                Me.perfilesUsuarioField = Value
+                Me.perfilesUsuarioField = value
                 Me.RaisePropertyChanged("perfilesUsuario")
             End Set
         End Property
@@ -3590,7 +3599,7 @@ Namespace Server.ReportService
                 Return Me.usuarioEmpresaField
             End Get
             Set
-                Me.usuarioEmpresaField = Value
+                Me.usuarioEmpresaField = value
                 Me.RaisePropertyChanged("usuarioEmpresa")
             End Set
         End Property
@@ -3807,6 +3816,8 @@ Namespace Server.ReportService
 
         Private userAdminField As String
 
+        Private rolesField As String
+
         Private errorStringField As String
 
         Private myPermisosField() As String
@@ -3933,6 +3944,18 @@ Namespace Server.ReportService
 
         '''<remarks/>
         <System.Xml.Serialization.XmlElementAttribute(Order:=10)>
+        Public Property roles() As String
+            Get
+                Return Me.rolesField
+            End Get
+            Set
+                Me.rolesField = value
+                Me.RaisePropertyChanged("roles")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=11)>
         Public Property errorString() As String
             Get
                 Return Me.errorStringField
@@ -3944,7 +3967,7 @@ Namespace Server.ReportService
         End Property
 
         '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(Order:=11)>
+        <System.Xml.Serialization.XmlArrayAttribute(Order:=12)>
         Public Property myPermisos() As String()
             Get
                 Return Me.myPermisosField
@@ -5100,7 +5123,7 @@ Namespace Server.ReportService
                 Return Me.imagenesPerfilField
             End Get
             Set
-                Me.imagenesPerfilField = Value
+                Me.imagenesPerfilField = value
                 Me.RaisePropertyChanged("imagenesPerfil")
             End Set
         End Property
@@ -5112,7 +5135,7 @@ Namespace Server.ReportService
                 Return Me.bioRecordsField
             End Get
             Set
-                Me.bioRecordsField = Value
+                Me.bioRecordsField = value
                 Me.RaisePropertyChanged("BioRecords")
             End Set
         End Property
@@ -5124,7 +5147,7 @@ Namespace Server.ReportService
                 Return Me.zonasAutorizadasField
             End Get
             Set
-                Me.zonasAutorizadasField = Value
+                Me.zonasAutorizadasField = value
                 Me.RaisePropertyChanged("ZonasAutorizadas")
             End Set
         End Property
@@ -5136,7 +5159,7 @@ Namespace Server.ReportService
                 Return Me.zonasAutorizadasByContactoField
             End Get
             Set
-                Me.zonasAutorizadasByContactoField = Value
+                Me.zonasAutorizadasByContactoField = value
                 Me.RaisePropertyChanged("ZonasAutorizadasByContacto")
             End Set
         End Property
@@ -5148,7 +5171,7 @@ Namespace Server.ReportService
                 Return Me.agenciaContactoField
             End Get
             Set
-                Me.agenciaContactoField = Value
+                Me.agenciaContactoField = value
                 Me.RaisePropertyChanged("AgenciaContacto")
             End Set
         End Property
@@ -5856,7 +5879,7 @@ Namespace Server.ReportService
                 Return Me.permisosPerfilField
             End Get
             Set
-                Me.permisosPerfilField = Value
+                Me.permisosPerfilField = value
                 Me.RaisePropertyChanged("permisosPerfil")
             End Set
         End Property
@@ -6064,7 +6087,7 @@ Namespace Server.ReportService
                 Return Me.daysTurnoContactoField
             End Get
             Set
-                Me.daysTurnoContactoField = Value
+                Me.daysTurnoContactoField = value
                 Me.RaisePropertyChanged("daysTurnoContacto")
             End Set
         End Property
@@ -9524,6 +9547,14 @@ Namespace Server.ReportService
 
         Public Function GetReporteProduccionFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetReporteProduccionFacturacionAsync
             Return MyBase.Channel.GetReporteProduccionFacturacionAsync(req)
+        End Function
+
+        Public Function GetReporteContenedoresFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetReporteContenedoresFacturacion
+            Return MyBase.Channel.GetReporteContenedoresFacturacion(req)
+        End Function
+
+        Public Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetReporteContenedoresFacturacionAsync
+            Return MyBase.Channel.GetReporteContenedoresFacturacionAsync(req)
         End Function
 
         Public Function GetEntireTarifasCatalog(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetEntireTarifasCatalog
