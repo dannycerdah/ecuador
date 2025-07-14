@@ -375,7 +375,7 @@ Public Class frmHistorialProceso
         dtParametros = CommonProcess.GetParametro("rol_rep_pro_fact")
         For Each r As DataRow In dtParametros.Rows
             If r.Item("estado") = "A" Then
-                If MyCurrentUser.roles.Split(",").Contains(r.Item("prmTexto")) = False Then
+                If If(MyCurrentUser?.roles, "").Split(",").Contains(r.Item("prmTexto")) = False Then
                     ugdDetalle.DisplayLayout.Bands(0).Columns("Tarifa").Hidden = True
                     ugdDetalle.DisplayLayout.Bands(0).Columns("Subtotal").Hidden = True
                     ugdDetalle.DisplayLayout.Bands(0).Columns("Fee").Hidden = True
@@ -413,6 +413,9 @@ Public Class frmHistorialProceso
                 totalFacturar += ProcesarCampo(cat("quedada_otro"), rows("pesoR"), rows("volumenR"))
                 totalFacturar += ProcesarCampo(cat("devuelta"), rows("pesoD"), rows("volumenD"))
             Next
+        End If
+        If totalFacturar < 0 Then
+            totalFacturar = 0
         End If
         Return totalFacturar
     End Function
