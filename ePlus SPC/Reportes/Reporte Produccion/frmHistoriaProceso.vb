@@ -52,8 +52,9 @@ Public Class frmHistorialProceso
         Try
             Dim dtData As New DataTable()
             Dim dtDataTarifa As New DataTable()
-
+            Dim siTarifaParametrizada As Boolean = False
             Dim iva As Double
+            Dim tarifaDefault As Double
             Dim existeCatalogo As Double = False
             If validaInfo() Then
                 'ini jrodriguea sprint2 30/05/2025
@@ -63,9 +64,11 @@ Public Class frmHistorialProceso
                 dtDataCatalogoCalculo = CommonProcess.GeCatalogoCalculoCarga()
                 dtData = CommonProcess.GetReporteProduccionFacturacion(If(myProceso?.IdProceso, Guid.Empty), CheckeadosList(), udtfechaIni.Value, udtfechaFin.Value)
                 iva = CommonProcess.GetParametro("IVA").Rows(0).Item("prmNumero")
+                tarifaDefault = CommonProcess.GetParametro("TarifaDefaulOtros").Rows(0).Item("prmNumero")
                 For Each rows As DataRow In dtData.Rows
                     rows("TOTAL_VOLUMEN_FACTURAR") = calculaTotalFacturar(rows)
                     For Each rowsTarias As DataRow In dtDataTarifa.Select("idAgencia = '" & rows.Item("idAgencia").ToString() & "'")
+                        siTarifaParametrizada = True
                         If rowsTarias.Item("idProducto") = rows.Item("idProducto") And rowsTarias.Item("idCompania") = rows.Item("idAgenciaCompañia") Then
                             rows.Item("Tarifa") = rowsTarias.Item("valorTarifa")
                             Exit For
@@ -83,6 +86,11 @@ Public Class frmHistorialProceso
                             Exit For
                         End If
                     Next
+                    If siTarifaParametrizada = False Then
+                        rows.Item("Tarifa") = tarifaDefault
+                    Else
+                        siTarifaParametrizada = False
+                    End If
                     rows.Item("Subtotal") = rows.Item("Tarifa") * rows.Item("TOTAL_VOLUMEN_FACTURAR")
                     rows.Item("Iva") = (rows.Item("Subtotal") + rows.Item("Fee")) * iva
                     rows.Item("Total") = rows.Item("Subtotal") + rows.Item("Iva") + rows.Item("Fee")
