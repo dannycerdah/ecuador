@@ -109,6 +109,7 @@ Partial Class frmMainSpc
         Dim ButtonTool150 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("SPC.REP.REP.HPZ")
         Dim ButtonTool166 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("SPC.REP.REP.RTP")
         Dim ButtonTool186 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("SPC.REP.REP.RDP2")
+        Dim ButtonTool188 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("SPC.REP.REP.RDC")
         Dim RibbonTab6 As Infragistics.Win.UltraWinToolbars.RibbonTab = New Infragistics.Win.UltraWinToolbars.RibbonTab("SPC.ADM")
         Dim RibbonGroup9 As Infragistics.Win.UltraWinToolbars.RibbonGroup = New Infragistics.Win.UltraWinToolbars.RibbonGroup("SPC.ADM.CON")
         Dim ButtonTool39 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("SPC.ADM.CON.GEN")
@@ -360,6 +361,8 @@ Partial Class frmMainSpc
         Dim ButtonTool191 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("SPC.PRO.PRO.AGS")
         Dim Appearance14 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance15 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
+        Dim ButtonTool189 As Infragistics.Win.UltraWinToolbars.ButtonTool = New Infragistics.Win.UltraWinToolbars.ButtonTool("SPC.REP.REP.RDC")
+        Dim Appearance16 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.pnlMain = New Infragistics.Win.Misc.UltraPanel()
         Me.usbPrincipal = New Infragistics.Win.UltraWinStatusBar.UltraStatusBar()
         Me._frmMainSpc_Toolbars_Dock_Area_Right = New Infragistics.Win.UltraWinToolbars.UltraToolbarsDockArea()
@@ -510,7 +513,8 @@ Partial Class frmMainSpc
         ButtonTool150.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool166.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
         ButtonTool186.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
-        RibbonGroup8.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool100, ButtonTool96, ButtonTool95, ButtonTool97, ButtonTool144, ButtonTool142, ButtonTool112, ButtonTool118, ButtonTool22, ButtonTool149, ButtonTool150, ButtonTool166, ButtonTool186})
+        ButtonTool188.InstanceProps.PreferredSizeOnRibbon = Infragistics.Win.UltraWinToolbars.RibbonToolSize.Large
+        RibbonGroup8.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool100, ButtonTool96, ButtonTool95, ButtonTool97, ButtonTool144, ButtonTool142, ButtonTool112, ButtonTool118, ButtonTool22, ButtonTool149, ButtonTool150, ButtonTool166, ButtonTool186, ButtonTool188})
         RibbonTab5.Groups.AddRange(New Infragistics.Win.UltraWinToolbars.RibbonGroup() {RibbonGroup8})
         RibbonTab6.Caption = "Administración"
         RibbonGroup9.Caption = "Configuraciones"
@@ -894,7 +898,10 @@ Partial Class frmMainSpc
         Appearance15.Image = Global.SPC.My.Resources.Resources.Gaveta
         ButtonTool191.SharedPropsInternal.AppearancesSmall.Appearance = Appearance15
         ButtonTool191.SharedPropsInternal.Caption = "Asignacion de Gavetas por Saca"
-        Me.UtmMain.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool2, ButtonTool4, ButtonTool10, ButtonTool11, ButtonTool12, ButtonTool13, ButtonTool14, ComboBoxTool2, ButtonTool27, ButtonTool28, ButtonTool29, ButtonTool30, ButtonTool31, ButtonTool32, ButtonTool33, ButtonTool34, ButtonTool35, ButtonTool36, ButtonTool37, ButtonTool38, ButtonTool43, ButtonTool44, ButtonTool45, ButtonTool46, ButtonTool47, ButtonTool48, ButtonTool55, ButtonTool56, ButtonTool57, ButtonTool58, ButtonTool59, ButtonTool60, ButtonTool68, ButtonTool69, ButtonTool70, ButtonTool71, ButtonTool72, ButtonTool73, ButtonTool74, ButtonTool78, ButtonTool79, ButtonTool80, ButtonTool86, ButtonTool87, ButtonTool88, ButtonTool90, ButtonTool93, ButtonTool94, ButtonTool102, ButtonTool103, ButtonTool104, ButtonTool105, ButtonTool106, ButtonTool107, ButtonTool108, ButtonTool114, ButtonTool115, ButtonTool116, ButtonTool117, ButtonTool9, ButtonTool24, ButtonTool119, ButtonTool121, ButtonTool123, ButtonTool125, ButtonTool126, ButtonTool128, ButtonTool129, ButtonTool85, ButtonTool133, ButtonTool135, ButtonTool137, ButtonTool139, ButtonTool141, ButtonTool145, ButtonTool113, ButtonTool143, ButtonTool8, ButtonTool15, ButtonTool20, ButtonTool25, ButtonTool40, ButtonTool147, ButtonTool146, ButtonTool151, ButtonTool153, ButtonTool89, ButtonTool66, ButtonTool75, ButtonTool98, ButtonTool101, ButtonTool110, ButtonTool132, ButtonTool155, ButtonTool157, ButtonTool50, ButtonTool52, ButtonTool160, ButtonTool161, ButtonTool162, ButtonTool163, ButtonTool165, ButtonTool167, ButtonTool170, ButtonTool171, ButtonTool173, ButtonTool175, ButtonTool177, ButtonTool179, ButtonTool181, ButtonTool184, ButtonTool185, ButtonTool187, ButtonTool191})
+        Appearance16.Image = Global.SPC.My.Resources.Resources.container1
+        ButtonTool189.SharedPropsInternal.AppearancesLarge.Appearance = Appearance16
+        ButtonTool189.SharedPropsInternal.Caption = "Reporte de Contenedores"
+        Me.UtmMain.Tools.AddRange(New Infragistics.Win.UltraWinToolbars.ToolBase() {ButtonTool2, ButtonTool4, ButtonTool10, ButtonTool11, ButtonTool12, ButtonTool13, ButtonTool14, ComboBoxTool2, ButtonTool27, ButtonTool28, ButtonTool29, ButtonTool30, ButtonTool31, ButtonTool32, ButtonTool33, ButtonTool34, ButtonTool35, ButtonTool36, ButtonTool37, ButtonTool38, ButtonTool43, ButtonTool44, ButtonTool45, ButtonTool46, ButtonTool47, ButtonTool48, ButtonTool55, ButtonTool56, ButtonTool57, ButtonTool58, ButtonTool59, ButtonTool60, ButtonTool68, ButtonTool69, ButtonTool70, ButtonTool71, ButtonTool72, ButtonTool73, ButtonTool74, ButtonTool78, ButtonTool79, ButtonTool80, ButtonTool86, ButtonTool87, ButtonTool88, ButtonTool90, ButtonTool93, ButtonTool94, ButtonTool102, ButtonTool103, ButtonTool104, ButtonTool105, ButtonTool106, ButtonTool107, ButtonTool108, ButtonTool114, ButtonTool115, ButtonTool116, ButtonTool117, ButtonTool9, ButtonTool24, ButtonTool119, ButtonTool121, ButtonTool123, ButtonTool125, ButtonTool126, ButtonTool128, ButtonTool129, ButtonTool85, ButtonTool133, ButtonTool135, ButtonTool137, ButtonTool139, ButtonTool141, ButtonTool145, ButtonTool113, ButtonTool143, ButtonTool8, ButtonTool15, ButtonTool20, ButtonTool25, ButtonTool40, ButtonTool147, ButtonTool146, ButtonTool151, ButtonTool153, ButtonTool89, ButtonTool66, ButtonTool75, ButtonTool98, ButtonTool101, ButtonTool110, ButtonTool132, ButtonTool155, ButtonTool157, ButtonTool50, ButtonTool52, ButtonTool160, ButtonTool161, ButtonTool162, ButtonTool163, ButtonTool165, ButtonTool167, ButtonTool170, ButtonTool171, ButtonTool173, ButtonTool175, ButtonTool177, ButtonTool179, ButtonTool181, ButtonTool184, ButtonTool185, ButtonTool187, ButtonTool191, ButtonTool189})
         '
         '_frmMainSpc_Toolbars_Dock_Area_Left
         '
