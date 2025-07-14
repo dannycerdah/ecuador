@@ -29,7 +29,7 @@
     <SuiteName>General</SuiteName>
     <WebPage>publish.htm</WebPage>
     <AutorunEnabled>true</AutorunEnabled>
-    <ApplicationRevision>740</ApplicationRevision>
+    <ApplicationRevision>742</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -1156,6 +1156,12 @@
     <Compile Include="Reportes\Decomisos\frmDecomiso.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Reportes\HistorailElementos\frmReporteContenedores.Designer.vb">
+      <DependentUpon>frmReporteContenedores.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\HistorailElementos\frmReporteContenedores.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Reportes\Marcaciones\CabeceraMarcaciones.vb" />
     <Compile Include="Reportes\Marcaciones\DatosFichapersonal.vb" />
     <Compile Include="Reportes\Marcaciones\DatosReporte.vb" />
@@ -1753,6 +1759,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Decomisos\RptActEntregaRecep.resx">
       <DependentUpon>RptActEntregaRecep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\HistorailElementos\frmReporteContenedores.resx">
+      <DependentUpon>frmReporteContenedores.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Marcaciones\Marcaciones.rdlc" />
     <EmbeddedResource Include="Reportes\Marcaciones\Report1.rdlc" />
@@ -2644,6 +2653,9 @@
     <Content Include="Resources\Clock-icon.png" />
     <Content Include="Resources\clock.png" />
     <Content Include="Resources\clock_48.png" />
+    <None Include="Resources\container.ico" />
+    <None Include="Resources\container1.ico" />
+    <None Include="Resources\container.png" />
     <Content Include="Resources\Control_Panel.png" />
     <Content Include="Resources\correoPNG.png" />
     <Content Include="Resources\direction.png" />
@@ -2762,12 +2774,12 @@
   <ItemGroup>
     <PublishFile Include="Infragistics2.Win.UltraWinDataSource.v10.3">
       <Visible>False</Visible>
+      <PublishState>Exclude</PublishState>
+      <IncludeHash>True</IncludeHash>
       <Group>
       </Group>
       <TargetPath>
       </TargetPath>
-      <PublishState>Exclude</PublishState>
-      <IncludeHash>True</IncludeHash>
       <FileType>Assembly</FileType>
     </PublishFile>
   </ItemGroup>
