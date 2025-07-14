@@ -1977,4 +1977,26 @@ Public Class CommonProcess
         End Try
         Return res.dsResult.Tables(0)
     End Function
+    'jrodriguez sprint2 01/06/2025
+    'Metodo encargado de obtener el reporte de contenedores
+    Public Shared Function GetReporteContenedoresFacturacion(idAgencias As String, fecha_inicio As Date, fecha_fin As Date) As DataTable
+        Dim Result As New DataTable("dtReporteContenedoresFacturacion")
+        Dim req As New Server.ReportService.ReportRequest
+        Dim res As New Server.ReportService.ReportResponse
+        Dim wsClnt As New ReportServiceSoapClient
+        Try
+            General.SetBARequest(req)
+            req.prmArr = New String() {idAgencias, fecha_inicio, fecha_fin}
+            res = wsClnt.GetReporteContenedoresFacturacion(req)
+            If res.ActionResult Then
+                Result = res.DsResult.Tables(0)
+            Else
+                Throw New Exception(res.ErrorMessage)
+            End If
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex, res, req)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res.DsResult.Tables(0)
+    End Function
 End Class
