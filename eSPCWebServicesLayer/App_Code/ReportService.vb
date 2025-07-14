@@ -759,5 +759,9 @@ Public Class ReportService
     Public Function GetReporteProduccionFacturacion(req As ReportRequest) As ReportResponse
         Return ReportsManager.GetReporteProduccionFacturacion(req)
     End Function
-
+    <WebMethod()>
+    'jrodriguez sprint2 01/06/2025 Servicio que llama al procesod e BD para obtener los datos del reporte de contenedores
+    Public Function GetReporteContenedoresFacturacion(req As ReportRequest) As ReportResponse
+        Return ReportsManager.GetReporteContenedoresFacturacion(req)
+    End Function
 End Class
