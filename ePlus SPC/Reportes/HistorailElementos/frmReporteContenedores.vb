@@ -150,7 +150,7 @@ Public Class frmReporteContenedores
         dtParametros = CommonProcess.GetParametro("rol_rep_pro_fact")
         For Each r As DataRow In dtParametros.Rows
             If r.Item("estado") = "A" Then
-                If MyCurrentUser.roles.Split(",").Contains(r.Item("prmTexto")) = False Then
+                If If(MyCurrentUser?.roles, "").Split(",").Contains(r.Item("prmTexto")) = False Then
                     ugdDetalle.DisplayLayout.Bands(0).Columns("valorTarifa").Hidden = True
                     ugdDetalle.DisplayLayout.Bands(0).Columns("Subtotal").Hidden = True
                     ugdDetalle.DisplayLayout.Bands(0).Columns("Fee").Hidden = True
