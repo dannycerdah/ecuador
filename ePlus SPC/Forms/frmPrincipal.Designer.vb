@@ -379,9 +379,9 @@ Partial Class frmMainSpc
         '
         Me.pnlMain.Cursor = System.Windows.Forms.Cursors.Default
         Me.pnlMain.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.pnlMain.Location = New System.Drawing.Point(4, 158)
+        Me.pnlMain.Location = New System.Drawing.Point(4, 185)
         Me.pnlMain.Name = "pnlMain"
-        Me.pnlMain.Size = New System.Drawing.Size(955, 286)
+        Me.pnlMain.Size = New System.Drawing.Size(955, 259)
         Me.pnlMain.TabIndex = 0
         '
         'usbPrincipal
@@ -427,9 +427,9 @@ Partial Class frmMainSpc
         Me._frmMainSpc_Toolbars_Dock_Area_Right.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Right
         Me._frmMainSpc_Toolbars_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText
         Me._frmMainSpc_Toolbars_Dock_Area_Right.InitialResizeAreaExtent = 4
-        Me._frmMainSpc_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(959, 158)
+        Me._frmMainSpc_Toolbars_Dock_Area_Right.Location = New System.Drawing.Point(959, 185)
         Me._frmMainSpc_Toolbars_Dock_Area_Right.Name = "_frmMainSpc_Toolbars_Dock_Area_Right"
-        Me._frmMainSpc_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(4, 286)
+        Me._frmMainSpc_Toolbars_Dock_Area_Right.Size = New System.Drawing.Size(4, 259)
         Me._frmMainSpc_Toolbars_Dock_Area_Right.ToolbarsManager = Me.UtmMain
         '
         'UtmMain
@@ -794,7 +794,7 @@ Partial Class frmMainSpc
         ButtonTool20.SharedPropsInternal.Caption = "Tarifas"
         Appearance205.Image = Global.SPC.My.Resources.Resources.report_produ128x128
         ButtonTool25.SharedPropsInternal.AppearancesSmall.Appearance = Appearance205
-        ButtonTool25.SharedPropsInternal.Caption = "Reporte de Producción"
+        ButtonTool25.SharedPropsInternal.Caption = "Reporte de carga de producción"
         Appearance206.Image = Global.SPC.My.Resources.Resources.personal_zn_128x128
         ButtonTool40.SharedPropsInternal.AppearancesSmall.Appearance = Appearance206
         ButtonTool40.SharedPropsInternal.Caption = "Personal en Zonas"
@@ -910,9 +910,9 @@ Partial Class frmMainSpc
         Me._frmMainSpc_Toolbars_Dock_Area_Left.DockedPosition = Infragistics.Win.UltraWinToolbars.DockedPosition.Left
         Me._frmMainSpc_Toolbars_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText
         Me._frmMainSpc_Toolbars_Dock_Area_Left.InitialResizeAreaExtent = 4
-        Me._frmMainSpc_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 158)
+        Me._frmMainSpc_Toolbars_Dock_Area_Left.Location = New System.Drawing.Point(0, 185)
         Me._frmMainSpc_Toolbars_Dock_Area_Left.Name = "_frmMainSpc_Toolbars_Dock_Area_Left"
-        Me._frmMainSpc_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(4, 286)
+        Me._frmMainSpc_Toolbars_Dock_Area_Left.Size = New System.Drawing.Size(4, 259)
         Me._frmMainSpc_Toolbars_Dock_Area_Left.ToolbarsManager = Me.UtmMain
         '
         '_frmMainSpc_Toolbars_Dock_Area_Bottom
@@ -934,7 +934,7 @@ Partial Class frmMainSpc
         Me._frmMainSpc_Toolbars_Dock_Area_Top.ForeColor = System.Drawing.SystemColors.ControlText
         Me._frmMainSpc_Toolbars_Dock_Area_Top.Location = New System.Drawing.Point(0, 0)
         Me._frmMainSpc_Toolbars_Dock_Area_Top.Name = "_frmMainSpc_Toolbars_Dock_Area_Top"
-        Me._frmMainSpc_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(963, 158)
+        Me._frmMainSpc_Toolbars_Dock_Area_Top.Size = New System.Drawing.Size(963, 185)
         Me._frmMainSpc_Toolbars_Dock_Area_Top.ToolbarsManager = Me.UtmMain
         '
         'frmMainSpc
