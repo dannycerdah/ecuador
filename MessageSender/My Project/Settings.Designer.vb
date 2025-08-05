@@ -68,47 +68,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns"& _ 
-            ":web=""http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <soa"& _ 
-            "penv:Header> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                               <ns0:Header xmlns:"& _ 
-            "ns0=""http://soapinterop.org/xsd""> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                            "& _ 
-            "          <ns0:SecLv1>usuarioEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                            "& _ 
-            "                          <ns0:SecLv2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
-            "                                        <ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-            "                                                </ns0:Header> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               <"& _ 
-            "/soapenv:Header>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   <soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      <web:requestExportDespachoSRCHEX>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-            "       <!--Optional:-->"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         <arg0>&lt;DocumentMetadata xsi:schemaLocation="& _ 
-            """urn:wco:datamodel:EC:SRCHEX:1:0:0 EC_SRCHEX_0p1.03.xsd"" xmlns=""urn:wco:datamode"& _ 
-            "l:EC:SRCHEX:1:0:0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)& _ 
-            ""&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;WCODataModelVersion&gt;3.0&lt;/WCODataModelVersion&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;WCODocumentN"& _ 
-            "ame&gt;SRCHEX&lt;/WCODocumentName&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;CountryCode&gt;EC&lt;/CountryCode&"& _ 
-            "gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;AgencyName&gt;SENAE&lt;/AgencyName&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;AgencyAssignedCountry"& _ 
-            "SubEntityID&gt;String&lt;/AgencyAssignedCountrySubEntityID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;AgencyAss"& _ 
-            "ignedCustomizedDocumentName&gt;SRCHEX&lt;/AgencyAssignedCustomizedDocumentName&g"& _ 
-            "t;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;AgencyAssignedCustomizedDocumentVersion&gt;1.0&lt;/AgencyAssignedCust"& _ 
-            "omizedDocumentVersion&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Declaration&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;TypeCode&gt;002&lt;/T"& _ 
-            "ypeCode&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;OceCD&gt;29000001&lt;/OceCD&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&"& _ 
-            "lt;UserID&gt;0801867177&lt;/UserID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;SequenceNume"& _ 
-            "ric&gt;1&lt;/SequenceNumeric&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Consignment&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;ConsultTypeI"& _ 
-            "D&gt;02&lt;/ConsultTypeID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;DeclarationOfficeID&gt;028&lt;/Declarati"& _ 
-            "onOfficeID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;ExporterDocumentID/&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;DeclarationNumber&gt;"& _ 
-            ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;DeclarationNumberID&gt;&lt;/DeclarationNumberID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Decla"& _ 
-            "rationNumber&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Period&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;StartDate&gt;2015-02-01&lt;/Sta"& _ 
-            "rtDate&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;EndDate&gt;2015-02-15&lt;/EndDate&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Period&gt"& _ 
-            ";"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Consignment&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Declaration&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/DocumentMetadata&gt"& _ 
-            ";</arg0>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      </web:requestExportDespachoSRCHEX>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   </soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</soapen"& _ 
-            "v:Envelope>")>  _
-        Public Property SRCHEX_req() As String
-            Get
-                Return CType(Me("SRCHEX_req"),String)
-            End Get
-            Set
-                Me("SRCHEX_req") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("http://cdestest.aduana.gob.ec/cdes_svr/SENAE_CommonResponseService_EC?wsdl")>  _
         Public Property CommonResposeService() As String
             Get
@@ -116,84 +75,6 @@ Namespace My
             End Get
             Set
                 Me("CommonResposeService") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns"& _ 
-            "=""urn:wco:datamodel:EC:RN:1:0:0"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <soapenv:Header> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"          "& _ 
-            "                                     <ns0:Header xmlns:ns0=""http://soapinterop.o"& _ 
-            "rg/xsd""> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                      <ns0:SecLv1>usu"& _ 
-            "arioEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                     "& _ 
-            " <ns0:SecLv2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                       "& _ 
-            "               <ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
-            "                       </ns0:Header> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"               </soapenv:Header>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    <so"& _ 
-            "apenv:Body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        <DocumentMetadata xsi:schemaLocation=""urn:wco:datamodel:EC:"& _ 
-            "RN:1:0:0 ..\maindoc\EC_RN_0p1.0.0.xsd"" xmlns=""urn:wco:datamodel:EC:RN:1:0:0"" xml"& _ 
-            "ns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            <WCODataModelVe"& _ 
-            "rsion>String</WCODataModelVersion>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            <WCODocumentName>String</WCODocu"& _ 
-            "mentName>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            <CountryCode>String</CountryCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyNam"& _ 
-            "e>String</AgencyName>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyAssignedCountrySubEntityID>String</Age"& _ 
-            "ncyAssignedCountrySubEntityID>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyAssignedCustomizedDocumentNam"& _ 
-            "e>String</AgencyAssignedCustomizedDocumentName>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyAssignedCust"& _ 
-            "omizedDocumentVersion>String</AgencyAssignedCustomizedDocumentVersion>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        "& _ 
-            "    <Declaration>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <TypeCode></TypeCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <Reque"& _ 
-            "stTypeCode>044</RequestTypeCode> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <IssueDateTime>2015-02-24 09:"& _ 
-            "37:00</IssueDateTime>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <DeclarationOfficeID></DeclarationOfficeI"& _ 
-            "D>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <VersionID>1.0</VersionID>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <OriginDocumentT"& _ 
-            "ypeCode>031</OriginDocumentTypeCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <SequenceNumeric>1</Sequen"& _ 
-            "ceNumeric> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <StatusCode>N</StatusCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <Agent>"& _ 
-            ""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    <ID>29000001</ID>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    <Name>GENERALAIR</N"& _ 
-            "ame>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                </Agent>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <Status>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    <E"& _ 
-            "ffectiveDateTime>2015-02-23</EffectiveDateTime>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                    <ReleaseDat"& _ 
-            "eTime>2015-02-23</ReleaseDateTime>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                </Status>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            </Dec"& _ 
-            "laration>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"        </DocumentMetadata>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    </soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</soapenv:Envelope>"& _ 
-            "")>  _
-        Public Property CommonResponseList_req() As String
-            Get
-                Return CType(Me("CommonResponseList_req"),String)
-            End Get
-            Set
-                Me("CommonResponseList_req") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns"& _ 
-            "=""urn:wco:datamodel:EC:RN:1:0:0"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<soapenv:Header> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:Header xmlns:ns0=""ht"& _ 
-            "tp://soapinterop.org/xsd""> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:SecLv1>usuarioEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:"& _ 
-            "SecLv2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"</"& _ 
-            "ns0:Header> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</soapenv:Header>   "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     <DocumentMetadata xsi:s"& _ 
-            "chemaLocation=""urn:wco:datamodel:EC:RN:1:0:0 ..\maindoc\EC_RN_0p1.0.0.xsd"" xmlns"& _ 
-            "=""urn:wco:datamodel:EC:RN:1:0:0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-ins"& _ 
-            "tance"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <WCODataModelVersion>String</WCODataModelVersion>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-            "            <WCODocumentName>String</WCODocumentName>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <CountryC"& _ 
-            "ode>String</CountryCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <AgencyName>String</AgencyName>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"     "& _ 
-            "           <AgencyAssignedCountrySubEntityID>String</AgencyAssignedCountrySubEnt"& _ 
-            "ityID>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <AgencyAssignedCustomizedDocumentName>String</AgencyAssi"& _ 
-            "gnedCustomizedDocumentName>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <AgencyAssignedCustomizedDocumentVe"& _ 
-            "rsion>String</AgencyAssignedCustomizedDocumentVersion>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                <Declara"& _ 
-            "tion>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       <TypeCode>031</TypeCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               <RequestT"& _ 
-            "ypeCode>044</RequestTypeCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               <IssueDateTime>201"& _ 
-            "5-02-24 09:37:00</IssueDateTime>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               <FunctionalRefe"& _ 
-            "renceID>201502231317053</FunctionalReferenceID>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               "& _ 
-            "<VersionID>1.0</VersionID>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               <OriginDocumentTypeCo"& _ 
-            "de>031</OriginDocumentTypeCode>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               <Agent>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-            "                                        <ID>29000001</ID>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                     "& _ 
-            "                          <Name>GENERALAIR</Name>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                             "& _ 
-            "  </Agent>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               <Status>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                           "& _ 
-            "                    <EffectiveDateTime>2015-02-23</EffectiveDateTime>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         "& _ 
-            "                                      <ReleaseDateTime>2015-02-23</ReleaseDateTi"& _ 
-            "me>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               </Status>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                </Declaration>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<"& _ 
-            "/DocumentMetadata>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   </soapenv:Body>")>  _
-        Public Property DocumentResponse_req() As String
-            Get
-                Return CType(Me("DocumentResponse_req"),String)
-            End Get
-            Set
-                Me("DocumentResponse_req") = value
             End Set
         End Property
         
@@ -271,86 +152,179 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute(""&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xml"& _ 
-            "ns:web=""http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<soapenv:Header>"& _ 
-            " "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                               <ns0:Header xmlns:ns0=""http://"& _ 
-            "soapinterop.org/xsd""> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                      <n"& _ 
-            "s0:SecLv1>usuarioEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                        "& _ 
-            "              <ns0:SecLv2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                          "& _ 
-            "                            <ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
-            "                                    </ns0:Header> "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                            "& _ 
-            "  </soapenv:Header>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   <soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      <web:requestExportDespachoDASEX>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-            "          <!--Optional:-->"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"         <arg0>&lt;DocumentMetadata xsi:schemaLocati"& _ 
-            "on=""urn:wco:datamodel:EC:DASEX:1:0:0 EC_DASEX_0p1.03.xsd"" xmlns=""urn:wco:datamod"& _ 
-            "el:EC:DASEX:1:0:0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  "& _ 
-            "                                             &lt;WCODataModelVersion&gt;3.0&lt;/"& _ 
-            "WCODataModelVersion&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &lt;WCOD"& _ 
-            "ocumentName&gt;DASEX&lt;/WCODocumentName&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                  "& _ 
-            "             &lt;CountryCode&gt;EC&lt;/CountryCode&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                        "& _ 
-            "                       &lt;AgencyName&gt;SENAE&lt;/AgencyName&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
-            "                                  &lt;AgencyAssignedCountrySubEntityID&gt;String"& _ 
-            "&lt;/AgencyAssignedCountrySubEntityID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                     "& _ 
-            "          &lt;AgencyAssignedCustomizedDocumentName&gt;DASEX&lt;/AgencyAssignedCu"& _ 
-            "stomizedDocumentName&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &lt;Age"& _ 
-            "ncyAssignedCustomizedDocumentVersion&gt;1.0&lt;/AgencyAssignedCustomizedDocument"& _ 
-            "Version&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &lt;Declaration&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                               &lt;TypeCode&gt;"& _ 
-            "037&lt;/TypeCode&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                          "& _ 
-            "     &lt;Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                            "& _ 
-            "                  &lt;OceCD&gt;29000001&lt;/OceCD&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
-            "                                                     &lt;UserID&gt;0801867177&lt"& _ 
-            ";/UserID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                               &lt"& _ 
-            ";/Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                               &lt;"& _ 
-            "SequenceNumeric&gt;1&lt;/SequenceNumeric&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                  "& _ 
-            "                             &lt;Consignment&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                              "& _ 
-            "                                                &lt;ConsultTypeID&gt;02&lt;/Cons"& _ 
-            "ultTypeID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                                 "& _ 
-            "             &lt;DeclarationOfficeID&gt;019&lt;/DeclarationOfficeID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
-            "                                                                       &lt;Expor"& _ 
-            "terDocumentID/&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                                            "& _ 
-            "                  &lt;DeclarationNumber&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                   "& _ 
-            "                                                           &lt;DeclarationNumber"& _ 
-            "ID&gt;&lt;/DeclarationNumberID&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                            "& _ 
-            "                                  &lt;/DeclarationNumber&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                  "& _ 
-            "                                                            &lt;Period&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"    "& _ 
-            "                                                                                "& _ 
-            "          &lt;StartDate&gt;2015-07-28&lt;/StartDate&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
-            "                                                                       &lt;EndDa"& _ 
-            "te&gt;2015-07-30&lt;/EndDate&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                                              "& _ 
-            "                                &lt;/Period&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               "& _ 
-            "                                &lt;/Consignment&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                          "& _ 
-            "                     &lt;/Declaration&gt;"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                               &lt;/D"& _ 
-            "ocumentMetadata&gt;</arg0>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"      </web:requestExportDespachoDASEX>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   </soapen"& _ 
-            "v:Body>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</soapenv:Envelope>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10))>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns"& _ 
+            ":web=""http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"">"&Global.Microsoft.VisualBasic.ChrW(10)&"                <soap"& _ 
+            "env:Header> "&Global.Microsoft.VisualBasic.ChrW(10)&"                                               <ns0:Header xmlns:ns"& _ 
+            "0=""http://soapinterop.org/xsd""> "&Global.Microsoft.VisualBasic.ChrW(10)&"                                               "& _ 
+            "       <ns0:SecLv1>usuarioEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                "& _ 
+            "                      <ns0:SecLv2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+            "                                   <ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(10)&"      "& _ 
+            "                                          </ns0:Header> "&Global.Microsoft.VisualBasic.ChrW(10)&"               </soapen"& _ 
+            "v:Header>"&Global.Microsoft.VisualBasic.ChrW(10)&"   <soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(10)&"      <web:requestExportDespachoSRCHEX>"&Global.Microsoft.VisualBasic.ChrW(10)&"         <!-"& _ 
+            "-Optional:-->"&Global.Microsoft.VisualBasic.ChrW(10)&"         <arg0>&lt;DocumentMetadata xsi:schemaLocation=""urn:wco:da"& _ 
+            "tamodel:EC:SRCHEX:1:0:0 EC_SRCHEX_0p1.03.xsd"" xmlns=""urn:wco:datamodel:EC:SRCHEX"& _ 
+            ":1:0:0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;WCOData"& _ 
+            "ModelVersion&gt;3.0&lt;/WCODataModelVersion&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;WCODocumentName&gt;SRCHEX"& _ 
+            "&lt;/WCODocumentName&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;CountryCode&gt;EC&lt;/CountryCode&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Age"& _ 
+            "ncyName&gt;SENAE&lt;/AgencyName&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;AgencyAssignedCountrySubEntityID&gt;S"& _ 
+            "tring&lt;/AgencyAssignedCountrySubEntityID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;AgencyAssignedCustomizedDo"& _ 
+            "cumentName&gt;SRCHEX&lt;/AgencyAssignedCustomizedDocumentName&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;AgencyA"& _ 
+            "ssignedCustomizedDocumentVersion&gt;1.0&lt;/AgencyAssignedCustomizedDocumentVers"& _ 
+            "ion&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Declaration&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;TypeCode&gt;002&lt;/TypeCode&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;"& _ 
+            "Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;OceCD&gt;29000001&lt;/OceCD&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;UserID&gt;0801867177"& _ 
+            "&lt;/UserID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;SequenceNumeric&gt;1&lt;/SequenceNume"& _ 
+            "ric&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Consignment&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;ConsultTypeID&gt;02&lt;/ConsultTypeID&g"& _ 
+            "t;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;DeclarationOfficeID&gt;028&lt;/DeclarationOfficeID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Expo"& _ 
+            "rterDocumentID/&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;DeclarationNumber&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;DeclarationNumberID"& _ 
+            "&gt;&lt;/DeclarationNumberID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/DeclarationNumber&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;Period"& _ 
+            "&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;StartDate&gt;2015-02-01&lt;/StartDate&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;EndDate&gt;20"& _ 
+            "15-02-15&lt;/EndDate&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Period&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/Consignment&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/D"& _ 
+            "eclaration&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"&lt;/DocumentMetadata&gt;</arg0>"&Global.Microsoft.VisualBasic.ChrW(10)&"      </web:requestExportDespa"& _ 
+            "choSRCHEX>"&Global.Microsoft.VisualBasic.ChrW(10)&"   </soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(10)&"</soapenv:Envelope>")>  _
+        Public Property SRCHEX_req() As String
+            Get
+                Return CType(Me("SRCHEX_req"),String)
+            End Get
+            Set
+                Me("SRCHEX_req") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns"& _ 
+            "=""urn:wco:datamodel:EC:RN:1:0:0"">"&Global.Microsoft.VisualBasic.ChrW(10)&"                <soapenv:Header> "&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+            "                                   <ns0:Header xmlns:ns0=""http://soapinterop.org"& _ 
+            "/xsd""> "&Global.Microsoft.VisualBasic.ChrW(10)&"                                                      <ns0:SecLv1>usuari"& _ 
+            "oEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                      <ns"& _ 
+            "0:SecLv2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                            "& _ 
+            "          <ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(10)&"                               "& _ 
+            "                 </ns0:Header> "&Global.Microsoft.VisualBasic.ChrW(10)&"               </soapenv:Header>"&Global.Microsoft.VisualBasic.ChrW(10)&"    <soapenv:Bo"& _ 
+            "dy>"&Global.Microsoft.VisualBasic.ChrW(10)&"        <DocumentMetadata xsi:schemaLocation=""urn:wco:datamodel:EC:RN:1:0:0 "& _ 
+            "..\maindoc\EC_RN_0p1.0.0.xsd"" xmlns=""urn:wco:datamodel:EC:RN:1:0:0"" xmlns:xsi=""h"& _ 
+            "ttp://www.w3.org/2001/XMLSchema-instance"">"&Global.Microsoft.VisualBasic.ChrW(10)&"            <WCODataModelVersion>Stri"& _ 
+            "ng</WCODataModelVersion>"&Global.Microsoft.VisualBasic.ChrW(10)&"            <WCODocumentName>String</WCODocumentName>"&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+            "           <CountryCode>String</CountryCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyName>String</Age"& _ 
+            "ncyName>"&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyAssignedCountrySubEntityID>String</AgencyAssignedCou"& _ 
+            "ntrySubEntityID>"&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyAssignedCustomizedDocumentName>String</Agenc"& _ 
+            "yAssignedCustomizedDocumentName>"&Global.Microsoft.VisualBasic.ChrW(10)&"            <AgencyAssignedCustomizedDocumentVe"& _ 
+            "rsion>String</AgencyAssignedCustomizedDocumentVersion>"&Global.Microsoft.VisualBasic.ChrW(10)&"            <Declaration>"& _ 
+            ""&Global.Microsoft.VisualBasic.ChrW(10)&"                <TypeCode></TypeCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <RequestTypeCode>044</Req"& _ 
+            "uestTypeCode> "&Global.Microsoft.VisualBasic.ChrW(10)&"                <IssueDateTime>2015-02-24 09:37:00</IssueDateTime"& _ 
+            ">"&Global.Microsoft.VisualBasic.ChrW(10)&"                <DeclarationOfficeID></DeclarationOfficeID>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <V"& _ 
+            "ersionID>1.0</VersionID>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <OriginDocumentTypeCode>031</OriginDocu"& _ 
+            "mentTypeCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <SequenceNumeric>1</SequenceNumeric> "&Global.Microsoft.VisualBasic.ChrW(10)&"            "& _ 
+            "    <StatusCode>N</StatusCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <Agent>"&Global.Microsoft.VisualBasic.ChrW(10)&"                    <ID>2"& _ 
+            "9000001</ID>"&Global.Microsoft.VisualBasic.ChrW(10)&"                    <Name>GENERALAIR</Name>"&Global.Microsoft.VisualBasic.ChrW(10)&"                </Agent"& _ 
+            ">"&Global.Microsoft.VisualBasic.ChrW(10)&"                <Status>"&Global.Microsoft.VisualBasic.ChrW(10)&"                    <EffectiveDateTime>2015-02-23</Ef"& _ 
+            "fectiveDateTime>"&Global.Microsoft.VisualBasic.ChrW(10)&"                    <ReleaseDateTime>2015-02-23</ReleaseDateTim"& _ 
+            "e>"&Global.Microsoft.VisualBasic.ChrW(10)&"                </Status>"&Global.Microsoft.VisualBasic.ChrW(10)&"            </Declaration>"&Global.Microsoft.VisualBasic.ChrW(10)&"        </DocumentMetada"& _ 
+            "ta>"&Global.Microsoft.VisualBasic.ChrW(10)&"    </soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(10)&"</soapenv:Envelope>")>  _
+        Public Property CommonResponseList_req() As String
+            Get
+                Return CType(Me("CommonResponseList_req"),String)
+            End Get
+            Set
+                Me("CommonResponseList_req") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmlns"& _ 
+            "=""urn:wco:datamodel:EC:RN:1:0:0"">"&Global.Microsoft.VisualBasic.ChrW(10)&"<soapenv:Header> "&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:Header xmlns:ns0=""http"& _ 
+            "://soapinterop.org/xsd""> "&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:SecLv1>usuarioEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:SecL"& _ 
+            "v2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&"</ns0:He"& _ 
+            "ader> "&Global.Microsoft.VisualBasic.ChrW(10)&"</soapenv:Header>   "&Global.Microsoft.VisualBasic.ChrW(10)&"<soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(10)&"     <DocumentMetadata xsi:schemaLoca"& _ 
+            "tion=""urn:wco:datamodel:EC:RN:1:0:0 ..\maindoc\EC_RN_0p1.0.0.xsd"" xmlns=""urn:wco"& _ 
+            ":datamodel:EC:RN:1:0:0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"">"&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
+            "               <WCODataModelVersion>String</WCODataModelVersion>"&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+            " <WCODocumentName>String</WCODocumentName>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <CountryCode>String</"& _ 
+            "CountryCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <AgencyName>String</AgencyName>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <Ag"& _ 
+            "encyAssignedCountrySubEntityID>String</AgencyAssignedCountrySubEntityID>"&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+            "         <AgencyAssignedCustomizedDocumentName>String</AgencyAssignedCustomizedD"& _ 
+            "ocumentName>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <AgencyAssignedCustomizedDocumentVersion>String</Ag"& _ 
+            "encyAssignedCustomizedDocumentVersion>"&Global.Microsoft.VisualBasic.ChrW(10)&"                <Declaration>"&Global.Microsoft.VisualBasic.ChrW(10)&"       <Typ"& _ 
+            "eCode>031</TypeCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"                               <RequestTypeCode>044</Reques"& _ 
+            "tTypeCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"                               <IssueDateTime>2015-02-24 09:37:00</Is"& _ 
+            "sueDateTime>"&Global.Microsoft.VisualBasic.ChrW(10)&"                               <FunctionalReferenceID>2015022313170"& _ 
+            "53</FunctionalReferenceID>"&Global.Microsoft.VisualBasic.ChrW(10)&"                               <VersionID>1.0</Versio"& _ 
+            "nID>"&Global.Microsoft.VisualBasic.ChrW(10)&"                               <OriginDocumentTypeCode>031</OriginDocumentT"& _ 
+            "ypeCode>"&Global.Microsoft.VisualBasic.ChrW(10)&"                               <Agent>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                "& _ 
+            "               <ID>29000001</ID>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                               "& _ 
+            "<Name>GENERALAIR</Name>"&Global.Microsoft.VisualBasic.ChrW(10)&"                               </Agent>"&Global.Microsoft.VisualBasic.ChrW(10)&"                "& _ 
+            "               <Status>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                               <Effectiv"& _ 
+            "eDateTime>2015-02-23</EffectiveDateTime>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                       "& _ 
+            "        <ReleaseDateTime>2015-02-23</ReleaseDateTime>"&Global.Microsoft.VisualBasic.ChrW(10)&"                          "& _ 
+            "     </Status>"&Global.Microsoft.VisualBasic.ChrW(10)&"                </Declaration>"&Global.Microsoft.VisualBasic.ChrW(10)&"</DocumentMetadata>"&Global.Microsoft.VisualBasic.ChrW(10)&"   </soapenv:B"& _ 
+            "ody>")>  _
+        Public Property DocumentResponse_req() As String
+            Get
+                Return CType(Me("DocumentResponse_req"),String)
+            End Get
+            Set
+                Me("DocumentResponse_req") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute(""&Global.Microsoft.VisualBasic.ChrW(10)&"<soapenv:Envelope xmlns:soapenv=""http://schemas.xmlsoap.org/soap/envelope/"" xmln"& _ 
+            "s:web=""http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"">"&Global.Microsoft.VisualBasic.ChrW(10)&Global.Microsoft.VisualBasic.ChrW(9)&Global.Microsoft.VisualBasic.ChrW(9)&"<soapenv:Header> "&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+            "                                               <ns0:Header xmlns:ns0=""http://soa"& _ 
+            "pinterop.org/xsd""> "&Global.Microsoft.VisualBasic.ChrW(10)&"                                                      <ns0:S"& _ 
+            "ecLv1>usuarioEcuapass</ns0:SecLv1>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                             "& _ 
+            "         <ns0:SecLv2>claveEcuapass</ns0:SecLv2>"&Global.Microsoft.VisualBasic.ChrW(10)&"                                "& _ 
+            "                      <ns0:SecLv3>keyEcuapass </ns0:SecLv3> "&Global.Microsoft.VisualBasic.ChrW(10)&"                   "& _ 
+            "                             </ns0:Header> "&Global.Microsoft.VisualBasic.ChrW(10)&"                              </soap"& _ 
+            "env:Header>"&Global.Microsoft.VisualBasic.ChrW(10)&"   <soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(10)&"      <web:requestExportDespachoDASEX>"&Global.Microsoft.VisualBasic.ChrW(10)&"          <"& _ 
+            "!--Optional:-->"&Global.Microsoft.VisualBasic.ChrW(10)&"         <arg0>&lt;DocumentMetadata xsi:schemaLocation=""urn:wco:"& _ 
+            "datamodel:EC:DASEX:1:0:0 EC_DASEX_0p1.03.xsd"" xmlns=""urn:wco:datamodel:EC:DASEX:"& _ 
+            "1:0:0"" xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"               "& _ 
+            "                                &lt;WCODataModelVersion&gt;3.0&lt;/WCODataModelV"& _ 
+            "ersion&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &lt;WCODocumentName&gt"& _ 
+            ";DASEX&lt;/WCODocumentName&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &l"& _ 
+            "t;CountryCode&gt;EC&lt;/CountryCode&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                        "& _ 
+            "       &lt;AgencyName&gt;SENAE&lt;/AgencyName&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                              "& _ 
+            "                 &lt;AgencyAssignedCountrySubEntityID&gt;String&lt;/AgencyAssign"& _ 
+            "edCountrySubEntityID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &lt;Agen"& _ 
+            "cyAssignedCustomizedDocumentName&gt;DASEX&lt;/AgencyAssignedCustomizedDocumentNa"& _ 
+            "me&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &lt;AgencyAssignedCustomiz"& _ 
+            "edDocumentVersion&gt;1.0&lt;/AgencyAssignedCustomizedDocumentVersion&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+            "                                        &lt;Declaration&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                    "& _ 
+            "                                           &lt;TypeCode&gt;037&lt;/TypeCode&gt;"&Global.Microsoft.VisualBasic.ChrW(10)& _ 
+            "                                                               &lt;Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+            "                                                                           &lt;O"& _ 
+            "ceCD&gt;29000001&lt;/OceCD&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                 "& _ 
+            "                             &lt;UserID&gt;0801867177&lt;/UserID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+            "                                                    &lt;/Agent&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"             "& _ 
+            "                                                  &lt;SequenceNumeric&gt;1&lt;/S"& _ 
+            "equenceNumeric&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                             "& _ 
+            "  &lt;Consignment&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                          "& _ 
+            "                    &lt;ConsultTypeID&gt;02&lt;/ConsultTypeID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"              "& _ 
+            "                                                                &lt;DeclarationO"& _ 
+            "fficeID&gt;019&lt;/DeclarationOfficeID&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                     "& _ 
+            "                                         &lt;ExporterDocumentID/&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"           "& _ 
+            "                                                                   &lt;Declarati"& _ 
+            "onNumber&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                                   "& _ 
+            "                           &lt;DeclarationNumberID&gt;&lt;/DeclarationNumberID&g"& _ 
+            "t;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                                             "& _ 
+            " &lt;/DeclarationNumber&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                    "& _ 
+            "                          &lt;Period&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                       "& _ 
+            "                                                       &lt;StartDate&gt;2015-07-"& _ 
+            "28&lt;/StartDate&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                           "& _ 
+            "                                   &lt;EndDate&gt;2015-07-30&lt;/EndDate&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
+            "                                                                           &lt;/"& _ 
+            "Period&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                                               &lt;/C"& _ 
+            "onsignment&gt;"&Global.Microsoft.VisualBasic.ChrW(10)&"                                               &lt;/Declaration&g"& _ 
+            "t;"&Global.Microsoft.VisualBasic.ChrW(10)&"                               &lt;/DocumentMetadata&gt;</arg0>"&Global.Microsoft.VisualBasic.ChrW(10)&"      </web:r"& _ 
+            "equestExportDespachoDASEX>"&Global.Microsoft.VisualBasic.ChrW(10)&"   </soapenv:Body>"&Global.Microsoft.VisualBasic.ChrW(10)&"</soapenv:Envelope>"&Global.Microsoft.VisualBasic.ChrW(10))>  _
         Public Property DASEX_req() As String
             Get
                 Return CType(Me("DASEX_req"),String)
             End Get
             Set
                 Me("DASEX_req") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("notificaciones.carga@talma.com.ec")>  _
-        Public Property UsuarioCorreo() As String
-            Get
-                Return CType(Me("UsuarioCorreo"),String)
-            End Get
-            Set
-                Me("UsuarioCorreo") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("notificaciones.carga@talma.com.ec")>  _
-        Public Property remitenteCorreo() As String
-            Get
-                Return CType(Me("remitenteCorreo"),String)
-            End Get
-            Set
-                Me("remitenteCorreo") = value
             End Set
         End Property
         
@@ -380,6 +354,18 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("notificaciones.carga@talma.com.ec")>  _
+        Public Property remitenteCorreo() As String
+            Get
+                Return CType(Me("remitenteCorreo"),String)
+            End Get
+            Set
+                Me("remitenteCorreo") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Noti2025$$")>  _
         Public Property claveCorreo() As String
             Get
@@ -399,6 +385,18 @@ Namespace My
             End Get
             Set
                 Me("sslCorreo") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("notificaciones.carga@talma.com.ec")>  _
+        Public Property UsuarioCorreo() As String
+            Get
+                Return CType(Me("UsuarioCorreo"),String)
+            End Get
+            Set
+                Me("UsuarioCorreo") = value
             End Set
         End Property
     End Class
