@@ -6,4 +6,5 @@
     Public Property S_Proceso As String
     Public Property S_UsuarioProduc As String
     Public Property S_Observacion As String
+    Public Property roles As String = String.Empty
 End Class

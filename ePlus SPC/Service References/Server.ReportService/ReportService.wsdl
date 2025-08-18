@@ -1339,6 +1339,7 @@
           <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="isUserAvailability" type="s:boolean" />
           <s:element minOccurs="0" maxOccurs="1" name="userAdmin" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="roles" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="errorString" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="myPermisos" type="tns:ArrayOfString" />
         </s:sequence>
@@ -1675,6 +1676,34 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="GetUsuarioEmpresaResult" type="tns:ReportResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReporteProduccionFacturacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReporteProduccionFacturacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReporteProduccionFacturacionResult" type="tns:ReportResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReporteContenedoresFacturacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:ReportRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReporteContenedoresFacturacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReporteContenedoresFacturacionResult" type="tns:ReportResponse" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -3605,6 +3634,18 @@
   <wsdl:message name="GetUsuarioEmpresaSoapOut">
     <wsdl:part name="parameters" element="tns:GetUsuarioEmpresaResponse" />
   </wsdl:message>
+  <wsdl:message name="GetReporteProduccionFacturacionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReporteProduccionFacturacion" />
+  </wsdl:message>
+  <wsdl:message name="GetReporteProduccionFacturacionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReporteProduccionFacturacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReporteContenedoresFacturacionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReporteContenedoresFacturacion" />
+  </wsdl:message>
+  <wsdl:message name="GetReporteContenedoresFacturacionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReporteContenedoresFacturacionResponse" />
+  </wsdl:message>
   <wsdl:message name="GetEntireTarifasCatalogSoapIn">
     <wsdl:part name="parameters" element="tns:GetEntireTarifasCatalog" />
   </wsdl:message>
@@ -4377,6 +4418,14 @@
     <wsdl:operation name="GetUsuarioEmpresa">
       <wsdl:input message="tns:GetUsuarioEmpresaSoapIn" />
       <wsdl:output message="tns:GetUsuarioEmpresaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteProduccionFacturacion">
+      <wsdl:input message="tns:GetReporteProduccionFacturacionSoapIn" />
+      <wsdl:output message="tns:GetReporteProduccionFacturacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteContenedoresFacturacion">
+      <wsdl:input message="tns:GetReporteContenedoresFacturacionSoapIn" />
+      <wsdl:output message="tns:GetReporteContenedoresFacturacionSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetEntireTarifasCatalog">
       <wsdl:input message="tns:GetEntireTarifasCatalogSoapIn" />
@@ -5313,6 +5362,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsuarioEmpresa">
       <soap:operation soapAction="http://espc.org/GetUsuarioEmpresa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteProduccionFacturacion">
+      <soap:operation soapAction="http://espc.org/GetReporteProduccionFacturacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteContenedoresFacturacion">
+      <soap:operation soapAction="http://espc.org/GetReporteContenedoresFacturacion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6675,6 +6742,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetUsuarioEmpresa">
       <soap12:operation soapAction="http://espc.org/GetUsuarioEmpresa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteProduccionFacturacion">
+      <soap12:operation soapAction="http://espc.org/GetReporteProduccionFacturacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteContenedoresFacturacion">
+      <soap12:operation soapAction="http://espc.org/GetReporteContenedoresFacturacion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

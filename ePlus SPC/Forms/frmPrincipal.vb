@@ -50,6 +50,7 @@ Public Class frmMainSpc
     Private MyFrmPlantillaClientServ As FrmPlantillaClientServ
     Private MyrmConfiNotiTemp As frmConfiNotiTemp
     Private MyFrmReporteProduccion As FrmReporteProduccion
+    Private MyFrmReporteContenedores As New frmReporteContenedores 'jrodriguez sprint2 01/06/2025
     Public Event XEvent()
     Public Event YEvent()
     Public Sub New()
@@ -361,7 +362,7 @@ Public Class frmMainSpc
                 Case "SPC.REP.REP.RDP" '#12 REPORTE DE PRODUCCIÓN
                     If MyCurrentUser.isAdministrador Then
                         SetCurrentForm(MyFrmHistorialProceso, GetType(frmHistorialProceso))
-                        MyFrmHistorialProceso.RefreshData()
+                        'MyFrmHistorialProceso.RefreshData()
                     Else
                         MessageBox.Show("Opción no habilitada", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
                     End If
@@ -439,6 +440,9 @@ Public Class frmMainSpc
                 Case "SPC.REP.REP.RDP2" '#16 Reporte de Produccion 2
                     Dim MyFrmReporteProduccion As New FrmReporteProduccion
                     MyFrmReporteProduccion.Show()
+                'jrodriguez sprint2 01/06/2025, se agrega la opcion de reporte de contenedores
+                Case "SPC.REP.REP.RDC" '#17 Reporte de Contenedores
+                    SetCurrentForm(MyFrmReporteContenedores, GetType(frmReporteContenedores))
                 Case "SPC.PRO.PRO.AGS" ' ASIGNACION DE GAVETAS
                     Dim MyAsignarGaveta As New FormAsignarCubeta
                     MyAsignarGaveta.Show()

@@ -622,6 +622,24 @@ Namespace Server.ReportService
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetUsuarioEmpresa", ReplyAction:="*")>
         Function GetUsuarioEmpresaAsync(ByVal req As Server.ReportService.ContactoRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
 
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteProduccionFacturacion", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function GetReporteProduccionFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteProduccionFacturacion", ReplyAction:="*")>
+        Function GetReporteProduccionFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteContenedoresFacturacion", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function GetReporteContenedoresFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteContenedoresFacturacion", ReplyAction:="*")>
+        Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
+
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetEntireTarifasCatalog", ReplyAction:="*"),
          System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
@@ -3798,6 +3816,8 @@ Namespace Server.ReportService
 
         Private userAdminField As String
 
+        Private rolesField As String
+
         Private errorStringField As String
 
         Private myPermisosField() As String
@@ -3924,6 +3944,18 @@ Namespace Server.ReportService
 
         '''<remarks/>
         <System.Xml.Serialization.XmlElementAttribute(Order:=10)>
+        Public Property roles() As String
+            Get
+                Return Me.rolesField
+            End Get
+            Set
+                Me.rolesField = value
+                Me.RaisePropertyChanged("roles")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=11)>
         Public Property errorString() As String
             Get
                 Return Me.errorStringField
@@ -3935,7 +3967,7 @@ Namespace Server.ReportService
         End Property
 
         '''<remarks/>
-        <System.Xml.Serialization.XmlArrayAttribute(Order:=11)>
+        <System.Xml.Serialization.XmlArrayAttribute(Order:=12)>
         Public Property myPermisos() As String()
             Get
                 Return Me.myPermisosField
@@ -9507,6 +9539,22 @@ Namespace Server.ReportService
 
         Public Function GetUsuarioEmpresaAsync(ByVal req As Server.ReportService.ContactoRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetUsuarioEmpresaAsync
             Return MyBase.Channel.GetUsuarioEmpresaAsync(req)
+        End Function
+
+        Public Function GetReporteProduccionFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetReporteProduccionFacturacion
+            Return MyBase.Channel.GetReporteProduccionFacturacion(req)
+        End Function
+
+        Public Function GetReporteProduccionFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetReporteProduccionFacturacionAsync
+            Return MyBase.Channel.GetReporteProduccionFacturacionAsync(req)
+        End Function
+
+        Public Function GetReporteContenedoresFacturacion(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetReporteContenedoresFacturacion
+            Return MyBase.Channel.GetReporteContenedoresFacturacion(req)
+        End Function
+
+        Public Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetReporteContenedoresFacturacionAsync
+            Return MyBase.Channel.GetReporteContenedoresFacturacionAsync(req)
         End Function
 
         Public Function GetEntireTarifasCatalog(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetEntireTarifasCatalog

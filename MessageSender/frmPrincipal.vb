@@ -33,6 +33,31 @@ Public Class frmPrincipal
             SetLogEvent(ex)
         End Try
     End Sub
+    Public Shared Sub SendReportsMessage(ByVal msj As String, direccionAdjunto As String, destinatarios As String, descripcionReporte As String)
+        Dim sender As New System.Net.Mail.SmtpClient
+        Try
+            If destinatarios <> "" Then
+                With sender
+                    .Port = My.Settings.puertoCorreo
+                    .Host = My.Settings.hostCorreo
+                    .Credentials = New System.Net.NetworkCredential(My.Settings.UsuarioCorreo, My.Settings.claveCorreo)
+                    .EnableSsl = My.Settings.sslCorreo
+                    .DeliveryMethod = Net.Mail.SmtpDeliveryMethod.Network
+                End With
+                Using msg As New Net.Mail.MailMessage(My.Settings.remitenteCorreo, destinatarios, descripcionReporte, msj)
+                    If Not String.IsNullOrEmpty(direccionAdjunto) Then
+                        Dim attachment As System.Net.Mail.Attachment
+                        attachment = New System.Net.Mail.Attachment(direccionAdjunto)
+                        msg.Attachments.Add(attachment)
+                    End If
+                    msg.IsBodyHtml = True
+                    sender.Send(msg)
+                End Using
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex)
+        End Try
+    End Sub
     Public Shared Sub SendCorreo(ByVal msj As String, destinatarios As String, descripcionPermiso As String)
         Dim sender As New System.Net.Mail.SmtpClient
         Try
@@ -715,7 +740,10 @@ Public Class frmPrincipal
                               " REM Anterior:  " & datos.RemAnterio & vbCrLf & vbCrLf &
                               " Nuevo REM: " & datos.NewRem & " Fecha Vigencia del Nuevo REM: " & datos.NewfechavigenciaRem & vbCrLf & vbCrLf & vbCrLf &
                               "Notificación automática, por favor no responder este mensaje."
-                        SendCorreo(msj, destinatarios, "Cambio de Datos de la DAE") 'General.SendCheckUserManagerReportsMessage(msj, destinatarios, "Cambio de Datos de la DAE")
+                        'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                        'SendCorreo(msj, destinatarios, "Cambio de Datos de la DAE") 'General.SendCheckUserManagerReportsMessage(msj, destinatarios, "Cambio de Datos de la DAE")
+                        SendReportsMessage(msj, String.Empty, destinatarios, "Cambio de Datos de la DAE")
+                        'fin jrodriguez
                     ElseIf datos.NewRem = String.Empty Or IsNothing(datos.NewRem) Then
                         msj = "Se a caducado REM de la DAE : " & datos.dae & vbCrLf &
                              " y no se ha realiado actualizacion del REM por favor cominicarse con la agencia de Carga " & datos.fechavigenciaRem & vbCrLf & vbCrLf & vbCrLf &
@@ -729,7 +757,10 @@ Public Class frmPrincipal
                               " Salida : " & datos.Salida & vbCrLf & vbCrLf & vbCrLf &
                               " Canal de Aforo : " & datos.CanalAforo & vbCrLf & vbCrLf & vbCrLf &
                               "Notificación automática, por favor no responder este mensaje."
-                        SendCorreo(msj, destinatarios, "Cambio de Estado de Aforo DAE") 'General.SendCheckUserManagerReportsMessage(msj, destinatarios, "Cambio de Estado de Aforo DAE")
+                        'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                        'SendCorreo(msj, destinatarios, "Cambio de Estado de Aforo DAE") 'General.SendCheckUserManagerReportsMessage(msj, destinatarios, "Cambio de Estado de Aforo DAE")
+                        SendReportsMessage(msj, String.Empty, destinatarios, "Cambio de Estado de Aforo DAE")
+                        'fin jrodriguez
                     End If
                 End If
             Else
@@ -739,7 +770,10 @@ Public Class frmPrincipal
                           " Salida : " & datos.Salida & vbCrLf & vbCrLf & vbCrLf &
                           " Canal de Aforo : " & datos.CanalAforo & vbCrLf & vbCrLf & vbCrLf &
                           "Notificación automática, por favor no responder este mensaje."
-                    SendCorreo(msj, destinatarios, "Cambio de Estado de Aforo DAE") 'General.SendCheckUserManagerReportsMessage(msj, destinatarios, "Cambio de Estado de Aforo DAE")
+                    'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings  
+                    'SendCorreo(msj, destinatarios, "Cambio de Estado de Aforo DAE") 'General.SendCheckUserManagerReportsMessage(msj, destinatarios, "Cambio de Estado de Aforo DAE")
+                    SendReportsMessage(msj, String.Empty, destinatarios, "Cambio de Estado de Aforo DAE")
+                    'fin jrodriguez
                 End If
             End If
         Catch ex As Exception

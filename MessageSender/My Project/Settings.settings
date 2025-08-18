@@ -5,6 +5,27 @@
     <Setting Name="Secuential" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">127</Value>
     </Setting>
+    <Setting Name="CommonResposeService" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://cdestest.aduana.gob.ec/cdes_svr/SENAE_CommonResponseService_EC?wsdl</Value>
+    </Setting>
+    <Setting Name="KeepDaeLog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="WriteDaeViewer" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DaeTimer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="WriteDocViewer" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="DocTimer" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="KeepDocLog" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
     <Setting Name="SRCHEX_req" Type="System.String" Scope="User">
       <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"&gt;
                 &lt;soapenv:Header&gt; 
@@ -49,9 +70,6 @@
       &lt;/web:requestExportDespachoSRCHEX&gt;
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;</Value>
-    </Setting>
-    <Setting Name="CommonResposeService" Type="System.String" Scope="User">
-      <Value Profile="(Default)">http://cdestest.aduana.gob.ec/cdes_svr/SENAE_CommonResponseService_EC?wsdl</Value>
     </Setting>
     <Setting Name="CommonResponseList_req" Type="System.String" Scope="User">
       <Value Profile="(Default)">&lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns="urn:wco:datamodel:EC:RN:1:0:0"&gt;
@@ -130,24 +148,6 @@
 &lt;/DocumentMetadata&gt;
    &lt;/soapenv:Body&gt;</Value>
     </Setting>
-    <Setting Name="KeepDaeLog" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="WriteDaeViewer" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="DaeTimer" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">60</Value>
-    </Setting>
-    <Setting Name="WriteDocViewer" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="DocTimer" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="KeepDocLog" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="DASEX_req" Type="System.String" Scope="User">
       <Value Profile="(Default)">
 &lt;soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:web="http://webservice.ecl.dclt.ecuapass.aduana.gob.ec/"&gt;
@@ -194,6 +194,24 @@
    &lt;/soapenv:Body&gt;
 &lt;/soapenv:Envelope&gt;
 </Value>
+    </Setting>
+    <Setting Name="hostCorreo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">smtp.office365.com</Value>
+    </Setting>
+    <Setting Name="puertoCorreo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">587</Value>
+    </Setting>
+    <Setting Name="remitenteCorreo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">notificaciones.carga@talma.com.ec</Value>
+    </Setting>
+    <Setting Name="claveCorreo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Noti2025$$</Value>
+    </Setting>
+    <Setting Name="sslCorreo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UsuarioCorreo" Type="System.String" Scope="User">
+      <Value Profile="(Default)">notificaciones.carga@talma.com.ec</Value>
     </Setting>
   </Settings>
 </SettingsFile>

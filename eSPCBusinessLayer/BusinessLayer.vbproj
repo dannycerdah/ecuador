@@ -328,6 +328,12 @@
     <Compile Include="BusinessMessages\Facturacion\ServiciosGA.vb" />
     <Compile Include="BusinessMessages\Facturacion\ServiciosGARequest.vb" />
     <Compile Include="BusinessMessages\Facturacion\ServiciosGAResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\CatalogoCalculoCarga.vb" />
+    <Compile Include="BusinessMessages\Facturacion\CatalogoCalculoCargaRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\TarifaCargaRequest.vb" />
+    <Compile Include="BusinessMessages\Facturacion\CatalogoCalculoCargaResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\TarifaCargaResponse.vb" />
+    <Compile Include="BusinessMessages\Facturacion\TarifaCarga.vb" />
     <Compile Include="BusinessMessages\Facturacion\TipoProcesoAlmacenajeCarga.vb" />
     <Compile Include="BusinessMessages\Facturacion\TipoProcesoAlmacenajeCargaRequest.vb" />
     <Compile Include="BusinessMessages\Facturacion\TipoProcesoAlmacenajeCargaResponse.vb" />

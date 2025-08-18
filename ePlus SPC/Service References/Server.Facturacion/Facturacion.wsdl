@@ -589,6 +589,105 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetTarifaCarga">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:TarifaCargaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TarifaCargaRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="TarifaCarga" type="tns:TarifaCarga" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="TarifaCarga">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="idTarifa" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="idAgencia" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idProducto" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="idCompania" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="valorTarifa" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="estado" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetTarifaCargaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTarifaCargaResult" type="tns:TarifaCargaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TarifaCargaResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GeCatalogoCalculoCarga">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="req" type="tns:CatalogoCalculoCargaRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CatalogoCalculoCargaRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CatalogoCalculoCargaRequest" type="tns:CatalogoCalculoCarga" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="CatalogoCalculoCarga">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdCatalogo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IdAgencia" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="Procesada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quedada" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="QuedadaOtro" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Devuelta" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="estado" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GeCatalogoCalculoCargaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GeCatalogoCalculoCargaResult" type="tns:CatalogoCalculoCargaResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CatalogoCalculoCargaResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
     </s:schema>
     <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
       <s:simpleType name="guid">
@@ -718,6 +817,18 @@
   <wsdl:message name="PreFactObtenerPesoVolumenPorBriefGuiaSoapOut">
     <wsdl:part name="parameters" element="tns:PreFactObtenerPesoVolumenPorBriefGuiaResponse" />
   </wsdl:message>
+  <wsdl:message name="GetTarifaCargaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTarifaCarga" />
+  </wsdl:message>
+  <wsdl:message name="GetTarifaCargaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTarifaCargaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GeCatalogoCalculoCargaSoapIn">
+    <wsdl:part name="parameters" element="tns:GeCatalogoCalculoCarga" />
+  </wsdl:message>
+  <wsdl:message name="GeCatalogoCalculoCargaSoapOut">
+    <wsdl:part name="parameters" element="tns:GeCatalogoCalculoCargaResponse" />
+  </wsdl:message>
   <wsdl:portType name="FacturacionSoap">
     <wsdl:operation name="MantClientes">
       <wsdl:input message="tns:MantClientesSoapIn" />
@@ -798,6 +909,14 @@
     <wsdl:operation name="PreFactObtenerPesoVolumenPorBriefGuia">
       <wsdl:input message="tns:PreFactObtenerPesoVolumenPorBriefGuiaSoapIn" />
       <wsdl:output message="tns:PreFactObtenerPesoVolumenPorBriefGuiaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTarifaCarga">
+      <wsdl:input message="tns:GetTarifaCargaSoapIn" />
+      <wsdl:output message="tns:GetTarifaCargaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GeCatalogoCalculoCarga">
+      <wsdl:input message="tns:GeCatalogoCalculoCargaSoapIn" />
+      <wsdl:output message="tns:GeCatalogoCalculoCargaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="FacturacionSoap" type="tns:FacturacionSoap">
@@ -982,6 +1101,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetTarifaCarga">
+      <soap:operation soapAction="http://tempuri.org/GetTarifaCarga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeCatalogoCalculoCarga">
+      <soap:operation soapAction="http://tempuri.org/GeCatalogoCalculoCarga" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="FacturacionSoap12" type="tns:FacturacionSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1158,6 +1295,24 @@
     </wsdl:operation>
     <wsdl:operation name="PreFactObtenerPesoVolumenPorBriefGuia">
       <soap12:operation soapAction="http://tempuri.org/PreFactObtenerPesoVolumenPorBriefGuia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTarifaCarga">
+      <soap12:operation soapAction="http://tempuri.org/GetTarifaCarga" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GeCatalogoCalculoCarga">
+      <soap12:operation soapAction="http://tempuri.org/GeCatalogoCalculoCarga" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
