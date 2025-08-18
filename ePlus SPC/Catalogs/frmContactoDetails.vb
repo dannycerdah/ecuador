@@ -365,18 +365,18 @@ Public Class frmContactoDetails
                 myContacto.AgenciaContacto.Add(ContactoAgenciaCatalogo)
 
                 req.myContactoItem = myContacto
+                'jrodriguez 16/08/2025 Retirar la validación “Solicitando Autorización” 
+                ''desde aqui guille
+                'If PermiteActContacto(IdUsuario) = 0 Then
+                '    SolicitarAutorizacion(objectGeneric) 'guille
+                '    If MyAutorizacionOnline.EstadoAutorizacion = EstadoAprobacion.Aprobado Then
+                '        MessageBox.Show("Solicitud Autorizada por: " & MyAutorizacionOnline.UsuarioAprobacion, "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '    Else
+                '        Exit Sub
+                '    End If
+                'End If
 
-                'desde aqui guille
-                If PermiteActContacto(IdUsuario) = 0 Then
-                    SolicitarAutorizacion(objectGeneric) 'guille
-                    If MyAutorizacionOnline.EstadoAutorizacion = EstadoAprobacion.Aprobado Then
-                        MessageBox.Show("Solicitud Autorizada por: " & MyAutorizacionOnline.UsuarioAprobacion, "Autorización", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                    Else
-                        Exit Sub
-                    End If
-                End If
-
-                'hasta aqui guille
+                ''hasta aqui guille
 
                 'grabar datos de reconocimiento facial 
                 'temporal hay que cambiar y hacer que llame desde el mismo servicio de contactos
