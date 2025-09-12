@@ -764,7 +764,7 @@ Public Class ReportService
     Public Function GetReporteContenedoresFacturacion(req As ReportRequest) As ReportResponse
         Return ReportsManager.GetReporteContenedoresFacturacion(req)
     End Function
-    'jrodriguez metodos que son expuestos para ser consumiedos
+    'jrodriguez 11/09/2025 metodos que son expuestos para ser consumiedos
     <WebMethod()>
     Public Function Exist_bitacora_stock_elemento(data As Guid) As Date
         Return ElementoManager.Exist_bitacora_stock_elemento(data)
