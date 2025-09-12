@@ -640,6 +640,24 @@ Namespace Server.ReportService
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteContenedoresFacturacion", ReplyAction:="*")>
         Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
 
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Exist_bitacora_stock_elemento", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function Exist_bitacora_stock_elemento(ByVal data As System.Guid) As Date
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Exist_bitacora_stock_elemento", ReplyAction:="*")>
+        Function Exist_bitacora_stock_elementoAsync(ByVal data As System.Guid) As System.Threading.Tasks.Task(Of Date)
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Bitacora_stock_elemento", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function Bitacora_stock_elemento(ByVal data As String) As Boolean
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Bitacora_stock_elemento", ReplyAction:="*")>
+        Function Bitacora_stock_elementoAsync(ByVal data As String) As System.Threading.Tasks.Task(Of Boolean)
+
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetEntireTarifasCatalog", ReplyAction:="*"),
          System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
@@ -9555,6 +9573,22 @@ Namespace Server.ReportService
 
         Public Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetReporteContenedoresFacturacionAsync
             Return MyBase.Channel.GetReporteContenedoresFacturacionAsync(req)
+        End Function
+
+        Public Function Exist_bitacora_stock_elemento(ByVal data As System.Guid) As Date Implements Server.ReportService.ReportServiceSoap.Exist_bitacora_stock_elemento
+            Return MyBase.Channel.Exist_bitacora_stock_elemento(data)
+        End Function
+
+        Public Function Exist_bitacora_stock_elementoAsync(ByVal data As System.Guid) As System.Threading.Tasks.Task(Of Date) Implements Server.ReportService.ReportServiceSoap.Exist_bitacora_stock_elementoAsync
+            Return MyBase.Channel.Exist_bitacora_stock_elementoAsync(data)
+        End Function
+
+        Public Function Bitacora_stock_elemento(ByVal data As String) As Boolean Implements Server.ReportService.ReportServiceSoap.Bitacora_stock_elemento
+            Return MyBase.Channel.Bitacora_stock_elemento(data)
+        End Function
+
+        Public Function Bitacora_stock_elementoAsync(ByVal data As String) As System.Threading.Tasks.Task(Of Boolean) Implements Server.ReportService.ReportServiceSoap.Bitacora_stock_elementoAsync
+            Return MyBase.Channel.Bitacora_stock_elementoAsync(data)
         End Function
 
         Public Function GetEntireTarifasCatalog(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetEntireTarifasCatalog
