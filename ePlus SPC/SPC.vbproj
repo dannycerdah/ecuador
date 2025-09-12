@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>E:\GA\Sprint02\App\</PublishUrl>
+    <PublishUrl>E:\GA\Sprint3\App\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <PublisherName>General</PublisherName>
     <SuiteName>General</SuiteName>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>746</ApplicationRevision>
+    <ApplicationRevision>749</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -229,6 +229,9 @@
     </Reference>
     <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="SecuGen.FDxSDKPro.Windows, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4c4e1bcde5201535, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
@@ -1959,6 +1962,7 @@
     <EmbeddedResource Include="Reportes\StockElementos\StockElementos.rdlc" />
     <EmbeddedResource Include="Reportes\StockElementos\frmStockElementos.resx">
       <DependentUpon>frmStockElementos.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\StockElementos\RptStockElementos.resx">
       <DependentUpon>RptStockElementos.vb</DependentUpon>
