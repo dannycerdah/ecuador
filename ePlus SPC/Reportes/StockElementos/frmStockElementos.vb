@@ -1,4 +1,5 @@
-﻿Imports SPC.Server.ReportService
+﻿Imports Newtonsoft.Json 'jrodrigue sprint03 11/09/2025
+Imports SPC.Server.ReportService
 Imports System.IO
 Imports System.Text
 Public Class frmStockElementos
@@ -8,6 +9,7 @@ Public Class frmStockElementos
     Dim path As String = String.Empty
     Dim textStr As String = String.Empty
     Dim dtStockElementos As DataTable
+    Dim existsBitacora As Date 'jrodrigue sprint03 11/09/2025
 
     Public Sub New(ByVal value As Boolean)
 
@@ -147,7 +149,7 @@ Public Class frmStockElementos
                 End Try
                 detalleElemento.materialPiso = r.Item("materialPiso")
                 detalleElemento.materialPared = r.Item("materialPared")
-                detalleElemento.materialtecho = r.Item("materialTecho")
+                detalleElemento.materialTecho = r.Item("materialTecho")
                 detalleElemento.materialRed = r.Item("materialRed")
                 detalleElemento.materialPuerta = r.Item("materialPuerta")
                 detalleElemento.materialSeguros = r.Item("materialSeguros")
@@ -209,6 +211,7 @@ Public Class frmStockElementos
                         detalleElemento.estado += " / " + r2.Item("codigoVuelo")
                     Next
                 End If
+                detalleElemento.usuarioIngresoReporte = modGeneral.MyCurrentUser.userId 'jrodrigue sprint03 11/09/2025
                 encabezadoElemento.detalleElemento.Add(detalleElemento)
             Next
         Catch ex As Exception
@@ -222,18 +225,73 @@ Public Class frmStockElementos
         End If
         cargarRptStockElementos()
         If Not isReportTxt Then
+            'ini jrodrigue sprint03 11/09/2025
+            Dim json As String
+            Dim ingresaBitacora As Boolean = True
+            'fin jrodrigue sprint03 11/09/2025
             Dim frm As New RptElementoStock()
+            Dim countReg As Integer 'jrodrigue sprint03 11/09/2025
             frm.encabezadoElemento.Add(encabezadoElemento)
             frm.detalleElemento = encabezadoElemento.detalleElemento
             frm.aerolinea = uceAerolinea.SelectedItem.Tag.ToString.Trim
             frm.idAgenciaReporte = uceAerolinea.Value
-
+            'ini jrodrigue sprint03 11/09/2025
+            countReg = encabezadoElemento.detalleElemento.Count
+            If countReg > 0 Then
+                json = JsonConvert.SerializeObject(encabezadoElemento.detalleElemento, Formatting.Indented)
+            End If
+            'fin jrodrigue sprint03 11/09/2025
             frm.guardarReporte()
             If frm.result Then
-                MessageBox.Show("Correo eviado con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'ini jrodrigue sprint03 11/09/2025
+                If countReg > 0 Then
+                    Try
+                        If existsBitacora <> Nothing Then
+                            If MessageBox.Show(Config.MsjAlertaBitacoraContenedores.Replace("@fecha", DateTime.Now.ToString("dd/MM/yyyy")).Replace("@agencia", uceAerolinea.Text), "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                                ingresaBitacora = True
+                            Else
+                                ingresaBitacora = False
+                            End If
+                        Else
+                            If MessageBox.Show(Config.MsjAlertaBitacoraIni.Replace("@fecha", DateTime.Now.ToString("dd/MM/yyyy")).Replace("@agencia", uceAerolinea.Text), "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
+                                ingresaBitacora = True
+                            Else
+                                ingresaBitacora = False
+                            End If
+                        End If
+                        If ingresaBitacora Then
+                            Dim result = CommonData.Bitacora_stock_elemento(json)
+                            If existsBitacora <> Nothing Then
+                                MessageBox.Show(Config.MsjAlertaBitacoraContenedores2.Replace("@fecha", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")).Replace("@agencia", uceAerolinea.Text), "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            Else
+                                MessageBox.Show(Config.MsjAlertaBitacoraIni2.Replace("@fecha", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")).Replace("@agencia", uceAerolinea.Text), "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            End If
+                        End If
+                    Catch ex As Exception
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    End Try
+                End If
+                MessageBox.Show(Config.MsjAlertaBitacoraFin.Replace("@fecha", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")).Replace("@agencia", uceAerolinea.Text), "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show("Correo eviado con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'fin jrodrigue sprint03 11/09/2025
             Else
                 MessageBox.Show("Error al enviar correo. Por favor reintentar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         End If
     End Sub
+    'jrodrigue sprint03 11/09/2025 moditifcacion del contenido de la etiqueta
+    Private Sub uceAerolinea_ValueChanged(sender As Object, e As EventArgs) Handles uceAerolinea.ValueChanged
+        If uceAerolinea.SelectedIndex <> 0 Then
+            existsBitacora = CommonData.Exist_bitacora_stock_elemento(uceAerolinea.Value)
+            If existsBitacora <> Nothing Then
+                lblNota.Text = "Fecha ultimo “"envío de correo”": @fecha"
+                lblNota.Text = lblNota.Text.Replace("@fecha", existsBitacora.ToString("dd/MM/yyyy HH:mm:ss"))
+                lblNota.Visible = True
+            Else
+                lblNota.Visible = False
+                lblNota.Text = "Fecha ultimo “"envío de correo”": @fecha"
+            End If
+        End If
+    End Sub
+
 End Class
