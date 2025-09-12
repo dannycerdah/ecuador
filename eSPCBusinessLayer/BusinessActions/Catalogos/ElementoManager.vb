@@ -1144,4 +1144,64 @@ Public Class ElementoManager
         End Try
         Return Result
     End Function
+    'jrodriguez 11/09/2025 se crean metodos para determinar si existe ya un reporte de inventario almacenado para el dia de hoy
+    Public Shared Function Exist_bitacora_stock_elemento(data As Guid) As Date
+        Dim Result As Date
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(Result) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .CommandText = "exist_bitacora_stock_elemento"
+                    .CommandType = CommandType.StoredProcedure
+                    .Parameters.AddWithValue("pidAgencia", data)
+                    '.Parameters.Add("data", MySqlDbType.JSON).Value = data
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                    .CommandTimeout = 18880
+                End With
+                Dim fecha As Object = cmd.ExecuteScalar()
+                If fecha.Equals(DBNull.Value) Then
+                    Result = Nothing
+                Else
+                    Result = Convert.ToDateTime(fecha)
+                End If
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
+    'jrodriguez 11/09/2025 se crea metodo para almacenar la bitacora de envio de stock de elementos
+    Public Shared Function Bitacora_stock_elemento(data As String) As Boolean
+        Dim Result As Boolean
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(Result) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .CommandText = "bitacora_stock_elemento"
+                    .CommandType = CommandType.StoredProcedure
+                    .Parameters.Add("data", MySqlDbType.JSON).Value = data
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                    .CommandTimeout = 18880
+                    cmd.ExecuteNonQuery()
+                End With
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
 End Class
