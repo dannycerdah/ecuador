@@ -1,5 +1,5 @@
 ﻿Public Class Config
-    
+
     Public Shared ReadOnly Property scPort As String
         Get
             Return My.Settings.ScalePort
@@ -109,7 +109,7 @@
         End Get
     End Property
 
-    Public Shared Sub SetScaleSettings(Port As String, BaudRate As String, StopBits As String, Parity As String, _
+    Public Shared Sub SetScaleSettings(Port As String, BaudRate As String, StopBits As String, Parity As String,
                                      DataBits As String, CharIni As Integer, CharEnd As Integer, Divisor As Integer, Kg As Integer, CaracterBuscar As String, NumCadena As Integer)
         With My.Settings
             .UseScale = True
@@ -168,4 +168,31 @@
         End Get
     End Property
     'fin jrodriguez sprint01 25/04/2025
+    'ini jrodriguez sprint03 11/09/2025
+    Public Shared ReadOnly Property MsjAlertaBitacoraContenedores As String
+        Get
+            Return My.Settings.MsjAlertaBitacoraContenedores
+        End Get
+    End Property
+    Public Shared ReadOnly Property MsjAlertaBitacoraIni As String
+        Get
+            Return My.Settings.MsjAlertaBitacoraIni
+        End Get
+    End Property
+    Public Shared ReadOnly Property MsjAlertaBitacoraIni2 As String
+        Get
+            Return My.Settings.MsjAlertaBitacoraIni2
+        End Get
+    End Property
+    Public Shared ReadOnly Property MsjAlertaBitacoraContenedores2 As String
+        Get
+            Return My.Settings.MsjAlertaBitacoraContenedores2
+        End Get
+    End Property
+    Public Shared ReadOnly Property MsjAlertaBitacoraFin As String
+        Get
+            Return My.Settings.MsjAlertaBitacoraFin
+        End Get
+    End Property
+    'fin jrodriguez sprint03 11/09/2025
 End Class
