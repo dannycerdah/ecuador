@@ -6,6 +6,7 @@ Imports eSPC
 Imports ControlTempGAEnsamblado
 Imports Microsoft.Practices.EnterpriseLibrary.Data
 Imports System.IO
+Imports System.Text.RegularExpressions
 
 'Imports Microsoft.Office.Interop
 
@@ -33,9 +34,10 @@ Public Class frmPrincipal
             SetLogEvent(ex)
         End Try
     End Sub
-    Public Shared Sub SendReportsMessage(ByVal msj As String, direccionAdjunto As String, destinatarios As String, descripcionReporte As String)
+    Public Sub SendReportsMessage(ByVal msj As String, direccionAdjunto As String, destinatarios As String, descripcionReporte As String, Optional Oculto As Boolean = False)
         Dim sender As New System.Net.Mail.SmtpClient
         Try
+            log("inicio")
             If destinatarios <> "" Then
                 With sender
                     .Port = My.Settings.puertoCorreo
@@ -44,18 +46,34 @@ Public Class frmPrincipal
                     .EnableSsl = My.Settings.sslCorreo
                     .DeliveryMethod = Net.Mail.SmtpDeliveryMethod.Network
                 End With
-                Using msg As New Net.Mail.MailMessage(My.Settings.remitenteCorreo, destinatarios, descripcionReporte, msj)
+                log(My.Settings.puertoCorreo & " " & My.Settings.hostCorreo & " " & My.Settings.sslCorreo & " " & My.Settings.remitenteCorreo)
+                log("sender")
+                log(destinatarios)
+                log(descripcionReporte)
+                Using msg As New Net.Mail.MailMessage
+                    Dim from As New Net.Mail.MailAddress(My.Settings.remitenteCorreo)
+                    msg.From = from
+                    If Oculto Then
+                        msg.Bcc.Add(destinatarios)
+                    Else
+                        msg.To.Add(destinatarios)
+                    End If
                     If Not String.IsNullOrEmpty(direccionAdjunto) Then
                         Dim attachment As System.Net.Mail.Attachment
                         attachment = New System.Net.Mail.Attachment(direccionAdjunto)
                         msg.Attachments.Add(attachment)
                     End If
+                    msg.Subject = descripcionReporte
+                    msg.Body = msj
                     msg.IsBodyHtml = True
                     sender.Send(msg)
+                    log("enviado")
                 End Using
+                log("fin")
             End If
         Catch ex As Exception
-            SetLogEvent(ex)
+            SetLogEvent(ex, "SendReportsMessage")
+            log(ex.Message & "--fin")
         End Try
     End Sub
     Public Shared Sub SendCorreo(ByVal msj As String, destinatarios As String, descripcionPermiso As String)
@@ -726,12 +744,14 @@ Public Class frmPrincipal
             Dim nombreUsuarioReq As String = String.Empty
             dest = GetDestinatariosPorIdReporte(7) 'CommonData.GetDestinatariosPorIdReporte(7)
             For Each r As DataRow In dest.Rows
-                If contRowDest > 0 Then
-                    destinatarios += ", " & r.Item("mail")
-                Else
-                    destinatarios = r.Item("mail")
+                If EsCorreoValido(r.Item("mail")) Then
+                    If contRowDest > 0 Then
+                        destinatarios += ", " & r.Item("mail")
+                    Else
+                        destinatarios = r.Item("mail")
+                    End If
+                    contRowDest += 1
                 End If
-                contRowDest += 1
             Next
             If tipo = 0 Then
                 If datos.EnvioSenae = 0 Then
@@ -777,7 +797,7 @@ Public Class frmPrincipal
                 End If
             End If
         Catch ex As Exception
-            SetLogEvent(ex)
+            SetLogEvent(ex, "EnviarReporteCheckUserManager")
         End Try
     End Function
     Private Sub bgwRem_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bgwRem.DoWork
@@ -952,12 +972,14 @@ Public Class frmPrincipal
                 Dim contRowDest As Integer = 0
                 For Each r As DataRow In dest.Rows
                     If InStr(r.Item("mail"), "@") > 0 Then
-                        If contRowDest > 0 Then
-                            destinatariosCopia += ", " & r.Item("mail")
-                        Else
-                            destinatariosCopia = r.Item("mail")
+                        If EsCorreoValido(r.Item("mail")) Then
+                            If contRowDest > 0 Then
+                                destinatariosCopia += ", " & r.Item("mail")
+                            Else
+                                destinatariosCopia = r.Item("mail")
+                            End If
+                            contRowDest += 1
                         End If
-                        contRowDest += 1
                     End If
                 Next
                 Dim Msg As String
@@ -1021,7 +1043,9 @@ Public Class frmPrincipal
                             IO.File.AppendAllText(strFileName, Detalle)
                             Contactos = Contactos & r.Item(0) & " " & r.Item(1) & " (" & r.Item(2) & ")</li><li>"
                             If InStr(r.Item(4), "@") > 0 Then
-                                destinatarios = r.Item(4)
+                                If EsCorreoValido(r.Item(4)) Then
+                                    destinatarios = r.Item(4)
+                                End If
                             End If
                         Next
                         If InStr(destinatarios, "@") > 0 Then
@@ -1037,7 +1061,10 @@ Public Class frmPrincipal
                             destinatarios = destinatarios.Replace(",,", ",")
                             destinatarios = destinatarios.Replace("'", "")
                             destinatarios = destinatarios.Replace(" ", "")
-                            SendCorreoAdjunto(Msg, String.Empty, destinatarios, Asunto, True)
+                            'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                            'SendCorreoAdjunto(Msg, String.Empty, destinatarios, Asunto, True)
+                            SendReportsMessage(Msg, String.Empty, destinatarios, Asunto, True)
+                            'fin jrodriguez
                             Threading.Thread.Sleep(300)
                             strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion a la Compañia: " & i.Item("descripcionAgencia") & ControlChars.CrLf
                             txtJobs.Text = strData & txtJobs.Text
@@ -1060,10 +1087,13 @@ Public Class frmPrincipal
 
                         Msg = "Se adjunto el Listado de las personas que su credencial Tagsa esta a punto de caducar de hoy a 5 dias"
                         Asunto = "ALERTA CADUCIDAD CREDENCIAL TAGSA"
-                        destinatarios = destinatarios.Replace(",", ";")
+                        destinatarios = destinatarios.Replace(";", ",")
                         destinatarios = destinatarios.Replace(" ", "")
                         destinatarios = destinatarios.Replace(",,", ",")
-                        SendCorreoAdjunto(Msg, strFileName, destinatariosCopia, Asunto, True)
+                        'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                        'SendCorreoAdjunto(Msg, strFileName, destinatariosCopia, Asunto, True)
+                        SendReportsMessage(Msg, strFileName, destinatariosCopia, Asunto, True)
+                        'fin jrodriguez
                         Threading.Thread.Sleep(300)
                         strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion del listado de personas a cadaducar Tagsa " & ControlChars.CrLf
                         txtJobs.Text = strData & txtJobs.Text
@@ -1078,12 +1108,14 @@ Public Class frmPrincipal
                     Next
                     For Each r As DataRow In obtenerAgencia().Rows
                         If InStr(r.Item("mailAgencia"), "@") > 0 Then
-                            If contRowDest > 0 Then
-                                destinatarios += ", " & r.Item("mailAgencia")
-                            Else
-                                destinatarios = r.Item("mailAgencia")
+                            If EsCorreoValido(r.Item("mailAgencia")) Then
+                                If contRowDest > 0 Then
+                                    destinatarios += ", " & r.Item("mailAgencia")
+                                Else
+                                    destinatarios = r.Item("mailAgencia")
+                                End If
+                                contRowDest += 1
                             End If
-                            contRowDest += 1
                         End If
                         If contRowDest >= 20 Then
                             destinatarios = destinatarios & "," & destinatariosCopia
@@ -1097,7 +1129,10 @@ Public Class frmPrincipal
                             destinatarios = destinatarios.Replace(",,", ",")
                             destinatarios = destinatarios.Replace("'", "")
                             destinatarios = destinatarios.Replace(" ", "")
-                            SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                            'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                            'SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                            SendReportsMessage(Msg, strFileName1, destinatarios, Asunto, True)
+                            'fin jrodriguez
                             Threading.Thread.Sleep(300)
                             strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion mensual " & ControlChars.CrLf
                             txtJobs.Text = strData & txtJobs.Text
@@ -1116,7 +1151,10 @@ Public Class frmPrincipal
                         destinatarios = destinatarios.Replace(",,", ",")
                         destinatarios = destinatarios.Replace("'", "")
                         destinatarios = destinatarios.Replace(" ", "")
-                        SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                        'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                        'SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                        SendReportsMessage(Msg, strFileName1, destinatarios, Asunto, True)
+                        'fin jrodriguez
                         Threading.Thread.Sleep(300)
                         strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion mensual " & ControlChars.CrLf
                         txtJobs.Text = strData & txtJobs.Text
@@ -1157,6 +1195,7 @@ Public Class frmPrincipal
         Catch ex As Exception
             strData = "Error: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " " & ex.Message & ControlChars.CrLf
             txtJobs.Text = strData & txtJobs.Text
+            SetLogEvent(ex, "ReporteTagsa")
         End Try
     End Sub
     Shared Function ObtenerDatosJob() As DataTable
@@ -1440,5 +1479,12 @@ Public Class frmPrincipal
         End Try
     End Sub
 #End Region
+    'ini jrodigue sprint01 24/04/2025
+    'se crea funcion de validacion de formato de correo
+    Public Function EsCorreoValido(correo As String) As Boolean
+        Dim patron As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        Dim regex As New Regex(patron)
+        Return regex.IsMatch(correo)
+    End Function
 End Class
 
