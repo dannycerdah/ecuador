@@ -281,17 +281,21 @@ Public Class frmStockElementos
     End Sub
     'jrodrigue sprint03 11/09/2025 moditifcacion del contenido de la etiqueta
     Private Sub uceAerolinea_ValueChanged(sender As Object, e As EventArgs) Handles uceAerolinea.ValueChanged
-        If uceAerolinea.SelectedIndex <> 0 Then
-            existsBitacora = CommonData.Exist_bitacora_stock_elemento(uceAerolinea.Value)
-            If existsBitacora <> Nothing Then
-                lblNota.Text = "Fecha ultimo “"envío de correo”": @fecha"
-                lblNota.Text = lblNota.Text.Replace("@fecha", existsBitacora.ToString("dd/MM/yyyy HH:mm:ss"))
-                lblNota.Visible = True
-            Else
-                lblNota.Visible = False
-                lblNota.Text = "Fecha ultimo “"envío de correo”": @fecha"
+        Try
+            If uceAerolinea.SelectedIndex <> 0 Then
+                existsBitacora = CommonData.Exist_bitacora_stock_elemento(uceAerolinea.Value)
+                If existsBitacora <> Nothing Then
+                    lblNota.Text = "Fecha ultimo “"envío de correo”": @fecha"
+                    lblNota.Text = lblNota.Text.Replace("@fecha", existsBitacora.ToString("dd/MM/yyyy HH:mm:ss"))
+                    lblNota.Visible = True
+                Else
+                    lblNota.Visible = False
+                    lblNota.Text = "Fecha ultimo “"envío de correo”": @fecha"
+                End If
             End If
-        End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
 End Class
