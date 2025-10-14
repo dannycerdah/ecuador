@@ -455,6 +455,7 @@ Public Class ReportsManager
                     .CommandText = "obtenerReporteContenedoresFacturacion"
                     .CommandType = CommandType.StoredProcedure
                     .Connection = dbTran.CreateConnection
+                    .CommandTimeout = 300000
                     .Connection.Open()
                 End With
                 Result.DsResult = New DataSet
