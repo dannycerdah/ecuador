@@ -120,7 +120,7 @@ Public Class frmReporteContenedores
     Private Sub SetDisplayedColumnsNew()
         ugdDetalle.DisplayLayout.Bands(0).Columns("idAgencia").Hidden = True
         ugdDetalle.DisplayLayout.Bands(0).Columns("descripcionAgencia").Header.Caption = "Aerolínea"
-        ugdDetalle.DisplayLayout.Bands(0).Columns("fechaPesaje").Header.Caption = "Fecha Pesaje"
+        ugdDetalle.DisplayLayout.Bands(0).Columns("fechaPesaje").Header.Caption = "Fecha Corte"
         ugdDetalle.DisplayLayout.Bands(0).Columns("fechaPesaje").Format = "dd/MM/yyyy HH:mm:ss"
         ugdDetalle.DisplayLayout.Bands(0).Columns("fechaPesaje").CellActivation = Infragistics.Win.UltraWinGrid.Activation.NoEdit
         ugdDetalle.DisplayLayout.Bands(0).Columns("cantidadPermitida").Header.Caption = "Cantidad de contenedores por contrato"
