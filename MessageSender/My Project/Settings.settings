@@ -207,7 +207,7 @@
     <Setting Name="claveCorreo" Type="System.String" Scope="User">
       <Value Profile="(Default)">Noti2025$$</Value>
     </Setting>
-    <Setting Name="sslCorreo" Type="System.String" Scope="User">
+    <Setting Name="sslCorreo" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="UsuarioCorreo" Type="System.String" Scope="User">

@@ -1707,6 +1707,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Exist_bitacora_stock_elemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="data" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Exist_bitacora_stock_elementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Exist_bitacora_stock_elementoResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Bitacora_stock_elemento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Bitacora_stock_elementoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Bitacora_stock_elementoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="GetEntireTarifasCatalog">
         <s:complexType>
           <s:sequence>
@@ -3646,6 +3674,18 @@
   <wsdl:message name="GetReporteContenedoresFacturacionSoapOut">
     <wsdl:part name="parameters" element="tns:GetReporteContenedoresFacturacionResponse" />
   </wsdl:message>
+  <wsdl:message name="Exist_bitacora_stock_elementoSoapIn">
+    <wsdl:part name="parameters" element="tns:Exist_bitacora_stock_elemento" />
+  </wsdl:message>
+  <wsdl:message name="Exist_bitacora_stock_elementoSoapOut">
+    <wsdl:part name="parameters" element="tns:Exist_bitacora_stock_elementoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Bitacora_stock_elementoSoapIn">
+    <wsdl:part name="parameters" element="tns:Bitacora_stock_elemento" />
+  </wsdl:message>
+  <wsdl:message name="Bitacora_stock_elementoSoapOut">
+    <wsdl:part name="parameters" element="tns:Bitacora_stock_elementoResponse" />
+  </wsdl:message>
   <wsdl:message name="GetEntireTarifasCatalogSoapIn">
     <wsdl:part name="parameters" element="tns:GetEntireTarifasCatalog" />
   </wsdl:message>
@@ -4426,6 +4466,14 @@
     <wsdl:operation name="GetReporteContenedoresFacturacion">
       <wsdl:input message="tns:GetReporteContenedoresFacturacionSoapIn" />
       <wsdl:output message="tns:GetReporteContenedoresFacturacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Exist_bitacora_stock_elemento">
+      <wsdl:input message="tns:Exist_bitacora_stock_elementoSoapIn" />
+      <wsdl:output message="tns:Exist_bitacora_stock_elementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Bitacora_stock_elemento">
+      <wsdl:input message="tns:Bitacora_stock_elementoSoapIn" />
+      <wsdl:output message="tns:Bitacora_stock_elementoSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetEntireTarifasCatalog">
       <wsdl:input message="tns:GetEntireTarifasCatalogSoapIn" />
@@ -5380,6 +5428,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetReporteContenedoresFacturacion">
       <soap:operation soapAction="http://espc.org/GetReporteContenedoresFacturacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exist_bitacora_stock_elemento">
+      <soap:operation soapAction="http://espc.org/Exist_bitacora_stock_elemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bitacora_stock_elemento">
+      <soap:operation soapAction="http://espc.org/Bitacora_stock_elemento" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6760,6 +6826,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetReporteContenedoresFacturacion">
       <soap12:operation soapAction="http://espc.org/GetReporteContenedoresFacturacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Exist_bitacora_stock_elemento">
+      <soap12:operation soapAction="http://espc.org/Exist_bitacora_stock_elemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Bitacora_stock_elemento">
+      <soap12:operation soapAction="http://espc.org/Bitacora_stock_elemento" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

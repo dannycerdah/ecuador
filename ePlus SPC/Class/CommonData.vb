@@ -2822,5 +2822,27 @@ Public Class CommonData
             ErrorManager.SetLogEvent(ex, result, req)
         End Try
     End Function
-
+    'jrodriguez 11/09/2025 se consumen los metodos creados en el servicio para la bitacora de stock de elementos y la determinacion de su existencia
+    Public Shared Function Bitacora_stock_elemento(ByVal data As String) As Boolean
+        Dim res As Boolean
+        Dim wsClnt As New ReportServiceSoapClient
+        Try
+            res = wsClnt.Bitacora_stock_elemento(data)
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res
+    End Function
+    Public Shared Function Exist_bitacora_stock_elemento(data As Guid) As Date
+        Dim res As Date
+        Dim wsClnt As New ReportServiceSoapClient
+        Try
+            res = wsClnt.Exist_bitacora_stock_elemento(data)
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res
+    End Function
 End Class
