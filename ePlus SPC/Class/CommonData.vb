@@ -2845,4 +2845,26 @@ Public Class CommonData
         End Try
         Return res
     End Function
+    Public Shared Function SaveBitacoraNovedadVuelo(data As BitacoraNovedadVueloRequest) As Boolean
+        Dim res As Boolean
+        Dim wsClnt As New ReportServiceSoapClient
+        Try
+            res = wsClnt.SaveBitacoraNovedadVuelo(data)
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res
+    End Function
+    Public Shared Function ObtenerBitacoraNovedadVuelo(vuelo As String, ultimoEnvio As Date) As BitacoraNovedadVueloResponse
+        Dim res As BitacoraNovedadVueloResponse
+        Dim wsClnt As New ReportServiceSoapClient
+        Try
+            res = wsClnt.ObtenerBitacoraNovedadVuelo(vuelo, ultimoEnvio)
+        Catch ex As Exception
+            ErrorManager.SetLogEvent(ex)
+            MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        Return res
+    End Function
 End Class
