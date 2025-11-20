@@ -471,4 +471,70 @@ Public Class ReportsManager
         End Try
         Return Result
     End Function
+    'jrodriguez 17/10/2025 se crea metodo para almacenar la bitacora de notificacion de novedades de vuelo
+    Public Shared Function SaveBitacoraNovedadVuelo(data As BitacoraNovedadVueloRequest) As Boolean
+        Dim Result As Boolean
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(Result) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .CommandText = "agregaBitacoraNotificacionNovedadVuelo"
+                    .CommandType = CommandType.StoredProcedure
+                    .Parameters.AddWithValue("pVuelo", data.Vuelo)
+                    .Parameters.AddWithValue("pMatricula", data.Matricula)
+                    .Parameters.AddWithValue("pRemitente", data.Remitente)
+                    .Parameters.AddWithValue("pDestinatario", data.Destinatario)
+                    .Parameters.AddWithValue("pAvion", data.Avion)
+                    .Parameters.AddWithValue("pfechaVuelo", data.FechaVuelo)
+                    .Parameters.AddWithValue("pFecha_ETA", data.FechaETA)
+                    .Parameters.AddWithValue("pFecha_ETD", data.FechaETD)
+                    .Parameters.AddWithValue("pUsuario_ingreso", data.UsuarioIngreso)
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                    cmd.ExecuteNonQuery()
+                End With
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
+    Public Shared Function ObtenerBitacoraNovedadVuelo(vuelo As String, Optional fechaVuelo As Date? = Nothing) As BitacoraNovedadVueloResponse
+        Dim Result As New BitacoraNovedadVueloResponse()
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(Result) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .CommandText = "obtenerBitacoraNotificacionNovedadVuelo"
+                    .CommandType = CommandType.StoredProcedure
+                    .Parameters.AddWithValue("pVuelo", vuelo)
+                    If fechaVuelo.HasValue Then
+                        .Parameters.AddWithValue("pfechaVuelo", fechaVuelo.Value)
+                    Else
+                        .Parameters.AddWithValue("pfechaVuelo", DBNull.Value)
+                    End If
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                End With
+                Result.dsResult = New DataSet()
+                Result.dsResult.Tables.Add(New DataTable("bitacora"))
+                Result.dsResult.Tables(0).Load(cmd.ExecuteReader())
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
 End Class
