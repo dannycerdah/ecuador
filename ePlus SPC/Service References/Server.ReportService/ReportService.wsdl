@@ -1735,6 +1735,70 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="SaveBitacoraNovedadVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="data" type="tns:BitacoraNovedadVueloRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BitacoraNovedadVueloRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="IdNotificacion" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="Vuelo" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Matricula" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Remitente" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Destinatario" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Avion" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaVuelo" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaETA" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaETD" type="s:dateTime" />
+              <s:element minOccurs="1" maxOccurs="1" name="FechaIngreso" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="UsuarioIngreso" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="SaveBitacoraNovedadVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SaveBitacoraNovedadVueloResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerBitacoraNovedadVuelo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="vuelo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fechaVuelo" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerBitacoraNovedadVueloResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerBitacoraNovedadVueloResult" type="tns:BitacoraNovedadVueloResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BitacoraNovedadVueloResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:GenericResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="dsResult">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
       <s:element name="GetEntireTarifasCatalog">
         <s:complexType>
           <s:sequence>
@@ -3686,6 +3750,18 @@
   <wsdl:message name="Bitacora_stock_elementoSoapOut">
     <wsdl:part name="parameters" element="tns:Bitacora_stock_elementoResponse" />
   </wsdl:message>
+  <wsdl:message name="SaveBitacoraNovedadVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:SaveBitacoraNovedadVuelo" />
+  </wsdl:message>
+  <wsdl:message name="SaveBitacoraNovedadVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:SaveBitacoraNovedadVueloResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerBitacoraNovedadVueloSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerBitacoraNovedadVuelo" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerBitacoraNovedadVueloSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerBitacoraNovedadVueloResponse" />
+  </wsdl:message>
   <wsdl:message name="GetEntireTarifasCatalogSoapIn">
     <wsdl:part name="parameters" element="tns:GetEntireTarifasCatalog" />
   </wsdl:message>
@@ -4474,6 +4550,14 @@
     <wsdl:operation name="Bitacora_stock_elemento">
       <wsdl:input message="tns:Bitacora_stock_elementoSoapIn" />
       <wsdl:output message="tns:Bitacora_stock_elementoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveBitacoraNovedadVuelo">
+      <wsdl:input message="tns:SaveBitacoraNovedadVueloSoapIn" />
+      <wsdl:output message="tns:SaveBitacoraNovedadVueloSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerBitacoraNovedadVuelo">
+      <wsdl:input message="tns:ObtenerBitacoraNovedadVueloSoapIn" />
+      <wsdl:output message="tns:ObtenerBitacoraNovedadVueloSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="GetEntireTarifasCatalog">
       <wsdl:input message="tns:GetEntireTarifasCatalogSoapIn" />
@@ -5446,6 +5530,24 @@
     </wsdl:operation>
     <wsdl:operation name="Bitacora_stock_elemento">
       <soap:operation soapAction="http://espc.org/Bitacora_stock_elemento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBitacoraNovedadVuelo">
+      <soap:operation soapAction="http://espc.org/SaveBitacoraNovedadVuelo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerBitacoraNovedadVuelo">
+      <soap:operation soapAction="http://espc.org/ObtenerBitacoraNovedadVuelo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -6844,6 +6946,24 @@
     </wsdl:operation>
     <wsdl:operation name="Bitacora_stock_elemento">
       <soap12:operation soapAction="http://espc.org/Bitacora_stock_elemento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveBitacoraNovedadVuelo">
+      <soap12:operation soapAction="http://espc.org/SaveBitacoraNovedadVuelo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerBitacoraNovedadVuelo">
+      <soap12:operation soapAction="http://espc.org/ObtenerBitacoraNovedadVuelo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
