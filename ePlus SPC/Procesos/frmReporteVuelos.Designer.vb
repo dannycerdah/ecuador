@@ -134,6 +134,7 @@ Partial Class frmReporteVuelos
         Me.udtLlegadaAvion = New Infragistics.Win.UltraWinEditors.UltraDateTimeEditor()
         Me.UltraLabel4 = New Infragistics.Win.Misc.UltraLabel()
         Me.ugbDatosVuelo = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.lblNota = New System.Windows.Forms.Label()
         Me.btnGuardar = New Infragistics.Win.Misc.UltraButton()
         Me.btnEnviar = New Infragistics.Win.Misc.UltraButton()
         Me.btnImprimir = New Infragistics.Win.Misc.UltraButton()
@@ -240,7 +241,7 @@ Partial Class frmReporteVuelos
         'UltraTabPageControl8
         '
         Me.UltraTabPageControl8.Controls.Add(Me.ugbElemento)
-        Me.UltraTabPageControl8.Location = New System.Drawing.Point(-10000, -10000)
+        Me.UltraTabPageControl8.Location = New System.Drawing.Point(1, 22)
         Me.UltraTabPageControl8.Name = "UltraTabPageControl8"
         Me.UltraTabPageControl8.Size = New System.Drawing.Size(849, 360)
         '
@@ -436,7 +437,7 @@ Partial Class frmReporteVuelos
         'UltraTabPageControl12
         '
         Me.UltraTabPageControl12.Controls.Add(Me.UltraGroupBox4)
-        Me.UltraTabPageControl12.Location = New System.Drawing.Point(1, 22)
+        Me.UltraTabPageControl12.Location = New System.Drawing.Point(-10000, -10000)
         Me.UltraTabPageControl12.Name = "UltraTabPageControl12"
         Me.UltraTabPageControl12.Size = New System.Drawing.Size(849, 360)
         '
@@ -898,6 +899,7 @@ Partial Class frmReporteVuelos
         '
         'ugbDatosVuelo
         '
+        Me.ugbDatosVuelo.Controls.Add(Me.lblNota)
         Me.ugbDatosVuelo.Controls.Add(Me.btnGuardar)
         Me.ugbDatosVuelo.Controls.Add(Me.btnEnviar)
         Me.ugbDatosVuelo.Controls.Add(Me.btnImprimir)
@@ -926,6 +928,19 @@ Partial Class frmReporteVuelos
         Me.ugbDatosVuelo.TabIndex = 11
         Me.ugbDatosVuelo.Text = "Datos de Vuelo"
         Me.ugbDatosVuelo.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
+        '
+        'lblNota
+        '
+        Me.lblNota.AutoSize = True
+        Me.lblNota.BackColor = System.Drawing.Color.Transparent
+        Me.lblNota.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNota.ForeColor = System.Drawing.Color.Red
+        Me.lblNota.Location = New System.Drawing.Point(524, 132)
+        Me.lblNota.Name = "lblNota"
+        Me.lblNota.Size = New System.Drawing.Size(60, 13)
+        Me.lblNota.TabIndex = 50
+        Me.lblNota.Text = "Sin envio"
+        Me.lblNota.Visible = False
         '
         'btnGuardar
         '
@@ -1281,7 +1296,7 @@ Partial Class frmReporteVuelos
         '
         'UltraTabSharedControlsPage3
         '
-        Me.UltraTabSharedControlsPage3.Location = New System.Drawing.Point(2, 21)
+        Me.UltraTabSharedControlsPage3.Location = New System.Drawing.Point(1, 20)
         Me.UltraTabSharedControlsPage3.Name = "UltraTabSharedControlsPage3"
         Me.UltraTabSharedControlsPage3.Size = New System.Drawing.Size(196, 77)
         '
@@ -1491,5 +1506,5 @@ Partial Class frmReporteVuelos
     Friend WithEvents txtCargaEstimada As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents UltraLabel3 As Infragistics.Win.Misc.UltraLabel
     Friend WithEvents btnGuardar As Infragistics.Win.Misc.UltraButton
-
+    Friend WithEvents lblNota As Label
 End Class

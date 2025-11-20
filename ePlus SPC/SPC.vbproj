@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>E:\GA\Sprint3\App\</PublishUrl>
+    <PublishUrl>E:\GA\Sprint04\App\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <PublisherName>General</PublisherName>
     <SuiteName>General</SuiteName>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>757</ApplicationRevision>
+    <ApplicationRevision>763</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -2384,6 +2384,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Server.ReportService\SPC.Server.ReportService.ArchivoAgenciaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Server.ReportService\SPC.Server.ReportService.BitacoraNovedadVueloResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Server.ReportService\SPC.Server.ReportService.CamionResponse.datasource">
