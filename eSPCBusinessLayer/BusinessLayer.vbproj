@@ -367,7 +367,9 @@
     <Compile Include="BusinessMessages\Courrier\GavetaGuiaResponse.vb" />
     <Compile Include="BusinessMessages\Proceso\MovimientoItem.vb" />
     <Compile Include="BusinessMessages\Reportes\ControlEjecucionHilo.vb" />
+    <Compile Include="BusinessMessages\Reportes\BitacoraNovedadVueloRequest.vb" />
     <Compile Include="BusinessMessages\Reportes\ReportesRequest.vb" />
+    <Compile Include="BusinessMessages\Reportes\BitacoraNovedadVueloResponse.vb" />
     <Compile Include="BusinessMessages\Reportes\ReportesResponse.vb" />
     <Compile Include="BusinessMessages\Reportes\ReportVuelosEnviados.vb" />
     <Compile Include="BusinessMessages\Reports\MarkingResponse.vb" />
