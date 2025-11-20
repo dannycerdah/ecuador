@@ -58,7 +58,7 @@ Public Class ElementoManager
                         .materialPiso = drReader.GetValue(drReader.GetOrdinal("materialPiso"))
                         .materialPared = drReader.GetValue(drReader.GetOrdinal("materialPared"))
                         .materialTecho = drReader.GetValue(drReader.GetOrdinal("materialTecho"))
-                      '  .materialRed = drReader.GetValue(drReader.GetOrdinal("materialRed"))
+                        '  .materialRed = drReader.GetValue(drReader.GetOrdinal("materialRed"))
                         .materialPuerta = drReader.GetValue(drReader.GetOrdinal("materialPuerta"))
                         .materialSeguros = drReader.GetValue(drReader.GetOrdinal("materialSeguros"))
                         .alto = drReader.GetValue(drReader.GetOrdinal("alto"))
@@ -500,7 +500,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .IdAgencia, .tipoElemento, .materialPiso, .materialPared, .materialTecho,
+                    Elemento = New Object() { .Id, .IdAgencia, .tipoElemento, .materialPiso, .materialPared, .materialTecho,
                                            .materialRed, .materialPuerta, .materialSeguros, .alto, .ancho, .largo,
                                            .pesoReferencial, .pesoReal, .estado, .fechaIngreso, .usuarioIngreso, .fechaUltimaAct, .tempId}
                 End With
@@ -591,7 +591,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .alto, .ancho, .largo,
+                    Elemento = New Object() { .Id, .alto, .ancho, .largo,
                                            .pesoReferencial, .pesoReal, .estado, .fechaUltimaAct, .obs}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
@@ -631,7 +631,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoHistoricoItem
-                    Elemento = New Object() {.Id, .idElemento, .pesoElemento, .estadoElemento,
+                    Elemento = New Object() { .Id, .idElemento, .pesoElemento, .estadoElemento,
                                            .tipoRegistro, .fecha, .usuario, .idProceso, .idVuelo, .fileImgCondicion, .observacion}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
@@ -681,7 +681,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoPreBriefingItem
-                    Elemento = New Object() {.idBriefing, .idElemento, .fecha, .idContacto,
+                    Elemento = New Object() { .idBriefing, .idElemento, .fecha, .idContacto,
                                            .estado, .indice, .IdAerolinea, .IdRampa, .IdSeguridad, .Vuelo, .Procedencia, .UsuarioDelete}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
@@ -803,7 +803,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .estado}
+                    Elemento = New Object() { .Id, .estado}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -835,7 +835,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .pesoActual, .fechaUltimaAct}
+                    Elemento = New Object() { .Id, .pesoActual, .fechaUltimaAct}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -868,7 +868,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .estado, .usuarioIngreso, .fechaUltimaAct, .chofer, .mula, .fechaIngresoPlataforma, .custodio, .pesoReferencial, .pesoReal, .fileImgCondicion, .observacion2}
+                    Elemento = New Object() { .Id, .estado, .usuarioIngreso, .fechaUltimaAct, .chofer, .mula, .fechaIngresoPlataforma, .custodio, .pesoReferencial, .pesoReal, .fileImgCondicion, .observacion2}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -918,7 +918,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myMaterial
-                    Material = New Object() {.idMaterial, .descripcion}
+                    Material = New Object() { .idMaterial, .descripcion}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -1016,7 +1016,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myTiposElemento
-                    Tipo = New Object() {.idTipo, .descripcionTipo, .codigo, .pesoReferencial, .materialPiso, .materialPared, .materialTecho, .materialPuerta, .ancho, .largo, .alto, .pesoreal}
+                    Tipo = New Object() { .idTipo, .descripcionTipo, .codigo, .pesoReferencial, .materialPiso, .materialPared, .materialTecho, .materialPuerta, .ancho, .largo, .alto, .pesoreal}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -1050,7 +1050,7 @@ Public Class ElementoManager
                     End With
                 Else
                     With cmd2
-                            .Parameters.AddWithValue("Id", Tipo(0))
+                        .Parameters.AddWithValue("Id", Tipo(0))
                         .Parameters.AddWithValue("descripcion", Tipo(1))
                         .Parameters.AddWithValue("codigo", Tipo(2))
                         .Parameters.AddWithValue("pesoReferencial", Tipo(3))
@@ -1093,7 +1093,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoHUldItem
-                    ElementoHuld = New Object() {.IdRegistro, .IdReporte}
+                    ElementoHuld = New Object() { .IdRegistro, .IdReporte}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
