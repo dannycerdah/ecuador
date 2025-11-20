@@ -773,4 +773,12 @@ Public Class ReportService
     Public Function Bitacora_stock_elemento(data As String) As Boolean
         Return ElementoManager.Bitacora_stock_elemento(data)
     End Function
+    <WebMethod()>
+    Public Function SaveBitacoraNovedadVuelo(data As BitacoraNovedadVueloRequest) As Boolean
+        Return ReportsManager.SaveBitacoraNovedadVuelo(data)
+    End Function
+    <WebMethod()>
+    Public Function ObtenerBitacoraNovedadVuelo(vuelo As String, fechaVuelo As Date) As BitacoraNovedadVueloResponse
+        Return ReportsManager.ObtenerBitacoraNovedadVuelo(vuelo, fechaVuelo)
+    End Function
 End Class
