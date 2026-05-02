@@ -940,7 +940,6 @@ Partial Class frmReporteVuelos
         Me.lblNota.Size = New System.Drawing.Size(60, 13)
         Me.lblNota.TabIndex = 50
         Me.lblNota.Text = "Sin envio"
-        Me.lblNota.Visible = False
         '
         'btnGuardar
         '
@@ -1228,7 +1227,7 @@ Partial Class frmReporteVuelos
         '
         'UltraTabSharedControlsPage2
         '
-        Me.UltraTabSharedControlsPage2.Location = New System.Drawing.Point(2, 21)
+        Me.UltraTabSharedControlsPage2.Location = New System.Drawing.Point(1, 20)
         Me.UltraTabSharedControlsPage2.Name = "UltraTabSharedControlsPage2"
         Me.UltraTabSharedControlsPage2.Size = New System.Drawing.Size(196, 77)
         '

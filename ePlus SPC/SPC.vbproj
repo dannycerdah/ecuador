@@ -28,7 +28,7 @@
     <PublisherName>General</PublisherName>
     <SuiteName>General</SuiteName>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>763</ApplicationRevision>
+    <ApplicationRevision>764</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

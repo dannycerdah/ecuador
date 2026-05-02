@@ -7,6 +7,7 @@ Public Class frmElegirPersonalProceso
     Public Property personaAgenciaCarga As New ContactoCatalogItem
     Public Property personaSeguridad As New ContactoCatalogItem
     Public Property personaAerolinea As New ContactoCatalogItem
+    Public Property personaRx As New List(Of ContactoCatalogItem)
     Public Property agenciaSeguridad As String = String.Empty
     Public Property isCancel As Boolean = False
     Public Property isSaved As Boolean = False
@@ -65,7 +66,8 @@ Public Class frmElegirPersonalProceso
             personaAgenciaCarga = CommonData.GetContactoItem(ucePersonalAgenciaCarga.Value)
             Try
                 personaSeguridad = CommonData.GetContactoItem(uceSeguridad.Value)
-                agenciaSeguridad = CommonData.GetAgenciaItem(Guid.Parse(agenciaSeguridad)).Descripcion
+                'agenciaSeguridad = CommonData.GetAgenciaItem(Guid.Parse(agenciaSeguridad)).Descripcion
+                agenciaSeguridad = "Agente AVSEC X-RAY"
             Catch ex As Exception
             End Try
             isSaved = True
@@ -84,13 +86,17 @@ Public Class frmElegirPersonalProceso
     Private Sub PopulateSeguridad()
         Try
             uceSeguridad.Items.Clear()
-            For Each r As DataRow In dtPersonal.Rows
-                If r.Item("descripcionTipo") = "SEGURIDAD" Then
-                    Dim tempPersonalSeguridad As New ContactoCatalogItem
-                    tempPersonalSeguridad = CommonData.GetContactoItem(r.Item("idPersona"))
-                    uceSeguridad.Items.Add(tempPersonalSeguridad.idContacto, tempPersonalSeguridad.primerApellido + " " + tempPersonalSeguridad.primerNombre)
-                    agenciaSeguridad = r.Item("idAgencia").ToString
-                End If
+            'For Each r As DataRow In dtPersonal.Rows
+            '    If r.Item("descripcionTipo") = "SEGURIDAD" Then
+            '        Dim tempPersonalSeguridad As New ContactoCatalogItem
+            '        tempPersonalSeguridad = CommonData.GetContactoItem(r.Item("idPersona"))
+            '        uceSeguridad.Items.Add(tempPersonalSeguridad.idContacto, tempPersonalSeguridad.primerApellido + " " + tempPersonalSeguridad.primerNombre)
+            '        agenciaSeguridad = r.Item("idAgencia").ToString
+            '    End If
+            'Next
+            For Each r In personaRx
+                uceSeguridad.Items.Add(r.idContacto, r.primerNombre)
+                agenciaSeguridad = r.idAgencia.ToString()
             Next
             uceSeguridad.SelectedIndex = 0
         Catch ex As Exception

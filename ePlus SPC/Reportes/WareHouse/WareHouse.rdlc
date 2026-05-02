@@ -2014,7 +2014,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>GENERALAIR S.A.</Value>
+                <Value EvaluationMode="Constant">Supervisor AVSEC</Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
                   <FontSize>9pt</FontSize>
@@ -2054,7 +2054,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!Aerolinea.Value, "Encabezado")</Value>
+                <Value EvaluationMode="Constant">Agente de Carga</Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
                   <FontSize>9pt</FontSize>
@@ -2093,7 +2093,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="RX: "+First(Fields!Recibe.Value, "Encabezado")</Value>
+                <Value>=""+First(Fields!Recibe.Value, "Encabezado")</Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
                   <FontSize>9pt</FontSize>
@@ -3352,7 +3352,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!AgenciaSeguridad.Value, "Encabezado")</Value>
+                <Value EvaluationMode="Constant">Agente AVSEC X-RAY (XRY)</Value>
                 <Style>
                   <FontFamily>Times New Roman</FontFamily>
                   <FontSize>9pt</FontSize>
