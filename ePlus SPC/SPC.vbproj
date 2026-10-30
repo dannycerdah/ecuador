@@ -14,7 +14,7 @@
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
-    <PublishUrl>E:\GA\Sprint04\App\</PublishUrl>
+    <PublishUrl>E:\GA\Parches\App\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <PublisherName>General</PublisherName>
     <SuiteName>General</SuiteName>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>764</ApplicationRevision>
+    <ApplicationRevision>767</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

@@ -5922,12 +5922,17 @@ Public Class frmCapturaPeso
     Private Function ObtenerPersonalRX() As List(Of ContactoCatalogItem)
 
         Dim agenciaId As Guid = Guid.Parse("613e528a-2a14-11e4-981b-8f9d682eafe3")
+        Dim agenciaIdGeneral As Guid = Guid.Parse("1f2ebac3-c1b8-11e3-a62b-d43d7eb25e94")
+        Dim lisCargo = New List(Of String) From {"SUPERVISOR", "TEAM LEADER"}
 
         Dim resultados = ugvPersonal.Rows.Cast(Of Infragistics.Win.UltraWinGrid.UltraGridRow)().
-        Where(Function(row) row.Cells("idAgencia").Value IsNot Nothing AndAlso
+        Where(Function(row) (row.Cells("idAgencia").Value IsNot Nothing AndAlso
                              Not IsDBNull(row.Cells("idAgencia").Value) AndAlso
                              row.Cells("idAgencia").Value IsNot Nothing AndAlso
-                             Guid.Parse(row.Cells("idAgencia").Value.ToString()) = agenciaId).
+                             Guid.Parse(row.Cells("idAgencia").Value.ToString()) = agenciaId) OrElse (row.Cells("idAgencia").Value IsNot Nothing AndAlso
+                             Not IsDBNull(row.Cells("idAgencia").Value) AndAlso
+                             row.Cells("idAgencia").Value IsNot Nothing AndAlso
+                             Guid.Parse(row.Cells("idAgencia").Value.ToString()) = agenciaIdGeneral AndAlso lisCargo.Contains(row.Cells("cargoPersonal").Value.ToString()))).
         Select(Function(row) New ContactoCatalogItem With {
             .idContacto = If(row.Cells("idContacto").Value, "").ToString(),
             .primerNombre = If(row.Cells("contacto").Value, "").ToString()

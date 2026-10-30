@@ -865,12 +865,13 @@ Public Class frmPrincipal
                     For Each r As DataRow In dtJobs.Rows
                         ReporteTagsa(r.Item("IdJobs"), r.Item("NombreJobs"), r.Item("FechaEjecucion"), r.Item("TipoEjecucion"), r.Item("ValorEjecucion"))
                     Next
-                    Dim VerificaJobs As Boolean = False
-                    While VerificaJobs = False
-                        VerificaJobs = CargarDatosJobs()
-                        Threading.Thread.Sleep(5000)
-                    End While
+                    'Dim VerificaJobs As Boolean = False
+                    'While VerificaJobs = False
+                    '    VerificaJobs = CargarDatosJobs()
+                    '    Threading.Thread.Sleep(5000)
+                    'End While
                 End If
+                CargarDatosJobs()
                 If bgwReporteTagsa.CancellationPending Then
                     BtnVerificaTagsa.Enabled = True
                     Exit Sub
@@ -1238,6 +1239,10 @@ Public Class frmPrincipal
                             SendReportsMessage(Msg, strFileName1, desti, Asunto)
                             Dim result As String = String.Empty
                             resul = ActualizaDatosJob(NombreJobs, tipoEjecucion, ValorEjecucion)
+                            Threading.Thread.Sleep(300)
+                            strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de Reporte de novedades de Vuelo " & ControlChars.CrLf
+                            txtJobs.Text = strData & txtJobs.Text
+                            contRowDest = 0
                         End If
                     Catch ex As Exception
                         strData = "Error: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " " & ex.Message & ControlChars.CrLf
