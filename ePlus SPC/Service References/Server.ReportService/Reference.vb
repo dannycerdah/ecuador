@@ -640,6 +640,42 @@ Namespace Server.ReportService
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetReporteContenedoresFacturacion", ReplyAction:="*")>
         Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse)
 
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Exist_bitacora_stock_elemento", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function Exist_bitacora_stock_elemento(ByVal data As System.Guid) As Date
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Exist_bitacora_stock_elemento", ReplyAction:="*")>
+        Function Exist_bitacora_stock_elementoAsync(ByVal data As System.Guid) As System.Threading.Tasks.Task(Of Date)
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Bitacora_stock_elemento", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function Bitacora_stock_elemento(ByVal data As String) As Boolean
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/Bitacora_stock_elemento", ReplyAction:="*")>
+        Function Bitacora_stock_elementoAsync(ByVal data As String) As System.Threading.Tasks.Task(Of Boolean)
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/SaveBitacoraNovedadVuelo", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function SaveBitacoraNovedadVuelo(ByVal data As Server.ReportService.BitacoraNovedadVueloRequest) As Boolean
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/SaveBitacoraNovedadVuelo", ReplyAction:="*")>
+        Function SaveBitacoraNovedadVueloAsync(ByVal data As Server.ReportService.BitacoraNovedadVueloRequest) As System.Threading.Tasks.Task(Of Boolean)
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/ObtenerBitacoraNovedadVuelo", ReplyAction:="*"),
+         System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
+         System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericRequest))>
+        Function ObtenerBitacoraNovedadVuelo(ByVal vuelo As String, ByVal fechaVuelo As Date) As Server.ReportService.BitacoraNovedadVueloResponse
+
+        <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/ObtenerBitacoraNovedadVuelo", ReplyAction:="*")>
+        Function ObtenerBitacoraNovedadVueloAsync(ByVal vuelo As String, ByVal fechaVuelo As Date) As System.Threading.Tasks.Task(Of Server.ReportService.BitacoraNovedadVueloResponse)
+
         <System.ServiceModel.OperationContractAttribute(Action:="http://espc.org/GetEntireTarifasCatalog", ReplyAction:="*"),
          System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults:=True),
          System.ServiceModel.ServiceKnownTypeAttribute(GetType(GenericResponse)),
@@ -1398,7 +1434,7 @@ Namespace Server.ReportService
     End Interface
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -1422,7 +1458,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -1522,6 +1558,7 @@ Namespace Server.ReportService
      System.Xml.Serialization.XmlIncludeAttribute(GetType(AirplaneResponse)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(AirportResponse)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(DestinatarioResponse)),
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(BitacoraNovedadVueloResponse)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ReportesResponse)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(UserResponse)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(DollyResponse)),
@@ -1535,7 +1572,7 @@ Namespace Server.ReportService
      System.Xml.Serialization.XmlIncludeAttribute(GetType(PaisResponse)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ReportResponse)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CiudadResponse)),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -1597,7 +1634,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -1621,7 +1658,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -1669,7 +1706,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -1721,7 +1758,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -1881,7 +1918,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2041,7 +2078,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2079,7 +2116,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2155,7 +2192,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2231,7 +2268,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2255,7 +2292,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2303,7 +2340,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2327,7 +2364,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2431,7 +2468,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2455,7 +2492,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2685,7 +2722,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2723,7 +2760,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2841,7 +2878,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2931,7 +2968,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -2955,7 +2992,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3087,7 +3124,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3111,7 +3148,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3313,7 +3350,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3351,7 +3388,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3455,7 +3492,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3615,7 +3652,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3663,7 +3700,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3711,7 +3748,31 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
+     System.SerializableAttribute(),
+     System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.ComponentModel.DesignerCategoryAttribute("code"),
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://espc.org/")>
+    Partial Public Class BitacoraNovedadVueloResponse
+        Inherits GenericResponse
+
+        Private dsResultField As System.Data.DataSet
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=0)>
+        Public Property dsResult() As System.Data.DataSet
+            Get
+                Return Me.dsResultField
+            End Get
+            Set
+                Me.dsResultField = value
+                Me.RaisePropertyChanged("dsResult")
+            End Set
+        End Property
+    End Class
+
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3735,7 +3796,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3787,7 +3848,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -3989,7 +4050,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4079,7 +4140,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4103,7 +4164,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4193,7 +4254,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4217,7 +4278,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4461,7 +4522,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4485,7 +4546,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4715,7 +4776,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -4851,7 +4912,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5235,7 +5296,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5325,7 +5386,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://espc.org/")>
     Public Enum estadoImagen
@@ -5341,7 +5402,7 @@ Namespace Server.ReportService
     End Enum
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5459,7 +5520,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5507,7 +5568,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5611,7 +5672,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5715,7 +5776,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5763,7 +5824,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5895,7 +5956,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -5957,7 +6018,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6103,7 +6164,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6207,7 +6268,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6231,7 +6292,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6307,7 +6368,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6331,7 +6392,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6379,7 +6440,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6403,7 +6464,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6451,7 +6512,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6517,7 +6578,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -6929,7 +6990,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7159,7 +7220,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7375,7 +7436,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7423,7 +7484,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7447,7 +7508,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7523,7 +7584,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7547,7 +7608,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7571,7 +7632,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7619,7 +7680,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -7803,6 +7864,7 @@ Namespace Server.ReportService
      System.Xml.Serialization.XmlIncludeAttribute(GetType(AirplaneRequest)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(AirportRequest)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(DestinatarioRequest)),
+     System.Xml.Serialization.XmlIncludeAttribute(GetType(BitacoraNovedadVueloRequest)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ReportesRequest)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(UserRequest)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(DollyRequest)),
@@ -7816,7 +7878,7 @@ Namespace Server.ReportService
      System.Xml.Serialization.XmlIncludeAttribute(GetType(PaisRequest)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(ReportRequest)),
      System.Xml.Serialization.XmlIncludeAttribute(GetType(CiudadRequest)),
-     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+     System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8018,7 +8080,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://espc.org/")>
     Public Enum ManagementActions
@@ -8055,7 +8117,7 @@ Namespace Server.ReportService
     End Enum
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8079,7 +8141,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8117,7 +8179,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8155,7 +8217,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8179,7 +8241,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8203,7 +8265,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8227,7 +8289,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8265,7 +8327,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8289,7 +8351,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8313,7 +8375,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8351,7 +8413,171 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
+     System.SerializableAttribute(),
+     System.Diagnostics.DebuggerStepThroughAttribute(),
+     System.ComponentModel.DesignerCategoryAttribute("code"),
+     System.Xml.Serialization.XmlTypeAttribute([Namespace]:="http://espc.org/")>
+    Partial Public Class BitacoraNovedadVueloRequest
+        Inherits GenericRequest
+
+        Private idNotificacionField As Integer
+
+        Private vueloField As String
+
+        Private matriculaField As String
+
+        Private remitenteField As String
+
+        Private destinatarioField As String
+
+        Private avionField As String
+
+        Private fechaVueloField As Date
+
+        Private fechaETAField As Date
+
+        Private fechaETDField As Date
+
+        Private fechaIngresoField As Date
+
+        Private usuarioIngresoField As String
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=0)>
+        Public Property IdNotificacion() As Integer
+            Get
+                Return Me.idNotificacionField
+            End Get
+            Set
+                Me.idNotificacionField = value
+                Me.RaisePropertyChanged("IdNotificacion")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=1)>
+        Public Property Vuelo() As String
+            Get
+                Return Me.vueloField
+            End Get
+            Set
+                Me.vueloField = value
+                Me.RaisePropertyChanged("Vuelo")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=2)>
+        Public Property Matricula() As String
+            Get
+                Return Me.matriculaField
+            End Get
+            Set
+                Me.matriculaField = value
+                Me.RaisePropertyChanged("Matricula")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=3)>
+        Public Property Remitente() As String
+            Get
+                Return Me.remitenteField
+            End Get
+            Set
+                Me.remitenteField = value
+                Me.RaisePropertyChanged("Remitente")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=4)>
+        Public Property Destinatario() As String
+            Get
+                Return Me.destinatarioField
+            End Get
+            Set
+                Me.destinatarioField = value
+                Me.RaisePropertyChanged("Destinatario")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=5)>
+        Public Property Avion() As String
+            Get
+                Return Me.avionField
+            End Get
+            Set
+                Me.avionField = value
+                Me.RaisePropertyChanged("Avion")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=6)>
+        Public Property FechaVuelo() As Date
+            Get
+                Return Me.fechaVueloField
+            End Get
+            Set
+                Me.fechaVueloField = value
+                Me.RaisePropertyChanged("FechaVuelo")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=7)>
+        Public Property FechaETA() As Date
+            Get
+                Return Me.fechaETAField
+            End Get
+            Set
+                Me.fechaETAField = value
+                Me.RaisePropertyChanged("FechaETA")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=8)>
+        Public Property FechaETD() As Date
+            Get
+                Return Me.fechaETDField
+            End Get
+            Set
+                Me.fechaETDField = value
+                Me.RaisePropertyChanged("FechaETD")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=9)>
+        Public Property FechaIngreso() As Date
+            Get
+                Return Me.fechaIngresoField
+            End Get
+            Set
+                Me.fechaIngresoField = value
+                Me.RaisePropertyChanged("FechaIngreso")
+            End Set
+        End Property
+
+        '''<remarks/>
+        <System.Xml.Serialization.XmlElementAttribute(Order:=10)>
+        Public Property UsuarioIngreso() As String
+            Get
+                Return Me.usuarioIngresoField
+            End Get
+            Set
+                Me.usuarioIngresoField = value
+                Me.RaisePropertyChanged("UsuarioIngreso")
+            End Set
+        End Property
+    End Class
+
+    '''<remarks/>
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8417,7 +8643,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8455,7 +8681,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8479,7 +8705,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8503,7 +8729,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8527,7 +8753,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8705,7 +8931,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8729,7 +8955,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8753,7 +8979,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8777,7 +9003,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8843,7 +9069,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -8867,7 +9093,7 @@ Namespace Server.ReportService
     End Class
 
     '''<remarks/>
-    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0"),
+    <System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0"),
      System.SerializableAttribute(),
      System.Diagnostics.DebuggerStepThroughAttribute(),
      System.ComponentModel.DesignerCategoryAttribute("code"),
@@ -9555,6 +9781,38 @@ Namespace Server.ReportService
 
         Public Function GetReporteContenedoresFacturacionAsync(ByVal req As Server.ReportService.ReportRequest) As System.Threading.Tasks.Task(Of Server.ReportService.ReportResponse) Implements Server.ReportService.ReportServiceSoap.GetReporteContenedoresFacturacionAsync
             Return MyBase.Channel.GetReporteContenedoresFacturacionAsync(req)
+        End Function
+
+        Public Function Exist_bitacora_stock_elemento(ByVal data As System.Guid) As Date Implements Server.ReportService.ReportServiceSoap.Exist_bitacora_stock_elemento
+            Return MyBase.Channel.Exist_bitacora_stock_elemento(data)
+        End Function
+
+        Public Function Exist_bitacora_stock_elementoAsync(ByVal data As System.Guid) As System.Threading.Tasks.Task(Of Date) Implements Server.ReportService.ReportServiceSoap.Exist_bitacora_stock_elementoAsync
+            Return MyBase.Channel.Exist_bitacora_stock_elementoAsync(data)
+        End Function
+
+        Public Function Bitacora_stock_elemento(ByVal data As String) As Boolean Implements Server.ReportService.ReportServiceSoap.Bitacora_stock_elemento
+            Return MyBase.Channel.Bitacora_stock_elemento(data)
+        End Function
+
+        Public Function Bitacora_stock_elementoAsync(ByVal data As String) As System.Threading.Tasks.Task(Of Boolean) Implements Server.ReportService.ReportServiceSoap.Bitacora_stock_elementoAsync
+            Return MyBase.Channel.Bitacora_stock_elementoAsync(data)
+        End Function
+
+        Public Function SaveBitacoraNovedadVuelo(ByVal data As Server.ReportService.BitacoraNovedadVueloRequest) As Boolean Implements Server.ReportService.ReportServiceSoap.SaveBitacoraNovedadVuelo
+            Return MyBase.Channel.SaveBitacoraNovedadVuelo(data)
+        End Function
+
+        Public Function SaveBitacoraNovedadVueloAsync(ByVal data As Server.ReportService.BitacoraNovedadVueloRequest) As System.Threading.Tasks.Task(Of Boolean) Implements Server.ReportService.ReportServiceSoap.SaveBitacoraNovedadVueloAsync
+            Return MyBase.Channel.SaveBitacoraNovedadVueloAsync(data)
+        End Function
+
+        Public Function ObtenerBitacoraNovedadVuelo(ByVal vuelo As String, ByVal fechaVuelo As Date) As Server.ReportService.BitacoraNovedadVueloResponse Implements Server.ReportService.ReportServiceSoap.ObtenerBitacoraNovedadVuelo
+            Return MyBase.Channel.ObtenerBitacoraNovedadVuelo(vuelo, fechaVuelo)
+        End Function
+
+        Public Function ObtenerBitacoraNovedadVueloAsync(ByVal vuelo As String, ByVal fechaVuelo As Date) As System.Threading.Tasks.Task(Of Server.ReportService.BitacoraNovedadVueloResponse) Implements Server.ReportService.ReportServiceSoap.ObtenerBitacoraNovedadVueloAsync
+            Return MyBase.Channel.ObtenerBitacoraNovedadVueloAsync(vuelo, fechaVuelo)
         End Function
 
         Public Function GetEntireTarifasCatalog(ByVal req As Server.ReportService.ReportRequest) As Server.ReportService.ReportResponse Implements Server.ReportService.ReportServiceSoap.GetEntireTarifasCatalog

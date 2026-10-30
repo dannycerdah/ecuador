@@ -4,6 +4,7 @@ Imports System.IO.Ports
 Imports System.IO
 Imports System.Threading
 Imports SPC.MessagesManager
+Imports SPC.Server.ReportService
 
 Public Class frmCapturaPeso
     Public Property myPersonalProceso As New PersonalProcesoItem
@@ -2986,6 +2987,7 @@ Public Class frmCapturaPeso
                                 frmPersonalProceso.dtPersonal = dtCamiones
                                 frmPersonalProceso.tempGuiaItem = GuiaItem
                                 frmPersonalProceso.idAerolinea = myDetalleVuelo.idAgencia
+                                frmPersonalProceso.personaRx = ObtenerPersonalRX()
                                 frmPersonalProceso.ShowDialog()
                                 If myDetalleVuelo.idAgencia <> Guid.Parse("78613da6-1277-11e4-981b-8f9d682eafe3") Or myDetalleVuelo.idAgencia <> Guid.Parse("b86b9024-12ac-11e4-981b-8f9d682eafe3") Then
                                     If frmPersonalProceso.isCancel Then
@@ -3607,6 +3609,7 @@ Public Class frmCapturaPeso
                                 frmPersonalProceso.dtPersonal = dtCamiones
                                 frmPersonalProceso.tempGuiaItem = GuiaItem
                                 frmPersonalProceso.idAerolinea = myDetalleVuelo.idAgencia
+                                frmPersonalProceso.personaRx = ObtenerPersonalRX()
                                 frmPersonalProceso.ShowDialog()
                                 If myDetalleVuelo.idAgencia <> Guid.Parse("78613da6-1277-11e4-981b-8f9d682eafe3") Or myDetalleVuelo.idAgencia <> Guid.Parse("b86b9024-12ac-11e4-981b-8f9d682eafe3") Then
                                     If frmPersonalProceso.isCancel Then
@@ -4186,6 +4189,7 @@ Public Class frmCapturaPeso
                     frmPersonalProceso.dtPersonal = dtCamiones
                     frmPersonalProceso.tempGuiaItem = GuiaItem
                     frmPersonalProceso.idAerolinea = myDetalleVuelo.idAgencia
+                    frmPersonalProceso.personaRx = ObtenerPersonalRX()
                     frmPersonalProceso.ShowDialog()
                     'ini jrodriguez sprint01 25/04/2025
                     'Se inicializan valores para determinacion de destinatarios para la notificacion y la alerta de mensaje
@@ -5915,5 +5919,27 @@ Public Class frmCapturaPeso
         Next
     End Function
     'fin jrodriguez sprint01 25/04/2025
+    Private Function ObtenerPersonalRX() As List(Of ContactoCatalogItem)
+
+        Dim agenciaId As Guid = Guid.Parse("613e528a-2a14-11e4-981b-8f9d682eafe3")
+        Dim agenciaIdGeneral As Guid = Guid.Parse("1f2ebac3-c1b8-11e3-a62b-d43d7eb25e94")
+        Dim lisCargo = New List(Of String) From {"SUPERVISOR", "TEAM LEADER"}
+
+        Dim resultados = ugvPersonal.Rows.Cast(Of Infragistics.Win.UltraWinGrid.UltraGridRow)().
+        Where(Function(row) (row.Cells("idAgencia").Value IsNot Nothing AndAlso
+                             Not IsDBNull(row.Cells("idAgencia").Value) AndAlso
+                             row.Cells("idAgencia").Value IsNot Nothing AndAlso
+                             Guid.Parse(row.Cells("idAgencia").Value.ToString()) = agenciaId) OrElse (row.Cells("idAgencia").Value IsNot Nothing AndAlso
+                             Not IsDBNull(row.Cells("idAgencia").Value) AndAlso
+                             row.Cells("idAgencia").Value IsNot Nothing AndAlso
+                             Guid.Parse(row.Cells("idAgencia").Value.ToString()) = agenciaIdGeneral AndAlso lisCargo.Contains(row.Cells("cargoPersonal").Value.ToString()))).
+        Select(Function(row) New ContactoCatalogItem With {
+            .idContacto = If(row.Cells("idContacto").Value, "").ToString(),
+            .primerNombre = If(row.Cells("contacto").Value, "").ToString()
+        })
+
+        Return resultados.ToList()
+
+    End Function
 
 End Class

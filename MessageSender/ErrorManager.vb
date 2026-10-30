@@ -1,12 +1,22 @@
 ﻿Public Class ErrorManager
-    Public Shared Sub SetLogEvent(ex As Exception)
+    Public Shared Sub SetLogEvent(ex As Exception, Optional proceso As String = "")
         Dim rutaejecutable As String = Application.StartupPath
         If Not FileIO.FileSystem.DirectoryExists(rutaejecutable & "\LogFiles") Then
             FileIO.FileSystem.CreateDirectory(rutaejecutable & "\LogFiles")
         End If
         Dim strFileName As String = rutaejecutable & "\LogFiles\" & DateTime.Now.ToString("yyyy-MM-dd") & ".txt"
         Dim strMessage As String = String.Empty
-        strMessage = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & vbCrLf & ex.Message & vbCrLf & vbCrLf & vbCrLf
+        strMessage = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & vbCrLf & ex.Message & "-" & proceso & "-" & vbCrLf & vbCrLf & vbCrLf
+        IO.File.AppendAllText(strFileName, strMessage)
+    End Sub
+    Public Shared Sub log(dato As String)
+        Dim rutaejecutable As String = Application.StartupPath
+        If Not FileIO.FileSystem.DirectoryExists(rutaejecutable & "\LogFiles") Then
+            FileIO.FileSystem.CreateDirectory(rutaejecutable & "\LogFiles")
+        End If
+        Dim strFileName As String = rutaejecutable & "\LogFiles\pruebas.txt"
+        Dim strMessage As String = String.Empty
+        strMessage = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") & dato & vbCrLf
         IO.File.AppendAllText(strFileName, strMessage)
     End Sub
     Public Shared Sub SetLogEvent(ByRef ex As Exception, ByRef Result As Object, ByRef Request As Object)

@@ -23,4 +23,5 @@
     Public Property fechaIngresoPlataforma As DateTime
     Public Property inicialElemento As String
     Public Property fileImgCondicion As String
+    Public Property usuarioIngresoReporte As String 'jrodrigue sprint03 11/09/2025
 End Class

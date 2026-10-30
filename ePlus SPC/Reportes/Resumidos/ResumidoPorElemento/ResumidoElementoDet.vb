@@ -11,4 +11,5 @@
     Public Property fin As DateTime
     Public Property piezas As Integer
     Public Property peso As Double
+    Public Property pesoElemento As Double
 End Class

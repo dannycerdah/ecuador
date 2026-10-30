@@ -98,6 +98,9 @@ Public Class frmReporteVuelos
     Dim cargaHoraFin As DateTime = Convert.ToDateTime("1000-01-01")
     Dim idBriefing As Guid
     Dim idVuelo As Guid
+    Dim bitacoraNovedad As New BitacoraNovedadVueloResponse()
+    Dim fechaNovedad As DateTime
+    Dim usuarioNovedad As String
     Private Sub btnConsVuelo_Click(sender As Object, e As EventArgs) Handles btnConsVuelo.Click
         Try
             Dim frmConsultaVuelos As New frmConsultaVuelosBriefing()
@@ -112,6 +115,18 @@ Public Class frmReporteVuelos
                 CargarRptBriefing()
                 CargarRptProcesoCarga()
                 CargarRptNovedades()
+                bitacoraNovedad = CommonData.ObtenerBitacoraNovedadVuelo(txtAgencia.Text & "-" & txtNumVuelo.Text, udtFecha.Value)
+                fechaNovedad = Nothing
+                If bitacoraNovedad IsNot Nothing And bitacoraNovedad.dsResult.Tables(0).Rows.Count > 0 Then
+                    fechaNovedad = bitacoraNovedad.dsResult.Tables(0).Rows(0).Item("fecha_ingreso")
+                    usuarioNovedad = bitacoraNovedad.dsResult.Tables(0).Rows(0).Item("usuario_ingreso")
+                    lblNota.Text = "Fecha última enviada: @fecha"
+                    lblNota.Text = lblNota.Text.Replace("@fecha", fechaNovedad.ToString("dd/MM/yyyy HH:mm:ss"))
+                    lblNota.Visible = True
+                Else
+                    lblNota.Visible = True
+                    lblNota.Text = "Sin envio"
+                End If
                 If Not IsNothing(myNovedades) Then
                     Try
                         udtLlegadaAvion.Value = myNovedades.llegada
@@ -1581,11 +1596,24 @@ Public Class frmReporteVuelos
                 .IdVuelo = idVuelo
                 .Tipo = "C"
             End With
-            ClassReportVueloEnvi = CommonProcess.Sp_RegReporteVuelosEnviados(ClassReportVueloEnvi)
-            If ClassReportVueloEnvi.Result = True And ClassReportVueloEnvi.Total = 0 Then
-                EnviarVuelo = True
+            'ClassReportVueloEnvi = CommonProcess.Sp_RegReporteVuelosEnviados(ClassReportVueloEnvi)
+            'If ClassReportVueloEnvi.Result = True And ClassReportVueloEnvi.Total = 0 Then
+            '    EnviarVuelo = True
+            'Else
+            '    If MessageBox.Show("¿Desa Volver a Enviar el Vuelo?", "Confirmar Envio de Vuelo", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+            '        EnviarVuelo = True
+            '    Else
+            '        EnviarVuelo = False
+            '    End If
+            'End If
+            If fechaNovedad.Date() = Now.Date() Then
+                If MessageBox.Show(" La novedad de vuelo para ese vuelo " + txtNumVuelo.Text + " ya fue enviada con fecha " + fechaNovedad.ToString("dd/MM/yyyy HH:mm:ss") + " por el usuario: " + usuarioNovedad + " ¿Desea volver a enviar la novedad de vuelo?", "Confirmar Envio de Vuelo", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                    EnviarVuelo = True
+                Else
+                    EnviarVuelo = False
+                End If
             Else
-                If MessageBox.Show("¿Desa Volver a Enviar el Vuelo?", "Confirmar Envio de Vuelo", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
+                If MessageBox.Show("Se enviará la novedad de vuelo " + txtNumVuelo.Text + " ¿ Estas seguro de enviar?", "Confirmar Envio de Vuelo", MessageBoxButtons.YesNo) = Windows.Forms.DialogResult.Yes Then
                     EnviarVuelo = True
                 Else
                     EnviarVuelo = False
@@ -1640,7 +1668,25 @@ Public Class frmReporteVuelos
                 frm.aerolinea = txtAgencia.Text
                 frm.guardarReporte()
                 If frm.result Then
+                    Dim bitacoraVuelo As New BitacoraNovedadVueloRequest()
+                    With bitacoraVuelo
+                        .Avion = txtAvion.Text
+                        .Vuelo = txtAgencia.Text & "-" & txtNumVuelo.Text
+                        .codigoVuelo = txtNumVuelo.Text
+                        .Destinatario = txtDe.Text
+                        .Remitente = txtPara.Text
+                        .FechaETA = udtEta.Value
+                        .FechaETD = udtEtd.Value
+                        .Matricula = txtMatricula.Text
+                        .FechaVuelo = udtFecha.Value
+                        .UsuarioIngreso = modGeneral.MyCurrentUser.userId
+                    End With
+                    CommonData.SaveBitacoraNovedadVuelo(bitacoraVuelo)
+                    lblNota.Text = "Fecha última enviada: @fecha"
+                    lblNota.Text = lblNota.Text.Replace("@fecha", Now().ToString("dd/MM/yyyy HH:mm:ss"))
+                    lblNota.Visible = True
                     MessageBox.Show("Correo eviado con éxito.", "Confirmación", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                    fechaNovedad = Now()
                     With ClassReportVueloEnvi
                         .IdBriefing = myDetalleVuelo.idBriefing
                         .IdVuelo = myDetalleVuelo.idVuelo

@@ -395,6 +395,7 @@ Public Class frmReporteResumidos
                 .Add("fin", GetType(DateTime))
                 .Add("piezas", GetType(Integer))
                 .Add("peso", GetType(Double))
+                .Add("pesoElemento", GetType(Double))
             End With
             If todos Then
                 For Each r As DataRow In resDtReportGroupByElemento.Rows
@@ -410,6 +411,7 @@ Public Class frmReporteResumidos
                     nr.Item("fin") = r.Item("horaFin")
                     nr.Item("piezas") = r.Item("piezas")
                     nr.Item("peso") = r.Item("peso")
+                    nr.Item("pesoElemento") = r.Item("pesoElemento")
                     result.Rows.Add(nr)
                 Next
             Else
@@ -427,6 +429,7 @@ Public Class frmReporteResumidos
                         nr.Item("fin") = r.Item("horaFin")
                         nr.Item("piezas") = r.Item("piezas")
                         nr.Item("peso") = r.Item("peso")
+                        nr.Item("pesoElemento") = r.Item("pesoElemento")
                         result.Rows.Add(nr)
                     End If
                 Next
@@ -585,6 +588,15 @@ Public Class frmReporteResumidos
             ResumidoElementoDet = New ResumidoElementoDet
             ResumidoElementoDet.vuelo = myDetalleVuelo.codigoVuelo
             ResumidoElementoDet.fechaVuelo = myDetalleVuelo.fechaVuelo
+            If ResumidoElementoEnc.resumidoElementoDetalle.Count > 0 Then
+                If ResumidoElementoEnc.resumidoElementoDetalle.Any(Function(x) x.idElemento = r.Item("idElemento").ToString()) Then
+                    ResumidoElementoDet.pesoElemento = 0
+                Else
+                    ResumidoElementoDet.pesoElemento = r.Item("pesoElemento")
+                End If
+            Else
+                ResumidoElementoDet.pesoElemento = r.Item("pesoElemento")
+            End If
             ResumidoElementoDet.idElemento = r.Item("idElemento")
             ResumidoElementoDet.agenciaElemento = r.Item("agenciaElemento")
             ResumidoElementoDet.agencia = r.Item("agencia")

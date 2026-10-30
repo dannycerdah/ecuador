@@ -22,26 +22,26 @@ Partial Class frmElegirPersonalProceso
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance3 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance10 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmElegirPersonalProceso))
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
-        Dim Appearance4 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ugbCamion = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.uceSeguridad = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
+        Me.UltraLabel1 = New Infragistics.Win.Misc.UltraLabel()
         Me.ucePersonalAerolinea = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
         Me.ucePersonalAgenciaCarga = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
         Me.lblEstado = New Infragistics.Win.Misc.UltraLabel()
         Me.lblAgencia = New Infragistics.Win.Misc.UltraLabel()
         Me.btnCancel = New Infragistics.Win.Misc.UltraButton()
         Me.btnSave = New Infragistics.Win.Misc.UltraButton()
-        Me.uceSeguridad = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
-        Me.UltraLabel1 = New Infragistics.Win.Misc.UltraLabel()
         CType(Me.ugbCamion, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ugbCamion.SuspendLayout()
+        CType(Me.uceSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ucePersonalAerolinea, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.ucePersonalAgenciaCarga, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.uceSeguridad, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ugbCamion
@@ -59,6 +59,28 @@ Partial Class frmElegirPersonalProceso
         Me.ugbCamion.Size = New System.Drawing.Size(278, 245)
         Me.ugbCamion.TabIndex = 19
         Me.ugbCamion.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
+        '
+        'uceSeguridad
+        '
+        Me.uceSeguridad.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend
+        Me.uceSeguridad.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2010
+        Me.uceSeguridad.LimitToList = True
+        Me.uceSeguridad.Location = New System.Drawing.Point(15, 160)
+        Me.uceSeguridad.Name = "uceSeguridad"
+        Me.uceSeguridad.Size = New System.Drawing.Size(251, 21)
+        Me.uceSeguridad.TabIndex = 19
+        '
+        'UltraLabel1
+        '
+        Appearance4.BackColor = System.Drawing.Color.Transparent
+        Appearance4.TextVAlignAsString = "Middle"
+        Me.UltraLabel1.Appearance = Appearance4
+        Me.UltraLabel1.Location = New System.Drawing.Point(15, 141)
+        Me.UltraLabel1.Name = "UltraLabel1"
+        Me.UltraLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.UltraLabel1.Size = New System.Drawing.Size(180, 20)
+        Me.UltraLabel1.TabIndex = 20
+        Me.UltraLabel1.Text = "Agente AVSEC X-RAY"
         '
         'ucePersonalAerolinea
         '
@@ -125,28 +147,6 @@ Partial Class frmElegirPersonalProceso
         Me.btnSave.TabIndex = 3
         Me.btnSave.Text = "Guardar"
         '
-        'uceSeguridad
-        '
-        Me.uceSeguridad.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend
-        Me.uceSeguridad.DisplayStyle = Infragistics.Win.EmbeddableElementDisplayStyle.Office2010
-        Me.uceSeguridad.LimitToList = True
-        Me.uceSeguridad.Location = New System.Drawing.Point(15, 160)
-        Me.uceSeguridad.Name = "uceSeguridad"
-        Me.uceSeguridad.Size = New System.Drawing.Size(251, 21)
-        Me.uceSeguridad.TabIndex = 19
-        '
-        'UltraLabel1
-        '
-        Appearance4.BackColor = System.Drawing.Color.Transparent
-        Appearance4.TextVAlignAsString = "Middle"
-        Me.UltraLabel1.Appearance = Appearance4
-        Me.UltraLabel1.Location = New System.Drawing.Point(15, 141)
-        Me.UltraLabel1.Name = "UltraLabel1"
-        Me.UltraLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.UltraLabel1.Size = New System.Drawing.Size(180, 20)
-        Me.UltraLabel1.TabIndex = 20
-        Me.UltraLabel1.Text = "Personal Agencia de Seguriad:"
-        '
         'frmElegirPersonalProceso
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -156,13 +156,13 @@ Partial Class frmElegirPersonalProceso
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmElegirPersonalProceso"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
-        Me.Text = "Detalle Dolly"
+        Me.Text = "Personal Proceso"
         CType(Me.ugbCamion, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ugbCamion.ResumeLayout(False)
         Me.ugbCamion.PerformLayout()
+        CType(Me.uceSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ucePersonalAerolinea, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ucePersonalAgenciaCarga, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.uceSeguridad, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

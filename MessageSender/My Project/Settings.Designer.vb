@@ -379,9 +379,9 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property sslCorreo() As String
+        Public Property sslCorreo() As Boolean
             Get
-                Return CType(Me("sslCorreo"),String)
+                Return CType(Me("sslCorreo"),Boolean)
             End Get
             Set
                 Me("sslCorreo") = value

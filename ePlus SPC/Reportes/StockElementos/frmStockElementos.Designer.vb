@@ -28,6 +28,7 @@ Partial Class frmStockElementos
         Dim Appearance1 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Dim Appearance2 As Infragistics.Win.Appearance = New Infragistics.Win.Appearance()
         Me.ugbDatosVuelo = New Infragistics.Win.Misc.UltraGroupBox()
+        Me.lblNota = New System.Windows.Forms.Label()
         Me.UltraButton1 = New Infragistics.Win.Misc.UltraButton()
         Me.uceAerolinea = New Infragistics.Win.UltraWinEditors.UltraComboEditor()
         Me.UltraLabel2 = New Infragistics.Win.Misc.UltraLabel()
@@ -42,6 +43,7 @@ Partial Class frmStockElementos
         '
         'ugbDatosVuelo
         '
+        Me.ugbDatosVuelo.Controls.Add(Me.lblNota)
         Me.ugbDatosVuelo.Controls.Add(Me.UltraButton1)
         Me.ugbDatosVuelo.Controls.Add(Me.uceAerolinea)
         Me.ugbDatosVuelo.Controls.Add(Me.UltraLabel2)
@@ -51,16 +53,28 @@ Partial Class frmStockElementos
         Me.ugbDatosVuelo.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ugbDatosVuelo.Location = New System.Drawing.Point(0, 0)
         Me.ugbDatosVuelo.Name = "ugbDatosVuelo"
-        Me.ugbDatosVuelo.Size = New System.Drawing.Size(331, 248)
+        Me.ugbDatosVuelo.Size = New System.Drawing.Size(331, 265)
         Me.ugbDatosVuelo.TabIndex = 20
         Me.ugbDatosVuelo.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2007
+        '
+        'lblNota
+        '
+        Me.lblNota.AutoSize = True
+        Me.lblNota.BackColor = System.Drawing.Color.Transparent
+        Me.lblNota.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblNota.Location = New System.Drawing.Point(12, 175)
+        Me.lblNota.Name = "lblNota"
+        Me.lblNota.Size = New System.Drawing.Size(237, 13)
+        Me.lblNota.TabIndex = 49
+        Me.lblNota.Text = "Fecha ultimo ““envío de correo"": @fecha"
+        Me.lblNota.Visible = False
         '
         'UltraButton1
         '
         Appearance29.Image = CType(resources.GetObject("Appearance29.Image"), Object)
         Me.UltraButton1.Appearance = Appearance29
         Me.UltraButton1.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button
-        Me.UltraButton1.Location = New System.Drawing.Point(98, 213)
+        Me.UltraButton1.Location = New System.Drawing.Point(98, 227)
         Me.UltraButton1.Name = "UltraButton1"
         Me.UltraButton1.Size = New System.Drawing.Size(140, 29)
         Me.UltraButton1.TabIndex = 48
@@ -116,7 +130,7 @@ Partial Class frmStockElementos
         Appearance2.Image = CType(resources.GetObject("Appearance2.Image"), Object)
         Me.btnConsultaElemento.Appearance = Appearance2
         Me.btnConsultaElemento.ButtonStyle = Infragistics.Win.UIElementButtonStyle.Office2010Button
-        Me.btnConsultaElemento.Location = New System.Drawing.Point(98, 181)
+        Me.btnConsultaElemento.Location = New System.Drawing.Point(98, 195)
         Me.btnConsultaElemento.Name = "btnConsultaElemento"
         Me.btnConsultaElemento.Size = New System.Drawing.Size(140, 29)
         Me.btnConsultaElemento.TabIndex = 2
@@ -126,7 +140,7 @@ Partial Class frmStockElementos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(331, 248)
+        Me.ClientSize = New System.Drawing.Size(331, 265)
         Me.Controls.Add(Me.ugbDatosVuelo)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "frmStockElementos"
@@ -147,4 +161,5 @@ Partial Class frmStockElementos
     Friend WithEvents txtObs As Infragistics.Win.UltraWinEditors.UltraTextEditor
     Friend WithEvents uceAerolinea As Infragistics.Win.UltraWinEditors.UltraComboEditor
     Friend WithEvents UltraButton1 As Infragistics.Win.Misc.UltraButton
+    Friend WithEvents lblNota As Label
 End Class

@@ -58,7 +58,7 @@ Public Class ElementoManager
                         .materialPiso = drReader.GetValue(drReader.GetOrdinal("materialPiso"))
                         .materialPared = drReader.GetValue(drReader.GetOrdinal("materialPared"))
                         .materialTecho = drReader.GetValue(drReader.GetOrdinal("materialTecho"))
-                      '  .materialRed = drReader.GetValue(drReader.GetOrdinal("materialRed"))
+                        '  .materialRed = drReader.GetValue(drReader.GetOrdinal("materialRed"))
                         .materialPuerta = drReader.GetValue(drReader.GetOrdinal("materialPuerta"))
                         .materialSeguros = drReader.GetValue(drReader.GetOrdinal("materialSeguros"))
                         .alto = drReader.GetValue(drReader.GetOrdinal("alto"))
@@ -500,7 +500,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .IdAgencia, .tipoElemento, .materialPiso, .materialPared, .materialTecho,
+                    Elemento = New Object() { .Id, .IdAgencia, .tipoElemento, .materialPiso, .materialPared, .materialTecho,
                                            .materialRed, .materialPuerta, .materialSeguros, .alto, .ancho, .largo,
                                            .pesoReferencial, .pesoReal, .estado, .fechaIngreso, .usuarioIngreso, .fechaUltimaAct, .tempId}
                 End With
@@ -591,7 +591,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .alto, .ancho, .largo,
+                    Elemento = New Object() { .Id, .alto, .ancho, .largo,
                                            .pesoReferencial, .pesoReal, .estado, .fechaUltimaAct, .obs}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
@@ -631,7 +631,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoHistoricoItem
-                    Elemento = New Object() {.Id, .idElemento, .pesoElemento, .estadoElemento,
+                    Elemento = New Object() { .Id, .idElemento, .pesoElemento, .estadoElemento,
                                            .tipoRegistro, .fecha, .usuario, .idProceso, .idVuelo, .fileImgCondicion, .observacion}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
@@ -681,7 +681,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoPreBriefingItem
-                    Elemento = New Object() {.idBriefing, .idElemento, .fecha, .idContacto,
+                    Elemento = New Object() { .idBriefing, .idElemento, .fecha, .idContacto,
                                            .estado, .indice, .IdAerolinea, .IdRampa, .IdSeguridad, .Vuelo, .Procedencia, .UsuarioDelete}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
@@ -803,7 +803,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .estado}
+                    Elemento = New Object() { .Id, .estado}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -835,7 +835,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .pesoActual, .fechaUltimaAct}
+                    Elemento = New Object() { .Id, .pesoActual, .fechaUltimaAct}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -868,7 +868,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoItem
-                    Elemento = New Object() {.Id, .estado, .usuarioIngreso, .fechaUltimaAct, .chofer, .mula, .fechaIngresoPlataforma, .custodio, .pesoReferencial, .pesoReal, .fileImgCondicion, .observacion2}
+                    Elemento = New Object() { .Id, .estado, .usuarioIngreso, .fechaUltimaAct, .chofer, .mula, .fechaIngresoPlataforma, .custodio, .pesoReferencial, .pesoReal, .fileImgCondicion, .observacion2}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -918,7 +918,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myMaterial
-                    Material = New Object() {.idMaterial, .descripcion}
+                    Material = New Object() { .idMaterial, .descripcion}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -1016,7 +1016,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myTiposElemento
-                    Tipo = New Object() {.idTipo, .descripcionTipo, .codigo, .pesoReferencial, .materialPiso, .materialPared, .materialTecho, .materialPuerta, .ancho, .largo, .alto, .pesoreal}
+                    Tipo = New Object() { .idTipo, .descripcionTipo, .codigo, .pesoReferencial, .materialPiso, .materialPared, .materialTecho, .materialPuerta, .ancho, .largo, .alto, .pesoreal}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -1050,7 +1050,7 @@ Public Class ElementoManager
                     End With
                 Else
                     With cmd2
-                            .Parameters.AddWithValue("Id", Tipo(0))
+                        .Parameters.AddWithValue("Id", Tipo(0))
                         .Parameters.AddWithValue("descripcion", Tipo(1))
                         .Parameters.AddWithValue("codigo", Tipo(2))
                         .Parameters.AddWithValue("pesoReferencial", Tipo(3))
@@ -1093,7 +1093,7 @@ Public Class ElementoManager
         Try
             If ValidateSession(req) Then
                 With req.myElementoHUldItem
-                    ElementoHuld = New Object() {.IdRegistro, .IdReporte}
+                    ElementoHuld = New Object() { .IdRegistro, .IdReporte}
                 End With
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
                 With cmd
@@ -1138,6 +1138,66 @@ Public Class ElementoManager
         Catch ex As Exception
             Result.ActionResult = False
             SetLogEvent(ex, Result, req)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
+    'jrodriguez 11/09/2025 se crean metodos para determinar si existe ya un reporte de inventario almacenado para el dia de hoy
+    Public Shared Function Exist_bitacora_stock_elemento(data As Guid) As Date
+        Dim Result As Date
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(Result) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .CommandText = "exist_bitacora_stock_elemento"
+                    .CommandType = CommandType.StoredProcedure
+                    .Parameters.AddWithValue("pidAgencia", data)
+                    '.Parameters.Add("data", MySqlDbType.JSON).Value = data
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                    .CommandTimeout = 18880
+                End With
+                Dim fecha As Object = cmd.ExecuteScalar()
+                If fecha.Equals(DBNull.Value) Then
+                    Result = Nothing
+                Else
+                    Result = Convert.ToDateTime(fecha)
+                End If
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex)
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        Finally
+            If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+        End Try
+        Return Result
+    End Function
+    'jrodriguez 11/09/2025 se crea metodo para almacenar la bitacora de envio de stock de elementos
+    Public Shared Function Bitacora_stock_elemento(data As String) As Boolean
+        Dim Result As Boolean
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Try
+            If ValidateSession(Result) Then
+                dbTran = MyDbFactory.CreateDatabase("TranDB")
+                With cmd
+                    .CommandText = "bitacora_stock_elemento"
+                    .CommandType = CommandType.StoredProcedure
+                    .Parameters.Add("data", MySqlDbType.JSON).Value = data
+                    .Connection = dbTran.CreateConnection
+                    .Connection.Open()
+                    .CommandTimeout = 18880
+                    cmd.ExecuteNonQuery()
+                End With
+                cmd.Connection.Close()
+            End If
+        Catch ex As Exception
+            SetLogEvent(ex)
             If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
         Finally
             If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()

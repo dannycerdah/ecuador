@@ -6,6 +6,7 @@ Imports eSPC
 Imports ControlTempGAEnsamblado
 Imports Microsoft.Practices.EnterpriseLibrary.Data
 Imports System.IO
+Imports System.Text.RegularExpressions
 
 'Imports Microsoft.Office.Interop
 
@@ -33,9 +34,10 @@ Public Class frmPrincipal
             SetLogEvent(ex)
         End Try
     End Sub
-    Public Shared Sub SendReportsMessage(ByVal msj As String, direccionAdjunto As String, destinatarios As String, descripcionReporte As String)
+    Public Sub SendReportsMessage(ByVal msj As String, direccionAdjunto As String, destinatarios As String, descripcionReporte As String, Optional Oculto As Boolean = False)
         Dim sender As New System.Net.Mail.SmtpClient
         Try
+            log("inicio")
             If destinatarios <> "" Then
                 With sender
                     .Port = My.Settings.puertoCorreo
@@ -44,18 +46,34 @@ Public Class frmPrincipal
                     .EnableSsl = My.Settings.sslCorreo
                     .DeliveryMethod = Net.Mail.SmtpDeliveryMethod.Network
                 End With
-                Using msg As New Net.Mail.MailMessage(My.Settings.remitenteCorreo, destinatarios, descripcionReporte, msj)
+                log(My.Settings.puertoCorreo & " " & My.Settings.hostCorreo & " " & My.Settings.sslCorreo & " " & My.Settings.remitenteCorreo)
+                log("sender")
+                log(destinatarios)
+                log(descripcionReporte)
+                Using msg As New Net.Mail.MailMessage
+                    Dim from As New Net.Mail.MailAddress(My.Settings.remitenteCorreo)
+                    msg.From = from
+                    If Oculto Then
+                        msg.Bcc.Add(destinatarios)
+                    Else
+                        msg.To.Add(destinatarios)
+                    End If
                     If Not String.IsNullOrEmpty(direccionAdjunto) Then
                         Dim attachment As System.Net.Mail.Attachment
                         attachment = New System.Net.Mail.Attachment(direccionAdjunto)
                         msg.Attachments.Add(attachment)
                     End If
+                    msg.Subject = descripcionReporte
+                    msg.Body = msj
                     msg.IsBodyHtml = True
                     sender.Send(msg)
+                    log("enviado")
                 End Using
+                log("fin")
             End If
         Catch ex As Exception
-            SetLogEvent(ex)
+            SetLogEvent(ex, "SendReportsMessage")
+            log(ex.Message & "--fin")
         End Try
     End Sub
     Public Shared Sub SendCorreo(ByVal msj As String, destinatarios As String, descripcionPermiso As String)
@@ -86,9 +104,14 @@ Public Class frmPrincipal
                     i += 1
                     SaveNewDae(r)
                     WriteDaeInViewer(r, "DAE")
-                    lblDaeProcessing.Text = "Procesando " & i.ToString & " de " & dtNew.Rows.Count & " " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss")
+                    'lblDaeProcessing.Text = "Procesando " & i.ToString & " de " & dtNew.Rows.Count & " " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss")
+                    If lblDaeProcessing IsNot Nothing Then
+                        lblDaeProcessing.Invoke(Sub() lblDaeProcessing.Text = $"Procesando {i} de {dtNew.Rows.Count} {Date.Now:dd-MM-yyyy HH:mm:ss}")
+                    End If
                 Next
-                lblLastExecution.Text = "Ultima Ejecucion: " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss")
+                If lblLastExecution IsNot Nothing Then
+                    lblLastExecution.Invoke(Sub() lblLastExecution.Text = "Ultima Ejecucion: " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss"))
+                End If
             Catch ex As Exception
                 SetLogEvent(ex)
             End Try
@@ -104,9 +127,13 @@ Public Class frmPrincipal
                     i += 1
                     SaveNewDae(r)
                     WriteDaeInViewer(r, "DAS")
-                    lblDaeProcessing.Text = "Procesando " & i.ToString & " de " & dtNew2.Rows.Count & " " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss")
+                    If lblDaeProcessing IsNot Nothing Then
+                        lblDaeProcessing.Invoke(Sub() lblDaeProcessing.Text = "Procesando " & i.ToString & " de " & dtNew2.Rows.Count & " " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss"))
+                    End If
                 Next
-                lblLastExecution.Text = "Ultima Ejecucion: " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss")
+                If lblLastExecution IsNot Nothing Then
+                    lblLastExecution.Invoke(Sub() lblLastExecution.Text = "Ultima Ejecucion: " & Date.Now.ToString("dd-MM-yyyy HH:mm:ss"))
+                End If
             Catch ex As Exception
                 SetLogEvent(ex)
             End Try
@@ -144,7 +171,9 @@ Public Class frmPrincipal
             strData += myRow.Item("ExporterName").ToString.PadRight(72).Substring(0, 70) & "    " '& ControlChars.CrLf
             strData += myRow.Item("EffectiveEndDate") & ControlChars.CrLf
             'strData += ControlChars.CrLf & ControlChars.CrLf & ControlChars.CrLf
-            txtContentVwr.Text = strData & txtContentVwr.Text
+            If txtContentVwr IsNot Nothing Then
+                txtContentVwr.Invoke(Sub() txtContentVwr.Text = strData & txtContentVwr.Text)
+            End If
         End If
     End Sub
     Private Sub frmPrincipal_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -318,7 +347,10 @@ Public Class frmPrincipal
                 strData += Id.PadRight(25) & resultStatus.PadRight(60).Substring(0, 25) & "      "
                 strData += "REG: " & idRegistro.ToString.PadRight(40) '& ControlChars.CrLf
                 strData += "DAE: " & numeroDae.PadRight(20) & ControlChars.CrLf
-                txtContentVwr.Text = strData & txtContentVwr.Text
+                'txtContentVwr.Text = strData & txtContentVwr.Text
+                If txtContentVwr IsNot Nothing Then
+                    txtContentVwr.Invoke(Sub() txtContentVwr.Text = strData & txtContentVwr.Text)
+                End If
             End If
             If resultStatus = "SIN ERRORES" Or resultStatus = String.Empty Or resultStatus = "SIN RESPUESTA" Then
                 dbTran = MyDbFactory.CreateDatabase("TranDB")
@@ -383,22 +415,23 @@ Public Class frmPrincipal
                 .Connection.Open()
             End With
             drReader = cmd.ExecuteReader()
-            drReader.Read()
-            If drReader.GetValue(drReader.GetOrdinal("examinerName")) <> String.Empty Then result = True
+            'drReader.Read()
+            While drReader.Read()
+                If drReader.GetValue(drReader.GetOrdinal("examinerName")) <> String.Empty Then result = True
+            End While
         Catch ex As Exception
             SetLogEvent(ex)
-            If Not drReader.IsClosed Then drReader.Close() 'Cerrar Reader
-            If cmd.Connection.State <> ConnectionState.Closed Then
+            If drReader IsNot Nothing AndAlso Not drReader.IsClosed Then drReader.Close()
+            If cmd.Connection IsNot Nothing AndAlso cmd.Connection.State <> ConnectionState.Closed Then
                 cmd.Connection.Close()
-                drReader = Nothing
             End If
         Finally
-            If Not drReader.IsClosed Then drReader.Close() 'Cerrar Reader
-            If cmd.Connection.State <> ConnectionState.Closed Then
+            If drReader IsNot Nothing AndAlso Not drReader.IsClosed Then drReader.Close()
+            If cmd.Connection IsNot Nothing AndAlso cmd.Connection.State <> ConnectionState.Closed Then
                 cmd.Connection.Close()
-                drReader = Nothing
             End If
         End Try
+
         Return result
     End Function
     Private Sub RestartDAE_Click(sender As Object, e As EventArgs) Handles StopDAE.Click
@@ -590,14 +623,14 @@ Public Class frmPrincipal
                 If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
             End If
             If cmd2.Connection IsNot Nothing Then
-                If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+                If cmd2.Connection.State = ConnectionState.Open Then cmd2.Connection.Close()
             End If
         Finally
             If cmd.Connection IsNot Nothing Then
                 If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
             End If
             If cmd2.Connection IsNot Nothing Then
-                If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
+                If cmd2.Connection.State = ConnectionState.Open Then cmd2.Connection.Close()
             End If
         End Try
     End Sub
@@ -627,6 +660,9 @@ Public Class frmPrincipal
                         .Parameters.AddWithValue("Salida", datos.Salida)
                         .Parameters.AddWithValue("CanalAforo", datos.CanalAforo)
                         .Parameters.AddWithValue("tipo", tipo)
+                        .Parameters.AddWithValue("EstadoAntAforo", datos.EstadoAntAforo)
+                        .Parameters.AddWithValue("SalidaAnt", datos.SalidaAnt)
+                        .Parameters.AddWithValue("CanalAforoAnt", datos.CanalAforoAnt)
                         .CommandText = "Sp_ModificaDetalleGuiaDaes"
                         .CommandType = CommandType.StoredProcedure
                         .Connection = dbTran.CreateConnection
@@ -726,12 +762,14 @@ Public Class frmPrincipal
             Dim nombreUsuarioReq As String = String.Empty
             dest = GetDestinatariosPorIdReporte(7) 'CommonData.GetDestinatariosPorIdReporte(7)
             For Each r As DataRow In dest.Rows
-                If contRowDest > 0 Then
-                    destinatarios += ", " & r.Item("mail")
-                Else
-                    destinatarios = r.Item("mail")
+                If EsCorreoValido(r.Item("mail")) Then
+                    If contRowDest > 0 Then
+                        destinatarios += ", " & r.Item("mail")
+                    Else
+                        destinatarios = r.Item("mail")
+                    End If
+                    contRowDest += 1
                 End If
-                contRowDest += 1
             Next
             If tipo = 0 Then
                 If datos.EnvioSenae = 0 Then
@@ -777,7 +815,7 @@ Public Class frmPrincipal
                 End If
             End If
         Catch ex As Exception
-            SetLogEvent(ex)
+            SetLogEvent(ex, "EnviarReporteCheckUserManager")
         End Try
     End Function
     Private Sub bgwRem_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bgwRem.DoWork
@@ -809,11 +847,11 @@ Public Class frmPrincipal
             Return dtDestinatarios
         Catch ex As Exception
             SetLogEvent(ex)
-            If cmd.Connection IsNot Nothing Then
+            If cmd.Connection IsNot Nothing AndAlso cmd.Connection.State = ConnectionState.Open Then
                 If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
             End If
         Finally
-            If cmd.Connection IsNot Nothing Then
+            If cmd.Connection IsNot Nothing AndAlso cmd.Connection.State = ConnectionState.Open Then
                 If cmd.Connection.State = ConnectionState.Open Then cmd.Connection.Close()
             End If
         End Try
@@ -827,12 +865,13 @@ Public Class frmPrincipal
                     For Each r As DataRow In dtJobs.Rows
                         ReporteTagsa(r.Item("IdJobs"), r.Item("NombreJobs"), r.Item("FechaEjecucion"), r.Item("TipoEjecucion"), r.Item("ValorEjecucion"))
                     Next
-                    Dim VerificaJobs As Boolean = False
-                    While VerificaJobs = False
-                        VerificaJobs = CargarDatosJobs()
-                        Threading.Thread.Sleep(5000)
-                    End While
+                    'Dim VerificaJobs As Boolean = False
+                    'While VerificaJobs = False
+                    '    VerificaJobs = CargarDatosJobs()
+                    '    Threading.Thread.Sleep(5000)
+                    'End While
                 End If
+                CargarDatosJobs()
                 If bgwReporteTagsa.CancellationPending Then
                     BtnVerificaTagsa.Enabled = True
                     Exit Sub
@@ -952,12 +991,14 @@ Public Class frmPrincipal
                 Dim contRowDest As Integer = 0
                 For Each r As DataRow In dest.Rows
                     If InStr(r.Item("mail"), "@") > 0 Then
-                        If contRowDest > 0 Then
-                            destinatariosCopia += ", " & r.Item("mail")
-                        Else
-                            destinatariosCopia = r.Item("mail")
+                        If EsCorreoValido(r.Item("mail")) Then
+                            If contRowDest > 0 Then
+                                destinatariosCopia += ", " & r.Item("mail")
+                            Else
+                                destinatariosCopia = r.Item("mail")
+                            End If
+                            contRowDest += 1
                         End If
-                        contRowDest += 1
                     End If
                 Next
                 Dim Msg As String
@@ -1021,7 +1062,9 @@ Public Class frmPrincipal
                             IO.File.AppendAllText(strFileName, Detalle)
                             Contactos = Contactos & r.Item(0) & " " & r.Item(1) & " (" & r.Item(2) & ")</li><li>"
                             If InStr(r.Item(4), "@") > 0 Then
-                                destinatarios = r.Item(4)
+                                If EsCorreoValido(r.Item(4)) Then
+                                    destinatarios = r.Item(4)
+                                End If
                             End If
                         Next
                         If InStr(destinatarios, "@") > 0 Then
@@ -1037,7 +1080,10 @@ Public Class frmPrincipal
                             destinatarios = destinatarios.Replace(",,", ",")
                             destinatarios = destinatarios.Replace("'", "")
                             destinatarios = destinatarios.Replace(" ", "")
-                            SendCorreoAdjunto(Msg, String.Empty, destinatarios, Asunto, True)
+                            'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                            'SendCorreoAdjunto(Msg, String.Empty, destinatarios, Asunto, True)
+                            SendReportsMessage(Msg, String.Empty, destinatarios, Asunto, True)
+                            'fin jrodriguez
                             Threading.Thread.Sleep(300)
                             strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion a la Compañia: " & i.Item("descripcionAgencia") & ControlChars.CrLf
                             txtJobs.Text = strData & txtJobs.Text
@@ -1060,10 +1106,13 @@ Public Class frmPrincipal
 
                         Msg = "Se adjunto el Listado de las personas que su credencial Tagsa esta a punto de caducar de hoy a 5 dias"
                         Asunto = "ALERTA CADUCIDAD CREDENCIAL TAGSA"
-                        destinatarios = destinatarios.Replace(",", ";")
+                        destinatarios = destinatarios.Replace(";", ",")
                         destinatarios = destinatarios.Replace(" ", "")
                         destinatarios = destinatarios.Replace(",,", ",")
-                        SendCorreoAdjunto(Msg, strFileName, destinatariosCopia, Asunto, True)
+                        'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                        'SendCorreoAdjunto(Msg, strFileName, destinatariosCopia, Asunto, True)
+                        SendReportsMessage(Msg, strFileName, destinatariosCopia, Asunto, True)
+                        'fin jrodriguez
                         Threading.Thread.Sleep(300)
                         strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion del listado de personas a cadaducar Tagsa " & ControlChars.CrLf
                         txtJobs.Text = strData & txtJobs.Text
@@ -1078,12 +1127,14 @@ Public Class frmPrincipal
                     Next
                     For Each r As DataRow In obtenerAgencia().Rows
                         If InStr(r.Item("mailAgencia"), "@") > 0 Then
-                            If contRowDest > 0 Then
-                                destinatarios += ", " & r.Item("mailAgencia")
-                            Else
-                                destinatarios = r.Item("mailAgencia")
+                            If EsCorreoValido(r.Item("mailAgencia")) Then
+                                If contRowDest > 0 Then
+                                    destinatarios += ", " & r.Item("mailAgencia")
+                                Else
+                                    destinatarios = r.Item("mailAgencia")
+                                End If
+                                contRowDest += 1
                             End If
-                            contRowDest += 1
                         End If
                         If contRowDest >= 20 Then
                             destinatarios = destinatarios & "," & destinatariosCopia
@@ -1097,7 +1148,10 @@ Public Class frmPrincipal
                             destinatarios = destinatarios.Replace(",,", ",")
                             destinatarios = destinatarios.Replace("'", "")
                             destinatarios = destinatarios.Replace(" ", "")
-                            SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                            'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                            'SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                            SendReportsMessage(Msg, strFileName1, destinatarios, Asunto, True)
+                            'fin jrodriguez
                             Threading.Thread.Sleep(300)
                             strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion mensual " & ControlChars.CrLf
                             txtJobs.Text = strData & txtJobs.Text
@@ -1116,7 +1170,10 @@ Public Class frmPrincipal
                         destinatarios = destinatarios.Replace(",,", ",")
                         destinatarios = destinatarios.Replace("'", "")
                         destinatarios = destinatarios.Replace(" ", "")
-                        SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                        'ini jrodriguez 04/08/2025 se realiza cambio de correo de manera parametrizada en el settings 
+                        'SendCorreoAdjunto(Msg, strFileName1, destinatarios, Asunto, True)
+                        SendReportsMessage(Msg, strFileName1, destinatarios, Asunto, True)
+                        'fin jrodriguez
                         Threading.Thread.Sleep(300)
                         strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de notificacion mensual " & ControlChars.CrLf
                         txtJobs.Text = strData & txtJobs.Text
@@ -1152,13 +1209,96 @@ Public Class frmPrincipal
                         strData = "Error: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " " & ex.Message & ControlChars.CrLf
                         txtJobs.Text = strData & txtJobs.Text
                     End Try
+                ElseIf idJobs = 4 Then
+                    Try
+                        Dim bitacoraNovedad As New DataTable()
+                        bitacoraNovedad = ObtenerBitacoraNovedadVuelo()
+                        If bitacoraNovedad.Rows.Count > 0 Then
+                            Dim rutaejecutable1 As String = Application.StartupPath
+                            If Not FileIO.FileSystem.DirectoryExists(rutaejecutable1 & "\LogFiles") Then
+                                FileIO.FileSystem.CreateDirectory(rutaejecutable1 & "\LogFiles")
+                            End If
+                            Dim strFileName1 As String = rutaejecutable1 & "\LogFiles\ReporteNotificacionNovedadVuelo" & DateTime.Now.ToString("yyyy-MM-dd") & ".CSV"
+                            For Each row As DataRow In ObtenerCorreoReporte(idJobs).Rows
+                                Msg = row.Item("CuerpoCorreo")
+                                Asunto = row.Item("Asunto")
+                            Next
+                            Asunto = Asunto.Replace("@fecha", Now().AddDays(-1).ToString("dd/MM/yyyy HH:mm:ss"))
+                            Msg = Msg.Replace("@fecha", Now().AddDays(-1).ToString("dd/MM/yyyy HH:mm:ss"))
+                            Dim desti As String = String.Empty
+                            dest = GetDestinatariosPorIdReporte(11) 'CommonData.GetDestinatariosPorIdReporte(7)
+                            For Each r As DataRow In dest.Rows
+                                If contRowDest > 0 Then
+                                    desti += ", " & r.Item("mail")
+                                Else
+                                    desti = r.Item("mail")
+                                End If
+                                contRowDest += 1
+                            Next
+                            ExportarDataTableACSV(bitacoraNovedad, strFileName1)
+                            SendReportsMessage(Msg, strFileName1, desti, Asunto)
+                            Dim result As String = String.Empty
+                            resul = ActualizaDatosJob(NombreJobs, tipoEjecucion, ValorEjecucion)
+                            Threading.Thread.Sleep(300)
+                            strData = "Envio: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " Envio de Reporte de novedades de Vuelo " & ControlChars.CrLf
+                            txtJobs.Text = strData & txtJobs.Text
+                            contRowDest = 0
+                        End If
+                    Catch ex As Exception
+                        strData = "Error: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " " & ex.Message & ControlChars.CrLf
+                        txtJobs.Text = strData & txtJobs.Text
+                    End Try
                 End If
             End If
         Catch ex As Exception
             strData = "Error: " & Date.Now.ToString("yyyy-MM-dd HH:mm:ss") & " " & ex.Message & ControlChars.CrLf
             txtJobs.Text = strData & txtJobs.Text
+            SetLogEvent(ex, "ReporteTagsa")
         End Try
     End Sub
+    Public Sub ExportarDataTableACSV(dt As DataTable, rutaArchivo As String)
+        Using sw As New StreamWriter(rutaArchivo, False, System.Text.Encoding.UTF8)
+
+            ' Escribir cabecera
+            Dim encabezado As String = String.Join(",", dt.Columns.Cast(Of DataColumn)().Select(Function(c) c.ColumnName))
+            sw.WriteLine(encabezado)
+
+            ' Escribir filas
+            For Each fila As DataRow In dt.Rows
+                Dim valores As String() = fila.ItemArray.Select(Function(obj) _
+                If(obj IsNot Nothing, obj.ToString().Replace(",", ";"), "")).ToArray()
+                sw.WriteLine(String.Join(",", valores))
+            Next
+        End Using
+    End Sub
+    Shared Function ObtenerBitacoraNovedadVuelo() As DataTable
+        Dim dbTran As Database
+        Dim cmd As New MySqlCommand
+        Dim novedades = New DataTable("ObtenerBitacoraNovedadVuelo")
+        dbTran = MyDbFactory.CreateDatabase("TranDB")
+        Try
+            With cmd
+                .CommandText = "obtenerBitacoraNotificacionNovedadVuelo"
+                .Parameters.AddWithValue("pVuelo", DBNull.Value)
+                .Parameters.AddWithValue("pfechaVuelo", DBNull.Value)
+                .CommandType = CommandType.StoredProcedure
+                .Connection = dbTran.CreateConnection
+                .Connection.Open()
+            End With
+            novedades.Load(cmd.ExecuteReader)
+            cmd.Connection.Close()
+            Return novedades
+        Catch ex As Exception
+            SetLogEvent(ex)
+            If cmd.Connection.State <> ConnectionState.Closed Then
+                cmd.Connection.Close()
+            End If
+        Finally
+            If cmd.Connection.State <> ConnectionState.Closed Then
+                cmd.Connection.Close()
+            End If
+        End Try
+    End Function
     Shared Function ObtenerDatosJob() As DataTable
         Dim dbTran As Database
         Dim cmd As New MySqlCommand
@@ -1440,5 +1580,12 @@ Public Class frmPrincipal
         End Try
     End Sub
 #End Region
+    'ini jrodigue sprint01 24/04/2025
+    'se crea funcion de validacion de formato de correo
+    Public Function EsCorreoValido(correo As String) As Boolean
+        Dim patron As String = "^[^@\s]+@[^@\s]+\.[^@\s]+$"
+        Dim regex As New Regex(patron)
+        Return regex.IsMatch(correo)
+    End Function
 End Class
 
